@@ -1,0 +1,33 @@
+{
+  "name": "start_project_scss",
+  "version": "1.0.0",
+  "description": "Start HTML Template",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Inkogn1to",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^2.23.3",
+    "del": "^3.0.0",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^4.1.0",
+    "gulp-cache": "^1.0.2",
+    "gulp-cached": "^1.1.1",
+    "gulp-cssnano": "^2.1.2",
+    "gulp-notify": "^3.1.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-responsive": "^2.8.0",
+    "gulp-sass": "^3.1.0",
+    "gulp-sourcemaps": "^2.6.3",
+    "gulp-svgmin": "^1.2.4",
+    "gulp-tinypng-compress": "^1.2.1",
+    "gulp-to-ico": "^1.0.0",
+    "gulp-util": "^3.0.8",
+    "gulp-zip": "^4.1.0"
+  },
+  "dependencies": {
+    "sharp": "^0.18.4"
+  }
+}

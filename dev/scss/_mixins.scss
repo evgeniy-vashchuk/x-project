@@ -1,0 +1,176 @@
+// MIXINS
+
+// Color of placeholder
+@mixin placeholder-color($color) {
+	&:-moz-placeholder,
+	&::-moz-placeholder {
+		color: $color;
+		opacity: 1;
+	}
+	&::-webkit-input-placeholder {
+		color: $color;
+	}
+	&:-ms-input-placeholder {
+		color: $color;
+	}
+}
+
+// EXAMPLE: @include placeholder-color(#FF0000);
+
+// Smooth changing the transparency of the placeholder at the focus
+@mixin placeholder-opacity($time) {
+	&::-webkit-input-placeholder       { opacity: 1; transition: opacity $time ease; }
+	&::-moz-placeholder                { opacity: 1; transition: opacity $time ease; }
+	&:-moz-placeholder                 { opacity: 1; transition: opacity $time ease; }
+	&:-ms-input-placeholder            { opacity: 1; transition: opacity $time ease; }
+	&:focus::-webkit-input-placeholder { opacity: 0; transition: opacity $time ease; }
+	&:focus::-moz-placeholder          { opacity: 0; transition: opacity $time ease; }
+	&:focus:-moz-placeholder           { opacity: 0; transition: opacity $time ease; }
+	&:focus:-ms-input-placeholder      { opacity: 0; transition: opacity $time ease; }
+}
+
+// EXAMPLE: @include placeholder-opacity(0.5s);
+
+// Shifting the placeholder to the right with focus
+@mixin placeholder-animation($indent, $time) {
+	&::-webkit-input-placeholder       { text-indent: 0px;   transition: text-indent $time ease; }
+	&::-moz-placeholder                { text-indent: 0px;   transition: text-indent $time ease; }
+	&:-moz-placeholder                 { text-indent: 0px;   transition: text-indent $time ease; }
+	&:-ms-input-placeholder            { text-indent: 0px;   transition: text-indent $time ease; }
+	&:focus::-webkit-input-placeholder { text-indent: $indent; transition: text-indent $time ease; }
+	&:focus::-moz-placeholder          { text-indent: $indent; transition: text-indent $time ease; }
+	&:focus:-moz-placeholder           { text-indent: $indent; transition: text-indent $time ease; }
+	&:focus:-ms-input-placeholder      { text-indent: $indent; transition: text-indent $time ease; }
+}
+
+// EXAMPLE: @include placeholder-animation(500px, 0.5s);
+
+// Сreation border-arrows
+@mixin border-arrow($width, $height, $bg, $direction) {
+	width: 0px;
+	height: 0px;
+	border-style: solid;
+	@if $direction == t {
+		border-width: 0 $width / 2 + px $height + px $width / 2 + px;
+		border-color: transparent transparent $bg transparent;
+	}
+	@if $direction == r {
+		border-width: $height / 2 + px 0 $height / 2 + px $width + px;
+		border-color: transparent transparent transparent $bg;
+	}
+	@if $direction == b {
+		border-width: $height + px $width / 2 + px 0 $width / 2 + px;
+		border-color: $bg transparent transparent transparent;
+	}
+	@if $direction == l {
+		border-width: $height / 2 + px $width + px $height / 2 + px 0;
+		border-color: transparent $bg transparent transparent;
+	}
+	@if $direction == tl {
+		border-width: $height + px $width + px 0 0;
+		border-color: $bg transparent transparent transparent;
+	}
+	@if $direction == tr {
+		border-width: 0 $width + px $height + px 0;
+		border-color: transparent $bg transparent transparent;
+	}
+	@if $direction == br {
+		border-width: 0 0 $height + px $width + px;
+		border-color: transparent transparent $bg transparent;
+	}
+	@if $direction == bl {
+		border-width: $height + px 0 0 $width + px;
+		border-color: transparent transparent transparent $bg;
+	}
+}
+
+// EXAMPLE: @include border-arrow(20, 20, #FF0000, t);
+
+// Adding fonts
+@mixin font-face($font-family, $file-path, $weight: normal, $style: normal, $asset-pipeline: false ) {
+	@font-face {
+		font-family: $font-family;
+		font-weight: $weight;
+		font-style: $style;
+		@if $asset-pipeline == true {
+			src: font-url('#{$file-path}.eot');
+			src: font-url('#{$file-path}.eot?#iefix') format('embedded-opentype'), font-url('#{$file-path}.woff2') format('woff2'), font-url('#{$file-path}.woff') format('woff'), font-url('#{$file-path}.ttf') format('truetype');
+		}
+		@else {
+			src: url('#{$file-path}.eot');
+			src: url('#{$file-path}.eot?#iefix') format('embedded-opentype'), url('#{$file-path}.woff2') format('woff2'), url('#{$file-path}.woff') format('woff'), url('#{$file-path}.ttf') format('truetype');
+		}
+	}
+}
+
+// EXAMPLE: 
+
+// @include font-face("RobotoRegular", "../fonts/RobotoRegular/RobotoRegular");
+// @include font-face("RobotoItalic", "../fonts/RobotoItalic/RobotoItalic", normal, italic);
+// @include font-face("RobotoBold", "../fonts/RobotoBold/RobotoBold", bold);
+
+// Transition
+@mixin tr($var) {
+	-webkit-transition: $var;
+	-moz-transition: $var;
+	-ms-transition: $var;
+	-o-transition: $var;
+	transition: $var;
+}
+
+// EXAMPLE: @include tr(0.5s);
+
+// Border radius
+@mixin br($var) {
+	-webkit-border-radius: $var;
+	-ms-border-radius: $var;
+	-moz-border-radius: $var;
+	-o-border-radius: $var;
+	border-radius: $var;
+}
+
+// EXAMPLE: @include br(5px);
+
+// Responsive background image
+@mixin rbg {
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+}
+
+// EXAMPLE: @include rbg;
+
+// Position absolute center alignment
+@mixin absolute-center {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+// EXAMPLE: @include absolute-center;
+
+// Image responsive
+@mixin img-res {
+	max-width: 100%;
+	max-height: 100%;
+	width: auto;
+	height: auto;
+}
+
+// EXAMPLE: @include img-res;
+
+// Gray image
+@mixin gray {
+	filter: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><filter id='grayscale'><feColorMatrix type='matrix' values='0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0'/></filter></svg>#grayscale");
+	filter: gray;
+	-webkit-filter: grayscale(100%);
+	filter: progid:DXImageTransform.Microsoft.BasicImage(grayScale=1);
+	-ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(grayScale=1)";
+}
+
+// Gray none
+@mixin gray-zero {
+	filter: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><filter id='grayscale'><feColorMatrix type='matrix' values='1 0 0 0 0, 0 1 0 0 0, 0 0 1 0 0, 0 0 0 1 0'/></filter></svg>#grayscale");
+	-webkit-filter: grayscale(0%);
+}
