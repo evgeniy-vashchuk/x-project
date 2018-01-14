@@ -11,10 +11,10 @@
         ],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "grid": 0,
         "tags": [
           "like"
-        ]
+        ],
+        "grid": 0
       },
       "attrs": [
         {}
@@ -27,7 +27,7 @@
         "code": 59667
       },
       "setIdx": 0,
-      "setId": 7,
+      "setId": 12,
       "iconIdx": 0
     }
   ],

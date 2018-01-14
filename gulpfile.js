@@ -22,29 +22,18 @@ var gulp           = require('gulp'),
 	zip            = require('gulp-zip'),
 	ico            = require('gulp-to-ico'),
 	responsive     = require('gulp-responsive'),
+	wait           = require('gulp-wait'),
 	cssnano        = require('gulp-cssnano');
 
 // РАБОТА С SASS ФАЙЛАМИ
-gulp.task('sass:main', function() {
-	return gulp.src('dev/scss/main.scss')
+gulp.task('sass', function() {
+	return gulp.src('dev/scss/all.scss')
+	.pipe(wait(100)) // delay for waiting to compile sass
 	.pipe(sourcemaps.init())
 	.pipe(sass().on("error", notify.onError({
 		title: "Error compiling SASS",
 	})))
 	.pipe(autoprefixer(['last 15 versions']))
-	.pipe(sourcemaps.write('.'))
-	.pipe(gulp.dest('dev/css'))
-	.pipe(browserSync.reload({stream: true}));
-});
-
-gulp.task('sass:libs', function() {
-	return gulp.src('dev/scss/libs.scss')
-	.pipe(sourcemaps.init())
-	.pipe(sass().on("error", notify.onError({
-		title: "Error compiling SASS LIBS",
-	})))
-	.pipe(cssnano())
-	.pipe(rename({suffix: '.min'}))
 	.pipe(sourcemaps.write('.'))
 	.pipe(gulp.dest('dev/css'))
 	.pipe(browserSync.reload({stream: true}));
@@ -131,36 +120,46 @@ gulp.task('browser-sync', function() {
 		server: {
 			baseDir: 'dev'
 		},
-		notify: true,
+		notify: {
+			styles: {
+				padding: '5px',
+				position: 'fixed',
+				fontSize: '12px',
+				zIndex: '9999',
+				borderRadius: '0px 0px 0px 5px',
+				color: 'white',
+				textAlign: 'center',
+				display: 'block',
+				backgroundColor: 'rgb(20, 69, 102)'
+			}
+		},
 		// tunnel: true,
 		// tunnel: "projectmane", //Demonstration page: http://projectmane.localtunnel.me
 	});
 });
 
 // СЛЕЖЕНИЕ ЗА ФАЙЛАМИ
-gulp.task('watch', ['sass:main', 'sass:libs', 'browser-sync'], function() {
+gulp.task('watch', ['sass', 'browser-sync'], function() {
 	// SCSS
-	gulp.watch('dev/scss/**/*.scss', ['sass:main']);
-	gulp.watch('dev/libs/**/*.scss', ['sass:libs']);
+	gulp.watch('dev/scss/**/*.scss', ['sass']);
+	gulp.watch('dev/libs/**/*.{scss,css}', ['sass']);
 	// JS
-	gulp.watch('dev/js/**/*.js', browserSync.reload);
-	gulp.watch('dev/libs/**/*.js', browserSync.reload);
+	gulp.watch('dev/js/**/*.js').on('change', browserSync.reload);
+	gulp.watch('dev/libs/**/*.js').on('change', browserSync.reload);
 	// HTML
-	gulp.watch('dev/*.html', browserSync.reload);
+	gulp.watch('dev/*.html').on('change', browserSync.reload);
 	// IMAGES
-	gulp.watch('dev/img/**.*', browserSync.reload);
+	gulp.watch('dev/img/**.*').on('change', browserSync.reload);
+
 });
 
 // СБОРКА ПРОЕКТА
-gulp.task('build', ['removeprod', 'imagemin', 'favicon', 'sass:main', 'sass:libs'], function() {
+gulp.task('build', ['removeprod', 'imagemin', 'favicon', 'sass'], function() {
 
 	var buildFiles = gulp.src('dev/*.html')
 		.pipe(gulp.dest('prod'));
 
-	var buildCss = gulp.src([
-		'dev/css/main.css',
-		'dev/css/libs.min.css',
-	])
+	var buildCss = gulp.src('dev/css/all.css')
 		.pipe(gulp.dest('prod/css'));
 
 	var buildMainJs = gulp.src('dev/js/common.js',)
