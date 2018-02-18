@@ -1,21 +1,28 @@
-// MAIN
+// MAIN ===============================================
 @import "libs";
-@import "fonts+normalize";
 @import "mixins";
+@import "fonts";
+@import "normalize";
 
-// PAGES
-@import "pages/home";
-
-// MODULES
+// MODULES ===============================================
 // - base -
 @import "modules/base/typography";
 @import "modules/base/buttons";
 @import "modules/base/forms";
-@import "modules/base/halpers";
+@import "modules/base/helpers";
 @import "modules/base/global";
+@import "modules/base/header";
+@import "modules/base/footer";
 
 // - additions -
 @import "modules/additions/slick-arrows";
 @import "modules/additions/slick-dots";
 @import "modules/additions/slick-lightbox-buttons";
 // @import "modules/additions/scrollbar-styling";
+
+// - framework -
+@import "framework/video-thumbnail";
+@import "framework/google-map";
+
+// PAGES ===============================================
+@import "pages/home";

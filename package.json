@@ -9,7 +9,7 @@
   "author": "Inkogn1to",
   "license": "ISC",
   "devDependencies": {
-    "browser-sync": "^2.23.2",
+    "browser-sync": "^2.23.6",
     "del": "^3.0.0",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^4.1.0",
@@ -20,7 +20,7 @@
     "gulp-rename": "^1.2.2",
     "gulp-responsive": "^2.9.0",
     "gulp-sass": "^3.1.0",
-    "gulp-sourcemaps": "^2.6.3",
+    "gulp-sourcemaps": "^2.6.4",
     "gulp-svgmin": "^1.2.4",
     "gulp-tinypng-compress": "^1.2.1",
     "gulp-to-ico": "^1.0.0",

@@ -36,7 +36,7 @@ gulp.task('sass', function() {
 	.pipe(autoprefixer(['last 15 versions']))
 	.pipe(sourcemaps.write('.'))
 	.pipe(gulp.dest('dev/css'))
-	.pipe(browserSync.reload({stream: true}));
+	.pipe(browserSync.reload({stream: true}))
 });
 
 // РАБОТА С КАРТИНКАМИ

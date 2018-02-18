@@ -1,6 +1,6 @@
 // MIXINS
 
-// Color of placeholder
+// Color of placeholder ------------------------------------
 @mixin placeholder-color($color) {
 	&:-moz-placeholder,
 	&::-moz-placeholder {
@@ -17,7 +17,7 @@
 
 // EXAMPLE: @include placeholder-color(#FF0000);
 
-// Smooth changing the transparency of the placeholder at the focus
+// Smooth changing the transparency of the placeholder at the focus ------------------------------------
 @mixin placeholder-opacity($time) {
 	&::-webkit-input-placeholder       { opacity: 1; transition: opacity $time ease; }
 	&::-moz-placeholder                { opacity: 1; transition: opacity $time ease; }
@@ -31,7 +31,7 @@
 
 // EXAMPLE: @include placeholder-opacity(0.5s);
 
-// Shifting the placeholder to the right with focus
+// Shifting the placeholder to the right with focus ------------------------------------
 @mixin placeholder-animation($indent, $time) {
 	&::-webkit-input-placeholder       { text-indent: 0px;   transition: text-indent $time ease; }
 	&::-moz-placeholder                { text-indent: 0px;   transition: text-indent $time ease; }
@@ -45,7 +45,7 @@
 
 // EXAMPLE: @include placeholder-animation(500px, 0.5s);
 
-// Сreation border-arrows
+// Сreation border-arrows ------------------------------------
 @mixin border-arrow($width, $height, $bg, $direction) {
 	width: 0px;
 	height: 0px;
@@ -86,7 +86,7 @@
 
 // EXAMPLE: @include border-arrow(20, 20, #FF0000, t);
 
-// Adding fonts
+// Adding fonts ------------------------------------
 @mixin font-face($font-family, $file-path, $weight: normal, $style: normal, $asset-pipeline: false ) {
 	@font-face {
 		font-family: $font-family;
@@ -109,7 +109,7 @@
 // @include font-face("RobotoItalic", "../fonts/RobotoItalic/RobotoItalic", normal, italic);
 // @include font-face("RobotoBold", "../fonts/RobotoBold/RobotoBold", bold);
 
-// Transition
+// Transition ------------------------------------
 @mixin tr($var) {
 	-webkit-transition: $var;
 	-moz-transition: $var;
@@ -120,7 +120,7 @@
 
 // EXAMPLE: @include tr(0.5s);
 
-// Border radius
+// Border radius ------------------------------------
 @mixin br($var) {
 	-webkit-border-radius: $var;
 	-ms-border-radius: $var;
@@ -131,7 +131,7 @@
 
 // EXAMPLE: @include br(5px);
 
-// Responsive background image
+// Responsive background image ------------------------------------
 @mixin rbg {
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -140,7 +140,7 @@
 
 // EXAMPLE: @include rbg;
 
-// Position absolute center alignment
+// Position absolute center alignment ------------------------------------
 @mixin absolute-center {
 	position: absolute;
 	top: 50%;
@@ -150,17 +150,15 @@
 
 // EXAMPLE: @include absolute-center;
 
-// Image responsive
+// Image responsive ------------------------------------
 @mixin img-res {
 	max-width: 100%;
-	max-height: 100%;
-	width: auto;
 	height: auto;
 }
 
 // EXAMPLE: @include img-res;
 
-// Gray image
+// Gray image ------------------------------------
 @mixin gray {
 	filter: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><filter id='grayscale'><feColorMatrix type='matrix' values='0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0'/></filter></svg>#grayscale");
 	filter: gray;
@@ -169,8 +167,48 @@
 	-ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(grayScale=1)";
 }
 
-// Gray none
+// EXAMPLE: @include gray;
+
+// Gray none ------------------------------------
 @mixin gray-zero {
 	filter: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><filter id='grayscale'><feColorMatrix type='matrix' values='1 0 0 0 0, 0 1 0 0 0, 0 0 1 0 0, 0 0 0 1 0'/></filter></svg>#grayscale");
 	-webkit-filter: grayscale(0%);
 }
+
+// EXAMPLE: @include gray-zero;
+
+// Media queries for max width ------------------------------------
+@mixin max-w($width) {
+	@media only screen and (max-width: $width + "px") {
+		@content;
+	}
+}
+
+// EXAMPLE: @include max-w(991) {font-size: 50px;};
+
+// Media queries for min width ------------------------------------
+@mixin min-w($width) {
+	@media only screen and (min-width: $width + "px") {
+		@content;
+	}
+}
+
+// EXAMPLE: @include min-w(991) {font-size: 50px;};
+
+// Media queries for max height ------------------------------------
+@mixin max-h($height) {
+	@media only screen and (max-height: $height + "px") {
+		@content;
+	}
+}
+
+// EXAMPLE: @include max-h(800) {font-size: 50px;};
+
+// Media queries for min height ------------------------------------
+@mixin min-h($height) {
+	@media only screen and (min-height: $height + "px") {
+		@content;
+	}
+}
+
+// EXAMPLE: @include min-h(800) {font-size: 50px;};

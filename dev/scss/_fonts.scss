@@ -1,15 +1,5 @@
-@import "mixins";
-
 /* FONTS ================================================ */
 
 @include font-face("Roboto", "../fonts/RobotoRegular/RobotoRegular", 400);
 @include font-face("Roboto", "../fonts/RobotoItalic/RobotoItalic", 400, italic);
 @include font-face("Roboto", "../fonts/RobotoBold/RobotoBold", 700);
-
-/* NORMALIZE ================================================ */
-
-img {
-	display: block;
-	max-width: 100%;
-	height: auto;
-}
