@@ -40,39 +40,49 @@ $(document).ready(function() {
 
 	// GOOGLE MAP =================================
 	function initMap() {
-		var coordinates = 'lat: 37.779287, lng: -122.429109',
-			zoom = 15;
+		var coordinates = {lat: 40.712348, lng: -74.006720},
+			zoom = 12;
 
-		map = new google.maps.Map(document.getElementById('js-google-map'), {
-			center: {coordinates},
-			zoom: 15,
+		var map = new google.maps.Map(document.getElementById('js-google-map'), {
+			center: coordinates,
+			zoom: zoom,
 			disableDefaultUI: true,
-			zoomControl: false,
+			zoomControl: true,
+			fullscreenControl: true,
 			zoomControlOptions: {
-				position: google.maps.ControlPosition.LEFT_CENTER
+				position: google.maps.ControlPosition.RIGHT_CENTER
 			},
-			styles: [{"featureType":"administrative","elementType":"all","stylers":[{"saturation":"-100"}]},{"featureType":"administrative.province","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"landscape","elementType":"all","stylers":[{"saturation":-100},{"lightness":65},{"visibility":"on"}]},{"featureType":"poi","elementType":"all","stylers":[{"saturation":-100},{"lightness":"50"},{"visibility":"simplified"}]},{"featureType":"road","elementType":"all","stylers":[{"saturation":"-100"}]},{"featureType":"road.highway","elementType":"all","stylers":[{"visibility":"simplified"}]},{"featureType":"road.arterial","elementType":"all","stylers":[{"lightness":"30"}]},{"featureType":"road.local","elementType":"all","stylers":[{"lightness":"40"}]},{"featureType":"transit","elementType":"all","stylers":[{"saturation":-100},{"visibility":"simplified"}]},{"featureType":"water","elementType":"geometry","stylers":[{"hue":"#ffff00"},{"lightness":-25},{"saturation":-97}]},{"featureType":"water","elementType":"labels","stylers":[{"lightness":-25},{"saturation":-100}]}]
+			// styles: [{"featureType":"administrative","elementType":"all","stylers":[{"saturation":"-100"}]},{"featureType":"administrative.province","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"landscape","elementType":"all","stylers":[{"saturation":-100},{"lightness":65},{"visibility":"on"}]},{"featureType":"poi","elementType":"all","stylers":[{"saturation":-100},{"lightness":"50"},{"visibility":"simplified"}]},{"featureType":"road","elementType":"all","stylers":[{"saturation":"-100"}]},{"featureType":"road.highway","elementType":"all","stylers":[{"visibility":"simplified"}]},{"featureType":"road.arterial","elementType":"all","stylers":[{"lightness":"30"}]},{"featureType":"road.local","elementType":"all","stylers":[{"lightness":"40"}]},{"featureType":"transit","elementType":"all","stylers":[{"saturation":-100},{"visibility":"simplified"}]},{"featureType":"water","elementType":"geometry","stylers":[{"hue":"#ffff00"},{"lightness":-25},{"saturation":-97}]},{"featureType":"water","elementType":"labels","stylers":[{"lightness":-25},{"saturation":-100}]}]
 		});
+
+		// CUSTOM ICON
+		var icon = {
+			url: '../img/svg/map_icon.svg',
+			scaledSize: new google.maps.Size(50, 50)
+		};
 
 		var marker = new google.maps.Marker({
-			position: {lat: 37.779287, lng: -122.429109},
+			position: coordinates,
 			map: map,
-			//icon: 'img/logo_map.png'
+			// animation: google.maps.Animation.BOUNCE,
+			// title:"text on hover",
+			// icon: icon
 		});
 
-		// KEEP THE CENTER CENTERED ON WINDOW RESIZE
-		var center = map.getCenter();
-
-		google.maps.event.addDomListener(window, "resize", function() {
-			google.maps.event.trigger(map, "resize");
-			map.setCenter(center);
+		// ADD INFO WINDOW
+		var infoWindow = new google.maps.InfoWindow({
+			content: '<p>Info window</p>'
 		});
 
-		$('.map-icon').on('click' , function() {
-			google.maps.event.trigger(map, 'resize');
-			map.setCenter(center);
-			return false;
-		});
+		// show info window after click
+		/*marker.addListener('click', function() {
+			infoWindow.open(map, marker);
+		});*/
+
+		// show info window all time
+		/*google.maps.event.addListenerOnce(map, 'tilesloaded', function() {
+			infoWindow.open(map,marker);
+		});*/
 	}
 
 	if ($('#js-google-map').length) {

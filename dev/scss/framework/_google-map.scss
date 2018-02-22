@@ -3,7 +3,8 @@
 	height: 300px;
 	background-color: #000;
 
-	.gmnoprint, .gm-style-cc {
+	// hide bottom text
+	.gm-style-cc {
 		display: none;
 	}
 }
