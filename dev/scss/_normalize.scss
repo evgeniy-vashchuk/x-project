@@ -26,7 +26,7 @@ a {
 	}
 }
 
-a, input, select, textarea, .btn {
+a, input, select, textarea, button, .btn {
 	&:focus {
 		outline: none;
 	}
@@ -34,4 +34,10 @@ a, input, select, textarea, .btn {
 
 .btn:focus, .btn.focus {
 	box-shadow: none;
+}
+
+button {
+	border: none;
+	padding: 0;
+	cursor: pointer;
 }

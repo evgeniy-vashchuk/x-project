@@ -1,6 +1,6 @@
-// ======================================
-// MAIN VARS (BOOTSTRAP) ====================================
-// ======================================
+// =========================
+// MAIN VARS (BOOTSTRAP) =================================
+// =========================
 
 // Variables
 //
@@ -897,25 +897,21 @@ $pre-scrollable-max-height:         340px !default;
 $print-page-size:                   a3 !default;
 $print-body-min-width:              map-get($grid-breakpoints, "lg") !default;
 
-// ======================================
-// MAIN VARS (BOOTSTRAP) END ====================================
-// ======================================
-
-// ======================================
-// FONT AWESOME PATH ====================================
-// ======================================
+// =========================
+// FONT AWESOME PATH =================================
+// =========================
 
 $fa-font-path: "../fonts/FontAwesome";
 
-// ======================================
-// ICOMOON FONT PATH ====================================
-// ======================================
+// =========================
+// ICOMOON FONT PATH =================================
+// =========================
 
 $icomoon-font-path: "../fonts/icomoon";
 
-// ======================================
-// SLICK SLIDER THEME ====================================
-// ======================================
+// =========================
+// SLICK SLIDER THEME =================================
+// =========================
 
 $slick-font-path: $fa-font-path;
 $slick-font-family: "FontAwesome";
@@ -943,9 +939,9 @@ $slick-dots-width: 15px;
 $slick-dots-height: $slick-dots-width;
 $slick-dots-margin-left-right: 5px;
 
-// ======================================
-// SLICK-LIGTHBOX-THEME ====================================
-// ======================================
+// =========================
+// SLICK-LIGTHBOX-THEME =================================
+// =========================
 
 $slick-lightbox-overlay-color: $black;
 $slick-lightbox-overlay-opacity: 0.8;
@@ -967,9 +963,9 @@ $slick-lightbox-clode-height: $slick-lightbox-clode-width;
 $slick-lightbox-arrows-size: 1.5rem;
 $slick-lightbox-close-size: 1.5rem;
 
-// ======================================
-// SCROLLBAR STYLING ====================================
-// ======================================
+// =========================
+// SCROLLBAR STYLING =================================
+// =========================
 
 $scrollbar-width: 10px; // Scrollbar width
 $scrollbar-height: $scrollbar-width; // Scrollbar height (for horizontal scrollbars)

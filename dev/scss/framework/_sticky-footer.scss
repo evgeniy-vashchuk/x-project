@@ -1,0 +1,14 @@
+.footer {
+	&--sticky {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		width: 100%;
+	}
+}
+
+.wrap-for-sticky-footer {
+	position: relative;
+	min-height: 100%;
+}

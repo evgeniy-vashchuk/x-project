@@ -3,7 +3,7 @@
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
-	background-color: #000;
+	background-color: $black;
 
 	&__icon {
 		@include absolute-center;
