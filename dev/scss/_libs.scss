@@ -1,7 +1,13 @@
 // Connecting all CSS/SASS plugins and libraries
 
 @import "../libs/bootstrap/scss/bootstrap";
-@import "../libs/font-awesome/scss/font-awesome";
+
+// font awesome
+@import "../libs/font-awesome/scss/fontawesome";
+@import "../libs/font-awesome/scss/fa-solid";
+@import "../libs/font-awesome/scss/fa-regular";
+@import "../libs/font-awesome/scss/fa-brands";
+
 @import "../libs/icomoon/style";
 @import "../libs/slick/slick";
 @import "../libs/slick/slick-theme";

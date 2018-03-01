@@ -26,9 +26,13 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+@function unicode($str) {
+  @return unquote("\"") + $str + unquote("\"");
+}
+
 .icon-like {
   &:before {
-    content: $icon-like;
+    content: unicode($icon-like); 
   }
 }
 

@@ -7,6 +7,7 @@
 	&:before {
 		transition: 0.5s;
 		font-size: $slick-arrow-size;
+		font-weight: $slick-arrow-weight;
 	}
 
 	&:hover {

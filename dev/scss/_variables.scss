@@ -898,23 +898,23 @@ $print-page-size:                   a3 !default;
 $print-body-min-width:              map-get($grid-breakpoints, "lg") !default;
 
 // =========================
-// FONT AWESOME PATH =================================
+// FONT AWESOME FONT PATH =================================
 // =========================
 
-$fa-font-path: "../fonts/FontAwesome";
+$fa-font-path: "../libs/font-awesome/fonts/";
 
 // =========================
 // ICOMOON FONT PATH =================================
 // =========================
 
-$icomoon-font-path: "../fonts/icomoon";
+$icomoon-font-path: "../libs/icomoon/fonts/";
 
 // =========================
 // SLICK SLIDER THEME =================================
 // =========================
 
 $slick-font-path: $fa-font-path;
-$slick-font-family: "FontAwesome";
+$slick-font-family: "Font Awesome 5 Free";
 $slick-loader-path: "../img/";
 $slick-arrow-color: $primary;
 $slick-dot-color: $primary;
@@ -932,11 +932,13 @@ $slick-opacity-not-active: 0.25;
 // arrow
 $slick-arrow-size: 1.5rem;
 $slick-arrow-width: 25px;
+$slick-arrow-weight: 900;
 $slick-arrow-height: $slick-arrow-width;
 $slick-arrow-bg: transparent;
 // dots
 $slick-dots-width: 15px;
 $slick-dots-height: $slick-dots-width;
+$slick-dots-weigth: 900;
 $slick-dots-margin-left-right: 5px;
 
 // =========================
@@ -945,13 +947,13 @@ $slick-dots-margin-left-right: 5px;
 
 $slick-lightbox-overlay-color: $black;
 $slick-lightbox-overlay-opacity: 0.8;
-$slick-lightbox-font-family: "FontAwesome";
+$slick-lightbox-font-family: "Font Awesome 5 Free";
 $slick-lightbox-arrow-color: $primary;
 $slick-lightbox-close-color: $primary;
 $slick-lightbox-arrow-bg-color: $secondary;
 $slick-lightbox-close-bg-color: $secondary;
-$slick-lightbox-prev-character: "\f060";
-$slick-lightbox-next-character: "\f061";
+$slick-lightbox-prev-character: "\f104";
+$slick-lightbox-next-character: "\f105";
 $slick-lightbox-close-character: "\f00d";
 $slick-lightbox-arrow-width: 50px;
 $slick-lightbox-arrow-height: $slick-lightbox-arrow-width;
@@ -960,6 +962,7 @@ $slick-lightbox-close-color: $primary;
 $slick-lightbox-close-bg-color: $secondary;
 $slick-lightbox-clode-width: 50px;
 $slick-lightbox-clode-height: $slick-lightbox-clode-width;
+$slick-lightbox-clode-weigth: 900;
 $slick-lightbox-arrows-size: 1.5rem;
 $slick-lightbox-close-size: 1.5rem;
 
@@ -967,7 +970,7 @@ $slick-lightbox-close-size: 1.5rem;
 // SCROLLBAR STYLING =================================
 // =========================
 
-$scrollbar-width: 10px; // Scrollbar width
+$scrollbar-width: 10px;// Scrollbar width
 $scrollbar-height: $scrollbar-width; // Scrollbar height (for horizontal scrollbars)
 $scrollbar-track-bg-color: $secondary; // The color of the track on which the scroll bar moves
 $scrollbar-thumb-color: $primary; // Color of the thumb
