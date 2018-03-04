@@ -1,22 +1,21 @@
 // keep aspect ratio of image
-.img-keep-ratio {
-	background-color: #000;
-	width: 100%;
+.img-wrap {
 	position: relative;
+	background-color: $black;
 
-	&--16-9 {
+	&.-ratio-16-9 {
 		padding-bottom: 56.25%;
 	}
 
-	&--4-3 {
+	&.-ratio-4-3 {
 		padding-bottom: 75%;
 	}
 
-	&--1-1 {
+	&.-ratio-1-1 {
 		padding-bottom: 100%;
 	}
 
-	> img {
+	& > img {
 		position: absolute;
 		top: 0;
 		left: 0;
@@ -25,20 +24,30 @@
 	}
 }
 
+// responsive background image
+.-resp-bg-img {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	@include rbg;
+}
+
 // background color for embed video
 .embed-responsive {
 	background-color: $black;
 }
 
 // vertical text top - bottom
-.vertical-text-top-bottom {
+.-vertical-text-top-bottom {
 	writing-mode: vertical-rl;
 	display: inline-block;
 	margin: 0;
 }
 
 // vertical text bottom - top
-.vertical-text-bottom-top {
+.-vertical-text-bottom-top {
 	writing-mode: vertical-rl;
 	transform: rotate(180deg);
 	display: inline-block;

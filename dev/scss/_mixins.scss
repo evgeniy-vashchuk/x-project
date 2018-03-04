@@ -105,16 +105,12 @@
 
 // EXAMPLE: 
 
-// @include font-face("RobotoRegular", "../fonts/RobotoRegular/RobotoRegular");
-// @include font-face("RobotoItalic", "../fonts/RobotoItalic/RobotoItalic", normal, italic);
-// @include font-face("RobotoBold", "../fonts/RobotoBold/RobotoBold", bold);
+// @include font-face("Roboto", "../fonts/Roboto/Roboto-Regular", 400);
+// @include font-face("Roboto", "../fonts/Roboto/Roboto-Italic", 400, italic);
+// @include font-face("Roboto", "../fonts/Roboto/Roboto-Bold", 700);
 
 // Transition ------------------------------------
 @mixin tr($var) {
-	-webkit-transition: $var;
-	-moz-transition: $var;
-	-ms-transition: $var;
-	-o-transition: $var;
 	transition: $var;
 }
 
@@ -122,10 +118,6 @@
 
 // Border radius ------------------------------------
 @mixin br($var) {
-	-webkit-border-radius: $var;
-	-ms-border-radius: $var;
-	-moz-border-radius: $var;
-	-o-border-radius: $var;
 	border-radius: $var;
 }
 
@@ -150,7 +142,7 @@
 
 // EXAMPLE: @include absolute-center;
 
-// Image responsive ------------------------------------
+// Responsive images ------------------------------------
 @mixin img-res {
 	max-width: 100%;
 	height: auto;

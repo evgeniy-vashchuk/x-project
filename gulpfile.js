@@ -1,29 +1,29 @@
 /*
 	ТАСКИ GULP:
-	gulp				Запуск дефолтного gulp таска (sass, js, watch, browserSync) для разработки;
-	gulp imagemin		Сжатие картинок
-	gulp favicon		Генератор favicon
-	gulp build			Сборка проекта в папку prod (очистка, сжатие картинок, удаление всего лишнего);
-	gulp clearcache		Очистка кеша gulp. Полезно для очистки кеш картинок и закешированных путей.
+	gulp							Запуск дефолтного gulp таска (sass, js, watch, browserSync) для разработки;
+	gulp imagemin			Сжатие картинок
+	gulp favicon			Генератор favicon
+	gulp zip					Архивация проекта
 */
 
 var gulp           = require('gulp'),
-	gutil          = require('gulp-util' ),
-	sass           = require('gulp-sass'),
-	browserSync    = require('browser-sync'),
-	rename         = require('gulp-rename'),
-	del            = require('del'),
-	sourcemaps     = require('gulp-sourcemaps'),
-	cache          = require('gulp-cache'),
-	autoprefixer   = require('gulp-autoprefixer'),
-	notify         = require("gulp-notify"),
-	tinypng        = require('gulp-tinypng-compress'),
-	svgmin         = require('gulp-svgmin'),
-	zip            = require('gulp-zip'),
-	ico            = require('gulp-to-ico'),
-	responsive     = require('gulp-responsive'),
-	wait           = require('gulp-wait'),
-	cssnano        = require('gulp-cssnano');
+		gutil          = require('gulp-util' ),
+		sass           = require('gulp-sass'),
+		browserSync    = require('browser-sync'),
+
+		rename         = require('gulp-rename'),
+		del            = require('del'),
+		cache          = require('gulp-cache'),
+		cssnano        = require('gulp-cssnano'),
+
+		sourcemaps     = require('gulp-sourcemaps'),
+		autoprefixer   = require('gulp-autoprefixer'),
+		notify         = require("gulp-notify"),
+		tinypng        = require('gulp-tinypng-compress'),
+		svgmin         = require('gulp-svgmin'),
+		zip            = require('gulp-zip'),
+		ico            = require('gulp-to-ico'),
+		wait           = require('gulp-wait');
 
 // РАБОТА С SASS ФАЙЛАМИ
 gulp.task('sass', function() {
@@ -65,52 +65,16 @@ gulp.task('imagemin:svg', function() {
 gulp.task('imagemin', ['imagemin:tinypng', 'imagemin:svg']);
 
 // FAVICON GENERATOR
-gulp.task('favicon:ico', function() {
-	return gulp.src('dev/img/favicon/apple-touch-icon-144x144.png')
+gulp.task('favicon', function() {
+	return gulp.src('dev/img/favicon/apple-touch-icon-180x180.png')
 		.pipe(ico('favicon.ico', { resize: true, sizes: [48] }))
 		.pipe(gulp.dest('dev/img/favicon'));
 });
 
-gulp.task('favicon:resize', function() {
-	return gulp.src(['dev/img/favicon/apple-touch-icon-144x144.png'])
-	.pipe(responsive({
-		'*.png': [
-			{
-				width: 114,
-				rename: 'apple-touch-icon-114x114.png'
-			},
-
-			{
-				width: 72,
-				rename: 'apple-touch-icon-72x72.png'
-			},
-
-			{
-				width: 57,
-				rename: 'apple-touch-icon.png'
-			}
-		],
-	}, {
-		compressionLevel: 9,
-		progressive: false,
-		withoutAdaptiveFiltering: true,
-		withMetadata: false,
-	}))
-	.pipe(gulp.dest('dev/img/favicon/'));
-});
-
-gulp.task('favicon', ['favicon:ico', 'favicon:resize']);
-
 // ZIP-АРХИВАЦИЯ ПРОЕКТА
-gulp.task('zip:prod', function() {
-	gulp.src('prod/**')
-		.pipe(zip('prod.zip'))
-		.pipe(gulp.dest(''));
-})
-
-gulp.task('zip:dev', function() {
-	gulp.src('dev/**')
-		.pipe(zip('dev.zip'))
+gulp.task('zip', function() {
+	gulp.src('dev/**/*', {base: '.'})
+		.pipe(zip('project.zip'))
 		.pipe(gulp.dest(''));
 })
 
@@ -122,7 +86,7 @@ gulp.task('browser-sync', function() {
 		},
 		notify: {
 			styles: {
-				padding: '5px',
+				padding: '5px 10px',
 				position: 'fixed',
 				fontSize: '12px',
 				zIndex: '9999',
@@ -150,36 +114,6 @@ gulp.task('watch', ['sass', 'browser-sync'], function() {
 	gulp.watch('dev/*.html').on('change', browserSync.reload);
 	// IMAGES
 	gulp.watch('dev/img/**.*').on('change', browserSync.reload);
-
 });
-
-// СБОРКА ПРОЕКТА
-gulp.task('build', ['removeprod', 'imagemin', 'favicon', 'sass'], function() {
-
-	var buildFiles = gulp.src('dev/*.html')
-		.pipe(gulp.dest('prod'));
-
-	var buildCss = gulp.src('dev/css/all.css')
-		.pipe(gulp.dest('prod/css'));
-
-	var buildMainJs = gulp.src('dev/js/common.js',)
-		.pipe(gulp.dest('prod/js'));
-
-	var buildJsLibs = gulp.src('dev/libs/**/*.js',)
-		.pipe(gulp.dest('prod/libs'));
-
-	var buildFonts = gulp.src('dev/fonts/**/*',)
-		.pipe(gulp.dest('prod/fonts'));
-
-	var buildImages = gulp.src('dev/img/**/*')
-		.pipe(gulp.dest('prod/img'));
-
-	var buildFavicon = gulp.src('dev/img/favicon/favicon.ico')
-		.pipe(gulp.dest('prod/img/favicon'));
-
-});
-
-gulp.task('removeprod', function() { return del.sync('prod'); });
-gulp.task('clearcache', function () { return cache.clearAll(); });
 
 gulp.task('default', ['watch']);

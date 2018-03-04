@@ -1,19 +1,19 @@
 $scroll-top-btn-size: 50px;
 
 .scroll-top-btn {
+	position: fixed;
+	bottom: 0;
+	right: 50px;
+	z-index: 100;
 	width: $scroll-top-btn-size;
 	height: $scroll-top-btn-size;
 	background-color: $secondary;
 	color: $primary;
-	position: relative;
-	position: fixed;
-	bottom: 0;
-	right: 50px;
 	transition: 0.3s;
 	transform: translate(0, 100%);
 
-	&__icon {
-		font-size: 50px;
+	&-icon {
+		font-size: 35px;
 		color: $white;
 		@include absolute-center;
 	}
@@ -22,7 +22,7 @@ $scroll-top-btn-size: 50px;
 		background-color: lighten($secondary, 5%);
 	}
 
-	&.show {
+	&.-show {
 		transform: translate(0, 0);
 	}
 }

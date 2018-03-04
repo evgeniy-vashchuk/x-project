@@ -5,43 +5,47 @@
 	background-repeat: no-repeat;
 	background-color: $black;
 
-	&__icon {
+	&-icon {
 		@include absolute-center;
-		z-index: 100;
-	}
+		z-index: 10;
 
-	&__icon--youtube {
-		width: 68px;
-		height: 48px;
-	}
+		&.-youtube-icon {
+			width: 68px;
+			height: 48px;
 
-	&__icon--vimeo {
-		width: 65px;
-		height: 40px;
-		transition: opacity 250ms ease-out,background-color 40ms,color 40ms;
-		background: rgba(23,35,34,.75);
-		border-radius: .5em;
-
-		svg {
-			@include absolute-center;
-			width: 20px;
-			height: 20px;
+			.ytp-large-play-button-bg {
+				transition: fill .1s cubic-bezier(0.4,0.0,1,1),fill-opacity .1s cubic-bezier(0.4,0.0,1,1);
+			}
 		}
-	}
 
-	.ytp-large-play-button-bg {
-		transition: fill .1s cubic-bezier(0.4,0.0,1,1),fill-opacity .1s cubic-bezier(0.4,0.0,1,1);
+		&.-vimeo-icon {
+			width: 65px;
+			height: 40px;
+			transition: opacity 250ms ease-out,background-color 40ms,color 40ms;
+			background: rgba(23,35,34,.75);
+			border-radius: .5em;
+
+			svg {
+				@include absolute-center;
+				width: 20px;
+				height: 20px;
+			}
+		}
 	}
 
 	&:hover {
-		.ytp-large-play-button-bg {
-			transition: fill .1s cubic-bezier(0.0,0.0,0.2,1),fill-opacity .1s cubic-bezier(0.0,0.0,0.2,1);
-			fill: #f00;
-			fill-opacity: 1;
-		}
+		.video-thumbnail-icon {
+			&.-youtube-icon {
+				.ytp-large-play-button-bg {
+					transition: fill .1s cubic-bezier(0.0,0.0,0.2,1),fill-opacity .1s cubic-bezier(0.0,0.0,0.2,1);
+					fill: #f00;
+					fill-opacity: 1;
+				}
+			}
 
-		.video-thumbnail__icon--vimeo {
-			background-color: #3CAEF2;
+			&.-vimeo-icon {
+				background-color: #3CAEF2;
+			}
 		}
 	}
 }

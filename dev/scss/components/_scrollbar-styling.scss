@@ -16,7 +16,7 @@
 ::-webkit-scrollbar-thumb {
 	border-radius: $scrollbar-thumb-rounding;
 	background-color: $scrollbar-thumb-color;
-	background-image: url(../../../img/icon_for_scroll.png);
+	background-image: $scrollbar-thumb-icon;
 	background-repeat: no-repeat;
 	background-position: center;
 

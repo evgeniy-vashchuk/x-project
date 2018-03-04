@@ -1,5 +1,9 @@
+html, body {
+	height: 100%;
+}
+
 .footer {
-	&--sticky {
+	&.-sticky {
 		position: absolute;
 		bottom: 0;
 		left: 0;
@@ -8,7 +12,7 @@
 	}
 }
 
-.wrap-for-sticky-footer {
+.wrap-for-sticky {
 	position: relative;
 	min-height: 100%;
 }

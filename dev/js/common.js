@@ -1,5 +1,11 @@
-$(document).ready(function() {
+(function ($) {
 
-	// Your code here
+	'use strict';
 
-});
+	$(document).ready(function() {
+
+		// Your code here
+
+	});
+
+}(jQuery));

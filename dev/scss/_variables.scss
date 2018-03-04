@@ -970,8 +970,9 @@ $slick-lightbox-close-size: 1.5rem;
 // SCROLLBAR STYLING =================================
 // =========================
 
-$scrollbar-width: 10px;// Scrollbar width
-$scrollbar-height: $scrollbar-width; // Scrollbar height (for horizontal scrollbars)
-$scrollbar-track-bg-color: $secondary; // The color of the track on which the scroll bar moves
-$scrollbar-thumb-color: $primary; // Color of the thumb
-$scrollbar-thumb-rounding: 0px; // Rounding of the thumb
+$scrollbar-width: 10px;
+$scrollbar-height: $scrollbar-width;
+$scrollbar-track-bg-color: $secondary;
+$scrollbar-thumb-color: $primary;
+$scrollbar-thumb-rounding: 0px;
+$scrollbar-thumb-icon: none; // url(../img/icon_scrollbar.png)

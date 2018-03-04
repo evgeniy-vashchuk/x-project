@@ -1,42 +1,44 @@
 // CUSTOM CHECKBOX
 
 .custom-checkbox {
-	display: inline-block;
 	position: relative;
+	display: inline-block;
 	padding-left: 35px;
 	margin-right: 10px;
+	margin-bottom: 1rem;
+	line-height: 25px;
 	cursor: pointer;
 	user-select: none;
 
 	&:hover {
-		.custom-checkbox__checkmark {
+		.custom-checkbox-checkmark {
 			background-color: lighten($secondary, 10%);
 		}
 
-		.custom-checkbox__input {
-			&:checked + .custom-checkbox__checkmark {
+		.custom-checkbox-input {
+			&:checked + .custom-checkbox-checkmark {
 				background-color: lighten($primary, 10%);
 			}
 		}
 	}
 
-	&__input {
+	&-input {
 		position: absolute;
 		top: 0;
 		left: 0;
 		z-index: -1;
 		visibility: hidden;
 
-		&:checked + .custom-checkbox__checkmark {
+		&:checked + .custom-checkbox-checkmark {
 			background-color: $primary;
 
-			.custom-checkbox__checkmark-icon {
+			.custom-checkbox-checkmark-icon {
 				opacity: 1;
 			}
 		}
 	}
 
-	&__checkmark {
+	&-checkmark {
 		position: absolute;
 		top: 50%;
 		left: 0;
@@ -47,7 +49,7 @@
 		transition: 0.3s;
 	}
 
-	&__checkmark-icon {
+	&-checkmark-icon {
 		transition: 0.3s;
 		font-size: 15px;
 		color: $white;
@@ -59,32 +61,34 @@
 // CUSTOM RADIO
 
 .custom-radio {
-	display: inline-block;
 	position: relative;
+	display: inline-block;
 	padding-left: 35px;
 	margin-right: 10px;
+	margin-bottom: 1rem;
+	line-height: 25px;
 	cursor: pointer;
 	user-select: none;
 
 	&:hover {
-		.custom-radio__checkmark {
+		.custom-radio-checkmark {
 			background-color: lighten($secondary, 10%);
 		}
 
-		.custom-radio__input {
-			&:checked + .custom-radio__checkmark {
+		.custom-radio-input {
+			&:checked + .custom-radio-checkmark {
 				background-color: lighten($primary, 10%);
 			}
 		}
 	}
 
-	&__input {
+	&-input {
 		position: absolute;
 		top: -9999px;
 		left: -9999px;
 		visibility: hidden;
 
-		&:checked + .custom-radio__checkmark {
+		&:checked + .custom-radio-checkmark {
 			background-color: $primary;
 
 			&:before {
@@ -93,7 +97,7 @@
 		}
 	}
 
-	&__checkmark {
+	&-checkmark {
 		position: absolute;
 		top: 50%;
 		left: 0;
