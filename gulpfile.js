@@ -86,7 +86,7 @@ gulp.task('browser-sync', function() {
 		},
 		notify: {
 			styles: {
-				padding: '5px 10px',
+				padding: '5px 7px',
 				position: 'fixed',
 				fontSize: '12px',
 				zIndex: '9999',
