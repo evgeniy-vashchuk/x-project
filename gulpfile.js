@@ -1,21 +1,15 @@
 /*
-	ТАСКИ GULP:
-	gulp							Запуск дефолтного gulp таска (sass, js, watch, browserSync) для разработки;
-	gulp imagemin			Сжатие картинок
-	gulp favicon			Генератор favicon
-	gulp zip					Архивация проекта
+	GULP TASKS:
+	gulp							- starting default gulp task (sass, js, watch, browserSync) for development;
+	gulp imagemin			- image compression;
+	gulp favicon			- favicon generator;
+	gulp zip					- project archiving;
 */
 
 var gulp           = require('gulp'),
 		gutil          = require('gulp-util' ),
 		sass           = require('gulp-sass'),
 		browserSync    = require('browser-sync'),
-
-		rename         = require('gulp-rename'),
-		del            = require('del'),
-		cache          = require('gulp-cache'),
-		cssnano        = require('gulp-cssnano'),
-
 		sourcemaps     = require('gulp-sourcemaps'),
 		autoprefixer   = require('gulp-autoprefixer'),
 		notify         = require("gulp-notify"),
@@ -25,13 +19,17 @@ var gulp           = require('gulp'),
 		ico            = require('gulp-to-ico'),
 		wait           = require('gulp-wait');
 
-// РАБОТА С SASS ФАЙЛАМИ
+// WORKING WITH SASS FILES
 gulp.task('sass', function() {
 	return gulp.src('dev/scss/all.scss')
 	.pipe(wait(100)) // delay for waiting to compile sass
 	.pipe(sourcemaps.init())
-	.pipe(sass().on("error", notify.onError({
-		title: "Error compiling SASS",
+	.pipe(sass({
+		outputStyle: 'compressed',
+		indentType: 'tab',
+		indentWidth: 1
+	}).on("error", notify.onError({
+		title: "Error compiling SASS"
 	})))
 	.pipe(autoprefixer(['last 15 versions']))
 	.pipe(sourcemaps.write('.'))
@@ -39,7 +37,7 @@ gulp.task('sass', function() {
 	.pipe(browserSync.reload({stream: true}))
 });
 
-// РАБОТА С КАРТИНКАМИ
+// IMAGE COMPRESSION
 gulp.task('imagemin:tinypng', function() {
 	gulp.src('dev/img/**/*{png,jpg,jpeg}')
 	.pipe(tinypng({
@@ -71,7 +69,7 @@ gulp.task('favicon', function() {
 		.pipe(gulp.dest('dev/img/favicon'));
 });
 
-// ZIP-АРХИВАЦИЯ ПРОЕКТА
+// PROJECT ARCHIVING
 gulp.task('zip', function() {
 	gulp.src('dev/**/*', {base: '.'})
 		.pipe(zip('project.zip'))
@@ -86,7 +84,7 @@ gulp.task('browser-sync', function() {
 		},
 		notify: {
 			styles: {
-				padding: '5px 7px',
+				padding: '5px 5px 5px 8px',
 				position: 'fixed',
 				fontSize: '12px',
 				zIndex: '9999',
@@ -94,7 +92,7 @@ gulp.task('browser-sync', function() {
 				color: 'white',
 				textAlign: 'center',
 				display: 'block',
-				backgroundColor: 'rgb(20, 69, 102)'
+				backgroundColor: '#26263F'
 			}
 		},
 		// tunnel: true,
@@ -102,7 +100,7 @@ gulp.task('browser-sync', function() {
 	});
 });
 
-// СЛЕЖЕНИЕ ЗА ФАЙЛАМИ
+// WATCHING FILES
 gulp.task('watch', ['sass', 'browser-sync'], function() {
 	// SCSS
 	gulp.watch('dev/scss/**/*.scss', ['sass']);
