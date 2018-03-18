@@ -1,6 +1,6 @@
 /*
 	GULP TASKS:
-	gulp							- starting default gulp task (sass, js, watch, browserSync) for development;
+	gulp							- starting default gulp task (sass, watch, browserSync) for development;
 	gulp imagemin			- image compression;
 	gulp favicon			- favicon generator;
 	gulp zip					- project archiving;

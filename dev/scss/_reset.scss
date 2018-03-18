@@ -80,3 +80,9 @@ button {
 	padding: 0;
 	cursor: pointer;
 }
+
+.slick-list {
+	.slick-loading & {
+		background: none;
+	}
+}
