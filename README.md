@@ -4,11 +4,11 @@
 
 <h2>About</h2>
 
-<p>X-project - is start HTML5 template. It includes the following libraries and frameworks:</p>
+<p>X-project - is starter template with basic tasks for development, which uses <a href="https://gulpjs.com">Gulp</a> to compile CSS to SASS (with <strong>SCSS</strong> syntax), minimise CSS, optimising images, <a href="https://browsersync.io/">Browsersync</a> for live-saving while development, simple favicon generator and project archiving. It includes the following libraries and frameworks:</p>
 
 <ul>
-	<li>Bootstrap 4</li>
 	<li>jQuery</li>
+	<li>Bootstrap 4</li>
 	<li>Font Awesome 5</li>
 	<li>Icomoon</li>
 	<li>Slick slider</li>
