@@ -4,7 +4,7 @@
 
 <h2>About</h2>
 
-<p>X-project - is starter template with basic tasks for development, which uses <a href="https://gulpjs.com">Gulp</a> to compile CSS to SASS (with <strong>SCSS</strong> syntax), minimise CSS, optimising images, <a href="https://browsersync.io/">Browsersync</a> for live-reload while development, simple favicon generator and project archiving. It includes the following libraries and frameworks:</p>
+<p>X-project - is starter template with basic tasks for development, which uses <a href="https://gulpjs.com">Gulp</a> to compile CSS to SASS (with <strong>SCSS</strong> syntax), minimise CSS, optimising images (with <a href="https://tinypng.com/">TinyPNG</a>, <a href="https://browsersync.io/">Browsersync</a> for live-reload while development, simple favicon generator and project archiving. It includes the following libraries and frameworks:</p>
 
 <ul>
 	<li>jQuery</li>
