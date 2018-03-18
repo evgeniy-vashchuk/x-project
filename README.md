@@ -24,7 +24,7 @@
 	<li><a href="https://gulpjs.com/">Gulp</a></li>
 </ul>
 
-<p>2) <a href="/inkogn1to/x-project/archive/master.zip">Download</a> or clone X-project from Github</p>
+<p>2) <a href="/inkogn1to/x-project/archive/master.zip">Download</a> or clone <strong>X-project</strong> from Github</p>
 <p>3) Install Node Modules:</p>
 
 ```
@@ -37,11 +37,13 @@ npm i
 gulp
 ```
 
-<h2>Gulp tasks:</h2>
+<h2>Gulp tasks</h2>
 
 <ul>
 	<li><strong>gulp</strong> - starting default gulp task (sass, watch, browserSync) for development;</li>
 	<li><strong>gulp imagemin</strong> - image compression;</li>
 	<li><strong>gulp favicon</strong> - favicon generator;</li>
-	li><strong>gulp zip</strong> - project archiving;</li>
+	<li><strong>gulp zip</strong> - project archiving;</li>
 </ul>
+
+
