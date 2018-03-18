@@ -1,8 +1,19 @@
-<h1><strong>X-project</strong> <br>Starter kit for fast HTML / CSS / JS pages layout based on Gulp.</h1>
-
 <p>
 	<img src="https://raw.githubusercontent.com/inkogn1to/x-project/master/dev/img/x-project.jpg" alt="Start HTML Template">
 </p>
+
+<h2>About</h2>
+
+<p>X-project - is start HTML5 template. It includes the following libraries and frameworks:</p>
+
+<ul>
+	<li>Bootstrap 4</li>
+	<li>jQuery</li>
+	<li>Font Awesome 5</li>
+	<li>Icomoon</li>
+	<li>Slick slider</li>
+	<li>Slick lightbox</li>
+</ul>
 
 <p>OptimizedHTML is all-inclusive start HTML5 template with Bootstrap 4 (grid & reboot), Gulp, Sass, Browsersync, Autoprefixer, Clean-CSS, Uglify, Rsync and Bower (libs path) support. The template contains a <strong>.htaccess</strong> file with caching rules for web server.</p>
 
