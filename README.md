@@ -4,7 +4,7 @@
 
 <h2>About</h2>
 
-<p>X-project - is starter template with basic tasks for development, which uses <a href="https://gulpjs.com">Gulp</a> to compile CSS to SASS (with <strong>SCSS</strong> syntax), minimise CSS, optimising images, <a href="https://browsersync.io/">Browsersync</a> for live-saving while development, simple favicon generator and project archiving. It includes the following libraries and frameworks:</p>
+<p>X-project - is starter template with basic tasks for development, which uses <a href="https://gulpjs.com">Gulp</a> to compile CSS to SASS (with <strong>SCSS</strong> syntax), minimise CSS, optimising images, <a href="https://browsersync.io/">Browsersync</a> for live-reload while development, simple favicon generator and project archiving. It includes the following libraries and frameworks:</p>
 
 <ul>
 	<li>jQuery</li>
@@ -15,15 +15,21 @@
 	<li>Slick lightbox</li>
 </ul>
 
-<p>OptimizedHTML is all-inclusive start HTML5 template with Bootstrap 4 (grid & reboot), Gulp, Sass, Browsersync, Autoprefixer, Clean-CSS, Uglify, Rsync and Bower (libs path) support. The template contains a <strong>.htaccess</strong> file with caching rules for web server.</p>
+<h2>How to use</h2>
 
-<p><strong>OptimizedHTML 4</strong> Start Template uses the best practices of web development.</p>
+<p>1) You must have installed:</p>
 
-<p>Cross-browser compatibility: IE9+.</p>
+<ul>
+	<li><a href="https://nodejs.org/en/">Node.js and npm</a></li>
+	<li><a href="https://gulpjs.com/">Gulp</a></li>
+</ul>
 
-<p>The template uses a Sass with <strong>Sass</strong> syntax.</p>
+<p>2) Download or clone X-project from Github</p>
+<p>3) Install modules whit a command:</p>
 
-<h2>How to use OptimizedHTML</h2>
+```
+npm i
+```
 
 <ol>
 	<li><a href="https://github.com/agragregra/OptimizedHTML-4/archive/master.zip">Download</a> <strong>OptimizedHTML 4</strong> from GitHub;</li>
