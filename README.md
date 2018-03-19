@@ -2,8 +2,6 @@
 	<img src="https://raw.githubusercontent.com/inkogn1to/x-project/master/dev/img/x-project.jpg" alt="Start HTML Template">
 </p>
 
----
-
 <p align="center">
 	📌 <strong>IT IS RECOMMENDED TO USE WITH <a href="https://inkogn1to.github.io/x-project-components/index.html">X-PROJECT COMPONENTS</a></strong> 📌
 </p>
