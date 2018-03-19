@@ -18,7 +18,7 @@
 ---
 
 <p align="center">
-	📌 <strong>It is recommended to use with <a href="https://inkogn1to.github.io/x-project-components/index.html">X-project Components</a></strong> 📌
+	📌 <strong>IT IS RECOMMENDED TO USE WITH <a href="https://inkogn1to.github.io/x-project-components/index.html">X-PROJECT COMPONENTS</a></strong> 📌
 </p>
 
 ---
