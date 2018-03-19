@@ -15,6 +15,14 @@
 	<li>Slick lightbox</li>
 </ul>
 
+---
+
+<h3 align="center">
+	📌 It is recommended to use with <a href="https://inkogn1to.github.io/x-project-components/index.html"><strong>X-project Components</strong></a> 📌
+</h3>
+
+---
+
 <h2>How to use</h2>
 
 <p>1) You must have installed:</p>
