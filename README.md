@@ -20,6 +20,7 @@
 <p align="center">
 	📌 It is recommended to use with <a href="https://inkogn1to.github.io/x-project-components/index.html"><strong>X-project Components</strong></a> 📌
 </p>
+
 ---
 
 <h2>How to use</h2>
