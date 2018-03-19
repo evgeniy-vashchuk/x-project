@@ -17,10 +17,9 @@
 
 ---
 
-<h3 align="center">
+<p align="center">
 	📌 It is recommended to use with <a href="https://inkogn1to.github.io/x-project-components/index.html"><strong>X-project Components</strong></a> 📌
-</h3>
-
+</p>
 ---
 
 <h2>How to use</h2>
