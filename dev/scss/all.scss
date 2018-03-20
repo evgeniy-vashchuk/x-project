@@ -3,13 +3,13 @@
 @import "mixins";
 @import "fonts";
 @import "reset";
+@import "global";
 
 // COMPONENTS ===============================================
 @import "components/typography";
 @import "components/buttons";
 @import "components/forms";
 @import "components/helpers";
-@import "components/global";
 @import "components/header";
 @import "components/footer";
 @import "components/section";

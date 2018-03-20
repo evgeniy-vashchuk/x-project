@@ -26,7 +26,7 @@ footer, header, hgroup, menu, nav, section {
 	display: block;
 }
 body {
-	line-height: 1;
+	// line-height: 1;
 }
 ol, ul {
 	list-style: none;
@@ -81,6 +81,7 @@ button {
 	cursor: pointer;
 }
 
+// for slick ajax-loader.gif
 .slick-list {
 	.slick-loading & {
 		background: none;
