@@ -12,7 +12,7 @@
 
 <h2>About</h2>
 
-<p>X-project - is starter template with basic tasks for development, which uses <a href="https://gulpjs.com">Gulp</a> to compile CSS to SASS (with <strong>SCSS</strong> syntax), minimise CSS, optimising images (with <a href="https://tinypng.com/">TinyPNG</a>), <a href="https://browsersync.io/">Browsersync</a> for live-reload while development, simple favicon generator and project archiving. It includes the following libraries and frameworks:</p>
+<p>X-Project - is starter template with basic tasks for development, which uses <a href="https://gulpjs.com">Gulp</a> to compile CSS to SASS (with <strong>SCSS</strong> syntax), minimise CSS, optimising images (with <a href="https://tinypng.com/">TinyPNG</a>), <a href="https://browsersync.io/">Browsersync</a> for live-reload while development, simple favicon generator and project archiving. It includes the following libraries and frameworks:</p>
 
 <ul>
 	<li>jQuery</li>
@@ -32,7 +32,7 @@
 	<li><a href="https://gulpjs.com/">Gulp</a></li>
 </ul>
 
-<p>2) <a href="/inkogn1to/x-project/archive/master.zip">Download</a> or clone <strong>X-project</strong> from Github</p>
+<p>2) <a href="/inkogn1to/x-project/archive/master.zip">Download</a> or clone <strong>X-Project</strong> from Github</p>
 <p>3) Install Node Modules:</p>
 
 ```
