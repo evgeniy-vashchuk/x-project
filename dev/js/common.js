@@ -1,11 +1,11 @@
 (function ($) {
 
-	'use strict';
+'use strict';
 
-	$(document).ready(function() {
+$(document).ready(function() {
 
-		// Your code here
+	// Your code here
 
-	});
+});
 
 }(jQuery));
