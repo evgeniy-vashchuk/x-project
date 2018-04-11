@@ -42,6 +42,7 @@
 // vertical text top - bottom
 .-vertical-text-top-bottom {
 	writing-mode: vertical-rl;
+	-webkit-writing-mode: vertical-rl;
 	display: inline-block;
 	margin: 0;
 }
@@ -49,6 +50,7 @@
 // vertical text bottom - top
 .-vertical-text-bottom-top {
 	writing-mode: vertical-rl;
+	-webkit-writing-mode: vertical-rl;
 	transform: rotate(180deg);
 	display: inline-block;
 	margin: 0;

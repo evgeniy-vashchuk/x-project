@@ -4,13 +4,14 @@
 @import "fonts";
 @import "reset";
 @import "global";
+@import "helpers";
 
 // COMPONENTS ===============================================
 @import "components/typography";
 @import "components/buttons";
 @import "components/forms";
-@import "components/helpers";
 @import "components/header";
+@import "components/logo";
 @import "components/footer";
 @import "components/section";
 

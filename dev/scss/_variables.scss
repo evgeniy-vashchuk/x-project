@@ -913,15 +913,13 @@ $icomoon-font-path: "../libs/icomoon/fonts/";
 // SLICK SLIDER THEME =================================
 // =========================
 
-$slick-font-path: $fa-font-path;
 $slick-font-family: "Font Awesome 5 Free";
-$slick-loader-path: "../img/";
 $slick-arrow-color: $primary;
-$slick-dot-color: $primary;
-$slick-dot-color-active: $slick-dot-color;
 $slick-prev-character: "\f0a8";
 $slick-next-character: "\f0a9";
 $slick-dot-character: "\f111";
+$slick-dot-color: $primary;
+$slick-dot-color-active: $slick-dot-color;
 $slick-dot-size: 10px;
 $slick-opacity-default: 1;
 $slick-opacity-on-hover: 1;
@@ -931,8 +929,8 @@ $slick-opacity-not-active: 0.25;
 
 // arrow
 $slick-arrow-size: 1.5rem;
-$slick-arrow-width: 25px;
 $slick-arrow-weight: 900;
+$slick-arrow-width: 25px;
 $slick-arrow-height: $slick-arrow-width;
 $slick-arrow-bg: transparent;
 // dots
