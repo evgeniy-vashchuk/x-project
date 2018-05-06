@@ -16,7 +16,6 @@
 ::-webkit-scrollbar-thumb {
 	border-radius: $scrollbar-thumb-rounding;
 	background-color: $scrollbar-thumb-color;
-	background-image: $scrollbar-thumb-icon;
 	background-repeat: no-repeat;
 	background-position: center;
 
@@ -27,6 +26,14 @@
 	&:active {
 		background-color: darken($scrollbar-thumb-color, 5%);
 	}
+}
+
+::-webkit-scrollbar-thumb:vertical {
+	background-image: $scrollbar-thumb-icon-vertical;
+}
+
+::-webkit-scrollbar-thumb:horizontal {
+	background-image: $scrollbar-thumb-icon-horizontal;
 }
 
 ::-webkit-resizer {

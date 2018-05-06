@@ -81,6 +81,10 @@ button {
 	cursor: pointer;
 }
 
+textarea {
+	resize: none;
+}
+
 // for slick ajax-loader.gif
 .slick-list {
 	.slick-loading & {

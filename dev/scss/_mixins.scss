@@ -176,7 +176,7 @@
 	}
 }
 
-// EXAMPLE: @include max-w(991) {font-size: 50px;};
+// EXAMPLE: @include max-w(991) {font-size: 50px;}
 
 // Media queries for min width ------------------------------------
 @mixin min-w($width) {
@@ -185,7 +185,7 @@
 	}
 }
 
-// EXAMPLE: @include min-w(991) {font-size: 50px;};
+// EXAMPLE: @include min-w(991) {font-size: 50px;}
 
 // Media queries for max height ------------------------------------
 @mixin max-h($height) {
@@ -194,7 +194,7 @@
 	}
 }
 
-// EXAMPLE: @include max-h(800) {font-size: 50px;};
+// EXAMPLE: @include max-h(800) {font-size: 50px;}
 
 // Media queries for min height ------------------------------------
 @mixin min-h($height) {
@@ -203,4 +203,4 @@
 	}
 }
 
-// EXAMPLE: @include min-h(800) {font-size: 50px;};
+// EXAMPLE: @include min-h(800) {font-size: 50px;}

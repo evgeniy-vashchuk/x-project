@@ -973,4 +973,5 @@ $scrollbar-height: $scrollbar-width;
 $scrollbar-track-bg-color: $secondary;
 $scrollbar-thumb-color: $primary;
 $scrollbar-thumb-rounding: 0px;
-$scrollbar-thumb-icon: none; // url(../img/icon_scrollbar.png)
+$scrollbar-thumb-icon-vertical: none; // url(../img/icon-scrollbar-vertical.png);
+$scrollbar-thumb-icon-horizontal: none; // url(../img/icon-scrollbar-horizontal.png);
