@@ -5,7 +5,7 @@
 ---
 
 <p align="center">
-	📌 <strong>IT IS RECOMMENDED TO USE WITH <a href="https://evgeniy-vashchuk.github.io/x-project-components/index.html">X-PROJECT COMPONENTS</a></strong> 📌
+	📌 <strong>RECOMMENDED TO USE WITH <a href="https://evgeniy-vashchuk.github.io/x-project-components/index.html">X-PROJECT COMPONENTS</a></strong> 📌
 </p>
 
 ---
