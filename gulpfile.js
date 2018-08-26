@@ -6,18 +6,41 @@
 	gulp zip					- project archiving;
 */
 
-var gulp           = require('gulp'),
-		gutil          = require('gulp-util' ),
-		sass           = require('gulp-sass'),
-		browserSync    = require('browser-sync'),
-		sourcemaps     = require('gulp-sourcemaps'),
-		autoprefixer   = require('gulp-autoprefixer'),
-		notify         = require("gulp-notify"),
-		tinypng        = require('gulp-tinypng-compress'),
-		svgmin         = require('gulp-svgmin'),
-		zip            = require('gulp-zip'),
-		ico            = require('gulp-to-ico'),
-		wait           = require('gulp-wait');
+var gulp            = require('gulp'),
+		gutil           = require('gulp-util' ),
+		sass            = require('gulp-sass'),
+		pug             = require('gulp-pug'),
+		pugBeautify     = require('gulp-pug-beautify'),
+		browserSync     = require('browser-sync'),
+		sourcemaps      = require('gulp-sourcemaps'),
+		autoprefixer    = require('gulp-autoprefixer'),
+		notify          = require("gulp-notify"),
+		tinypng         = require('gulp-tinypng-compress'),
+		svgmin          = require('gulp-svgmin'),
+		zip             = require('gulp-zip'),
+		ico             = require('gulp-to-ico'),
+		wait            = require('gulp-wait');
+
+// WORKING WITH PUG FILES
+gulp.task('pug', function() {
+	return gulp.src('dev/pug/pages/*.pug')
+
+	.pipe(pug({
+		basedir: 'dev/pug/pages',
+		pretty: true
+	}).on("error", notify.onError({
+		title: "Error compiling PUG"
+	})))
+
+	.pipe(pugBeautify({
+		fill_tab: true,
+		tab_size: 2
+	}))
+
+	.pipe(gulp.dest('dev'))
+
+	.pipe(browserSync.reload({stream: true}))
+});
 
 // WORKING WITH SASS FILES
 gulp.task('sass', function() {
@@ -25,7 +48,7 @@ gulp.task('sass', function() {
 	.pipe(wait(100)) // delay for waiting to compile sass
 	.pipe(sourcemaps.init())
 	.pipe(sass({
-		outputStyle: 'compressed',
+		//outputStyle: 'compressed', // minify css (optional)
 		indentType: 'tab',
 		indentWidth: 1
 	}).on("error", notify.onError({
@@ -102,14 +125,20 @@ gulp.task('browser-sync', function() {
 
 // WATCHING FILES
 gulp.task('watch', ['sass', 'browser-sync'], function() {
+	// PUG
+	gulp.watch('dev/pug/**/*.pug', ['pug']);
+
+	// HTML
+	gulp.watch('dev/*.html').on('change', browserSync.reload);
+
 	// SCSS
 	gulp.watch('dev/scss/**/*.scss', ['sass']);
 	gulp.watch('dev/libs/**/*.{scss,css}', ['sass']);
+
 	// JS
 	gulp.watch('dev/js/**/*.js').on('change', browserSync.reload);
 	gulp.watch('dev/libs/**/*.js').on('change', browserSync.reload);
-	// HTML
-	gulp.watch('dev/*.html').on('change', browserSync.reload);
+
 	// IMAGES
 	gulp.watch('dev/img/**.*').on('change', browserSync.reload);
 });

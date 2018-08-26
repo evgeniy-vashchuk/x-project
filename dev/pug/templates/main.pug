@@ -1,0 +1,38 @@
+doctype html
+html(lang='en')
+	head
+		block title
+			title Name of the site - Main
+
+		meta(name='description', content='Description of the site')
+
+		meta(charset='UTF-8')
+		meta(name='format-detection', content='telephone=no')
+		meta(http-equiv='X-UA-Compatible', content='IE=edge')
+		meta(name='viewport', content='width=device-width, initial-scale=1, user-scalable=yes, maximum-scale=1')
+
+		// connection FAVICONS
+		link(rel='icon', href='img/favicon/favicon.ico')
+		link(rel='apple-touch-icon', sizes='180x180', href='img/favicon/apple-touch-icon-180x180.png')
+
+		// THE BACKGROUND OF THE STATUS-BAR (ON MOBILE)
+		meta(name='theme-color', content='#000')
+
+		// connection GOOGLE FONTS
+
+		// connection CSS
+		link(rel='stylesheet', href='css/all.css')
+
+	body
+		// HEADER
+		include ../includes/header.pug
+		// HEADER END
+
+		block content
+
+		// FOOTER
+		include ../includes/footer.pug
+		// FOOTER END
+
+		// connection JAVASCRIPT
+		include ../includes/scripts.pug
