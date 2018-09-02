@@ -1,0 +1,6 @@
+// border style to see elements (remove if needed)
+
+input:not([type="submit"], [type="reset"], [type="button"]),
+textarea {
+	border: 1px solid $body-color;
+}

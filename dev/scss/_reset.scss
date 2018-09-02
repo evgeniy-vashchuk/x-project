@@ -46,10 +46,6 @@ table {
 
 // ADDITIONAL RESET ============================
 
-input {
-	-webkit-appearance: none;
-}
-
 * ,
 *:hover ,
 *:focus ,
@@ -58,6 +54,110 @@ input {
 	text-decoration: none;
 }
 
+body {
+	text-rendering: optimizeLegibility;
+	-webkit-text-size-adjust: 100%;
+	-webkit-font-smoothing: antialiased;
+	-webkit-tap-highlight-color: transparent;
+	min-width: 320px;
+	overflow-x: hidden;
+}
+
+// select
+select {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+}
+
+select::-ms-expand {
+	display: none;
+}
+// select END
+
+// hide cross icon in IE
+::-ms-clear {
+	display: none;
+}
+
+// forms
+button,
+input,
+optgroup,
+select,
+textarea {
+	padding: 0;
+	margin: 0;
+	border: none;
+	border-radius: 0;
+	box-shadow: none;
+	background-color: transparent;
+	font: inherit;
+	color: inherit;
+	letter-spacing: inherit;
+}
+
+input {
+	-webkit-appearance: none;
+}
+
+button,
+[type='button'],
+[type='reset'],
+[type='submit'] {
+	cursor: pointer;
+	-webkit-appearance: none;
+}
+
+textarea {
+	resize: none;
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+// forms END
+
+// placeholder
+::-webkit-input-placeholder {
+	color: inherit;
+	opacity: 1;
+	transition: opacity .3s;
+}
+
+::-moz-placeholder {
+	color: inherit;
+	opacity: 1;
+	transition: opacity .3s;
+}
+
+:-moz-placeholder {
+	color: inherit;
+	opacity: 1;
+	transition: opacity .3s;
+}
+
+:-ms-input-placeholder {
+	color: inherit;
+	opacity: 1;
+	transition: opacity .3s;
+}
+
+:focus::-webkit-input-placeholder {
+	opacity: 0;
+}
+
+:focus::-moz-placeholder {
+	opacity: 0;
+}
+
+:focus:-moz-placeholder {
+	opacity: 0;
+}
+
+:focus:-ms-input-placeholder {
+	opacity: 0;
+}
+// placeholder END
+
 .btn:focus,
 .btn.focus,
 .btn:active,
@@ -65,25 +165,14 @@ input {
 	box-shadow: none;
 }
 
+a {
+	background-color: transparent;
+}
+
 img {
 	max-width: 100%;
 	height: auto;
 	pointer-events: none;
-}
-
-body {
-	min-width: 320px;
-	overflow-x: hidden;
-}
-
-button {
-	border: none;
-	padding: 0;
-	cursor: pointer;
-}
-
-textarea {
-	resize: none;
 }
 
 // for slick ajax-loader.gif

@@ -1,0 +1,31 @@
+//- menu mixin
+mixin menu(menuList, anchorLinks)
+	//- arguments
+	//- menuList {array} - array with text and link
+	//- example:
+		-
+			var menuList = [
+				{
+					text: "Home",
+					link: "Home-page-link"
+				},
+				{
+					text: "About"
+				},
+				{
+					text: "Services"
+				}
+			]
+
+		include ../mixins/menu.pug
+		+menu(menuList, false)(class="menu-list")
+
+	ul&attributes(attributes)
+		each menuItem, index in menuList
+			li(class= index === 0 ? 'active' : '')
+				if (anchorLinks === true)
+					a(href= "#" + menuItem.text.toLowerCase())
+						| #{menuItem.text}
+				else
+					a(href= menuItem.link ? menuItem.link : 'javascript:void(0);')
+						| #{menuItem.text}

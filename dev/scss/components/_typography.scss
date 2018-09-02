@@ -1,14 +1,33 @@
-// MAIN TITLE OF THE SITE
-.main-title {
+p {
+	margin-bottom: $paragraph-margin-bottom;
+}
+
+.text-block {
+	p:last-child {
+		margin-bottom: 0;
+	}
+}
+
+h1, .h1 {
 
 }
 
-// SECTION TITLE
-.section-title {
+h2, .h2 {
 
 }
 
-// PAGE TITLE
-.page-title {
-	
+h2, .h3 {
+
+}
+
+h4, .h4 {
+
+}
+
+h5, .h5 {
+
+}
+
+h6, .h6 {
+
 }
