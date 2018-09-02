@@ -54,4 +54,8 @@ gulp
 	<li><strong>gulp zip</strong> - project archiving;</li>
 </ul>
 
+<h2>Changelog</h2>
 
+| Changes | Date |
+| ----- | ----- |
+| Added Pug, absolute cover mixin, mixin keyframe delay in iteration.| 26.08.2018 |
