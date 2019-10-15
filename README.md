@@ -1,5 +1,5 @@
 <p>
-	<img src="https://raw.githubusercontent.com/inkogn1to/x-project/master/dev/img/x-project.jpg" alt="Start HTML Template">
+	<img src="https://raw.githubusercontent.com/inkogn1to/x-project/master/src/img/x-project.jpg" alt="Start HTML Template">
 </p>
 
 ---
