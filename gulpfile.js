@@ -2,8 +2,8 @@
 	GULP TASKS:
 	gulp								- starting default gulp task (build, server, watch) for development;
 	gulp build					- build project;
-	gulp img						- image compression;
 	gulp removeDist			- delete dist folder;
+	gulp img						- image compression;
 	gulp favicon				- favicon generator;
 	gulp zip						- project archiving;
 
