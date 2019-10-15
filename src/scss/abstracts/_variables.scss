@@ -1,0 +1,154 @@
+// COLORS
+$white:    #ffffff;
+$gray-100: #f8f9fa;
+$gray-200: #e9ecef;
+$gray-300: #dee2e6;
+$gray-400: #ced4da;
+$gray-500: #adb5bd;
+$gray-600: #6c757d;
+$gray-700: #495057;
+$gray-800: #343a40;
+$gray-900: #212529;
+$black:    #000000;
+
+$blue:    #007bff;
+$indigo:  #6610f2;
+$purple:  #6f42c1;
+$pink:    #e83e8c;
+$red:     #dc3545;
+$orange:  #fd7e14;
+$yellow:  #ffc107;
+$green:   #28a745;
+$teal:    #20c997;
+$cyan:    #17a2b8;
+
+$primary:       $blue;
+$secondary:     $gray-600;
+$success:       $green;
+$info:          $cyan;
+$warning:       $yellow;
+$danger:        $red;
+$light:         $gray-100;
+$dark:          $gray-800;
+
+
+// MAIN
+$body-bg:                   $white;
+$body-color:                $gray-900;
+$enable-rounded:            true;
+
+// TYPOGRAPHY
+$font-family-sans-serif:    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+$font-family-monospace:     SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+$font-family-base:          $font-family-sans-serif;
+
+$font-size-base:            1rem;
+$font-weight-base:          400;
+$line-height-base:          1.5;
+
+$paragraph-margin-bottom:   1rem;
+
+$h1-font-size:              $font-size-base * 2.5;
+$h2-font-size:              $font-size-base * 2;
+$h3-font-size:              $font-size-base * 1.75;
+$h4-font-size:              $font-size-base * 1.5;
+$h5-font-size:              $font-size-base * 1.25;
+$h6-font-size:              $font-size-base;
+$headings-font-family:      inherit;
+$headings-font-weight:      500;
+$headings-line-height:      1.2;
+$headings-color:            inherit;
+
+// GRID
+$grid-gutter-width: 30px;
+$grid-columns: 12;
+$grid-breakpoints: (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px);
+$container-max-widths: (sm: 540px, md: 720px, lg: 960px, xl: 1140px);
+
+// LINKS
+$link-color:                              $primary;
+$link-decoration:                         none;
+$link-hover-color:                        darken($link-color, 15%);
+$link-hover-decoration:                   underline;
+
+// BUTTONS
+$input-btn-padding-y:         .375rem;
+$input-btn-padding-x:         .75rem;
+$input-btn-font-size:         $font-size-base;
+$input-btn-line-height:       $line-height-base;
+$input-btn-border-width:      1px;
+$btn-border-radius:           0.25rem;
+$btn-transition:              color .3s ease-in-out, background-color .3s ease-in-out, border-color .3s ease-in-out, box-shadow .3s ease-in-out;
+
+// Z-INDEX MASTER LIST
+$zindex-dropdown:                   1000;
+$zindex-sticky:                     1020;
+$zindex-fixed:                      1030;
+$zindex-modal-backdrop:             1040;
+$zindex-modal:                      1050;
+$zindex-popover:                    1060;
+$zindex-tooltip:                    1070;
+
+// FONT AWESOME FONT PATH =================================
+$fa-font-path: "../fonts/font-awesome";
+
+// ICOMOON FONT PATH =================================
+$icomoon-font-path: "../libs/icomoon/fonts/";
+
+// SLICK SLIDER THEME (OPTIONAL) =================================
+$slick-font-family: "Font Awesome 5 Free";
+$slick-arrow-color: $primary;
+$slick-prev-character: "\f0a8";
+$slick-next-character: "\f0a9";
+$slick-dot-character: "\f111";
+$slick-dot-color: $primary;
+$slick-dot-color-active: $slick-dot-color;
+$slick-dot-size: 10px;
+$slick-opacity-default: 1;
+$slick-opacity-on-hover: 1;
+$slick-opacity-not-active: 0.25;
+
+// custom
+
+// arrow
+$slick-arrow-size: 1.5rem;
+$slick-arrow-weight: 900;
+$slick-arrow-width: 25px;
+$slick-arrow-height: $slick-arrow-width;
+$slick-arrow-bg: transparent;
+// dots
+$slick-dots-width: 15px;
+$slick-dots-height: $slick-dots-width;
+$slick-dots-weigth: 900;
+$slick-dots-margin-left-right: 5px;
+
+// SLICK-LIGTHBOX-THEME (OPTIONAL) =================================
+$slick-lightbox-overlay-color: $black;
+$slick-lightbox-overlay-opacity: 0.8;
+$slick-lightbox-font-family: "Font Awesome 5 Free";
+$slick-lightbox-arrow-color: $primary;
+$slick-lightbox-close-color: $primary;
+$slick-lightbox-arrow-bg-color: $secondary;
+$slick-lightbox-close-bg-color: $secondary;
+$slick-lightbox-prev-character: "\f104";
+$slick-lightbox-next-character: "\f105";
+$slick-lightbox-close-character: "\f00d";
+$slick-lightbox-arrow-width: 50px;
+$slick-lightbox-arrow-height: $slick-lightbox-arrow-width;
+$slick-lightbox-arrow-bg: $secondary;
+$slick-lightbox-close-color: $primary;
+$slick-lightbox-close-bg-color: $secondary;
+$slick-lightbox-clode-width: 50px;
+$slick-lightbox-clode-height: $slick-lightbox-clode-width;
+$slick-lightbox-clode-weigth: 900;
+$slick-lightbox-arrows-size: 1.5rem;
+$slick-lightbox-close-size: 1.5rem;
+
+// SCROLLBAR STYLING (OPTIONAL) =================================
+$scrollbar-width: 10px;
+$scrollbar-height: $scrollbar-width;
+$scrollbar-track-bg-color: $secondary;
+$scrollbar-thumb-color: $primary;
+$scrollbar-thumb-rounding: 0px;
+$scrollbar-thumb-icon-vertical: none; // url(../img/icon-scrollbar-vertical.png);
+$scrollbar-thumb-icon-horizontal: none; // url(../img/icon-scrollbar-horizontal.png);

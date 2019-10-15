@@ -1,0 +1,26 @@
+.slick-prev, .slick-next {
+	width: $slick-arrow-width;
+	height: $slick-arrow-height;
+	background-color: $slick-arrow-bg;
+	z-index: 1;
+
+	&:before {
+		transition: 0.5s;
+		font-size: $slick-arrow-size;
+		font-weight: $slick-arrow-weight;
+	}
+
+	&:hover {
+		&:before {
+			color: lighten($slick-arrow-color, 10%);
+		}
+	}
+}
+
+.slick-prev {
+	left: -25px;
+}
+
+.slick-next {
+	right: -25px;
+}
