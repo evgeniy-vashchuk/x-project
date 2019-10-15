@@ -1,146 +1,113 @@
 /*
 	GULP TASKS:
-	gulp							- starting default gulp task (sass, watch, browserSync) for development;
-	gulp imagemin			- image compression;
-	gulp favicon			- favicon generator;
-	gulp zip					- project archiving;
+	gulp								- starting default gulp task (build, server, watch) for development;
+	gulp build					- build project;
+	gulp img						- image compression;
+	gulp removeDist			- delete dist folder;
+	gulp favicon				- favicon generator;
+	gulp zip						- project archiving;
+
+	ADDITIONAL OPTIONS:
+	--prod							- minification js, minification css, add vendor prefixes, group media queries, remove comments, image compression
+	--pug								- using pug preprocessor to generate html
 */
 
-var gulp            = require('gulp'),
-		gutil           = require('gulp-util' ),
-		sass            = require('gulp-sass'),
-		pug             = require('gulp-pug'),
-		pugBeautify     = require('gulp-pug-beautify'),
-		browserSync     = require('browser-sync'),
-		sourcemaps      = require('gulp-sourcemaps'),
-		autoprefixer    = require('gulp-autoprefixer'),
-		notify          = require("gulp-notify"),
-		tinypng         = require('gulp-tinypng-compress'),
-		svgmin          = require('gulp-svgmin'),
-		zip             = require('gulp-zip'),
-		ico             = require('gulp-to-ico'),
-		wait            = require('gulp-wait');
+'use strict';
+
+const gulp							= require('gulp'),
+			argv							= require('yargs').argv,
+			plugins						= require('gulp-load-plugins')({ pattern: '*' }),
+
+			isProduction = (argv.prod !== undefined),
+			withPug = (argv.pug !== undefined),
+			srcFolder = 'src',
+			distFolder = 'dist',
+
+			path = {
+				src: {
+					html: [srcFolder + '/*.html', '!' + srcFolder + '/_*.html'],
+					pug: srcFolder + '/pug/pages/*.pug',
+					pugBase: srcFolder + '/pug/pages/',
+					css: srcFolder + '/scss/**/*.{scss,sass,css}',
+					js: [srcFolder + '/js/**/*.js', '!' + srcFolder + '/js/**/_*.js', '!' + srcFolder + '/js/libs.js'],
+					jsLibs: srcFolder + '/js/libs.js',
+					imgBitmap: srcFolder + '/img/**/*.{png,jpg,jpeg}',
+					imgVector: srcFolder + '/img/**/*.svg',
+					favicon: srcFolder + '/img/favicon/apple-touch-icon-180x180.png',
+					fonts: srcFolder + '/fonts/**/*.*'
+				},
+				dist: {
+					html: distFolder + '/',
+					css: distFolder + '/css/',
+					js: distFolder + '/js/',
+					img: distFolder + '/img/',
+					favicon: distFolder + '/img/favicon/',
+					fonts: distFolder + '/fonts/'
+				},
+				watch: {
+					html: srcFolder + '/*.html',
+					pug: srcFolder + '/pug/**/*.pug',
+					css: srcFolder + '/scss/**/*.{scss,sass,css}',
+					js: [srcFolder + '/js/**/*.js', '!' + srcFolder + '/js/libs.js'],
+					jsLibs: srcFolder + '/js/libs.js',
+					img: srcFolder + '/img/**/*.*',
+					fonts: srcFolder + '/fonts/**/*.*'
+				},
+				server: distFolder
+			};
+
+function getTask(task) {
+	return require('./gulp-tasks/' + task)(gulp, plugins, path, isProduction, withPug);
+}
+
+// WORKING WITH HTML FILES
+gulp.task('html', getTask('html'));
 
 // WORKING WITH PUG FILES
-gulp.task('pug', function() {
-	return gulp.src('dev/pug/pages/*.pug')
-
-	.pipe(pug({
-		basedir: 'dev/pug/pages',
-		pretty: true
-	}).on("error", notify.onError({
-		title: "Error compiling PUG"
-	})))
-
-	.pipe(pugBeautify({
-		fill_tab: true,
-		tab_size: 2
-	}))
-
-	.pipe(gulp.dest('dev'))
-
-	.pipe(browserSync.reload({stream: true}))
-});
+gulp.task('pug', getTask('pug'));
 
 // WORKING WITH SASS FILES
-gulp.task('sass', function() {
-	return gulp.src('dev/scss/all.scss')
-	.pipe(wait(100)) // delay for waiting to compile sass
-	.pipe(sourcemaps.init())
-	.pipe(sass({
-		//outputStyle: 'compressed', // minify css (optional)
-		indentType: 'tab',
-		indentWidth: 1
-	}).on("error", notify.onError({
-		title: "Error compiling SASS"
-	})))
-	.pipe(autoprefixer(['last 15 versions']))
-	.pipe(sourcemaps.write('.'))
-	.pipe(gulp.dest('dev/css'))
-	.pipe(browserSync.reload({stream: true}))
+gulp.task('sass', getTask('sass'));
+
+// WORKING WITH JS FILES
+gulp.task('js:common', getTask('js-common'));
+gulp.task('js:libs', getTask('js-libs'));
+
+// WORKING WITH IMAGES
+gulp.task('img:bitmap', getTask('img-bitmap'));
+gulp.task('img:vector', getTask('img-vector'));
+
+gulp.task('removeImg', function(done) {
+	plugins.del.sync(path.dist.img);
+	done();
 });
 
-// IMAGE COMPRESSION
-gulp.task('imagemin:tinypng', function() {
-	gulp.src('dev/img/**/*{png,jpg,jpeg}')
-	.pipe(tinypng({
-		key: 'kEx97Kwcl6gt8PXj1VnvLimN9IXXoppF',
-		log: true,
-		summarise: true,
-		parallel: true,
-		parallelMax: 999,
-		sigFile: 'dev/img/.tinypng-sigs',
-		sameDest: true
-	}).on("error", notify.onError({
-		title: "TinyPNG error",
-	})))
-	.pipe(gulp.dest('dev/img'));
-});
+gulp.task('img', gulp.series('removeImg', gulp.parallel('img:bitmap', 'img:vector')));
 
-gulp.task('imagemin:svg', function() {
-	return gulp.src('dev/img/**/*.svg')
-	.pipe(svgmin())
-	.pipe(gulp.dest('dev/img'));
-});
+// WORKING WITH FONTS
+gulp.task('fonts', getTask('fonts'));
 
-gulp.task('imagemin', ['imagemin:tinypng', 'imagemin:svg']);
-
-// FAVICON GENERATOR
-gulp.task('favicon', function() {
-	return gulp.src('dev/img/favicon/apple-touch-icon-180x180.png')
-		.pipe(ico('favicon.ico', { resize: true, sizes: [48] }))
-		.pipe(gulp.dest('dev/img/favicon'));
-});
+// SERVER
+gulp.task('server', getTask('server'));
 
 // PROJECT ARCHIVING
-gulp.task('zip', function() {
-	gulp.src('dev/**/*', {base: '.'})
-		.pipe(zip('project.zip'))
-		.pipe(gulp.dest(''));
-})
+gulp.task('zip', getTask('zip'));
 
-// LIVERELOAD
-gulp.task('browser-sync', function() {
-	browserSync({
-		server: {
-			baseDir: 'dev'
-		},
-		notify: {
-			styles: {
-				padding: '5px 5px 5px 8px',
-				position: 'fixed',
-				fontSize: '12px',
-				zIndex: '9999',
-				borderRadius: '0px 0px 0px 5px',
-				color: 'white',
-				textAlign: 'center',
-				display: 'block',
-				backgroundColor: '#26263F'
-			}
-		},
-		// tunnel: true,
-		// tunnel: "projectmane", //Demonstration page: http://projectmane.localtunnel.me
-	});
-});
+// FAVICON GENERATOR
+gulp.task('favicon', getTask('favicon'));
 
 // WATCHING FILES
-gulp.task('watch', ['sass', 'browser-sync'], function() {
-	// PUG
-	gulp.watch('dev/pug/**/*.pug', ['pug']);
+gulp.task('watch', getTask('watch'));
 
-	// HTML
-	gulp.watch('dev/*.html').on('change', browserSync.reload);
-
-	// SCSS
-	gulp.watch('dev/scss/**/*.scss', ['sass']);
-	gulp.watch('dev/libs/**/*.{scss,css}', ['sass']);
-
-	// JS
-	gulp.watch('dev/js/**/*.js').on('change', browserSync.reload);
-	gulp.watch('dev/libs/**/*.js').on('change', browserSync.reload);
-
-	// IMAGES
-	gulp.watch('dev/img/**.*').on('change', browserSync.reload);
+// REMOVE DIST
+gulp.task('removeDist', function(done) {
+	plugins.del.sync(path.server);
+	done();
 });
 
-gulp.task('default', ['watch']);
+// BUILD
+var buildTasks = [withPug ? 'pug' : 'html', 'sass', 'js:common', 'js:libs', 'img', 'fonts'];
+gulp.task('build', gulp.series('removeDist', gulp.parallel(buildTasks)));
+
+// DEVELOPMENT
+gulp.task('default', gulp.parallel('build', 'server', 'watch'));
