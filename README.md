@@ -23,7 +23,7 @@
 	<li>Slick lightbox</li>
 </ul>
 
-<blockquote><p>A few words about the structure:</p></blockquote>
+<h5>A few words about the structure:</h5>
 
 <p><strong>src/</strong> - "source" files to build and develop the project. This is where the original source files are located, before being compiled into fewer files to <strong>dist/</strong>.</p>
 <p><strong>dist/</strong> - the compiled code ("distribution").</p>
