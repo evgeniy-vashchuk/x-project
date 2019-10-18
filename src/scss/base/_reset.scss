@@ -107,6 +107,12 @@ img {
 	height: auto;
 }
 
+ul {
+	list-style-type: none;
+	padding-left: 0;
+	margin-bottom: 0;
+}
+
 // for slick ajax-loader.gif
 .slick-list {
 	.slick-loading & {
