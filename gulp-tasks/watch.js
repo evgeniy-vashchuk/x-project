@@ -21,6 +21,9 @@ module.exports = function (gulp, plugins, path, isProduction, withPug) {
 		// FONTS
 		gulp.watch(path.watch.fonts, gulp.parallel('fonts'));
 
+		// ADDITIONAL FILES
+		gulp.watch(path.watch.additionalFiles, gulp.parallel('additionalFiles'));
+
 		done();
 	};
 };

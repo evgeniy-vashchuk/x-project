@@ -34,7 +34,8 @@ const gulp							= require('gulp'),
 					imgBitmap: srcFolder + '/img/**/*.{png,jpg,jpeg}',
 					imgVector: srcFolder + '/img/**/*.svg',
 					favicon: srcFolder + '/img/favicon/apple-touch-icon-180x180.png',
-					fonts: srcFolder + '/fonts/**/*.*'
+					fonts: srcFolder + '/fonts/**/*.*',
+					additionalFiles: srcFolder + '/files/**/*.*',
 				},
 				dist: {
 					html: distFolder + '/',
@@ -42,7 +43,8 @@ const gulp							= require('gulp'),
 					js: distFolder + '/js/',
 					img: distFolder + '/img/',
 					favicon: distFolder + '/img/favicon/',
-					fonts: distFolder + '/fonts/'
+					fonts: distFolder + '/fonts/',
+					additionalFiles: distFolder + '/files/',
 				},
 				watch: {
 					html: srcFolder + '/*.html',
@@ -51,7 +53,8 @@ const gulp							= require('gulp'),
 					js: [srcFolder + '/js/**/*.js', '!' + srcFolder + '/js/libs.js'],
 					jsLibs: srcFolder + '/js/libs.js',
 					img: srcFolder + '/img/**/*.*',
-					fonts: srcFolder + '/fonts/**/*.*'
+					fonts: srcFolder + '/fonts/**/*.*',
+					additionalFiles: srcFolder + '/files/',
 				},
 				server: distFolder
 			};
@@ -87,6 +90,9 @@ gulp.task('img', gulp.series('removeImg', gulp.parallel('img:bitmap', 'img:vecto
 // WORKING WITH FONTS
 gulp.task('fonts', getTask('fonts'));
 
+// ADDITIONAL FILES
+gulp.task('additionalFiles', getTask('additional-files'));
+
 // SERVER
 gulp.task('server', getTask('server'));
 
@@ -106,7 +112,7 @@ gulp.task('removeDist', function(done) {
 });
 
 // BUILD
-var buildTasks = [withPug ? 'pug' : 'html', 'sass', 'js:common', 'js:libs', 'img', 'fonts'];
+var buildTasks = [withPug ? 'pug' : 'html', 'sass', 'js:common', 'js:libs', 'img', 'fonts', 'additionalFiles'];
 gulp.task('build', gulp.series('removeDist', gulp.parallel(buildTasks)));
 
 // DEVELOPMENT
