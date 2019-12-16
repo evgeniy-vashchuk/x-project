@@ -1,21 +1,26 @@
 // MIXINS
 
-// Color of placeholder ------------------------------------
-@mixin placeholder-color($color) {
-	&:-moz-placeholder,
-	&::-moz-placeholder {
-		color: $color;
-		opacity: 1;
-	}
+// Placeholder stylization ------------------------------------
+@mixin placeholder {
 	&::-webkit-input-placeholder {
-		color: $color;
+		@content;
 	}
+
+	&::-moz-placeholder {
+		opacity: 1;
+		@content;
+	}
+
+	&:-moz-placeholder {
+		@content;
+	}
+
 	&:-ms-input-placeholder {
-		color: $color;
+		@content;
 	}
 }
 
-// EXAMPLE: @include placeholder-color(#FF0000);
+// EXAMPLE: @include placeholder {color: red};
 
 // Smooth changing the transparency of the placeholder at the focus ------------------------------------
 @mixin placeholder-opacity($time) {
@@ -109,54 +114,55 @@
 // @include font-face("Roboto", "../fonts/Roboto/Roboto-Italic", 400, italic);
 // @include font-face("Roboto", "../fonts/Roboto/Roboto-Bold", 700);
 
-// Responsive background image ------------------------------------
-@mixin rbg {
-	background-repeat: no-repeat;
+// Cover background image ------------------------------------
+@mixin bgCover() {
 	background-size: cover;
+	background-repeat: no-repeat;
 	background-position: center;
 }
 
-// EXAMPLE: @include rbg;
+// EXAMPLE: @include bgCover;
 
 // Flex center alignment ------------------------------------
-@mixin flex-center {
+@mixin flexCenter() {
 	display: flex;
 	align-items: center;
 	justify-content: center;
 }
 
-// EXAMPLE: @include flex-center;
+// EXAMPLE: @include flexCenter;
 
 // Position absolute center alignment ------------------------------------
-@mixin absolute-center($horizontal: true, $vertical: true) {
+@mixin absoluteCenter($position) {
 	position: absolute;
-	@if ($horizontal and $vertical) {
+
+	@if $position == "v" {
+		top: 50%;
+		transform: translateY(-50%);
+	} @else if $position == "h" {
+		left: 50%;
+		transform: translate(-50%);
+	} @else {
 		top: 50%;
 		left: 50%;
 		transform: translate(-50%, -50%);
-	} @else if ($horizontal) {
-		left: 50%;
-		transform: translate(-50%, 0);
-	} @else if ($vertical) {
-		top: 50%;
-		transform: translate(0, -50%);
 	}
 }
 
-// EXAMPLE: @include absolute-center(true, true);
+// EXAMPLE: @include absoluteCenter;
 
 // Absolute cover ------------------------------------
-@mixin absolute-cover {
+@mixin absoluteCover() {
 	position: absolute;
 	top: 0;
+	left: 0;
 	right: 0;
 	bottom: 0;
-	left: 0;
 	width: 100%;
 	height: 100%;
 }
 
-// EXAMPLE: @include absolute-cover;
+// EXAMPLE: @include absoluteCover;
 
 // Responsive images ------------------------------------
 @mixin img-res {

@@ -26,13 +26,8 @@
 
 // responsive background image
 .-resp-bg-img {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-
-	@include rbg;
+	@include absoluteCover;
+	@include bgCover;
 }
 
 // background color for embed video
