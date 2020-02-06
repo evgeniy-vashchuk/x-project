@@ -22,34 +22,6 @@
 
 // EXAMPLE: @include placeholder {color: red};
 
-// Smooth changing the transparency of the placeholder at the focus ------------------------------------
-@mixin placeholder-opacity($time) {
-	&::-webkit-input-placeholder       { opacity: 1; transition: opacity $time ease; }
-	&::-moz-placeholder                { opacity: 1; transition: opacity $time ease; }
-	&:-moz-placeholder                 { opacity: 1; transition: opacity $time ease; }
-	&:-ms-input-placeholder            { opacity: 1; transition: opacity $time ease; }
-	&:focus::-webkit-input-placeholder { opacity: 0; transition: opacity $time ease; }
-	&:focus::-moz-placeholder          { opacity: 0; transition: opacity $time ease; }
-	&:focus:-moz-placeholder           { opacity: 0; transition: opacity $time ease; }
-	&:focus:-ms-input-placeholder      { opacity: 0; transition: opacity $time ease; }
-}
-
-// EXAMPLE: @include placeholder-opacity(0.5s);
-
-// Shifting the placeholder to the right with focus ------------------------------------
-@mixin placeholder-animation($indent, $time) {
-	&::-webkit-input-placeholder       { text-indent: 0;   transition: text-indent $time ease; }
-	&::-moz-placeholder                { text-indent: 0;   transition: text-indent $time ease; }
-	&:-moz-placeholder                 { text-indent: 0;   transition: text-indent $time ease; }
-	&:-ms-input-placeholder            { text-indent: 0;   transition: text-indent $time ease; }
-	&:focus::-webkit-input-placeholder { text-indent: $indent; transition: text-indent $time ease; }
-	&:focus::-moz-placeholder          { text-indent: $indent; transition: text-indent $time ease; }
-	&:focus:-moz-placeholder           { text-indent: $indent; transition: text-indent $time ease; }
-	&:focus:-ms-input-placeholder      { text-indent: $indent; transition: text-indent $time ease; }
-}
-
-// EXAMPLE: @include placeholder-animation(500px, 0.5s);
-
 // Сreation border-arrows ------------------------------------
 @mixin border-arrow($width, $height, $bg, $direction) {
 	width: 0;
@@ -108,7 +80,7 @@
 	}
 }
 
-// EXAMPLE: 
+// EXAMPLE:
 
 // @include font-face("Roboto", "../fonts/Roboto/Roboto-Regular", 400);
 // @include font-face("Roboto", "../fonts/Roboto/Roboto-Italic", 400, italic);
@@ -133,16 +105,16 @@
 // EXAMPLE: @include flexCenter;
 
 // Position absolute center alignment ------------------------------------
-@mixin absoluteCenter($position) {
+@mixin absoluteCenter($position: null) {
 	position: absolute;
 
 	@if $position == "v" {
 		top: 50%;
-		transform: translateY(-50%);
+		transform: translate(0, -50%);
 	} @else if $position == "h" {
 		left: 50%;
-		transform: translate(-50%);
-	} @else {
+		transform: translate(-50%, 0);
+	} @else if $position == null {
 		top: 50%;
 		left: 50%;
 		transform: translate(-50%, -50%);
@@ -163,6 +135,50 @@
 }
 
 // EXAMPLE: @include absoluteCover;
+
+// Size of element ------------------------------------
+@mixin sizeElement($width, $height: $width) {
+	width: $width;
+	height: $height;
+}
+
+// EXAMPLE: @include sizeElement(50px);
+
+// Default pseudo-element ------------------------------------
+@mixin pseudo($display: block, $pos: absolute, $content: ''){
+	content: $content;
+	display: $display;
+	position: $pos;
+}
+
+// EXAMPLE: div:after {@include pseudo; top: 100px; left: 100px; width: 200px; height: 200px;}
+
+// Responsive ratio block through bottom padding ------------------------------------
+@mixin responsive-ratio($x, $y, $pseudo: false) {
+	$padding: unquote( ( $y / $x ) * 100 + '%' );
+
+	@if $pseudo {
+		&:before {
+			@include pseudo($pos: relative);
+
+			width: 100%;
+			padding-top: $padding;
+		}
+	} @else {
+		padding-bottom: $padding;
+	}
+}
+
+// EXAMPLE: @include responsive-ratio(16, 9);
+
+// Preventing Overflow with Ellipsis ------------------------------------
+@mixin ellipsis() {
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+// EXAMPLE: @include ellipsis;
 
 // Responsive images ------------------------------------
 @mixin img-res {

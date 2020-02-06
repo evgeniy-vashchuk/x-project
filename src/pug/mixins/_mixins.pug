@@ -1,0 +1,14 @@
+//- MENU LIST ============================================================
+
+//- +menuList({
+//- 	items: ["Item 1", "Item 2", "Item 3"]
+//- })
+
+mixin menuList(obj)
+	- var DEFAULT_OPTIONS = { items: ["Item 1", "Item 2", "Item 3"] };
+	- obj = Object.assign({}, DEFAULT_OPTIONS, obj || {});
+
+	ul&attributes(attributes)
+		- for (var i = 0; i < obj.items.length; i++)
+			li
+				a(href="#")= obj.items[i]

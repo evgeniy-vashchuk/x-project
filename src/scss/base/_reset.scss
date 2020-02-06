@@ -99,7 +99,9 @@ textarea {
 }
 
 a {
-	background-color: transparent;
+	&[href*="mailto:"] {
+		word-wrap: break-word;
+	}
 }
 
 img {

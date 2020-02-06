@@ -1,0 +1,29 @@
+include ../mixins/_mixins
+
+block vars
+
+doctype html
+html(lang= pageLang || "en")
+	head
+		include ../layout/_head.pug
+	|
+	|
+	body(class= bodyClass)
+		// HEADER
+		include ../layout/_header.pug
+		// HEADER END
+		|
+		|
+		// CONTENT
+		main.main
+			block content
+		// CONTENT END
+		|
+		|
+		// FOOTER
+		include ../layout/_footer.pug
+		// FOOTER END
+		|
+		|
+		// connection JAVASCRIPT
+		include ../layout/_scripts.pug
