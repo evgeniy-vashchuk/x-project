@@ -104,6 +104,15 @@
 
 // EXAMPLE: @include flexCenter;
 
+// Inline-flex center alignment ------------------------------------
+@mixin inlineFlexCenter() {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+}
+
+// EXAMPLE: @include inlineFlexCenter;
+
 // Position absolute center alignment ------------------------------------
 @mixin absoluteCenter($position: null) {
 	position: absolute;
@@ -330,3 +339,28 @@
 //);
 //
 //then add .animName class to your element
+
+// HEADINGS FONT SIZE ------------------------------------
+@mixin title-sizes() {
+	@each $media, $titles-size in $title-palette {
+		@if $media == xs {
+			@each $title, $size in $titles-size {
+				#{$title},
+				.#{$title} {
+					font-size: $size + px;
+				}
+			}
+		} @else {
+			@include min-w(#{$media}) {
+				@each $title, $size in $titles-size {
+					#{$title},
+					.#{$title} {
+						font-size: $size + px;
+					}
+				}
+			}
+		}
+	}
+}
+
+// @include title-sizes();

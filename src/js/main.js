@@ -1,8 +1,10 @@
-(function($) {
-	"use strict";
+'use strict';
 
-	$(document).ready(function() {
+jQuery(function($) {
+	initObjectFitImagesPolyfill();
 
-	});
-
-})(jQuery);
+	function initObjectFitImagesPolyfill() {
+		var $ofi = $('img.js-ofi:not(.js-lazy)');
+		objectFitImages($ofi);
+	}
+});

@@ -8,7 +8,7 @@
 
 	ADDITIONAL OPTIONS:
 	--pug								- using pug preprocessor to generate html
-	--prod							- minification js, minification css, add vendor prefixes, group media queries, remove comments, image compression
+	--prod							- minification js, minification css, add vendor prefixes, group media queries, remove comments
 */
 
 'use strict';
@@ -30,8 +30,7 @@ const gulp							= require('gulp'),
 					css: srcFolder + '/scss/**/*.{scss,sass,css}',
 					js: [srcFolder + '/js/**/*.js', '!' + srcFolder + '/js/**/_*.js', '!' + srcFolder + '/js/libs.js'],
 					jsLibs: srcFolder + '/js/libs.js',
-					imgBitmap: srcFolder + '/img/**/*.{png,jpg,jpeg}',
-					imgVector: srcFolder + '/img/**/*.svg',
+					img: srcFolder + '/img/**/*.{gif,png,jpg,jpeg,svg}',
 					favicon: srcFolder + '/img/favicon/apple-touch-icon-180x180.png',
 					fonts: srcFolder + '/fonts/**/*.*',
 					additionalFiles: srcFolder + '/files/**/*.*',
@@ -76,16 +75,10 @@ gulp.task('js:common', getTask('js-common'));
 gulp.task('js:libs', getTask('js-libs'));
 
 // WORKING WITH IMAGES
-gulp.task('img:bitmap', getTask('img-bitmap'));
-gulp.task('img:vector', getTask('img-vector'));
-gulp.task('img:favicon', getTask('img-favicon'));
+gulp.task('img', getTask('img'));
+gulp.task('favicon', getTask('favicon'));
 
-gulp.task('img:remove', function(done) {
-	plugins.del.sync(path.dist.img);
-	done();
-});
-
-gulp.task('img', gulp.series('img:remove', gulp.parallel('img:bitmap', 'img:vector', 'img:favicon')));
+gulp.task('img', gulp.parallel('img', 'favicon'));
 
 // WORKING WITH FONTS
 gulp.task('fonts', getTask('fonts'));
@@ -104,7 +97,7 @@ gulp.task('watch', getTask('watch'));
 
 // REMOVE DIST
 gulp.task('removeDist', function(done) {
-	plugins.del.sync(path.server);
+	plugins.del.sync(path.server, {force: true});
 	done();
 });
 

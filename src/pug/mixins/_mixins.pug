@@ -10,5 +10,5 @@ mixin menuList(obj)
 
 	ul&attributes(attributes)
 		- for (var i = 0; i < obj.items.length; i++)
-			li
+			li(id= obj.items[i].replace(/\s+/g, '-').toLowerCase())
 				a(href="#")= obj.items[i]
