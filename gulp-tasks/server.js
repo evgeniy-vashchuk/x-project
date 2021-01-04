@@ -18,7 +18,7 @@ module.exports = function (gulp, plugins, path, isProduction) {
 				}
 			},
 			//online: false, // Work offline without internet connection
-			//tunnel: true, tunnel: 'projectname', // Demonstration page: http://projectname.localtunnel.me
+			//tunnel: 'yousutename', // Attempt to use the URL https://yousutename.loca.lt
 		});
 
 		done();

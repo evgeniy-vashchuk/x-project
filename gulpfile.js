@@ -106,4 +106,4 @@ var buildTasks = [withPug ? 'pug' : 'html', 'sass', 'js:common', 'js:libs', 'img
 gulp.task('build', gulp.series('removeDist', gulp.parallel(buildTasks)));
 
 // DEVELOPMENT
-gulp.task('default', gulp.parallel('build', 'server', 'watch'));
+gulp.task('default', gulp.series('build', 'server', 'watch'));

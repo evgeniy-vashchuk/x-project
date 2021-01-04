@@ -15,6 +15,7 @@ module.exports = function (gulp, plugins, path, isProduction) {
 			.pipe(plugins.if(isProduction, plugins.replace('css/main.css', 'css/main.min.css')))
 			.pipe(plugins.if(isProduction, plugins.replace('js/libs.js', 'js/libs.min.js')))
 			.pipe(plugins.if(isProduction, plugins.replace('js/main.js', 'js/main.min.js')))
+			.pipe(plugins.replace('-->', ' -->'))
 			.pipe(gulp.dest(path.dist.html));
 
 		done();
