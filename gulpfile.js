@@ -75,10 +75,10 @@ gulp.task('js:common', getTask('js-common'));
 gulp.task('js:libs', getTask('js-libs'));
 
 // WORKING WITH IMAGES
-gulp.task('img', getTask('img'));
-gulp.task('favicon', getTask('favicon'));
+gulp.task('img:common', getTask('img-common'));
+gulp.task('img:favicon', getTask('img-favicon'));
 
-gulp.task('img', gulp.parallel('img', 'favicon'));
+gulp.task('img', gulp.series('img:common', 'img:favicon'));
 
 // WORKING WITH FONTS
 gulp.task('fonts', getTask('fonts'));
