@@ -3,7 +3,9 @@ module.exports = function (gulp, plugins, path, isProduction) {
 		gulp.src(path.src.js)
 			.pipe(plugins.include({separateInputs: true})) // EXAMPLE OF CONNECTION: //=include _sliders.js
 			.pipe(plugins.babel({
-				presets: ['@babel/preset-env']
+				presets: ['@babel/preset-env'],
+				retainLines: true,
+				compact: false,
 			}))
 			.pipe(plugins.if(isProduction, plugins.terser())) // minify js
 			.pipe(plugins.if(isProduction, plugins.rename({suffix: '.min'})))

@@ -1,76 +1,63 @@
-<p>
-	<img src="https://raw.githubusercontent.com/inkogn1to/x-project/master/src/img/x-project.jpg" alt="Start HTML Template">
-</p>
+![Start HTML Template](https://raw.githubusercontent.com/inkogn1to/x-project/master/src/img/x-project.jpg)
 
 ---
 
-<p align="center">
-	📌 <strong>RECOMMENDED TO USE WITH <a href="https://evgeniy-vashchuk.github.io/x-project-components/index.html">X-PROJECT COMPONENTS</a></strong> 📌
-</p>
+📌 **RECOMMENDED TO USE WITH [X-PROJECT COMPONENTS](https://evgeniy-vashchuk.github.io/x-project-components/index.html)** 📌
 
 ---
 
-<h2>About</h2>
+# About
 
-<p>X-Project - is starter template with basic tasks for development, which uses <a href="https://gulpjs.com">Gulp</a> to compile CSS to SASS (with <strong>SCSS</strong> syntax), add vendor prefixes, group media queries, remove comments and minimise CSS, convert ES6 into ES5 using Babel, optimising images (with <a href="https://tinypng.com/">TinyPNG</a> and <a href="https://github.com/svg/svgo">SVGO</a>), <a href="https://browsersync.io/">Browsersync</a> for live-reload while development, simple favicon generator and project archiving. It includes the following libraries and frameworks:</p>
+X-Project - is starter template with basic tasks for development, which uses [Gulp](https://gulpjs.com) to compile SASS to CSS (with **SCSS** syntax), add vendor prefixes, group media queries, remove comments and minimise CSS, convert ES6 into ES5 using Babel, optimising images, [Browsersync](https://browsersync.io/) for live-reload while development, simple favicon generator and project archiving. It includes the following libraries and frameworks (as a starting base):
 
-<ul>
-	<li>jQuery</li>
-	<li>Bootstrap 4</li>
-	<li>Font Awesome 5</li>
-	<li>Icomoon</li>
-	<li>Slick slider</li>
-	<li>Slick lightbox</li>
-</ul>
+- jQuery
+- Bootstrap 5
+- Font Awesome 5
+- Icomoon
+- Slick slider
 
-<h5>A few words about the structure:</h5>
+###### A few words about the structure:
 
-<p><strong>src/</strong> - "source" files to build and develop the project. This is where the original source files are located, before being compiled into fewer files to <strong>dist/</strong>.</p>
-<p><strong>dist/</strong> - the compiled code ("distribution").</p>
+**src/** - "source" files to build and develop the project. This is where the original source files are located, before being compiled into fewer files to **dist/**.
+**dist/** - the compiled code ("distribution").
 
-<p>Our project follow <a href="https://sass-guidelin.es/#architecture">Sass guidelines</a>.</p>
+Our project follow [SASS guidelines](https://sass-guidelin.es/#architecture).
 
-<h2>How to use</h2>
+# How to use
 
-<p>1) You must have installed:</p>
+1) You must have installed:
 
-<ul>
-	<li><a href="https://nodejs.org/en/">Node.js</a></li>
-	<li><a href="https://gulpjs.com/">Gulp</a></li>
-</ul>
+- [Node.js](https://nodejs.org/en/)
+- [Gulp](https://gulpjs.com/)
 
-<p>2) <a href="/inkogn1to/x-project/archive/master.zip">Download</a> or clone <strong>X-Project</strong> from Github</p>
-<p>3) Install Node Modules:</p>
+2) [Download](/inkogn1to/x-project/archive/master.zip) or clone **X-Project** from Github
+3) Install Node Modules:
 
 ```
 npm i
 ```
 
-<p>4) Run the project:</p>
+4) Run the project:
 
 ```
 gulp
 ```
 
-<h2>Gulp tasks</h2>
+# Gulp tasks
 
-<ul>
-	<li><strong>gulp</strong> - starting default gulp task (build, server, watch) for development</li>
-	<li><strong>gulp build</strong> - build project</li>
-	<li><strong>gulp removeDist</strong> - delete dist folder</li>
-	<li><strong>gulp img</strong> - image compression</li>
-	<li><strong>gulp favicon</strong> - favicon generator</li>
-	<li><strong>gulp zip</strong> - project archiving</li>
-</ul>
+- **gulp** - starting default gulp task (build, server, watch) for development
+- **gulp build** - build project
+- **gulp removeDist** - delete dist folder
+- **gulp img** - image compression
+- **gulp favicon** - favicon generator
+- **gulp zip** - project archiving
 
-<h5>Additional options:</h5>
-<ul>
-	<li><strong>--prod</strong> - minification js, minification css, add vendor prefixes, group media queries, remove comments, image compression</li>
-	<li><strong>--pug</strong> - using pug preprocessor to generate html</li>
-</ul>
+###### Additional options:
 
+- **--prod** - minification js, minification css, add vendor prefixes, group media queries, remove comments, image compression
+- **--pug** - using pug preprocessor to generate html
 
-<h2>Changelog</h2>
+# Changelog
 
 | Changes | Date |
 | ----- | ----- |

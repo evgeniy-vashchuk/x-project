@@ -1,4 +1,4 @@
-module.exports = function (gulp, plugins, path, isProduction) {
+module.exports = function (gulp, plugins, path, isProduction, withPug) {
 	return function (done) {
 		gulp.src(path.src.css)
 			.pipe(plugins.if(!isProduction, plugins.sourcemaps.init()))
@@ -13,13 +13,6 @@ module.exports = function (gulp, plugins, path, isProduction) {
 				plugins.autoprefixer(['last 10 versions']),
 				plugins.cssMqpacker({
 					sort: plugins.sortCssMediaQueries
-				}),
-				plugins.cssnano({
-					preset: ['default', {
-						discardComments: {
-							removeAll: true,
-						},
-					}]
 				})
 			])))
 			.pipe(plugins.if(isProduction, plugins.rename({suffix: '.min'})))

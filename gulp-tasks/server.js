@@ -2,7 +2,8 @@ module.exports = function (gulp, plugins, path, isProduction) {
 	return function (done) {
 		plugins.browserSync({
 			server: {
-				baseDir: path.server
+				baseDir: path.server,
+				directory: true
 			},
 			notify: {
 				styles: {

@@ -69,6 +69,7 @@
 		font-family: $font-family;
 		font-weight: $weight;
 		font-style: $style;
+		font-display: swap;
 		@if $asset-pipeline == true {
 			src: font-url('#{$file-path}.eot');
 			src: font-url('#{$file-path}.eot?#iefix') format('embedded-opentype'), font-url('#{$file-path}.woff2') format('woff2'), font-url('#{$file-path}.woff') format('woff'), font-url('#{$file-path}.ttf') format('truetype');
@@ -341,13 +342,18 @@
 //then add .animName class to your element
 
 // HEADINGS FONT SIZE ------------------------------------
-@mixin title-sizes() {
+@mixin title-sizes($with-rem: false) {
 	@each $media, $titles-size in $title-palette {
 		@if $media == xs {
 			@each $title, $size in $titles-size {
 				#{$title},
 				.#{$title} {
-					font-size: $size + px;
+					@if $with-rem {
+						$value: $size + 0px;
+						font-size: rem($value);
+					} @else {
+						font-size: $size + px;
+					}
 				}
 			}
 		} @else {
@@ -355,7 +361,12 @@
 				@each $title, $size in $titles-size {
 					#{$title},
 					.#{$title} {
-						font-size: $size + px;
+						@if $with-rem {
+							$value: $size + 0px;
+							font-size: rem($value);
+						} @else {
+							font-size: $size + px;
+						}
 					}
 				}
 			}
@@ -364,3 +375,102 @@
 }
 
 // @include title-sizes();
+
+// CUSTOM SCROLLBAR ------------------------------------
+@mixin customScrollbar($scrollbar-size, $scrollbar-track-bg, $scrollbar-thumb-bg, $scrollbar-thumb-border-radius: 0) {
+	&::-webkit-scrollbar-button {
+		background-image: url();
+		background-repeat: no-repeat;
+		width: 100%;
+		height: 0;
+	}
+
+	&::-webkit-scrollbar-track {
+		background-color: $scrollbar-track-bg;
+
+		&:active {
+			background-color: lighten($scrollbar-track-bg, 5%);
+		}
+	}
+
+	&::-webkit-scrollbar-thumb {
+		border-radius: $scrollbar-thumb-border-radius;
+		background-color: $scrollbar-thumb-bg;
+		background-repeat: no-repeat;
+		background-position: center;
+
+		&:hover {
+			background-color: lighten($scrollbar-thumb-bg, 5%);
+		}
+
+		&:active {
+			background-color: darken($scrollbar-thumb-bg, 5%);
+		}
+	}
+
+	&::-webkit-scrollbar-thumb:vertical {
+		background-image: $scrollbar-size;
+	}
+
+	&::-webkit-resizer {
+		background-image: url('');
+		background-repeat: no-repeat;
+		background-color: $scrollbar-track-bg;
+		width: $scrollbar-size;
+		height: $scrollbar-size;
+	}
+
+	&::-webkit-scrollbar {
+		width: $scrollbar-size;
+		height: $scrollbar-size;
+	}
+
+	// FOR INTERNET EXPLORER
+	& {
+		scrollbar-face-color: $scrollbar-thumb-bg;
+		scrollbar-track-color: $scrollbar-track-bg;
+		scrollbar-shadow-color: $scrollbar-thumb-bg;
+		scrollbar-arrow-color: $scrollbar-thumb-bg;
+	}
+
+	// FOR FIREFOX
+	& {
+		scrollbar-width: auto;
+		scrollbar-color: $scrollbar-thumb-bg $scrollbar-track-bg;
+	}
+}
+
+// EXAMPLE: @include customScrollbar(10px, red, green, 5px);
+
+// LIST RESET ------------------------------------
+@mixin listreset {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+// @include listreset;
+
+// WORD WRAP ------------------------------------
+@mixin word-wrap() {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  -ms-word-break: break-all;
+  word-break: break-all;
+  word-break: break-word;
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+}
+
+// @include word-wrap;
+
+// ELLIPSIS ------------------------------------
+@mixin ellipsis() {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+// @include ellipsis;

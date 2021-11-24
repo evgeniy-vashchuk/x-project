@@ -15,7 +15,12 @@
 
 const gulp							= require('gulp'),
 			argv							= require('yargs').argv,
-			plugins						= require('gulp-load-plugins')({ pattern: '*' }),
+			plugins						= require('gulp-load-plugins')({
+				pattern: '*',
+				rename: {
+					'gulp-dart-sass': 'sass'
+				}
+			}),
 
 			isProduction = (argv.prod !== undefined),
 			withPug = (argv.pug !== undefined),
@@ -106,4 +111,4 @@ var buildTasks = [withPug ? 'pug' : 'html', 'sass', 'js:common', 'js:libs', 'img
 gulp.task('build', gulp.series('removeDist', gulp.parallel(buildTasks)));
 
 // DEVELOPMENT
-gulp.task('default', gulp.series('build', 'server', 'watch'));
+gulp.task('default', gulp.series('build', gulp.parallel('server', 'watch')));
