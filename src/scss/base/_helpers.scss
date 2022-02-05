@@ -1,13 +1,11 @@
-// vertical text top - bottom
-.-vertical-text-top-bottom {
+.vertical-text-top-bottom {
 	writing-mode: vertical-rl;
 	-webkit-writing-mode: vertical-rl;
 	display: inline-block;
 	margin: 0;
 }
 
-// vertical text bottom - top
-.-vertical-text-bottom-top {
+.vertical-text-bottom-top {
 	writing-mode: vertical-rl;
 	-webkit-writing-mode: vertical-rl;
 	transform: rotate(180deg);
@@ -15,28 +13,7 @@
 	margin: 0;
 }
 
-.-visually-hidden {
-	position: absolute;
-	width: 1px;
-	height: 1px;
-	margin: -1px;
-	padding: 0;
-	border: 0;
-	clip: rect(0 0 0 0);
-	overflow: hidden;
-}
-
-.-overflow-hidden {
-	overflow: hidden;
-}
-
-.-text-overflow {
-	overflow: hidden;
-	text-overflow: ellipsis;
-	white-space: nowrap;
-}
-
-.-slick-with-flex {
+.slick-with-flex {
 	.slick-track {
 		display: flex;
 	}
@@ -51,7 +28,7 @@
 	}
 }
 
-.-slick-slides-spacing-15 {
+.slick-slides-spacing-15 {
 	.slick-list {
 		margin: 0 -15px;
 	}
@@ -65,5 +42,4 @@
 	@include absoluteCover;
 
 	object-fit: cover;
-	font-family: 'object-fit: cover;';
 }

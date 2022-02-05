@@ -465,12 +465,3 @@
 }
 
 // @include word-wrap;
-
-// ELLIPSIS ------------------------------------
-@mixin ellipsis() {
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-}
-
-// @include ellipsis;
