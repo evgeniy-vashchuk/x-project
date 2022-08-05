@@ -1,6 +1,6 @@
 module.exports = function (gulp, plugins, path, isProduction) {
 	return function (done) {
-		gulp.src(path.src.js)
+		gulp.src(path.src.js, {allowEmpty: true})
 			.pipe(plugins.include({separateInputs: true})) // EXAMPLE OF CONNECTION: //=include _sliders.js
 			.pipe(plugins.babel({
 				presets: ['@babel/preset-env'],

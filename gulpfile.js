@@ -16,7 +16,10 @@
 const gulp							= require('gulp'),
 			argv							= require('yargs').argv,
 			plugins						= require('gulp-load-plugins')({
-				pattern: '*'
+				pattern: '*',
+				rename: {
+					'gulp-sass': 'dartSass'
+				}
 			}),
 
 			isProduction = (argv.prod !== undefined),

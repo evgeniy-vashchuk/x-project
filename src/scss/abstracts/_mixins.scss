@@ -22,7 +22,7 @@
 
 // EXAMPLE: @include placeholder {color: red};
 
-// Сreation border-arrows ------------------------------------
+// Creation border-arrows ------------------------------------
 @mixin border-arrow($width, $height, $bg, $direction) {
 	width: 0;
 	height: 0;
@@ -220,7 +220,7 @@
 // Media queries for max width ------------------------------------
 @mixin max-w($breakpoint) {
 	@if map-has-key($grid-breakpoints, $breakpoint) {
-		@media only screen and (max-width: #{map-get($grid-breakpoints, $breakpoint) - 1px}) {
+		@media only screen and (max-width: #{map-get($grid-breakpoints, $breakpoint) - 0.02px}) {
 			@content;
 		}
 	}

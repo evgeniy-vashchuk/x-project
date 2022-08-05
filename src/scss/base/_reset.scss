@@ -41,6 +41,11 @@ textarea {
 	display: none;
 }
 
+// remove full screen button for video on opera browser
+#detach-button-host {
+	display: none !important;
+}
+
 .btn:focus,
 .btn.focus,
 .btn:active,
@@ -57,15 +62,4 @@ a {
 img {
 	max-width: 100%;
 	height: auto;
-}
-
-// for slick ajax-loader.gif
-.slick-list {
-	.slick-loading & {
-		background: none;
-	}
-}
-
-.slick-slide {
-	user-select: text;
 }

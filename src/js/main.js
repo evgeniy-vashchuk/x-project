@@ -1,5 +1,5 @@
 'use strict';
 
-jQuery(function($) {
-
+$(function() {
+	// your code here
 });

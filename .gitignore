@@ -1,8 +1,9 @@
-/node_modules/
-/.idea/
-/dist/
-/.git/
+/node_modules
+/.idea
+/dist
+/.git
 /**/Thumbs.db
 /**/*.DS_Store
-/.vscode/
-/.idea/
+/.vscode
+/.idea
+/**/*.zip

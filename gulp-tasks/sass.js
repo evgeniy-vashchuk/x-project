@@ -1,11 +1,14 @@
 module.exports = function (gulp, plugins, path, isProduction, withPug) {
 	return function (done) {
+		const sass = plugins.dartSass(require('sass'));
+
 		gulp.src(path.src.css)
 			.pipe(plugins.if(!isProduction, plugins.sourcemaps.init()))
-			.pipe(plugins.sass({
+			.pipe(sass({
 				outputStyle: 'expanded',
 				indentType: 'tab',
-				indentWidth: 1
+				indentWidth: 1,
+				includePaths: ['./node_modules']
 			}).on("error", plugins.notify.onError({
 				title: "Error compiling SASS"
 			})))
