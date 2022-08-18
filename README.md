@@ -14,7 +14,7 @@ X-Project - is starter template with basic tasks for development, which uses [Gu
 - Bootstrap 5
 - Font Awesome 5
 - Icomoon
-- Slick slider
+- Tiny Slider 2
 
 ###### A few words about the structure:
 
@@ -56,10 +56,3 @@ gulp
 
 - **--prod** - minification js, minification css, add vendor prefixes, group media queries, remove comments, image compression
 - **--pug** - using pug preprocessor to generate html
-
-# Changelog
-
-| Changes | Date |
-| ----- | ----- |
-| Added Pug, absolute cover mixin, mixin keyframe delay in iteration.| 26.08.2018 |
-| Release of version №2 | 15.10.2019 |
