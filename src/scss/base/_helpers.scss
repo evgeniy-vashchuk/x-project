@@ -1,44 +1,10 @@
-.vertical-text-top-bottom {
-	writing-mode: vertical-rl;
-	-webkit-writing-mode: vertical-rl;
-	display: inline-block;
-	margin: 0;
+.of-contain {
+	@include absoluteCover;
+
+	object-fit: contain;
 }
 
-.vertical-text-bottom-top {
-	writing-mode: vertical-rl;
-	-webkit-writing-mode: vertical-rl;
-	transform: rotate(180deg);
-	display: inline-block;
-	margin: 0;
-}
-
-.slick-with-flex {
-	.slick-track {
-		display: flex;
-	}
-
-	.slick-slide {
-		display: flex;
-		height: auto;
-
-		> div {
-			width: 100%;
-		}
-	}
-}
-
-.slick-slides-spacing-15 {
-	.slick-list {
-		margin: 0 -15px;
-	}
-
-	.slick-slide {
-		margin: 0 15px;
-	}
-}
-
-.ofi {
+.of-cover {
 	@include absoluteCover;
 
 	object-fit: cover;

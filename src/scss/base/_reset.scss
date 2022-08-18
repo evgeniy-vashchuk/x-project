@@ -11,12 +11,13 @@ body {
 	overflow-x: hidden;
 }
 
-input[type='text'],
-input[type='tel'],
-input[type='email'],
-input[type='search'],
-input[type='password'],
-input[type='url'],
+input[type="text"],
+input[type="tel"],
+input[type="number"],
+input[type="email"],
+input[type="search"],
+input[type="password"],
+input[type="url"],
 textarea {
 	@include placeholder {
 		line-height: normal;
@@ -44,13 +45,6 @@ textarea {
 // remove full screen button for video on opera browser
 #detach-button-host {
 	display: none !important;
-}
-
-.btn:focus,
-.btn.focus,
-.btn:active,
-.btn:visited {
-	box-shadow: none;
 }
 
 a {

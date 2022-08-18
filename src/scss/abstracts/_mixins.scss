@@ -23,7 +23,7 @@
 // EXAMPLE: @include placeholder {color: red};
 
 // Creation border-arrows ------------------------------------
-@mixin border-arrow($width, $height, $bg, $direction) {
+@mixin borderArrow($width, $height, $bg, $direction) {
 	width: 0;
 	height: 0;
 	border-style: solid;
@@ -61,10 +61,10 @@
 	}
 }
 
-// EXAMPLE: @include border-arrow(20, 20, #FF0000, t);
+// EXAMPLE: @include borderArrow(20, 20, #FF0000, t);
 
 // Adding fonts ------------------------------------
-@mixin font-face($font-family, $file-path, $weight: normal, $style: normal, $asset-pipeline: false ) {
+@mixin fontFace($font-family, $file-path, $weight: normal, $style: normal, $asset-pipeline: false ) {
 	@font-face {
 		font-family: $font-family;
 		font-weight: $weight;
@@ -164,7 +164,7 @@
 // EXAMPLE: div:after {@include pseudo; top: 100px; left: 100px; width: 200px; height: 200px;}
 
 // Responsive ratio block through bottom padding ------------------------------------
-@mixin responsive-ratio($x, $y, $pseudo: false) {
+@mixin responsiveRatio($x, $y, $pseudo: false) {
 	$padding: unquote( ( $y / $x ) * 100 + '%' );
 
 	@if $pseudo {
@@ -179,7 +179,7 @@
 	}
 }
 
-// EXAMPLE: @include responsive-ratio(16, 9);
+// EXAMPLE: @include responsiveRatio(16, 9);
 
 // Preventing Overflow with Ellipsis ------------------------------------
 @mixin ellipsis() {
@@ -191,12 +191,12 @@
 // EXAMPLE: @include ellipsis;
 
 // Responsive images ------------------------------------
-@mixin img-res {
+@mixin imgRes {
 	max-width: 100%;
 	height: auto;
 }
 
-// EXAMPLE: @include img-res;
+// EXAMPLE: @include imgRes;
 
 // Gray image ------------------------------------
 @mixin gray {
@@ -210,12 +210,12 @@
 // EXAMPLE: @include gray;
 
 // Gray none ------------------------------------
-@mixin gray-zero {
+@mixin grayZero {
 	filter: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><filter id='grayscale'><feColorMatrix type='matrix' values='1 0 0 0 0, 0 1 0 0 0, 0 0 1 0 0, 0 0 0 1 0'/></filter></svg>#grayscale");
 	-webkit-filter: grayscale(0%);
 }
 
-// EXAMPLE: @include gray-zero;
+// EXAMPLE: @include grayZero;
 
 // Media queries for max width ------------------------------------
 @mixin max-w($breakpoint) {
@@ -342,7 +342,7 @@
 //then add .animName class to your element
 
 // HEADINGS FONT SIZE ------------------------------------
-@mixin title-sizes($with-rem: false) {
+@mixin titleSizes($with-rem: false) {
 	@each $media, $titles-size in $title-palette {
 		@if $media == xs {
 			@each $title, $size in $titles-size {
@@ -374,7 +374,7 @@
 	}
 }
 
-// @include title-sizes();
+// @include titleSizes();
 
 // CUSTOM SCROLLBAR ------------------------------------
 @mixin customScrollbar($scrollbar-size, $scrollbar-track-bg, $scrollbar-thumb-bg, $scrollbar-thumb-border-radius: 0) {
@@ -443,25 +443,51 @@
 // EXAMPLE: @include customScrollbar(10px, red, green, 5px);
 
 // LIST RESET ------------------------------------
-@mixin listreset {
+@mixin listReset {
 	margin: 0;
 	padding: 0;
 	list-style: none;
 }
 
-// @include listreset;
+// @include listReset;
 
 // WORD WRAP ------------------------------------
-@mixin word-wrap() {
-  overflow-wrap: break-word;
-  word-wrap: break-word;
-  -ms-word-break: break-all;
-  word-break: break-all;
-  word-break: break-word;
-  -ms-hyphens: auto;
-  -moz-hyphens: auto;
-  -webkit-hyphens: auto;
-  hyphens: auto;
+@mixin wordWrap() {
+	overflow-wrap: break-word;
+	word-wrap: break-word;
+	-ms-word-break: break-all;
+	word-break: break-all;
+	word-break: break-word;
+	-ms-hyphens: auto;
+	-moz-hyphens: auto;
+	-webkit-hyphens: auto;
+	hyphens: auto;
 }
 
-// @include word-wrap;
+// @include wordWrap;
+
+// vertical text top bottom ------------------------------------
+@mixin verticalTextTopBottom() {
+	overflow-wrap: break-word;
+	word-wrap: break-word;
+	-ms-word-break: break-all;
+	word-break: break-all;
+	word-break: break-word;
+	-ms-hyphens: auto;
+	-moz-hyphens: auto;
+	-webkit-hyphens: auto;
+	hyphens: auto;
+}
+
+// @include verticalTextTopBottom;
+
+// vertical text bottom top ------------------------------------
+@mixin verticalTextBottomTop() {
+	writing-mode: vertical-rl;
+	-webkit-writing-mode: vertical-rl;
+	transform: rotate(180deg);
+	display: inline-block;
+	margin: 0;
+}
+
+// @include verticalTextBottomTop;

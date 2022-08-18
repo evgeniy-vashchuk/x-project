@@ -1,8 +1,24 @@
-@include title-sizes();
+@include titleSizes();
 
-.text-block {
-	p:last-child {
-		margin-bottom: 0;
+.text-block,
+.remove-last-child-margin {
+	> * {
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+
+	&.row {
+		> * {
+			&.col,
+			&[class^="col-"] {
+				&:last-child {
+					> * {
+						margin-bottom: 0;
+					}
+				}
+			}
+		}
 	}
 }
 
