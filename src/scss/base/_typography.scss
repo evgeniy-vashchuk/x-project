@@ -22,6 +22,17 @@
 	}
 }
 
+.text-sm {
+	font-size: $font-size-sm !important;
+	line-height: $line-height-sm;
+}
+
+.text-lg {
+	font-size: $font-size-lg !important;
+	line-height: $line-height-lg;
+}
+
+
 h1, .h1,
 h2, .h2,
 h3, .h3,
