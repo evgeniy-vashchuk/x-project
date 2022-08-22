@@ -164,7 +164,7 @@
 // EXAMPLE: div:after {@include pseudo; top: 100px; left: 100px; width: 200px; height: 200px;}
 
 // Responsive ratio block through bottom padding ------------------------------------
-@mixin responsiveRatio($x, $y, $pseudo: false) {
+@mixin responsiveRatio($x, $y, $pseudo: true) {
 	$padding: unquote( ( calc($y / $x) ) * 100 + '%' );
 
 	@if $pseudo {
