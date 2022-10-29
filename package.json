@@ -27,12 +27,12 @@
     "url": "https://github.com/evgeniy-vashchuk/x-project.git"
   },
   "devDependencies": {
-    "@babel/core": "^7.18.10",
-    "@babel/preset-env": "^7.18.10",
-    "autoprefixer": "^10.4.8",
+    "@babel/core": "^7.19.6",
+    "@babel/preset-env": "^7.19.4",
+    "autoprefixer": "^10.4.13",
     "browser-sync": "^2.27.10",
     "css-mqpacker": "^7.0.0",
-    "cssnano": "^5.1.12",
+    "cssnano": "^5.1.14",
     "del": "^6.0.0",
     "gulp": "^4.0.2",
     "gulp-babel": "^8.0.0",
@@ -43,7 +43,7 @@
     "gulp-if": "^3.0.0",
     "gulp-imagemin": "^7.0.1",
     "gulp-include": "^2.4.1",
-    "gulp-load-plugins": "^2.0.7",
+    "gulp-load-plugins": "^2.0.8",
     "gulp-newer": "^1.4.0",
     "gulp-notify": "^4.0.0",
     "gulp-postcss": "^9.0.1",
@@ -57,15 +57,15 @@
     "gulp-terser": "^2.1.0",
     "gulp-to-ico": "^1.0.0",
     "gulp-zip": "^5.1.0",
-    "npm-check-updates": "^16.0.5",
-    "sass": "^1.54.3",
-    "sort-css-media-queries": "^2.0.4",
-    "yargs": "^17.5.1"
+    "npm-check-updates": "^16.3.15",
+    "sass": "^1.55.0",
+    "sort-css-media-queries": "^2.1.0",
+    "yargs": "^17.6.0"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-free": "^6.1.2",
-    "bootstrap": "^5.2.0",
-    "jquery": "^3.6.0",
+    "@fortawesome/fontawesome-free": "^6.2.0",
+    "bootstrap": "^5.2.2",
+    "jquery": "^3.6.1",
     "tiny-slider": "^2.9.4"
   }
 }

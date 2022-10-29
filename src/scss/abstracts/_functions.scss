@@ -1,16 +1,16 @@
 // LINE HEIGHT ------------------------------------
-@function line-height($line-height, $font-size) {
-	@return ($line-height/$font-size);
+@function lineHeight($line-height, $font-size) {
+	@return (calc($line-height / $font-size));
 }
 
-// EXAMPLE: line-height: line-height(20, 16);
+// EXAMPLE: line-hight: lineHeight(20, 16);
 
-// letter spacing ------------------------------------
-@function letter-spacing($letter-spacing, $font-size) {
-	@return ($letter-spacing*$font-size)/1000 + px;
+// LETTER SPACING ------------------------------------
+@function letterSpacing($letter-spacing, $font-size) {
+	@return calc(($letter-spacing * $font-size) / 1000) + px;
 }
 
-// EXAMPLE: letter-spacing: letter-spacing(20, 16);
+// EXAMPLE: letter-spacing: letterSpacing(20, 16);
 
 // PIXEL TO REM CONVERTING ------------------------------------
 $rem-baseline: 16px !default;
@@ -36,7 +36,7 @@ $rem-px-only: false !default;
 }
 
 @mixin rem-baseline($zoom: 100%) {
-	font-size: $zoom / 16px * $rem-baseline;
+	font-size: calc($zoom / 16px) * $rem-baseline;
 }
 
 @function rem-convert($to, $values...) {
@@ -45,9 +45,9 @@ $rem-px-only: false !default;
 
 	@each $value in $values {
 		@if type-of($value) == "number" and unit($value) == "rem" and $to == "px" {
-			$result: append($result, $value / 1rem * $rem-baseline, $separator);
+			$result: append($result, calc($value / 1rem) * $rem-baseline, $separator);
 		} @else if type-of($value) == "number" and unit($value) == "px" and $to == "rem" {
-			$result: append($result, $value / $rem-baseline * 1rem, $separator);
+			$result: append($result, calc($value / $rem-baseline) * 1rem, $separator);
 		} @else if type-of($value) == "list" {
 			$value-separator: rem-separator($value);
 			$value: rem-convert($to, $value...);
@@ -95,7 +95,7 @@ $rem-px-only: false !default;
 // REMOVE THE UNIT
 @function strip-unit($number) {
 	@if type-of($number) == 'number' and not unitless($number) {
-		@return $number / ($number * 0 + 1);
+		@return calc($number / ($number * 0 + 1));
 	}
 
 	@return $number;

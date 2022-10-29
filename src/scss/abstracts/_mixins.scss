@@ -20,41 +20,52 @@
 	}
 }
 
-// EXAMPLE: @include placeholder {color: red};
+// EXAMPLE:
+// @include placeholder {
+// 	color: red;
+// };
 
 // Creation border-arrows ------------------------------------
 @mixin borderArrow($width, $height, $bg, $direction) {
 	width: 0;
 	height: 0;
 	border-style: solid;
+
 	@if $direction == t {
 		border-width: 0 calc($width / 2) + px $height + px calc($width / 2) + px;
 		border-color: transparent transparent $bg transparent;
 	}
+
 	@if $direction == r {
 		border-width: calc($height / 2) + px 0 calc($height / 2) + px $width + px;
 		border-color: transparent transparent transparent $bg;
 	}
+
 	@if $direction == b {
 		border-width: $height + px calc($width / 2) + px 0 calc($width / 2) + px;
 		border-color: $bg transparent transparent transparent;
 	}
+
 	@if $direction == l {
 		border-width: calc($height / 2) + px $width + px calc($height / 2) + px 0;
 		border-color: transparent $bg transparent transparent;
 	}
+
 	@if $direction == tl {
 		border-width: $height + px $width + px 0 0;
 		border-color: $bg transparent transparent transparent;
 	}
+
 	@if $direction == tr {
 		border-width: 0 $width + px $height + px 0;
 		border-color: transparent $bg transparent transparent;
 	}
+
 	@if $direction == br {
 		border-width: 0 0 $height + px $width + px;
 		border-color: transparent transparent $bg transparent;
 	}
+
 	@if $direction == bl {
 		border-width: $height + px 0 0 $width + px;
 		border-color: transparent transparent transparent $bg;
@@ -291,7 +302,7 @@
 
 	@keyframes #{$name} {
 		@each $frame, $prop in $kf {
-			#{$frame * $duration / ($duration + $waitTime)}% {
+			#{$frame * calc($duration / ($duration + $waitTime))}% {
 				@each $k, $v in $prop {
 					#{$k}: #{$v}
 				}
@@ -466,7 +477,7 @@
 
 // @include wordWrap;
 
-// vertical text top bottom ------------------------------------
+// VERTICAL TEXT TOP BOTTOM ------------------------------------
 @mixin verticalTextTopBottom() {
 	overflow-wrap: break-word;
 	word-wrap: break-word;
@@ -481,7 +492,7 @@
 
 // @include verticalTextTopBottom;
 
-// vertical text bottom top ------------------------------------
+// VERTICAL TEXT BOTTOM TOP ------------------------------------
 @mixin verticalTextBottomTop() {
 	writing-mode: vertical-rl;
 	-webkit-writing-mode: vertical-rl;
@@ -491,3 +502,20 @@
 }
 
 // @include verticalTextBottomTop;
+
+// VISUALLY HIDDEN ------------------------------------
+
+@mixin visuallyHidden() {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	margin: -1px;
+	border: 0;
+	padding: 0;
+	white-space: nowrap;
+	clip-path: inset(100%);
+	clip: rect(0 0 0 0);
+	overflow: hidden;
+}
+
+// @include visuallyHidden;

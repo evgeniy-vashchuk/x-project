@@ -1,4 +1,6 @@
-@include titleSizes();
+@if ($use-title-palette) {
+	@include titleSizes();
+}
 
 .text-block,
 .remove-last-child-margin {
