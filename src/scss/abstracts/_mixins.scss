@@ -107,6 +107,15 @@
 
 // EXAMPLE: @include bgCover;
 
+// Contain background image ------------------------------------
+@mixin bgContain() {
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+// EXAMPLE: @include bgContain;
+
 // Flex center alignment ------------------------------------
 @mixin flexCenter() {
 	display: flex;
@@ -504,7 +513,6 @@
 // @include verticalTextBottomTop;
 
 // VISUALLY HIDDEN ------------------------------------
-
 @mixin visuallyHidden() {
 	position: absolute;
 	width: 1px;
