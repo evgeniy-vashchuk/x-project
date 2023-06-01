@@ -1,0 +1,5 @@
+.form-control {
+	&[disabled] {
+		-webkit-text-fill-color: $input-disabled-color;
+	}
+}

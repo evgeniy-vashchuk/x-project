@@ -29,6 +29,10 @@ textarea {
 			opacity: 0;
 		};
 	}
+
+	&:disabled {
+		opacity: 1;
+	}
 }
 
 input[type="number"] {
