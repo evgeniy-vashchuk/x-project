@@ -1,6 +1,7 @@
 {
 	"reject": [
 		"gulp-imagemin",
-		"del"
+		"del",
+		"gulp-format-html"
 	]
 }
