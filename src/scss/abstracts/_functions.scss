@@ -105,3 +105,27 @@ $rem-px-only: false !default;
 // $length: 42px;
 // $value: strip-unit($length);
 // -> 42
+
+// SPLIT STRING
+@function splitString($string, $separator) {
+	$split-arr: ();
+	$index : str-index($string, $separator);
+
+	@while $index != null {
+		$item: str-slice($string, 1, $index - 1);
+		$split-arr: append($split-arr, $item);
+		$string: str-slice($string, $index + 1);
+		$index : str-index($string, $separator);
+	}
+
+	$split-arr: append($split-arr, $string);
+
+	@return $split-arr;
+}
+
+// EXAMPLE:
+// width: nth(splitString('15px 30px', ' '), 1);
+// will return 15px;
+
+// width: nth(splitString('15px 30px', ' '), 2);
+// will return 30px;

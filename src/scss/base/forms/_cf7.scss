@@ -1,0 +1,60 @@
+.wpcf7-form {
+	.wpcf7-not-valid-tip {
+		margin-top: $form-feedback-margin-top;
+		font-size: $form-feedback-font-size;
+		font-style: $form-feedback-font-style;
+		color: $form-feedback-invalid-color;
+	}
+
+	.position-relative {
+		.wpcf7-not-valid-tip {
+			margin-top: 0;
+			position: absolute;
+			top: calc(100% + 4px);
+			left: 12px;
+
+			@include media-breakpoint-up(xxl) {
+				top: calc(100% + 8px);
+			}
+		}
+
+		.wpcf7-form-control-wrap {
+			position: static;
+		}
+	}
+
+	.wpcf7-list-item {
+		margin: 0;
+	}
+
+	.wpcf7-spinner {
+		vertical-align: middle;
+		margin: 0 15px;
+	}
+
+	.wpcf7-response-output {
+		margin: 20px 0 0 !important;
+		padding: 15px !important;
+	}
+
+	&.sent {
+		.wpcf7-response-output {
+			border-color: $success;
+		}
+	}
+
+	&.failed,
+	&.aborted {
+		.wpcf7-response-output {
+			border-color: $danger;
+		}
+	}
+
+	&.invalid,
+	&.unaccepted,
+	&.payment-required {
+		.wpcf7-response-output {
+			border-color: $warning;
+		}
+	}
+}

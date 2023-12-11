@@ -8,11 +8,11 @@ module.exports = function (gulp, plugins, path, isProduction) {
 				title: "Error compiling PUG",
 				message: "<%= error.message %>",
 			})))
+			.pipe(plugins.formatHtml())
 			.pipe(plugins.pugBeautify({
 				fill_tab: true,
 				tab_size: 2
 			}))
-			.pipe(plugins.formatHtml())
 			//.pipe(plugins.if(isProduction, plugins.htmlmin({collapseWhitespace: true, removeComments: true})))
 			.pipe(plugins.if(isProduction, plugins.replace('css/main.css', 'css/main.min.css')))
 			.pipe(plugins.if(isProduction, plugins.replace('js/libs.js', 'js/libs.min.js')))

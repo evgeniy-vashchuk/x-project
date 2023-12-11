@@ -1,4 +1,4 @@
-module.exports = function (gulp, plugins, path, isProduction, withPug) {
+module.exports = function (gulp, plugins, path, isProduction, withPug, copyStylesToWordPress) {
 	return function (done) {
 		const sass = plugins.dartSass(require('sass'));
 
@@ -21,8 +21,11 @@ module.exports = function (gulp, plugins, path, isProduction, withPug) {
 			.pipe(plugins.if(isProduction, plugins.rename({suffix: '.min'})))
 			.pipe(plugins.if(!isProduction, plugins.sourcemaps.write('.')))
 			.pipe(gulp.dest(path.dist.css))
-			.pipe(plugins.browserSync.stream());
+			.pipe(plugins.browserSync.stream())
 
+			.pipe(plugins.if(copyStylesToWordPress, plugins.replace('../', '')))
+			.pipe(plugins.if(copyStylesToWordPress, plugins.rename('style.css')))
+			.pipe(plugins.if(copyStylesToWordPress, gulp.dest(path.dist.wordpress)));
 		done();
 	};
 };

@@ -23,6 +23,7 @@ const gulp							= require('gulp'),
 			}),
 
 			isProduction = (argv.prod !== undefined),
+			copyStylesToWordPress = false,
 			withPug = (argv.pug !== undefined),
 			srcFolder = 'src',
 			distFolder = 'dist',
@@ -48,6 +49,7 @@ const gulp							= require('gulp'),
 					favicon: distFolder + '/img/favicon/',
 					fonts: distFolder + '/fonts/',
 					additionalFiles: distFolder + '/files/',
+					wordpress: '/Users/evgeniy_vashchuk/Sites/project-name/wp-content/themes/x-project-wp/'
 				},
 				watch: {
 					html: srcFolder + '/*.html',
@@ -63,7 +65,7 @@ const gulp							= require('gulp'),
 			};
 
 function getTask(task) {
-	return require('./gulp-tasks/' + task)(gulp, plugins, path, isProduction, withPug);
+	return require('./gulp-tasks/' + task)(gulp, plugins, path, isProduction, withPug, copyStylesToWordPress);
 }
 
 // WORKING WITH HTML FILES

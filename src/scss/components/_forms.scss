@@ -1,5 +1,25 @@
+@import "../base/forms/select2";
+@import "../base/forms/cf7";
+
 .form-control {
+	caret-color: $input-color;
+
 	&[disabled] {
 		-webkit-text-fill-color: $input-disabled-color;
+	}
+}
+
+textarea {
+	&.form-control {
+		height: 200px;
+	}
+}
+
+.position-relative {
+	.invalid-feedback {
+		margin-top: 0;
+		position: absolute;
+		top: calc(100% + 5px);
+		left: 0;
 	}
 }

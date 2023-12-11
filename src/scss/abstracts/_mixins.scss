@@ -549,3 +549,35 @@
 }
 
 // @include addGridGutter(12);
+
+// DESCENDING Z-INDEX ------------------------------------
+@mixin descendingZindex($count: 30) {
+	position: relative;
+
+	$target: 0;
+	$index: $count;
+
+	@while $index > 0 {
+		&:nth-child(#{$target}) {
+			z-index: #{$index};
+		}
+
+		$target: $target + 1;
+		$index: $index - 1;
+	}
+}
+
+// @include descendingZindex;
+
+// ASCENDING Z-INDEX ------------------------------------
+@mixin ascendingZindex($count: 30) {
+	position: relative;
+
+	@for $i from 1 through $count {
+		&:nth-child(#{$i}) {
+			z-index: #{$i};
+		}
+	}
+}
+
+// @include ascendingZindex;
