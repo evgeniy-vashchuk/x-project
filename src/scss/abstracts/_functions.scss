@@ -1,3 +1,5 @@
+@use 'sass:math';
+
 // LINE HEIGHT ------------------------------------
 @function lineHeight($line-height, $font-size) {
 	@return (calc($line-height / $font-size));
@@ -95,11 +97,11 @@ $rem-px-only: false !default;
 // REMOVE THE UNIT
 @function strip-unit($number) {
 	@if type-of($number) == 'number' and not unitless($number) {
-		@return calc($number / ($number * 0 + 1));
+		@return math.div($number, ($number * 0 + 1));
 	}
 
 	@return $number;
-}
+};
 
 // EXAMPLE:
 // $length: 42px;
