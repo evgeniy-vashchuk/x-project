@@ -9,3 +9,7 @@
 
 	object-fit: cover;
 }
+
+.custom-scrollbar {
+	@include customScrollbar(10px, red, green, 5px);
+}

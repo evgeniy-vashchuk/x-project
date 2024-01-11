@@ -581,3 +581,14 @@
 }
 
 // @include ascendingZindex;
+
+// TRUNCATE TEXT TO SPECIFIC LINE ------------------------------------
+
+@mixin truncateTextToSpecificLine($line-count) {
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: $line-count;
+	overflow: hidden;
+}
+
+// @include truncateTextToSpecificLine(2);

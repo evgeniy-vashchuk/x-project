@@ -1,3 +1,10 @@
 .btn {
 	@include inlineFlexCenter;
+
+	// sizes
+	&:not(.btn-sm):not(.btn-lg) {
+
+	}
+
+	// colors
 }
