@@ -3,6 +3,7 @@
 
 .form-control {
 	caret-color: $input-color;
+	text-overflow: ellipsis;
 
 	&[disabled] {
 		-webkit-text-fill-color: $input-disabled-color;
