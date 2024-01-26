@@ -167,12 +167,12 @@
 // EXAMPLE: @include absoluteCover;
 
 // Size of element ------------------------------------
-@mixin sizeElement($width, $height: $width) {
+@mixin size($width, $height: $width) {
 	width: $width;
 	height: $height;
 }
 
-// EXAMPLE: @include sizeElement(50px);
+// EXAMPLE: @include size(50px);
 
 // Default pseudo-element ------------------------------------
 @mixin pseudo($display: block, $pos: absolute, $content: ''){
