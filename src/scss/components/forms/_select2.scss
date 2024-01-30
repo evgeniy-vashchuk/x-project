@@ -120,8 +120,8 @@
 	}
 }
 
-.form-control {
-	&.form-control-sm {
+.form-select {
+	&.form-select-sm {
 		+ .select2-container {
 			&--bootstrap {
 				.select2-selection {
@@ -133,7 +133,7 @@
 		}
 	}
 
-	&.form-control-lg {
+	&.form-select-lg {
 		+ .select2-container {
 			&--bootstrap {
 				.select2-selection {

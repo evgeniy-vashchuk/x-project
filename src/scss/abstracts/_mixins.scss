@@ -446,7 +446,7 @@
 	}
 
 	// FOR INTERNET EXPLORER
-	& {
+	@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
 		scrollbar-face-color: $scrollbar-thumb-bg;
 		scrollbar-track-color: $scrollbar-track-bg;
 		scrollbar-shadow-color: $scrollbar-thumb-bg;
@@ -454,7 +454,7 @@
 	}
 
 	// FOR FIREFOX
-	& {
+	@supports (-moz-appearance: none) {
 		scrollbar-width: auto;
 		scrollbar-color: $scrollbar-thumb-bg $scrollbar-track-bg;
 	}
@@ -583,7 +583,6 @@
 // @include ascendingZindex;
 
 // TRUNCATE TEXT TO SPECIFIC LINE ------------------------------------
-
 @mixin truncateTextToSpecificLine($line-count) {
 	display: -webkit-box;
 	-webkit-box-orient: vertical;
@@ -592,3 +591,12 @@
 }
 
 // @include truncateTextToSpecificLine(2);
+
+// CLEAR BUTTON ------------------------------------
+@mixin clearButton() {
+	background-color: transparent;
+	border: none;
+	padding: 0;
+}
+
+// @include clearButton();
