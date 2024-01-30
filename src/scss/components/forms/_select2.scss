@@ -6,15 +6,15 @@
 		&.select2-container--open {
 			&.select2-container--above {
 				.select2-selection {
-					border-top-left-radius: 0;
-					border-top-right-radius: 0;
+					border-top-left-radius: 0 !important;
+					border-top-right-radius: 0 !important;
 				}
 			}
 
 			&.select2-container--below {
 				.select2-selection {
-					border-bottom-left-radius: 0;
-					border-bottom-right-radius: 0;
+					border-bottom-left-radius: 0 !important;
+					border-bottom-right-radius: 0 !important;
 				}
 			}
 
@@ -84,14 +84,14 @@
 			overflow: hidden;
 
 			&--above {
-				border-bottom-left-radius: 0;
-				border-bottom-right-radius: 0;
+				border-bottom-left-radius: 0 !important;
+				border-bottom-right-radius: 0 !important;
 				transform: translate(0, $form-select-border-width);
 			}
 
 			&--below {
-				border-top-left-radius: 0;
-				border-top-right-radius: 0;
+				border-top-left-radius: 0 !important;
+				border-top-right-radius: 0 !important;
 				transform: translate(0, -$form-select-border-width);
 			}
 		}
@@ -122,7 +122,7 @@
 
 .form-select {
 	&.form-select-sm {
-		+ .select2-container {
+		~ .select2-container {
 			&--bootstrap {
 				.select2-selection {
 					font-size: $form-select-font-size-sm;
@@ -133,12 +133,23 @@
 						right: $form-select-padding-x-sm;
 					}
 				}
+
+				.select2-dropdown {
+					border-radius: $form-select-border-radius-sm;
+				}
+
+				.select2-results {
+					&__option {
+						font-size: $form-select-font-size-sm;
+						padding: $form-select-padding-y-sm $form-select-padding-x-sm;
+					}
+				}
 			}
 		}
 	}
 
 	&.form-select-lg {
-		+ .select2-container {
+		~ .select2-container {
 			&--bootstrap {
 				.select2-selection {
 					font-size: $form-select-font-size-lg;
@@ -147,6 +158,17 @@
 
 					&__arrow {
 						right: $form-select-padding-x-lg;
+					}
+				}
+
+				.select2-dropdown {
+					border-radius: $form-select-border-radius-lg;
+				}
+
+				.select2-results {
+					&__option {
+						font-size: $form-select-font-size-lg;
+						padding: $form-select-padding-y-lg $form-select-padding-x-lg;
 					}
 				}
 			}
