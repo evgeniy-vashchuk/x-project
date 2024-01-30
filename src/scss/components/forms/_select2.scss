@@ -128,6 +128,10 @@
 					font-size: $form-select-font-size-sm;
 					padding: $form-select-padding-y-sm $form-select-indicator-padding $form-select-padding-y-sm $form-select-padding-x-sm;
 					border-radius: $form-select-border-radius-sm;
+
+					&__arrow {
+						right: $form-select-padding-x-sm;
+					}
 				}
 			}
 		}
@@ -140,6 +144,10 @@
 					font-size: $form-select-font-size-lg;
 					padding: $form-select-padding-y-lg $form-select-indicator-padding $form-select-padding-y-lg $form-select-padding-x-lg;
 					border-radius: $form-select-border-radius-lg;
+
+					&__arrow {
+						right: $form-select-padding-x-lg;
+					}
 				}
 			}
 		}
