@@ -5,7 +5,7 @@ module.exports = function (gulp, plugins, path, isProduction, withPug, copyStyle
 		gulp.src(path.src.css)
 			.pipe(plugins.if(!isProduction, plugins.sourcemaps.init()))
 			.pipe(sass({
-				outputStyle: 'expanded',
+				outputStyle: isProduction ? 'compressed' : 'expanded',
 				indentType: 'tab',
 				indentWidth: 1,
 				includePaths: ['./node_modules']
@@ -13,6 +13,7 @@ module.exports = function (gulp, plugins, path, isProduction, withPug, copyStyle
 				title: "Error compiling SASS"
 			})))
 			.pipe(plugins.if(isProduction, plugins.postcss([
+				plugins.postcssDiscardComments({removeAll: true}),
 				plugins.autoprefixer(['last 10 versions']),
 				plugins.cssMqpacker({
 					sort: plugins.sortCssMediaQueries
@@ -22,7 +23,6 @@ module.exports = function (gulp, plugins, path, isProduction, withPug, copyStyle
 			.pipe(plugins.if(!isProduction, plugins.sourcemaps.write('.')))
 			.pipe(gulp.dest(path.dist.css))
 			.pipe(plugins.browserSync.stream())
-
 			.pipe(plugins.if(copyStylesToWordPress, plugins.replace('../', '')))
 			.pipe(plugins.if(copyStylesToWordPress, plugins.rename('style.css')))
 			.pipe(plugins.if(copyStylesToWordPress, gulp.dest(path.dist.wordpress)));

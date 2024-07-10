@@ -1,6 +1,6 @@
 module.exports = function (gulp, plugins, path, isProduction) {
 	return function (done) {
-		gulp.src(path.src.img)
+		gulp.src(path.src.img, {encoding: false})
 			.pipe(plugins.destClean(path.dist.img, 'favicon/**'))
 			.pipe(plugins.newer(path.dist.img))
 			.pipe(plugins.imagemin([

@@ -7,7 +7,8 @@ module.exports = function (gulp, plugins, path, isProduction) {
 				retainLines: true,
 				compact: false,
 			}))
-			.pipe(plugins.if(isProduction, plugins.terser())) // minify js
+			.pipe(plugins.if(isProduction, plugins.stripComments())) // remove comments
+			.pipe(plugins.if(isProduction, plugins.terser())) // minify
 			.pipe(plugins.if(isProduction, plugins.rename({suffix: '.min'})))
 			.pipe(plugins.tabify(2, true))
 			.pipe(gulp.dest(path.dist.js))
