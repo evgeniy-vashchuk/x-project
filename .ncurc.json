@@ -2,6 +2,7 @@
 	"reject": [
 		"gulp-imagemin",
 		"del",
+		"sass",
 		"gulp-format-html"
 	]
 }
