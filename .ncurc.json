@@ -1,5 +1,6 @@
 {
 	"reject": [
+		"gulp",
 		"gulp-imagemin",
 		"del",
 		"sass",

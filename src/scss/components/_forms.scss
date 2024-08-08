@@ -1,6 +1,10 @@
 @import "forms/select2";
 @import "forms/cf7";
 
+.form-label {
+	cursor: pointer;
+}
+
 .form-control {
 	caret-color: $input-color;
 	text-overflow: ellipsis;
