@@ -25,19 +25,19 @@ Our project follow [SASS guidelines](https://sass-guidelin.es/#architecture).
 
 # How to use
 
-1) You must have installed:
+1. You must have installed:
 
 - [Node.js](https://nodejs.org/en/)
 - [Gulp](https://gulpjs.com/)
 
-2) [Download](/inkogn1to/x-project/archive/master.zip) or clone **X-Project** from Github
-3) Install Node Modules:
+2. [Download](/inkogn1to/x-project/archive/master.zip) or clone **X-Project** from Github
+3. Install Node Modules:
 
 ```
 npm i
 ```
 
-4) Run the project:
+4. Run the project:
 
 ```
 gulp

@@ -1,9 +1,9 @@
 .btn {
-	@include inlineFlexCenter;
+	@include inline-flex-center;
 
 	// sizes
-	&:not(.btn-sm):not(.btn-lg) {
-
+	&:not(.btn-sm, .btn-lg) {
+		// medium size styles
 	}
 
 	// colors

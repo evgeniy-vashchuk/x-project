@@ -1,15 +1,19 @@
 .of-contain {
-	@include absoluteCover;
+	@include absolute-cover;
 
 	object-fit: contain;
 }
 
 .of-cover {
-	@include absoluteCover;
+	@include absolute-cover;
 
 	object-fit: cover;
 }
 
+%custom-scrollbar {
+	@include custom-scrollbar(8px, #ff0000, #008000, 5px);
+}
+
 .custom-scrollbar {
-	@include customScrollbar(10px, red, green, 5px);
+	@extend %custom-scrollbar;
 }

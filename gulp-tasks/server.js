@@ -1,5 +1,5 @@
-module.exports = function (gulp, plugins, path, isProduction) {
-	return function (done) {
+module.exports = function(gulp, plugins, path, isProduction) {
+	return function(done) {
 		plugins.browserSync({
 			server: {
 				baseDir: path.server,
@@ -18,8 +18,9 @@ module.exports = function (gulp, plugins, path, isProduction) {
 					backgroundColor: '#26263F'
 				}
 			},
-			//online: false, // Work offline without internet connection
-			//tunnel: 'yousutename', // Attempt to use the URL https://yousutename.loca.lt
+
+			// online: false, // Work offline without internet connection
+			// tunnel: 'yousutename', // Attempt to use the URL https://yousutename.loca.lt
 		});
 
 		done();

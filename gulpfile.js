@@ -1,71 +1,63 @@
-/*
-	GULP TASKS:
-	gulp								- starting default gulp task (build, server, watch) for development;
-	gulp build					- build project;
-	gulp removeDist			- delete dist folder;
-	gulp img						- image compression;
-	gulp zip						- project archiving;
+// GULP TASKS:
+// gulp								- starting default gulp task (build, server, watch) for development;
+// gulp build					- build project;
+// gulp removeDist			- delete dist folder;
+// gulp img						- image compression;
+// gulp zip						- project archiving;
+//
+// ADDITIONAL OPTIONS:
+// --pug								- using pug preprocessor to generate html
+// --prod							- minification js, minification css, add vendor prefixes, group media queries, remove comments
 
-	ADDITIONAL OPTIONS:
-	--pug								- using pug preprocessor to generate html
-	--prod							- minification js, minification css, add vendor prefixes, group media queries, remove comments
-*/
-
-'use strict';
-
-const gulp							= require('gulp'),
-			argv							= require('yargs').argv,
-			plugins						= require('gulp-load-plugins')({
-				pattern: '*',
-				rename: {
-					'gulp-sass': 'dartSass'
-				}
-			}),
-
-			isProduction = (argv.prod !== undefined),
-			copyStylesToWordPress = false,
-			withPug = (argv.pug !== undefined),
-			srcFolder = 'src',
-			distFolder = 'dist',
-
-			path = {
-				src: {
-					html: [srcFolder + '/*.html', '!' + srcFolder + '/_*.html'],
-					pug: srcFolder + '/pug/pages/*.pug',
-					pugBase: srcFolder + '/pug/pages/',
-					css: srcFolder + '/scss/**/*.{scss,sass,css}',
-					js: [srcFolder + '/js/**/*.js', '!' + srcFolder + '/js/**/_*.js', '!' + srcFolder + '/js/libs.js'],
-					jsLibs: srcFolder + '/js/libs.js',
-					img: srcFolder + '/img/**/*.{gif,png,jpg,jpeg,svg}',
-					favicon: srcFolder + '/img/favicon/icon.svg',
-					fonts: srcFolder + '/fonts/**/*.*',
-					additionalFiles: srcFolder + '/files/',
-				},
-				dist: {
-					html: distFolder + '/',
-					css: distFolder + '/css/',
-					js: distFolder + '/js/',
-					img: distFolder + '/img/',
-					favicon: distFolder + '/img/favicon/',
-					fonts: distFolder + '/fonts/',
-					additionalFiles: distFolder + '/files/',
-					wordpress: '/Users/evgeniy_vashchuk/Sites/project-name/wp-content/themes/x-project-wp/'
-				},
-				watch: {
-					html: srcFolder + '/*.html',
-					pug: srcFolder + '/pug/**/*.pug',
-					css: srcFolder + '/scss/**/*.{scss,sass,css}',
-					js: [srcFolder + '/js/**/*.js', '!' + srcFolder + '/js/libs.js'],
-					jsLibs: srcFolder + '/js/libs.js',
-					img: srcFolder + '/img/**/*.*',
-					fonts: srcFolder + '/fonts/**/*.*',
-					additionalFiles: srcFolder + '/files/',
-				},
-				server: distFolder
-			};
+const gulp			= require('gulp');
+const argv			= require('yargs').argv;
+const plugins		= require('gulp-load-plugins')({
+	pattern: '*',
+	rename: { 'gulp-sass': 'dartSass' }
+});
+const isProduction = (argv.prod !== undefined);
+const copyToWordPress = true;
+const withPug = (argv.pug !== undefined);
+const srcFolder = 'src';
+const distFolder = 'dist';
+const path = {
+	src: {
+		html: [srcFolder + '/*.html', '!' + srcFolder + '/_*.html'],
+		pug: srcFolder + '/pug/pages/*.pug',
+		pugBase: srcFolder + '/pug/pages/',
+		css: srcFolder + '/scss/**/*.{scss,sass,css}',
+		js: [srcFolder + '/js/**/*.js', '!' + srcFolder + '/js/**/_*.js', '!' + srcFolder + '/js/libs.js'],
+		jsLibs: srcFolder + '/js/libs.js',
+		img: srcFolder + '/img/**/*.{gif,png,jpg,jpeg,svg}',
+		favicon: srcFolder + '/img/favicon/icon.svg',
+		fonts: srcFolder + '/fonts/**/*.*',
+		additionalFiles: srcFolder + '/files/',
+	},
+	dist: {
+		html: distFolder + '/',
+		css: distFolder + '/css/',
+		js: distFolder + '/js/',
+		img: distFolder + '/img/',
+		favicon: distFolder + '/img/favicon/',
+		fonts: distFolder + '/fonts/',
+		additionalFiles: distFolder + '/files/',
+		wordpress: '/Users/evgeniy_vashchuk/Sites/shaktiman/wp-content/themes/x-project-wp/'
+	},
+	watch: {
+		html: srcFolder + '/*.html',
+		pug: srcFolder + '/pug/**/*.pug',
+		css: srcFolder + '/scss/**/*.{scss,sass,css}',
+		js: [srcFolder + '/js/**/*.js', '!' + srcFolder + '/js/libs.js'],
+		jsLibs: srcFolder + '/js/libs.js',
+		img: srcFolder + '/img/**/*.*',
+		fonts: srcFolder + '/fonts/**/*.*',
+		additionalFiles: srcFolder + '/files/',
+	},
+	server: distFolder
+};
 
 function getTask(task) {
-	return require('./gulp-tasks/' + task)(gulp, plugins, path, isProduction, withPug, copyStylesToWordPress);
+	return require('./gulp-tasks/' + task)(gulp, plugins, path, isProduction, withPug, copyToWordPress);
 }
 
 // WORKING WITH HTML FILES
@@ -104,12 +96,13 @@ gulp.task('watch', getTask('watch'));
 
 // REMOVE DIST
 gulp.task('removeDist', function(done) {
-	plugins.del.sync(path.server, {force: true});
+	plugins.del.sync(path.server, { force: true });
 	done();
 });
 
 // BUILD
-var buildTasks = [withPug ? 'pug' : 'html', 'sass', 'js:common', 'js:libs', 'img', 'fonts', 'additionalFiles'];
+const buildTasks = [withPug ? 'pug' : 'html', 'sass', 'js:common', 'js:libs', 'img', 'fonts', 'additionalFiles'];
+
 gulp.task('build', gulp.series('removeDist', gulp.parallel(buildTasks)));
 
 // DEVELOPMENT

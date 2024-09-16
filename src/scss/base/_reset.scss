@@ -1,6 +1,6 @@
-* ,
-*:hover ,
-*:focus ,
+*,
+*:hover,
+*:focus,
 *:active {
 	outline: none !important;
 }
@@ -22,12 +22,12 @@ textarea {
 	@include placeholder {
 		line-height: normal;
 		transition: opacity 0.3s;
-	};
+	}
 
 	&:focus {
 		@include placeholder {
 			opacity: 0;
-		};
+		}
 	}
 
 	&:disabled {
@@ -36,19 +36,18 @@ textarea {
 }
 
 input[type="number"] {
-	-moz-appearance: textfield;
+	appearance: textfield;
 
 	&::-webkit-outer-spin-button,
 	&::-webkit-inner-spin-button {
-		-webkit-appearance: none;
 		margin: 0;
+		appearance: none;
 	}
 }
 
 textarea {
+	overflow: hidden auto;
 	resize: none;
-	overflow-y: auto;
-	overflow-x: hidden;
 }
 
 // hide cross icon in IE
@@ -67,7 +66,8 @@ a {
 	}
 }
 
-img, svg {
+img,
+svg {
 	max-width: 100%;
 	height: auto;
 }

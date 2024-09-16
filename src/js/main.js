@@ -2,4 +2,4 @@
 
 (function($) {
 	// your code here
-})(jQuery);
+}(jQuery));

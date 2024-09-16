@@ -1,17 +1,17 @@
 .wpcf7-form {
 	.wpcf7-not-valid-tip {
 		margin-top: $form-feedback-margin-top;
+		color: $form-feedback-invalid-color;
 		font-size: $form-feedback-font-size;
 		font-style: $form-feedback-font-style;
-		color: $form-feedback-invalid-color;
 	}
 
 	.position-relative {
 		.wpcf7-not-valid-tip {
-			margin-top: 0;
 			position: absolute;
 			top: calc(100% + 4px);
 			left: 12px;
+			margin-top: 0;
 
 			@include media-breakpoint-up(xxl) {
 				top: calc(100% + 8px);
@@ -28,8 +28,8 @@
 	}
 
 	.wpcf7-spinner {
-		vertical-align: middle;
 		margin: 0 15px;
+		vertical-align: middle;
 	}
 
 	.wpcf7-response-output {

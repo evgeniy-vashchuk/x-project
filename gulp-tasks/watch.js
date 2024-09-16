@@ -1,8 +1,8 @@
-module.exports = function (gulp, plugins, path, isProduction, withPug) {
-	return function (done) {
+module.exports = function(gulp, plugins, path, isProduction, withPug) {
+	return function(done) {
 		if (withPug) {
 			// PUG
-			gulp.watch(path.watch.pug, gulp.series('pug'))
+			gulp.watch(path.watch.pug, gulp.series('pug'));
 		} else {
 			// HTML
 			gulp.watch(path.watch.html, gulp.series('html'));

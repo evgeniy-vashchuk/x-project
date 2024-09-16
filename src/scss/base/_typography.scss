@@ -1,5 +1,5 @@
-@if ($use-title-palette) {
-	@include titleSizes();
+@if $use-title-palette {
+	@include title-sizes;
 }
 
 .text-block,
@@ -34,35 +34,47 @@
 	line-height: $line-height-lg;
 }
 
-h1, .h1,
-h2, .h2,
-h3, .h3,
-h4, .h4,
-h5, .h5,
-h6, .h6 {
-
+h1,
+.h1,
+h2,
+.h2,
+h3,
+.h3,
+h4,
+.h4,
+h5,
+.h5,
+h6,
+.h6 {
+	// styles for headings
 }
 
-h1, .h1 {
-
+h1,
+.h1 {
+	// styles for h1
 }
 
-h2, .h2 {
-
+h2,
+.h2 {
+	// styles for h2
 }
 
-h3, .h3 {
-
+h3,
+.h3 {
+	// styles for h3
 }
 
-h4, .h4 {
-
+h4,
+.h4 {
+	// styles for h4
 }
 
-h5, .h5 {
-
+h5,
+.h5 {
+	// styles for h5
 }
 
-h6, .h6 {
-
+h6,
+.h6 {
+	// styles for h6
 }

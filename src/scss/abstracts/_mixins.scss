@@ -8,6 +8,7 @@
 
 	&::-moz-placeholder {
 		opacity: 1;
+
 		@content;
 	}
 
@@ -22,72 +23,79 @@
 
 // EXAMPLE:
 // @include placeholder {
-// 	color: red;
+// 	color: #FF0000;
 // };
 
 // Creation border-arrows ------------------------------------
-@mixin borderArrow($width, $height, $bg, $direction) {
+@mixin border-arrow($width, $height, $bg, $direction) {
 	width: 0;
 	height: 0;
 	border-style: solid;
 
 	@if $direction == t {
+		border-color: transparent transparent $bg;
 		border-width: 0 calc($width / 2) + px $height + px calc($width / 2) + px;
-		border-color: transparent transparent $bg transparent;
 	}
 
 	@if $direction == r {
-		border-width: calc($height / 2) + px 0 calc($height / 2) + px $width + px;
 		border-color: transparent transparent transparent $bg;
+		border-width: calc($height / 2) + px 0 calc($height / 2) + px $width + px;
 	}
 
 	@if $direction == b {
-		border-width: $height + px calc($width / 2) + px 0 calc($width / 2) + px;
 		border-color: $bg transparent transparent transparent;
+		border-width: $height + px calc($width / 2) + px 0 calc($width / 2) + px;
 	}
 
 	@if $direction == l {
-		border-width: calc($height / 2) + px $width + px calc($height / 2) + px 0;
 		border-color: transparent $bg transparent transparent;
+		border-width: calc($height / 2) + px $width + px calc($height / 2) + px 0;
 	}
 
 	@if $direction == tl {
-		border-width: $height + px $width + px 0 0;
 		border-color: $bg transparent transparent transparent;
+		border-width: $height + px $width + px 0 0;
 	}
 
 	@if $direction == tr {
-		border-width: 0 $width + px $height + px 0;
 		border-color: transparent $bg transparent transparent;
+		border-width: 0 $width + px $height + px 0;
 	}
 
 	@if $direction == br {
+		border-color: transparent transparent $bg;
 		border-width: 0 0 $height + px $width + px;
-		border-color: transparent transparent $bg transparent;
 	}
 
 	@if $direction == bl {
-		border-width: $height + px 0 0 $width + px;
 		border-color: transparent transparent transparent $bg;
+		border-width: $height + px 0 0 $width + px;
 	}
 }
 
-// EXAMPLE: @include borderArrow(20, 20, #FF0000, t);
+// EXAMPLE: @include border-arrow(20, 20, #FF0000, t);
 
 // Adding fonts ------------------------------------
-@mixin fontFace($font-family, $file-path, $weight: normal, $style: normal, $asset-pipeline: false ) {
+@mixin font-face($font-family, $file-path, $weight: normal, $style: normal, $asset-pipeline: false) {
 	@font-face {
-		font-family: $font-family;
 		font-weight: $weight;
+		font-family: $font-family;
 		font-style: $style;
 		font-display: swap;
 		@if $asset-pipeline == true {
-			src: font-url('#{$file-path}.eot');
-			src: font-url('#{$file-path}.eot?#iefix') format('embedded-opentype'), font-url('#{$file-path}.woff2') format('woff2'), font-url('#{$file-path}.woff') format('woff'), font-url('#{$file-path}.ttf') format('truetype');
-		}
-		@else {
-			src: url('#{$file-path}.eot');
-			src: url('#{$file-path}.eot?#iefix') format('embedded-opentype'), url('#{$file-path}.woff2') format('woff2'), url('#{$file-path}.woff') format('woff'), url('#{$file-path}.ttf') format('truetype');
+			src: font-url("#{$file-path}.eot");
+			src:
+				font-url("#{$file-path}.eot?#iefix") format("embedded-opentype"),
+				font-url("#{$file-path}.woff2") format("woff2"),
+				font-url("#{$file-path}.woff") format("woff"),
+				font-url("#{$file-path}.ttf") format("truetype");
+		} @else {
+			src: url("#{$file-path}.eot");
+			src:
+				url("#{$file-path}.eot?#iefix") format("embedded-opentype"),
+				url("#{$file-path}.woff2") format("woff2"),
+				url("#{$file-path}.woff") format("woff"),
+				url("#{$file-path}.ttf") format("truetype");
 		}
 	}
 }
@@ -99,43 +107,43 @@
 // @include font-face("Roboto", "../fonts/Roboto/Roboto-Bold", 700);
 
 // Cover background image ------------------------------------
-@mixin bgCover() {
-	background-size: cover;
+@mixin bg-cover() {
 	background-repeat: no-repeat;
 	background-position: center;
+	background-size: cover;
 }
 
-// EXAMPLE: @include bgCover;
+// EXAMPLE: @include bg-cover;
 
 // Contain background image ------------------------------------
-@mixin bgContain() {
-	background-size: contain;
+@mixin bg-contain() {
 	background-repeat: no-repeat;
 	background-position: center;
+	background-size: contain;
 }
 
-// EXAMPLE: @include bgContain;
+// EXAMPLE: @include bg-contain;
 
 // Flex center alignment ------------------------------------
-@mixin flexCenter() {
+@mixin flex-center() {
 	display: flex;
 	align-items: center;
 	justify-content: center;
 }
 
-// EXAMPLE: @include flexCenter;
+// EXAMPLE: @include flex-center;
 
 // Inline-flex center alignment ------------------------------------
-@mixin inlineFlexCenter() {
+@mixin inline-flex-center() {
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
 }
 
-// EXAMPLE: @include inlineFlexCenter;
+// EXAMPLE: @include inline-flex-center;
 
 // Position absolute center alignment ------------------------------------
-@mixin absoluteCenter($position: null) {
+@mixin absolute-center($position: null) {
 	position: absolute;
 
 	@if $position == "v" {
@@ -151,20 +159,17 @@
 	}
 }
 
-// EXAMPLE: @include absoluteCenter;
+// EXAMPLE: @include absolute-center;
 
 // Absolute cover ------------------------------------
-@mixin absoluteCover() {
+@mixin absolute-cover() {
 	position: absolute;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
+	inset: 0;
 	width: 100%;
 	height: 100%;
 }
 
-// EXAMPLE: @include absoluteCover;
+// EXAMPLE: @include absolute-cover;
 
 // Size of element ------------------------------------
 @mixin size($width, $height: $width) {
@@ -175,17 +180,17 @@
 // EXAMPLE: @include size(50px);
 
 // Default pseudo-element ------------------------------------
-@mixin pseudo($display: block, $pos: absolute, $content: ''){
-	content: $content;
-	display: $display;
+@mixin pseudo($display: block, $pos: absolute, $content: "") {
 	position: $pos;
+	display: $display;
+	content: $content;
 }
 
 // EXAMPLE: div:after {@include pseudo; top: 100px; left: 100px; width: 200px; height: 200px;}
 
 // Responsive ratio block through bottom padding ------------------------------------
-@mixin responsiveRatio($x, $y, $pseudo: true) {
-	$padding: unquote( ( calc($y / $x) ) * 100 + '%' );
+@mixin responsive-ratio($x, $y, $pseudo: true) {
+	$padding: (calc($y / $x)) * 100 + "%";
 
 	@if $pseudo {
 		&:before {
@@ -199,7 +204,7 @@
 	}
 }
 
-// EXAMPLE: @include responsiveRatio(16, 9);
+// EXAMPLE: @include responsive-ratio(16, 9);
 
 // Preventing Overflow with Ellipsis ------------------------------------
 @mixin ellipsis() {
@@ -211,31 +216,29 @@
 // EXAMPLE: @include ellipsis;
 
 // Responsive images ------------------------------------
-@mixin imgRes {
+@mixin img-res {
 	max-width: 100%;
 	height: auto;
 }
 
-// EXAMPLE: @include imgRes;
+// EXAMPLE: @include img-res;
 
 // Gray image ------------------------------------
 @mixin gray {
-	filter: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><filter id='grayscale'><feColorMatrix type='matrix' values='0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0'/></filter></svg>#grayscale");
-	filter: gray;
-	-webkit-filter: grayscale(100%);
+	filter: grayscale(100%);
+	filter: "progid:DXImageTransform.Microsoft.BasicImage(grayScale=1)";
 	filter: progid:DXImageTransform.Microsoft.BasicImage(grayScale=1);
-	-ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(grayScale=1)";
 }
 
 // EXAMPLE: @include gray;
 
 // Gray none ------------------------------------
-@mixin grayZero {
+@mixin gray-zero {
+	filter: grayscale(0%);
 	filter: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><filter id='grayscale'><feColorMatrix type='matrix' values='1 0 0 0 0, 0 1 0 0 0, 0 0 1 0 0, 0 0 0 1 0'/></filter></svg>#grayscale");
-	-webkit-filter: grayscale(0%);
 }
 
-// EXAMPLE: @include grayZero;
+// EXAMPLE: @include gray-zero;
 
 // Media queries for max width ------------------------------------
 @mixin max-w($breakpoint) {
@@ -243,9 +246,7 @@
 		@media only screen and (max-width: #{map-get($grid-breakpoints, $breakpoint) - 0.02px}) {
 			@content;
 		}
-	}
-
-	@else {
+	} @else {
 		@media only screen and (max-width: $breakpoint + "px") {
 			@content;
 		}
@@ -260,9 +261,7 @@
 		@media only screen and (min-width: #{map-get($grid-breakpoints, $breakpoint)}) {
 			@content;
 		}
-	}
-
-	@else {
+	} @else {
 		@media only screen and (min-width: $breakpoint + "px") {
 			@content;
 		}
@@ -290,54 +289,59 @@
 // EXAMPLE: @include min-h(800) {font-size: 50px;}
 
 // Keyframes animation with delay between iterations ------------------------------------
-@mixin waitAnimate($options: ()) {
-
-	$options: map-merge((
-		animationName: waitAnimate,
-		duration: 1,
-		waitTime: 0,
-		timingFunction: linear,
-		iterationCount: infinite
-	), $options);
-
-	$name: map-get($options, animationName);
+@mixin wait-animate($options: ()) {
+	$options: map-merge(
+		(
+			animationname: waitanimate,
+			duration: 1,
+			waittime: 0,
+			timingfunction: linear,
+			iterationcount: infinite,
+		),
+		$options
+	);
+	$name: map-get($options, animationname);
 	$kf: map-get($options, keyframes);
-	$kfLength: length($kf);
+	$kf-length: length($kf);
 	$duration: map-get($options, duration);
-	$waitTime: map-get($options, waitTime);
-	$timingFunction: map-get($options, timingFunction);
-	$iterationCount: map-get($options, iterationCount);
-	$counter: 1; // index of 'each'
+	$wait-time: map-get($options, waittime);
+	$timing-function: map-get($options, timingfunction);
+	$iteration-count: map-get($options, iterationcount);
+	$counter: 1 !default;
+
+	// index of 'each'
 
 	@keyframes #{$name} {
 		@each $frame, $prop in $kf {
-			#{$frame * calc($duration / ($duration + $waitTime))}% {
+			#{$frame * calc($duration / ($duration + $wait-time))}% {
 				@each $k, $v in $prop {
-					#{$k}: #{$v}
+					#{$k}: #{$v};
 				}
 			}
+
 			// if last in loop and waitTime is not 0, add the last frame as 100% (this is what creates the pause)
-			@if $counter == $kfLength and $waitTime > 0 {
+			@if $counter == $kf-length and $wait-time > 0 {
 				100% {
 					@each $k, $v in $prop {
-						#{$k}: #{$v}
+						#{$k}: #{$v};
 					}
 				}
 			}
-			$counter: $counter+1;
+
+			$counter: $counter + 1;
 		}
 	}
 
 	.#{$name} {
-		animation: #{$name} #{$duration + $waitTime}s #{$timingFunction} #{$iterationCount};
+		animation: #{$name} #{$duration + $wait-time}s #{$timing-function} #{$iteration-count};
 	}
 }
 
 // EXAMPLE:
 
-//@include waitAnimate(
+// @include wait-animate(
 //	(
-//		animationName: animName,
+//		animationName: anim-name,
 //		keyframes: (
 //			0: (
 //				transform: scale(1),
@@ -357,19 +361,19 @@
 //		timingFunction: ease,
 //		iterationCount: infinite
 //	)
-//);
-//
-//then add .animName class to your element
+// );
+// then add .anim-name class to your element
 
 // HEADINGS FONT SIZE ------------------------------------
-@mixin titleSizes($with-rem: false) {
+@mixin title-sizes($with-rem: false) {
 	@each $media, $titles-size in $title-palette {
 		@if $media == xs {
 			@each $title, $size in $titles-size {
 				#{$title},
 				.#{$title} {
 					@if $with-rem {
-						$value: $size + 0px;
+						$value: $size + 0;
+
 						font-size: rem($value);
 					} @else {
 						font-size: $size + px;
@@ -382,7 +386,8 @@
 					#{$title},
 					.#{$title} {
 						@if $with-rem {
-							$value: $size + 0px;
+							$value: $size + 0;
+
 							font-size: rem($value);
 						} @else {
 							font-size: $size + px;
@@ -394,15 +399,15 @@
 	}
 }
 
-// @include titleSizes();
+// @include title-sizes;
 
 // CUSTOM SCROLLBAR ------------------------------------
-@mixin customScrollbar($scrollbar-size, $scrollbar-track-bg, $scrollbar-thumb-bg, $scrollbar-thumb-border-radius: 0) {
+@mixin custom-scrollbar($scrollbar-size, $scrollbar-track-bg, $scrollbar-thumb-bg, $scrollbar-thumb-border-radius: 0) {
 	&::-webkit-scrollbar-button {
-		background-image: url();
-		background-repeat: no-repeat;
 		width: 100%;
 		height: 0;
+		background-image: url("");
+		background-repeat: no-repeat;
 	}
 
 	&::-webkit-scrollbar-track {
@@ -414,10 +419,10 @@
 	}
 
 	&::-webkit-scrollbar-thumb {
-		border-radius: $scrollbar-thumb-border-radius;
 		background-color: $scrollbar-thumb-bg;
 		background-repeat: no-repeat;
 		background-position: center;
+		border-radius: $scrollbar-thumb-border-radius;
 
 		&:hover {
 			background-color: lighten($scrollbar-thumb-bg, 5%);
@@ -433,11 +438,11 @@
 	}
 
 	&::-webkit-resizer {
-		background-image: url('');
-		background-repeat: no-repeat;
-		background-color: $scrollbar-track-bg;
 		width: $scrollbar-size;
 		height: $scrollbar-size;
+		background-color: $scrollbar-track-bg;
+		background-image: url("");
+		background-repeat: no-repeat;
 	}
 
 	&::-webkit-scrollbar {
@@ -460,102 +465,71 @@
 	}
 }
 
-// EXAMPLE: @include customScrollbar(10px, red, green, 5px);
+// EXAMPLE: @include custom-scrollbar(8px, #FF0000, #008000, 5px);
 
 // LIST RESET ------------------------------------
-@mixin listReset {
+@mixin list-reset {
 	margin: 0;
 	padding: 0;
 	list-style: none;
 }
 
-// @include listReset;
+// @include list-reset;
 
 // WORD WRAP ------------------------------------
-@mixin wordWrap() {
-	overflow-wrap: break-word;
+@mixin word-wrap() {
 	word-wrap: break-word;
-	-ms-word-break: break-all;
 	word-break: break-all;
 	word-break: break-word;
-	-ms-hyphens: auto;
-	-moz-hyphens: auto;
-	-webkit-hyphens: auto;
+	overflow-wrap: break-word;
 	hyphens: auto;
 }
 
-// @include wordWrap;
+// @include word-wrap;
 
 // VERTICAL TEXT TOP BOTTOM ------------------------------------
-@mixin verticalTextTopBottom() {
-	overflow-wrap: break-word;
+@mixin vertical-text-top-bottom() {
 	word-wrap: break-word;
-	-ms-word-break: break-all;
 	word-break: break-all;
 	word-break: break-word;
-	-ms-hyphens: auto;
-	-moz-hyphens: auto;
-	-webkit-hyphens: auto;
+	overflow-wrap: break-word;
 	hyphens: auto;
 }
 
-// @include verticalTextTopBottom;
+// @include vertical-text-top-bottom;
 
 // VERTICAL TEXT BOTTOM TOP ------------------------------------
-@mixin verticalTextBottomTop() {
-	writing-mode: vertical-rl;
-	-webkit-writing-mode: vertical-rl;
-	transform: rotate(180deg);
+@mixin vertical-text-bottom-top() {
 	display: inline-block;
 	margin: 0;
+	transform: rotate(180deg);
+	writing-mode: vertical-rl;
 }
 
-// @include verticalTextBottomTop;
+// @include vertical-text-bottom-top;
 
 // VISUALLY HIDDEN ------------------------------------
-@mixin visuallyHidden() {
+@mixin visually-hidden() {
 	position: absolute;
 	width: 1px;
 	height: 1px;
 	margin: -1px;
-	border: 0;
 	padding: 0;
-	white-space: nowrap;
-	clip-path: inset(100%);
-	clip: rect(0 0 0 0);
 	overflow: hidden;
+	white-space: nowrap;
+	border: 0;
+	clip: rect(0 0 0 0);
+	clip-path: inset(100%);
 }
 
-// @include visuallyHidden;
-
-// ADD GRID GUTTER ------------------------------------
-@mixin addGridGutter($gutter, $breakpoint: false) {
-	@if ($breakpoint) {
-		$breakpoint: '-' + $breakpoint;
-	} @else {
-		$breakpoint: '';
-	}
-
-	&.gutter#{$breakpoint}-#{$gutter} {
-		margin-left: -$gutter * 0.5 + px;
-		margin-right: -$gutter * 0.5 + px;
-
-		> .col,
-		> [class^="col"] {
-			padding-left: $gutter * 0.5 + px;
-			padding-right: $gutter * 0.5 + px;
-		}
-	}
-}
-
-// @include addGridGutter(12);
+// @include visually-hidden;
 
 // DESCENDING Z-INDEX ------------------------------------
-@mixin descendingZindex($count: 30) {
+@mixin descending-z-index($count: 30) {
 	position: relative;
 
-	$target: 0;
-	$index: $count;
+	$target: 0 !default;
+	$index: $count !default;
 
 	@while $index > 0 {
 		&:nth-child(#{$target}) {
@@ -567,10 +541,10 @@
 	}
 }
 
-// @include descendingZindex;
+// @include descending-z-index;
 
 // ASCENDING Z-INDEX ------------------------------------
-@mixin ascendingZindex($count: 30) {
+@mixin ascending-z-index($count: 30) {
 	position: relative;
 
 	@for $i from 1 through $count {
@@ -580,23 +554,23 @@
 	}
 }
 
-// @include ascendingZindex;
+// @include ascending-z-index;
 
 // TRUNCATE TEXT TO SPECIFIC LINE ------------------------------------
-@mixin truncateTextToSpecificLine($line-count) {
+@mixin truncate-text-to-specific-line($line-count) {
 	display: -webkit-box;
 	-webkit-box-orient: vertical;
 	-webkit-line-clamp: $line-count;
 	overflow: hidden;
 }
 
-// @include truncateTextToSpecificLine(2);
+// @include truncate-text-to-specific-line(2);
 
-// CLEAR BUTTON ------------------------------------
-@mixin clearButton() {
+// RESET BUTTON ------------------------------------
+@mixin reset-btn() {
+	padding: 0;
 	background-color: transparent;
 	border: none;
-	padding: 0;
 }
 
-// @include clearButton();
+// @include reset-btn;

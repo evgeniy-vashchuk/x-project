@@ -1,18 +1,18 @@
-@use 'sass:math';
+@use "sass:math";
 
 // LINE HEIGHT ------------------------------------
-@function lineHeight($line-height, $font-size) {
+@function line-height($line-height, $font-size) {
 	@return (calc($line-height / $font-size));
 }
 
-// EXAMPLE: line-hight: lineHeight(20, 16);
+// EXAMPLE: line-hight: line-height(20, 16);
 
 // LETTER SPACING ------------------------------------
-@function letterSpacing($letter-spacing, $font-size) {
+@function letter-spacing($letter-spacing, $font-size) {
 	@return calc(($letter-spacing * $font-size) / 1000) + px;
 }
 
-// EXAMPLE: letter-spacing: letterSpacing(20, 16);
+// EXAMPLE: letter-spacing: letter-spacing(20, 16);
 
 // PIXEL TO REM CONVERTING ------------------------------------
 $rem-baseline: 16px !default;
@@ -23,13 +23,13 @@ $rem-px-only: false !default;
 	@if $separator == "comma" or $separator == "space" {
 		@return append($list, null, $separator);
 	}
-
 	@if function-exists("list-separator") == true {
 		@return list-separator($list);
 	}
 
 	// list-separator polyfill
-	$test-list: ();
+	$test-list: () !default;
+
 	@each $item in $list {
 		$test-list: append($test-list, $item, space);
 	}
@@ -42,7 +42,7 @@ $rem-px-only: false !default;
 }
 
 @function rem-convert($to, $values...) {
-	$result: ();
+	$result: () !default;
 	$separator: rem-separator($values);
 
 	@each $value in $values {
@@ -52,8 +52,8 @@ $rem-px-only: false !default;
 			$result: append($result, calc($value / $rem-baseline) * 1rem, $separator);
 		} @else if type-of($value) == "list" {
 			$value-separator: rem-separator($value);
-			$value: rem-convert($to, $value...);
-			$value: rem-separator($value, $value-separator);
+			$value-prev: rem-convert($to, $value...);
+			$value: rem-separator($value-prev, $value-separator);
 			$result: append($result, $value, $separator);
 		} @else {
 			$result: append($result, $value, $separator);
@@ -96,12 +96,12 @@ $rem-px-only: false !default;
 
 // REMOVE THE UNIT
 @function strip-unit($number) {
-	@if type-of($number) == 'number' and not unitless($number) {
+	@if type-of($number) == "number" and not unitless($number) {
 		@return math.div($number, ($number * 0 + 1));
 	}
 
 	@return $number;
-};
+}
 
 // EXAMPLE:
 // $length: 42px;
@@ -109,15 +109,15 @@ $rem-px-only: false !default;
 // -> 42
 
 // SPLIT STRING
-@function splitString($string, $separator) {
-	$split-arr: ();
-	$index : str-index($string, $separator);
+@function split-string($string, $separator) {
+	$split-arr: () !default;
+	$index: str-index($string, $separator) !default;
 
 	@while $index != null {
 		$item: str-slice($string, 1, $index - 1);
 		$split-arr: append($split-arr, $item);
 		$string: str-slice($string, $index + 1);
-		$index : str-index($string, $separator);
+		$index: str-index($string, $separator);
 	}
 
 	$split-arr: append($split-arr, $string);
@@ -126,8 +126,8 @@ $rem-px-only: false !default;
 }
 
 // EXAMPLE:
-// width: nth(splitString('15px 30px', ' '), 1);
+// width: nth(split-string('15px 30px', ' '), 1);
 // will return 15px;
 
-// width: nth(splitString('15px 30px', ' '), 2);
+// width: nth(split-string('15px 30px', ' '), 2);
 // will return 30px;

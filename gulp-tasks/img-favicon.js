@@ -1,7 +1,7 @@
 const FAVICON_DATA_FILE = 'favicon-data.json';
 
-module.exports = function (gulp, plugins, path, isProduction) {
-	return function (done) {
+module.exports = function(gulp, plugins, path, isProduction) {
+	return function(done) {
 		plugins.realFavicon.generateFavicon({
 			masterPicture: path.src.favicon,
 			dest: path.dist.favicon,
@@ -16,9 +16,7 @@ module.exports = function (gulp, plugins, path, isProduction) {
 						declareOnlyDefaultIcon: true
 					}
 				},
-				desktopBrowser: {
-					design: 'raw'
-				},
+				desktopBrowser: { design: 'raw' },
 				windows: {
 					pictureAspect: 'noChange',
 					backgroundColor: '#000000',

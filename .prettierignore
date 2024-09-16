@@ -1,0 +1,41 @@
+# Ignore files with their own formaters
+**/*.js
+**/*.html
+
+# Ignore build output directories
+.nuxt/
+dist/
+
+# Ignore node modules
+node_modules/
+
+# Ignore specific configuration files
+*.config.js
+
+# Ignore environment variables files
+.env
+.env.*
+
+# Ignore lock files
+yarn.lock
+package-lock.json
+
+# Ignore logs
+*.log
+
+# Ignore compiled files
+*.min.css
+/src/libs/**/*.*
+/src/scss/abstracts/_variables.scss
+
+# Ignore specific file types
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.svg
+
+# Ignore other generated files
+coverage/
+favicon-data.json
+selection.json
