@@ -6,7 +6,7 @@ const htmlParser = require('@html-eslint/parser');
 
 module.exports = [
 	pluginJs.configs.recommended,
-	{ ignores: ['dist', 'node_modules', '**/*.min.js'] },
+	{ ignores: ['dist', 'node_modules', '**/*.min.js', 'libs.js', 'src/libs/**.js'] },
 	{
 		plugins: { '@stylistic/js': stylisticJs },
 		files: ['**/*.js'],
