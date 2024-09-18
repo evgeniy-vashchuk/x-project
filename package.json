@@ -35,7 +35,7 @@
 		"htmllint:fix": "npx eslint 'src/*.html' --fix",
 		"editorlint": "npx editorconfig-checker",
 		"lint": "npm run puglint && npm run stylelint && npm run jslint && npm run htmllint && npm run editorlint",
-		"prepare": "husky"
+		"prepare": "git config core.hooksPath .git-hooks || echo 'Not in a git repo'"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.25.2",
@@ -78,7 +78,6 @@
 		"gulp-tabify": "0.0.2",
 		"gulp-terser": "^2.1.0",
 		"gulp-zip": "^6.0.0",
-		"husky": "^9.1.6",
 		"npm-check-updates": "^17.1.1",
 		"postcss-discard-comments": "^7.0.2",
 		"prettier": "^3.3.3",
