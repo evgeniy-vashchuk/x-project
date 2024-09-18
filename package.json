@@ -1,6 +1,6 @@
 {
 	"name": "x-project",
-	"version": "2.0.0",
+	"version": "3.0.0",
 	"description": "Starter kit for fast HTML / CSS / JS pages layout based on Gulp",
 	"keywords": [
 		"gulp",
@@ -34,7 +34,7 @@
 		"htmllint": "npx eslint 'src/*.html'",
 		"htmllint:fix": "npx eslint 'src/*.html' --fix",
 		"editorlint": "npx editorconfig-checker",
-		"lintall": "npm run puglint && npm run stylelint && npm run jslint && npm run htmllint && npm run editorlint",
+		"lint": "npm run puglint && npm run stylelint && npm run jslint && npm run htmllint && npm run editorlint",
 		"prepare": "husky"
 	},
 	"devDependencies": {
