@@ -1,6 +1,3 @@
-#!/bin/bash
+#!/bin/sh
 
-if ! npm run lint ; then
-  echo "Lint errors found. Aborting commit."
-  exit 1
-fi
+npm run lint
