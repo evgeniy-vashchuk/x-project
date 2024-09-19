@@ -23,7 +23,7 @@ X-Project - is starter template with basic tasks for development, which uses [Gu
 
 Our project follow [SASS guidelines](https://sass-guidelin.es/#architecture).
 
-Also all HTML/PUG & CSS/SCSS & JS code is linted and formated by [Prettier](https://prettier.io/), [Stylelint](https://stylelint.io/), [ESLint](https://eslint.org/), [EditorConfig](https://editorconfig.org/). And by [Husky](https://typicode.github.io/husky/) you cannot commit the changes if the code doesn't pass linting-review.
+Also all HTML/PUG & CSS/SCSS & JS code is linted and formated by [Prettier](https://prettier.io/), [Stylelint](https://stylelint.io/), [ESLint](https://eslint.org/), [EditorConfig](https://editorconfig.org/). And by Git pre-commit hooks you cannot commit the changes if the code doesn't pass linting-review.
 
 # How to use
 
