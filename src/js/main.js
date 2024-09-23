@@ -1,5 +1,5 @@
 'use strict';
 
 (function($) {
-	// your code here
+  // your code here
 }(jQuery));

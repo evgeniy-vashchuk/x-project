@@ -12,8 +12,8 @@
 const gulp			= require('gulp');
 const argv			= require('yargs').argv;
 const plugins		= require('gulp-load-plugins')({
-	pattern: '*',
-	rename: { 'gulp-sass': 'dartSass' }
+  pattern: '*',
+  rename: { 'gulp-sass': 'dartSass' }
 });
 const isProduction = (argv.prod !== undefined);
 const copyToWordPress = true;
@@ -21,43 +21,44 @@ const withPug = (argv.pug !== undefined);
 const srcFolder = 'src';
 const distFolder = 'dist';
 const path = {
-	src: {
-		html: [srcFolder + '/*.html', '!' + srcFolder + '/_*.html'],
-		pug: srcFolder + '/pug/pages/*.pug',
-		pugBase: srcFolder + '/pug/pages/',
-		css: srcFolder + '/scss/**/*.{scss,sass,css}',
-		js: [srcFolder + '/js/**/*.js', '!' + srcFolder + '/js/**/_*.js', '!' + srcFolder + '/js/libs.js'],
-		jsLibs: srcFolder + '/js/libs.js',
-		img: srcFolder + '/img/**/*.{gif,png,jpg,jpeg,svg}',
-		favicon: srcFolder + '/img/favicon/icon.svg',
-		fonts: srcFolder + '/fonts/**/*.*',
-		additionalFiles: srcFolder + '/files/',
-	},
-	dist: {
-		html: distFolder + '/',
-		css: distFolder + '/css/',
-		js: distFolder + '/js/',
-		img: distFolder + '/img/',
-		favicon: distFolder + '/img/favicon/',
-		fonts: distFolder + '/fonts/',
-		additionalFiles: distFolder + '/files/',
-		wordpress: '/Users/evgeniy_vashchuk/Sites/shaktiman/wp-content/themes/x-project-wp/'
-	},
-	watch: {
-		html: srcFolder + '/*.html',
-		pug: srcFolder + '/pug/**/*.pug',
-		css: srcFolder + '/scss/**/*.{scss,sass,css}',
-		js: [srcFolder + '/js/**/*.js', '!' + srcFolder + '/js/libs.js'],
-		jsLibs: srcFolder + '/js/libs.js',
-		img: srcFolder + '/img/**/*.*',
-		fonts: srcFolder + '/fonts/**/*.*',
-		additionalFiles: srcFolder + '/files/',
-	},
-	server: distFolder
+  src: {
+    html: [srcFolder + '/*.html', '!' + srcFolder + '/_*.html'],
+    pug: srcFolder + '/pug/pages/*.pug',
+    pugFolder: srcFolder + '/pug/',
+    pugBase: srcFolder + '/pug/pages/',
+    css: srcFolder + '/scss/**/*.{scss,sass,css}',
+    js: [srcFolder + '/js/**/*.js', '!' + srcFolder + '/js/**/_*.js', '!' + srcFolder + '/js/libs.js'],
+    jsLibs: srcFolder + '/js/libs.js',
+    img: srcFolder + '/img/**/*.{gif,png,jpg,jpeg,svg}',
+    favicon: srcFolder + '/img/favicon/icon.svg',
+    fonts: srcFolder + '/fonts/**/*.*',
+    additionalFiles: srcFolder + '/files/',
+  },
+  dist: {
+    html: distFolder + '/',
+    css: distFolder + '/css/',
+    js: distFolder + '/js/',
+    img: distFolder + '/img/',
+    favicon: distFolder + '/img/favicon/',
+    fonts: distFolder + '/fonts/',
+    additionalFiles: distFolder + '/files/',
+    wordpress: '/Users/evgeniy_vashchuk/Sites/shaktiman/wp-content/themes/x-project-wp/'
+  },
+  watch: {
+    html: srcFolder + '/*.html',
+    pug: srcFolder + '/pug/**/*.pug',
+    css: srcFolder + '/scss/**/*.{scss,sass,css}',
+    js: [srcFolder + '/js/**/*.js', '!' + srcFolder + '/js/libs.js'],
+    jsLibs: srcFolder + '/js/libs.js',
+    img: srcFolder + '/img/**/*.*',
+    fonts: srcFolder + '/fonts/**/*.*',
+    additionalFiles: srcFolder + '/files/',
+  },
+  server: distFolder
 };
 
 function getTask(task) {
-	return require('./gulp-tasks/' + task)(gulp, plugins, path, isProduction, withPug, copyToWordPress);
+  return require('./gulp-tasks/' + task)(gulp, plugins, path, isProduction, withPug, copyToWordPress);
 }
 
 // WORKING WITH HTML FILES
@@ -96,8 +97,8 @@ gulp.task('watch', getTask('watch'));
 
 // REMOVE DIST
 gulp.task('removeDist', function(done) {
-	plugins.del.sync(path.server, { force: true });
-	done();
+  plugins.del.sync(path.server, { force: true });
+  done();
 });
 
 // BUILD

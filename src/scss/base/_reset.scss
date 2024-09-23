@@ -2,13 +2,13 @@
 *:hover,
 *:focus,
 *:active {
-	outline: none !important;
+  outline: none !important;
 }
 
 body {
-	text-rendering: optimizeLegibility;
-	-webkit-font-smoothing: antialiased;
-	overflow-x: hidden;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
 
 input[type="text"],
@@ -19,55 +19,55 @@ input[type="search"],
 input[type="password"],
 input[type="url"],
 textarea {
-	@include placeholder {
-		line-height: normal;
-		transition: opacity 0.3s;
-	}
+  @include placeholder {
+    line-height: normal;
+    transition: opacity 0.3s;
+  }
 
-	&:focus {
-		@include placeholder {
-			opacity: 0;
-		}
-	}
+  &:focus {
+    @include placeholder {
+      opacity: 0;
+    }
+  }
 
-	&:disabled {
-		opacity: 1;
-	}
+  &:disabled {
+    opacity: 1;
+  }
 }
 
 input[type="number"] {
-	appearance: textfield;
+  appearance: textfield;
 
-	&::-webkit-outer-spin-button,
-	&::-webkit-inner-spin-button {
-		margin: 0;
-		appearance: none;
-	}
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    margin: 0;
+    appearance: none;
+  }
 }
 
 textarea {
-	overflow: hidden auto;
-	resize: none;
+  overflow: hidden auto;
+  resize: none;
 }
 
 // hide cross icon in IE
 ::-ms-clear {
-	display: none;
+  display: none;
 }
 
 // remove full screen button for video on opera browser
 #detach-button-host {
-	display: none !important;
+  display: none !important;
 }
 
 a {
-	&[href*="mailto:"] {
-		word-wrap: break-word;
-	}
+  &[href*="mailto:"] {
+    word-wrap: break-word;
+  }
 }
 
 img,
 svg {
-	max-width: 100%;
-	height: auto;
+  max-width: 100%;
+  height: auto;
 }

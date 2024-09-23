@@ -1,60 +1,60 @@
 .wpcf7-form {
-	.wpcf7-not-valid-tip {
-		margin-top: $form-feedback-margin-top;
-		color: $form-feedback-invalid-color;
-		font-size: $form-feedback-font-size;
-		font-style: $form-feedback-font-style;
-	}
+  .wpcf7-not-valid-tip {
+    margin-top: $form-feedback-margin-top;
+    color: $form-feedback-invalid-color;
+    font-size: $form-feedback-font-size;
+    font-style: $form-feedback-font-style;
+  }
 
-	.position-relative {
-		.wpcf7-not-valid-tip {
-			position: absolute;
-			top: calc(100% + 4px);
-			left: 12px;
-			margin-top: 0;
+  .position-relative {
+    .wpcf7-not-valid-tip {
+      position: absolute;
+      top: calc(100% + 4px);
+      left: 12px;
+      margin-top: 0;
 
-			@include media-breakpoint-up(xxl) {
-				top: calc(100% + 8px);
-			}
-		}
+      @include media-breakpoint-up(xxl) {
+        top: calc(100% + 8px);
+      }
+    }
 
-		.wpcf7-form-control-wrap {
-			position: static;
-		}
-	}
+    .wpcf7-form-control-wrap {
+      position: static;
+    }
+  }
 
-	.wpcf7-list-item {
-		margin: 0;
-	}
+  .wpcf7-list-item {
+    margin: 0;
+  }
 
-	.wpcf7-spinner {
-		margin: 0 15px;
-		vertical-align: middle;
-	}
+  .wpcf7-spinner {
+    margin: 0 15px;
+    vertical-align: middle;
+  }
 
-	.wpcf7-response-output {
-		margin: 20px 0 0 !important;
-		padding: 15px !important;
-	}
+  .wpcf7-response-output {
+    margin: 20px 0 0 !important;
+    padding: 15px !important;
+  }
 
-	&.sent {
-		.wpcf7-response-output {
-			border-color: $success;
-		}
-	}
+  &.sent {
+    .wpcf7-response-output {
+      border-color: $success;
+    }
+  }
 
-	&.failed,
-	&.aborted {
-		.wpcf7-response-output {
-			border-color: $danger;
-		}
-	}
+  &.failed,
+  &.aborted {
+    .wpcf7-response-output {
+      border-color: $danger;
+    }
+  }
 
-	&.invalid,
-	&.unaccepted,
-	&.payment-required {
-		.wpcf7-response-output {
-			border-color: $warning;
-		}
-	}
+  &.invalid,
+  &.unaccepted,
+  &.payment-required {
+    .wpcf7-response-output {
+      border-color: $warning;
+    }
+  }
 }

@@ -2,29 +2,29 @@
 @import "forms/cf7";
 
 .form-label {
-	cursor: pointer;
+  cursor: pointer;
 }
 
 .form-control {
-	caret-color: $input-color;
-	text-overflow: ellipsis;
+  caret-color: $input-color;
+  text-overflow: ellipsis;
 
-	&[disabled] {
-		-webkit-text-fill-color: $input-disabled-color;
-	}
+  &[disabled] {
+    -webkit-text-fill-color: $input-disabled-color;
+  }
 }
 
 textarea {
-	&.form-control {
-		height: 200px;
-	}
+  &.form-control {
+    height: 200px;
+  }
 }
 
 .position-relative {
-	.invalid-feedback {
-		position: absolute;
-		top: calc(100% + 5px);
-		left: 0;
-		margin-top: 0;
-	}
+  .invalid-feedback {
+    position: absolute;
+    top: calc(100% + 5px);
+    left: 0;
+    margin-top: 0;
+  }
 }

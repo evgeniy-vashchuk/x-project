@@ -2,23 +2,23 @@
 
 // Placeholder stylization ------------------------------------
 @mixin placeholder {
-	&::-webkit-input-placeholder {
-		@content;
-	}
+  &::-webkit-input-placeholder {
+    @content;
+  }
 
-	&::-moz-placeholder {
-		opacity: 1;
+  &::-moz-placeholder {
+    opacity: 1;
 
-		@content;
-	}
+    @content;
+  }
 
-	&:-moz-placeholder {
-		@content;
-	}
+  &:-moz-placeholder {
+    @content;
+  }
 
-	&:-ms-input-placeholder {
-		@content;
-	}
+  &:-ms-input-placeholder {
+    @content;
+  }
 }
 
 // EXAMPLE:
@@ -28,76 +28,76 @@
 
 // Creation border-arrows ------------------------------------
 @mixin border-arrow($width, $height, $bg, $direction) {
-	width: 0;
-	height: 0;
-	border-style: solid;
+  width: 0;
+  height: 0;
+  border-style: solid;
 
-	@if $direction == t {
-		border-color: transparent transparent $bg;
-		border-width: 0 calc($width / 2) + px $height + px calc($width / 2) + px;
-	}
+  @if $direction == t {
+    border-color: transparent transparent $bg;
+    border-width: 0 calc($width / 2) + px $height + px calc($width / 2) + px;
+  }
 
-	@if $direction == r {
-		border-color: transparent transparent transparent $bg;
-		border-width: calc($height / 2) + px 0 calc($height / 2) + px $width + px;
-	}
+  @if $direction == r {
+    border-color: transparent transparent transparent $bg;
+    border-width: calc($height / 2) + px 0 calc($height / 2) + px $width + px;
+  }
 
-	@if $direction == b {
-		border-color: $bg transparent transparent transparent;
-		border-width: $height + px calc($width / 2) + px 0 calc($width / 2) + px;
-	}
+  @if $direction == b {
+    border-color: $bg transparent transparent transparent;
+    border-width: $height + px calc($width / 2) + px 0 calc($width / 2) + px;
+  }
 
-	@if $direction == l {
-		border-color: transparent $bg transparent transparent;
-		border-width: calc($height / 2) + px $width + px calc($height / 2) + px 0;
-	}
+  @if $direction == l {
+    border-color: transparent $bg transparent transparent;
+    border-width: calc($height / 2) + px $width + px calc($height / 2) + px 0;
+  }
 
-	@if $direction == tl {
-		border-color: $bg transparent transparent transparent;
-		border-width: $height + px $width + px 0 0;
-	}
+  @if $direction == tl {
+    border-color: $bg transparent transparent transparent;
+    border-width: $height + px $width + px 0 0;
+  }
 
-	@if $direction == tr {
-		border-color: transparent $bg transparent transparent;
-		border-width: 0 $width + px $height + px 0;
-	}
+  @if $direction == tr {
+    border-color: transparent $bg transparent transparent;
+    border-width: 0 $width + px $height + px 0;
+  }
 
-	@if $direction == br {
-		border-color: transparent transparent $bg;
-		border-width: 0 0 $height + px $width + px;
-	}
+  @if $direction == br {
+    border-color: transparent transparent $bg;
+    border-width: 0 0 $height + px $width + px;
+  }
 
-	@if $direction == bl {
-		border-color: transparent transparent transparent $bg;
-		border-width: $height + px 0 0 $width + px;
-	}
+  @if $direction == bl {
+    border-color: transparent transparent transparent $bg;
+    border-width: $height + px 0 0 $width + px;
+  }
 }
 
 // EXAMPLE: @include border-arrow(20, 20, #FF0000, t);
 
 // Adding fonts ------------------------------------
 @mixin font-face($font-family, $file-path, $weight: normal, $style: normal, $asset-pipeline: false) {
-	@font-face {
-		font-weight: $weight;
-		font-family: $font-family;
-		font-style: $style;
-		font-display: swap;
-		@if $asset-pipeline == true {
-			src: font-url("#{$file-path}.eot");
-			src:
-				font-url("#{$file-path}.eot?#iefix") format("embedded-opentype"),
-				font-url("#{$file-path}.woff2") format("woff2"),
-				font-url("#{$file-path}.woff") format("woff"),
-				font-url("#{$file-path}.ttf") format("truetype");
-		} @else {
-			src: url("#{$file-path}.eot");
-			src:
-				url("#{$file-path}.eot?#iefix") format("embedded-opentype"),
-				url("#{$file-path}.woff2") format("woff2"),
-				url("#{$file-path}.woff") format("woff"),
-				url("#{$file-path}.ttf") format("truetype");
-		}
-	}
+  @font-face {
+    font-weight: $weight;
+    font-family: $font-family;
+    font-style: $style;
+    font-display: swap;
+    @if $asset-pipeline == true {
+      src: font-url("#{$file-path}.eot");
+      src:
+        font-url("#{$file-path}.eot?#iefix") format("embedded-opentype"),
+        font-url("#{$file-path}.woff2") format("woff2"),
+        font-url("#{$file-path}.woff") format("woff"),
+        font-url("#{$file-path}.ttf") format("truetype");
+    } @else {
+      src: url("#{$file-path}.eot");
+      src:
+        url("#{$file-path}.eot?#iefix") format("embedded-opentype"),
+        url("#{$file-path}.woff2") format("woff2"),
+        url("#{$file-path}.woff") format("woff"),
+        url("#{$file-path}.ttf") format("truetype");
+    }
+  }
 }
 
 // EXAMPLE:
@@ -108,233 +108,233 @@
 
 // Cover background image ------------------------------------
 @mixin bg-cover() {
-	background-repeat: no-repeat;
-	background-position: center;
-	background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
 
 // EXAMPLE: @include bg-cover;
 
 // Contain background image ------------------------------------
 @mixin bg-contain() {
-	background-repeat: no-repeat;
-	background-position: center;
-	background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
 }
 
 // EXAMPLE: @include bg-contain;
 
 // Flex center alignment ------------------------------------
 @mixin flex-center() {
-	display: flex;
-	align-items: center;
-	justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 // EXAMPLE: @include flex-center;
 
 // Inline-flex center alignment ------------------------------------
 @mixin inline-flex-center() {
-	display: inline-flex;
-	align-items: center;
-	justify-content: center;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 // EXAMPLE: @include inline-flex-center;
 
 // Position absolute center alignment ------------------------------------
 @mixin absolute-center($position: null) {
-	position: absolute;
+  position: absolute;
 
-	@if $position == "v" {
-		top: 50%;
-		transform: translate(0, -50%);
-	} @else if $position == "h" {
-		left: 50%;
-		transform: translate(-50%, 0);
-	} @else if $position == null {
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%, -50%);
-	}
+  @if $position == "v" {
+    top: 50%;
+    transform: translate(0, -50%);
+  } @else if $position == "h" {
+    left: 50%;
+    transform: translate(-50%, 0);
+  } @else if $position == null {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
 }
 
 // EXAMPLE: @include absolute-center;
 
 // Absolute cover ------------------------------------
 @mixin absolute-cover() {
-	position: absolute;
-	inset: 0;
-	width: 100%;
-	height: 100%;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
 }
 
 // EXAMPLE: @include absolute-cover;
 
 // Size of element ------------------------------------
 @mixin size($width, $height: $width) {
-	width: $width;
-	height: $height;
+  width: $width;
+  height: $height;
 }
 
 // EXAMPLE: @include size(50px);
 
 // Default pseudo-element ------------------------------------
 @mixin pseudo($display: block, $pos: absolute, $content: "") {
-	position: $pos;
-	display: $display;
-	content: $content;
+  position: $pos;
+  display: $display;
+  content: $content;
 }
 
 // EXAMPLE: div:after {@include pseudo; top: 100px; left: 100px; width: 200px; height: 200px;}
 
 // Responsive ratio block through bottom padding ------------------------------------
 @mixin responsive-ratio($x, $y, $pseudo: true) {
-	$padding: (calc($y / $x)) * 100 + "%";
+  $padding: (calc($y / $x)) * 100 + "%";
 
-	@if $pseudo {
-		&:before {
-			@include pseudo($pos: relative);
+  @if $pseudo {
+    &:before {
+      @include pseudo($pos: relative);
 
-			width: 100%;
-			padding-top: $padding;
-		}
-	} @else {
-		padding-bottom: $padding;
-	}
+      width: 100%;
+      padding-top: $padding;
+    }
+  } @else {
+    padding-bottom: $padding;
+  }
 }
 
 // EXAMPLE: @include responsive-ratio(16, 9);
 
 // Preventing Overflow with Ellipsis ------------------------------------
 @mixin ellipsis() {
-	overflow: hidden;
-	white-space: nowrap;
-	text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 // EXAMPLE: @include ellipsis;
 
 // Responsive images ------------------------------------
 @mixin img-res {
-	max-width: 100%;
-	height: auto;
+  max-width: 100%;
+  height: auto;
 }
 
 // EXAMPLE: @include img-res;
 
 // Gray image ------------------------------------
 @mixin gray {
-	filter: grayscale(100%);
-	filter: "progid:DXImageTransform.Microsoft.BasicImage(grayScale=1)";
-	filter: progid:DXImageTransform.Microsoft.BasicImage(grayScale=1);
+  filter: grayscale(100%);
+  filter: "progid:DXImageTransform.Microsoft.BasicImage(grayScale=1)";
+  filter: progid:DXImageTransform.Microsoft.BasicImage(grayScale=1);
 }
 
 // EXAMPLE: @include gray;
 
 // Gray none ------------------------------------
 @mixin gray-zero {
-	filter: grayscale(0%);
-	filter: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><filter id='grayscale'><feColorMatrix type='matrix' values='1 0 0 0 0, 0 1 0 0 0, 0 0 1 0 0, 0 0 0 1 0'/></filter></svg>#grayscale");
+  filter: grayscale(0%);
+  filter: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><filter id='grayscale'><feColorMatrix type='matrix' values='1 0 0 0 0, 0 1 0 0 0, 0 0 1 0 0, 0 0 0 1 0'/></filter></svg>#grayscale");
 }
 
 // EXAMPLE: @include gray-zero;
 
 // Media queries for max width ------------------------------------
 @mixin max-w($breakpoint) {
-	@if map-has-key($grid-breakpoints, $breakpoint) {
-		@media only screen and (max-width: #{map-get($grid-breakpoints, $breakpoint) - 0.02px}) {
-			@content;
-		}
-	} @else {
-		@media only screen and (max-width: $breakpoint + "px") {
-			@content;
-		}
-	}
+  @if map-has-key($grid-breakpoints, $breakpoint) {
+    @media only screen and (max-width: #{map-get($grid-breakpoints, $breakpoint) - 0.02px}) {
+      @content;
+    }
+  } @else {
+    @media only screen and (max-width: $breakpoint + "px") {
+      @content;
+    }
+  }
 }
 
 // EXAMPLE: @include max-w(md) {font-size: 50px;}
 
 // Media queries for min width ------------------------------------
 @mixin min-w($breakpoint) {
-	@if map-has-key($grid-breakpoints, $breakpoint) {
-		@media only screen and (min-width: #{map-get($grid-breakpoints, $breakpoint)}) {
-			@content;
-		}
-	} @else {
-		@media only screen and (min-width: $breakpoint + "px") {
-			@content;
-		}
-	}
+  @if map-has-key($grid-breakpoints, $breakpoint) {
+    @media only screen and (min-width: #{map-get($grid-breakpoints, $breakpoint)}) {
+      @content;
+    }
+  } @else {
+    @media only screen and (min-width: $breakpoint + "px") {
+      @content;
+    }
+  }
 }
 
 // EXAMPLE: @include min-w(md) {font-size: 50px;}
 
 // Media queries for max height ------------------------------------
 @mixin max-h($height) {
-	@media only screen and (max-height: $height + "px") {
-		@content;
-	}
+  @media only screen and (max-height: $height + "px") {
+    @content;
+  }
 }
 
 // EXAMPLE: @include max-h(800) {font-size: 50px;}
 
 // Media queries for min height ------------------------------------
 @mixin min-h($height) {
-	@media only screen and (min-height: $height + "px") {
-		@content;
-	}
+  @media only screen and (min-height: $height + "px") {
+    @content;
+  }
 }
 
 // EXAMPLE: @include min-h(800) {font-size: 50px;}
 
 // Keyframes animation with delay between iterations ------------------------------------
 @mixin wait-animate($options: ()) {
-	$options: map-merge(
-		(
-			animationname: waitanimate,
-			duration: 1,
-			waittime: 0,
-			timingfunction: linear,
-			iterationcount: infinite,
-		),
-		$options
-	);
-	$name: map-get($options, animationname);
-	$kf: map-get($options, keyframes);
-	$kf-length: length($kf);
-	$duration: map-get($options, duration);
-	$wait-time: map-get($options, waittime);
-	$timing-function: map-get($options, timingfunction);
-	$iteration-count: map-get($options, iterationcount);
-	$counter: 1 !default;
+  $options: map-merge(
+    (
+      animationname: waitanimate,
+      duration: 1,
+      waittime: 0,
+      timingfunction: linear,
+      iterationcount: infinite,
+    ),
+    $options
+  );
+  $name: map-get($options, animationname);
+  $kf: map-get($options, keyframes);
+  $kf-length: length($kf);
+  $duration: map-get($options, duration);
+  $wait-time: map-get($options, waittime);
+  $timing-function: map-get($options, timingfunction);
+  $iteration-count: map-get($options, iterationcount);
+  $counter: 1 !default;
 
-	// index of 'each'
+  // index of 'each'
 
-	@keyframes #{$name} {
-		@each $frame, $prop in $kf {
-			#{$frame * calc($duration / ($duration + $wait-time))}% {
-				@each $k, $v in $prop {
-					#{$k}: #{$v};
-				}
-			}
+  @keyframes #{$name} {
+    @each $frame, $prop in $kf {
+      #{$frame * calc($duration / ($duration + $wait-time))}% {
+        @each $k, $v in $prop {
+          #{$k}: #{$v};
+        }
+      }
 
-			// if last in loop and waitTime is not 0, add the last frame as 100% (this is what creates the pause)
-			@if $counter == $kf-length and $wait-time > 0 {
-				100% {
-					@each $k, $v in $prop {
-						#{$k}: #{$v};
-					}
-				}
-			}
+      // if last in loop and waitTime is not 0, add the last frame as 100% (this is what creates the pause)
+      @if $counter == $kf-length and $wait-time > 0 {
+        100% {
+          @each $k, $v in $prop {
+            #{$k}: #{$v};
+          }
+        }
+      }
 
-			$counter: $counter + 1;
-		}
-	}
+      $counter: $counter + 1;
+    }
+  }
 
-	.#{$name} {
-		animation: #{$name} #{$duration + $wait-time}s #{$timing-function} #{$iteration-count};
-	}
+  .#{$name} {
+    animation: #{$name} #{$duration + $wait-time}s #{$timing-function} #{$iteration-count};
+  }
 }
 
 // EXAMPLE:
@@ -366,211 +366,211 @@
 
 // HEADINGS FONT SIZE ------------------------------------
 @mixin title-sizes($with-rem: false) {
-	@each $media, $titles-size in $title-palette {
-		@if $media == xs {
-			@each $title, $size in $titles-size {
-				#{$title},
-				.#{$title} {
-					@if $with-rem {
-						$value: $size + 0;
+  @each $media, $titles-size in $title-palette {
+    @if $media == xs {
+      @each $title, $size in $titles-size {
+        #{$title},
+        .#{$title} {
+          @if $with-rem {
+            $value: $size + 0;
 
-						font-size: rem($value);
-					} @else {
-						font-size: $size + px;
-					}
-				}
-			}
-		} @else {
-			@include min-w(#{$media}) {
-				@each $title, $size in $titles-size {
-					#{$title},
-					.#{$title} {
-						@if $with-rem {
-							$value: $size + 0;
+            font-size: rem($value);
+          } @else {
+            font-size: $size + px;
+          }
+        }
+      }
+    } @else {
+      @include min-w(#{$media}) {
+        @each $title, $size in $titles-size {
+          #{$title},
+          .#{$title} {
+            @if $with-rem {
+              $value: $size + 0;
 
-							font-size: rem($value);
-						} @else {
-							font-size: $size + px;
-						}
-					}
-				}
-			}
-		}
-	}
+              font-size: rem($value);
+            } @else {
+              font-size: $size + px;
+            }
+          }
+        }
+      }
+    }
+  }
 }
 
 // @include title-sizes;
 
 // CUSTOM SCROLLBAR ------------------------------------
 @mixin custom-scrollbar($scrollbar-size, $scrollbar-track-bg, $scrollbar-thumb-bg, $scrollbar-thumb-border-radius: 0) {
-	&::-webkit-scrollbar-button {
-		width: 100%;
-		height: 0;
-		background-image: url("");
-		background-repeat: no-repeat;
-	}
+  &::-webkit-scrollbar-button {
+    width: 100%;
+    height: 0;
+    background-image: url("");
+    background-repeat: no-repeat;
+  }
 
-	&::-webkit-scrollbar-track {
-		background-color: $scrollbar-track-bg;
+  &::-webkit-scrollbar-track {
+    background-color: $scrollbar-track-bg;
 
-		&:active {
-			background-color: lighten($scrollbar-track-bg, 5%);
-		}
-	}
+    &:active {
+      background-color: lighten($scrollbar-track-bg, 5%);
+    }
+  }
 
-	&::-webkit-scrollbar-thumb {
-		background-color: $scrollbar-thumb-bg;
-		background-repeat: no-repeat;
-		background-position: center;
-		border-radius: $scrollbar-thumb-border-radius;
+  &::-webkit-scrollbar-thumb {
+    background-color: $scrollbar-thumb-bg;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: $scrollbar-thumb-border-radius;
 
-		&:hover {
-			background-color: lighten($scrollbar-thumb-bg, 5%);
-		}
+    &:hover {
+      background-color: lighten($scrollbar-thumb-bg, 5%);
+    }
 
-		&:active {
-			background-color: darken($scrollbar-thumb-bg, 5%);
-		}
-	}
+    &:active {
+      background-color: darken($scrollbar-thumb-bg, 5%);
+    }
+  }
 
-	&::-webkit-scrollbar-thumb:vertical {
-		background-image: $scrollbar-size;
-	}
+  &::-webkit-scrollbar-thumb:vertical {
+    background-image: $scrollbar-size;
+  }
 
-	&::-webkit-resizer {
-		width: $scrollbar-size;
-		height: $scrollbar-size;
-		background-color: $scrollbar-track-bg;
-		background-image: url("");
-		background-repeat: no-repeat;
-	}
+  &::-webkit-resizer {
+    width: $scrollbar-size;
+    height: $scrollbar-size;
+    background-color: $scrollbar-track-bg;
+    background-image: url("");
+    background-repeat: no-repeat;
+  }
 
-	&::-webkit-scrollbar {
-		width: $scrollbar-size;
-		height: $scrollbar-size;
-	}
+  &::-webkit-scrollbar {
+    width: $scrollbar-size;
+    height: $scrollbar-size;
+  }
 
-	// FOR INTERNET EXPLORER
-	@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
-		scrollbar-face-color: $scrollbar-thumb-bg;
-		scrollbar-track-color: $scrollbar-track-bg;
-		scrollbar-shadow-color: $scrollbar-thumb-bg;
-		scrollbar-arrow-color: $scrollbar-thumb-bg;
-	}
+  // FOR INTERNET EXPLORER
+  @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    scrollbar-face-color: $scrollbar-thumb-bg;
+    scrollbar-track-color: $scrollbar-track-bg;
+    scrollbar-shadow-color: $scrollbar-thumb-bg;
+    scrollbar-arrow-color: $scrollbar-thumb-bg;
+  }
 
-	// FOR FIREFOX
-	@supports (-moz-appearance: none) {
-		scrollbar-width: auto;
-		scrollbar-color: $scrollbar-thumb-bg $scrollbar-track-bg;
-	}
+  // FOR FIREFOX
+  @supports (-moz-appearance: none) {
+    scrollbar-width: auto;
+    scrollbar-color: $scrollbar-thumb-bg $scrollbar-track-bg;
+  }
 }
 
 // EXAMPLE: @include custom-scrollbar(8px, #FF0000, #008000, 5px);
 
 // LIST RESET ------------------------------------
 @mixin list-reset {
-	margin: 0;
-	padding: 0;
-	list-style: none;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
 // @include list-reset;
 
 // WORD WRAP ------------------------------------
 @mixin word-wrap() {
-	word-wrap: break-word;
-	word-break: break-all;
-	word-break: break-word;
-	overflow-wrap: break-word;
-	hyphens: auto;
+  word-wrap: break-word;
+  word-break: break-all;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
 }
 
 // @include word-wrap;
 
 // VERTICAL TEXT TOP BOTTOM ------------------------------------
 @mixin vertical-text-top-bottom() {
-	word-wrap: break-word;
-	word-break: break-all;
-	word-break: break-word;
-	overflow-wrap: break-word;
-	hyphens: auto;
+  word-wrap: break-word;
+  word-break: break-all;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
 }
 
 // @include vertical-text-top-bottom;
 
 // VERTICAL TEXT BOTTOM TOP ------------------------------------
 @mixin vertical-text-bottom-top() {
-	display: inline-block;
-	margin: 0;
-	transform: rotate(180deg);
-	writing-mode: vertical-rl;
+  display: inline-block;
+  margin: 0;
+  transform: rotate(180deg);
+  writing-mode: vertical-rl;
 }
 
 // @include vertical-text-bottom-top;
 
 // VISUALLY HIDDEN ------------------------------------
 @mixin visually-hidden() {
-	position: absolute;
-	width: 1px;
-	height: 1px;
-	margin: -1px;
-	padding: 0;
-	overflow: hidden;
-	white-space: nowrap;
-	border: 0;
-	clip: rect(0 0 0 0);
-	clip-path: inset(100%);
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  border: 0;
+  clip: rect(0 0 0 0);
+  clip-path: inset(100%);
 }
 
 // @include visually-hidden;
 
 // DESCENDING Z-INDEX ------------------------------------
 @mixin descending-z-index($count: 30) {
-	position: relative;
+  position: relative;
 
-	$target: 0 !default;
-	$index: $count !default;
+  $target: 0 !default;
+  $index: $count !default;
 
-	@while $index > 0 {
-		&:nth-child(#{$target}) {
-			z-index: #{$index};
-		}
+  @while $index > 0 {
+    &:nth-child(#{$target}) {
+      z-index: #{$index};
+    }
 
-		$target: $target + 1;
-		$index: $index - 1;
-	}
+    $target: $target + 1;
+    $index: $index - 1;
+  }
 }
 
 // @include descending-z-index;
 
 // ASCENDING Z-INDEX ------------------------------------
 @mixin ascending-z-index($count: 30) {
-	position: relative;
+  position: relative;
 
-	@for $i from 1 through $count {
-		&:nth-child(#{$i}) {
-			z-index: #{$i};
-		}
-	}
+  @for $i from 1 through $count {
+    &:nth-child(#{$i}) {
+      z-index: #{$i};
+    }
+  }
 }
 
 // @include ascending-z-index;
 
 // TRUNCATE TEXT TO SPECIFIC LINE ------------------------------------
 @mixin truncate-text-to-specific-line($line-count) {
-	display: -webkit-box;
-	-webkit-box-orient: vertical;
-	-webkit-line-clamp: $line-count;
-	overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: $line-count;
+  overflow: hidden;
 }
 
 // @include truncate-text-to-specific-line(2);
 
 // RESET BUTTON ------------------------------------
 @mixin reset-btn() {
-	padding: 0;
-	background-color: transparent;
-	border: none;
+  padding: 0;
+  background-color: transparent;
+  border: none;
 }
 
 // @include reset-btn;

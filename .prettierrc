@@ -1,48 +1,48 @@
 {
-	"plugins": ["@prettier/plugin-pug"],
-	"printWidth": 120,
-	"tabWidth": 2,
-	"useTabs": true,
-	"semi": true,
-	"singleQuote": false,
-	"jsxSingleQuote": false,
-	"bracketSpacing": true,
-	"bracketSameLine": false,
-	"trailingComma": "all",
-	"arrowParens": "avoid",
-	"endOfLine": "lf",
-	"pugAttributeSeparator": "none",
-	"pugWrapAttributesThreshold": 8,
-	"pugEmptyAttributes": "none",
-	"pugClassNotation": "as-is",
-	"pugIdNotation": "as-is",
-	"pugSortAttributesEnd": [
-		"^rel$",
-		"^sizes$",
-		"^id$",
-		"^class$",
-		"^name$",
-		"^type$",
-		"^href$",
-		"^src$",
-		"^alt$",
-		"^title$",
-		"^data-[\\w-]+$",
-		"^[a-zA-Z]+$"
-	],
-	"overrides": [
-		{
-			"files": "src/scss/**/*.{css,scss}",
-			"options": {
-				"printWidth": 1000
-			}
-		},
-		{
-			"files": "src/js/**/*.js",
-			"options": {
-				"printWidth": 1000,
-				"singleQuote": true
-			}
-		}
-	]
+  "plugins": ["@prettier/plugin-pug"],
+  "printWidth": 120,
+  "tabWidth": 2,
+  "useTabs": false,
+  "semi": true,
+  "singleQuote": false,
+  "jsxSingleQuote": false,
+  "bracketSpacing": true,
+  "bracketSameLine": false,
+  "trailingComma": "all",
+  "arrowParens": "avoid",
+  "endOfLine": "lf",
+  "pugAttributeSeparator": "none",
+  "pugWrapAttributesThreshold": 8,
+  "pugEmptyAttributes": "none",
+  "pugClassNotation": "as-is",
+  "pugIdNotation": "as-is",
+  "pugSortAttributesEnd": [
+    "^rel$",
+    "^sizes$",
+    "^id$",
+    "^class$",
+    "^name$",
+    "^type$",
+    "^href$",
+    "^src$",
+    "^alt$",
+    "^title$",
+    "^data-[\\w-]+$",
+    "^[a-zA-Z]+$"
+  ],
+  "overrides": [
+    {
+      "files": "src/scss/**/*.{css,scss}",
+      "options": {
+        "printWidth": 1000
+      }
+    },
+    {
+      "files": "src/js/**/*.js",
+      "options": {
+        "printWidth": 1000,
+        "singleQuote": true
+      }
+    }
+  ]
 }

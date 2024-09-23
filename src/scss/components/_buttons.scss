@@ -1,10 +1,10 @@
 .btn {
-	@include inline-flex-center;
+  @include inline-flex-center;
 
-	// sizes
-	&:not(.btn-sm, .btn-lg) {
-		// medium size styles
-	}
+  // sizes
+  &:not(.btn-sm, .btn-lg) {
+    // medium size styles
+  }
 
-	// colors
+  // colors
 }

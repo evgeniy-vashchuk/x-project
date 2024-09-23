@@ -2,14 +2,14 @@
 
 // LINE HEIGHT ------------------------------------
 @function line-height($line-height, $font-size) {
-	@return (calc($line-height / $font-size));
+  @return (calc($line-height / $font-size));
 }
 
 // EXAMPLE: line-hight: line-height(20, 16);
 
 // LETTER SPACING ------------------------------------
 @function letter-spacing($letter-spacing, $font-size) {
-	@return calc(($letter-spacing * $font-size) / 1000) + px;
+  @return calc(($letter-spacing * $font-size) / 1000) + px;
 }
 
 // EXAMPLE: letter-spacing: letter-spacing(20, 16);
@@ -20,72 +20,72 @@ $rem-fallback: false !default;
 $rem-px-only: false !default;
 
 @function rem-separator($list, $separator: false) {
-	@if $separator == "comma" or $separator == "space" {
-		@return append($list, null, $separator);
-	}
-	@if function-exists("list-separator") == true {
-		@return list-separator($list);
-	}
+  @if $separator == "comma" or $separator == "space" {
+    @return append($list, null, $separator);
+  }
+  @if function-exists("list-separator") == true {
+    @return list-separator($list);
+  }
 
-	// list-separator polyfill
-	$test-list: () !default;
+  // list-separator polyfill
+  $test-list: () !default;
 
-	@each $item in $list {
-		$test-list: append($test-list, $item, space);
-	}
+  @each $item in $list {
+    $test-list: append($test-list, $item, space);
+  }
 
-	@return if($test-list == $list, space, comma);
+  @return if($test-list == $list, space, comma);
 }
 
 @mixin rem-baseline($zoom: 100%) {
-	font-size: calc($zoom / 16px) * $rem-baseline;
+  font-size: calc($zoom / 16px) * $rem-baseline;
 }
 
 @function rem-convert($to, $values...) {
-	$result: () !default;
-	$separator: rem-separator($values);
+  $result: () !default;
+  $separator: rem-separator($values);
 
-	@each $value in $values {
-		@if type-of($value) == "number" and unit($value) == "rem" and $to == "px" {
-			$result: append($result, calc($value / 1rem) * $rem-baseline, $separator);
-		} @else if type-of($value) == "number" and unit($value) == "px" and $to == "rem" {
-			$result: append($result, calc($value / $rem-baseline) * 1rem, $separator);
-		} @else if type-of($value) == "list" {
-			$value-separator: rem-separator($value);
-			$value-prev: rem-convert($to, $value...);
-			$value: rem-separator($value-prev, $value-separator);
-			$result: append($result, $value, $separator);
-		} @else {
-			$result: append($result, $value, $separator);
-		}
-	}
+  @each $value in $values {
+    @if type-of($value) == "number" and unit($value) == "rem" and $to == "px" {
+      $result: append($result, calc($value / 1rem) * $rem-baseline, $separator);
+    } @else if type-of($value) == "number" and unit($value) == "px" and $to == "rem" {
+      $result: append($result, calc($value / $rem-baseline) * 1rem, $separator);
+    } @else if type-of($value) == "list" {
+      $value-separator: rem-separator($value);
+      $value-prev: rem-convert($to, $value...);
+      $value: rem-separator($value-prev, $value-separator);
+      $result: append($result, $value, $separator);
+    } @else {
+      $result: append($result, $value, $separator);
+    }
+  }
 
-	@return if(length($result) == 1, nth($result, 1), $result);
+  @return if(length($result) == 1, nth($result, 1), $result);
 }
 
 @function rem($values...) {
-	@if $rem-px-only {
-		@return rem-convert(px, $values...);
-	} @else {
-		@return rem-convert(rem, $values...);
-	}
+  @if $rem-px-only {
+    @return rem-convert(px, $values...);
+  } @else {
+    @return rem-convert(rem, $values...);
+  }
 }
 
 @mixin rem($properties, $values...) {
-	@if type-of($properties) == "map" {
-		@each $property in map-keys($properties) {
-			@include rem($property, map-get($properties, $property));
-		}
-	} @else {
-		@each $property in $properties {
-			@if $rem-fallback or $rem-px-only {
-				#{$property}: rem-convert(px, $values...);
-			}
-			@if not $rem-px-only {
-				#{$property}: rem-convert(rem, $values...);
-			}
-		}
-	}
+  @if type-of($properties) == "map" {
+    @each $property in map-keys($properties) {
+      @include rem($property, map-get($properties, $property));
+    }
+  } @else {
+    @each $property in $properties {
+      @if $rem-fallback or $rem-px-only {
+        #{$property}: rem-convert(px, $values...);
+      }
+      @if not $rem-px-only {
+        #{$property}: rem-convert(rem, $values...);
+      }
+    }
+  }
 }
 
 // EXAMPLE: font-size: rem(24px);
@@ -96,11 +96,11 @@ $rem-px-only: false !default;
 
 // REMOVE THE UNIT
 @function strip-unit($number) {
-	@if type-of($number) == "number" and not unitless($number) {
-		@return math.div($number, ($number * 0 + 1));
-	}
+  @if type-of($number) == "number" and not unitless($number) {
+    @return math.div($number, ($number * 0 + 1));
+  }
 
-	@return $number;
+  @return $number;
 }
 
 // EXAMPLE:
@@ -110,19 +110,19 @@ $rem-px-only: false !default;
 
 // SPLIT STRING
 @function split-string($string, $separator) {
-	$split-arr: () !default;
-	$index: str-index($string, $separator) !default;
+  $split-arr: () !default;
+  $index: str-index($string, $separator) !default;
 
-	@while $index != null {
-		$item: str-slice($string, 1, $index - 1);
-		$split-arr: append($split-arr, $item);
-		$string: str-slice($string, $index + 1);
-		$index: str-index($string, $separator);
-	}
+  @while $index != null {
+    $item: str-slice($string, 1, $index - 1);
+    $split-arr: append($split-arr, $item);
+    $string: str-slice($string, $index + 1);
+    $index: str-index($string, $separator);
+  }
 
-	$split-arr: append($split-arr, $string);
+  $split-arr: append($split-arr, $string);
 
-	@return $split-arr;
+  @return $split-arr;
 }
 
 // EXAMPLE:

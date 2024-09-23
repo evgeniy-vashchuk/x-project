@@ -1,37 +1,37 @@
 @if $use-title-palette {
-	@include title-sizes;
+  @include title-sizes;
 }
 
 .text-block,
 .remove-last-child-margin {
-	> * {
-		&:last-child {
-			margin-bottom: 0 !important;
-		}
-	}
+  > * {
+    &:last-child {
+      margin-bottom: 0 !important;
+    }
+  }
 
-	&.row {
-		> * {
-			&.col,
-			&[class^="col-"] {
-				&:last-child {
-					> * {
-						margin-bottom: 0 !important;
-					}
-				}
-			}
-		}
-	}
+  &.row {
+    > * {
+      &.col,
+      &[class^="col-"] {
+        &:last-child {
+          > * {
+            margin-bottom: 0 !important;
+          }
+        }
+      }
+    }
+  }
 }
 
 .text-sm {
-	font-size: $font-size-sm !important;
-	line-height: $line-height-sm;
+  font-size: $font-size-sm !important;
+  line-height: $line-height-sm;
 }
 
 .text-lg {
-	font-size: $font-size-lg !important;
-	line-height: $line-height-lg;
+  font-size: $font-size-lg !important;
+  line-height: $line-height-lg;
 }
 
 h1,
@@ -46,35 +46,35 @@ h5,
 .h5,
 h6,
 .h6 {
-	// styles for headings
+  // styles for headings
 }
 
 h1,
 .h1 {
-	// styles for h1
+  // styles for h1
 }
 
 h2,
 .h2 {
-	// styles for h2
+  // styles for h2
 }
 
 h3,
 .h3 {
-	// styles for h3
+  // styles for h3
 }
 
 h4,
 .h4 {
-	// styles for h4
+  // styles for h4
 }
 
 h5,
 .h5 {
-	// styles for h5
+  // styles for h5
 }
 
 h6,
 .h6 {
-	// styles for h6
+  // styles for h6
 }
