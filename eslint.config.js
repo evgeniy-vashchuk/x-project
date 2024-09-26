@@ -1,10 +1,10 @@
-const pluginJs = require('@eslint/js');
-const globals = require('globals');
-const stylisticJs = require('@stylistic/eslint-plugin-js');
-const html = require('@html-eslint/eslint-plugin');
-const htmlParser = require('@html-eslint/parser');
+import pluginJs from '@eslint/js';
+import globals from 'globals';
+import stylisticJs from '@stylistic/eslint-plugin-js';
+import html from '@html-eslint/eslint-plugin';
+import htmlParser from '@html-eslint/parser';
 
-module.exports = [
+export default [
   pluginJs.configs.recommended,
   { ignores: ['dist', 'node_modules', '**/*.min.js', 'libs.js', 'src/libs/**.js'] },
   {
@@ -12,7 +12,7 @@ module.exports = [
     files: ['**/*.js'],
     rules: {
       'no-unused-vars': [
-        'error',
+        'warn',
         { varsIgnorePattern: '^\\$', args: 'none' }
       ],
       'prefer-const': 'error',
@@ -105,7 +105,7 @@ module.exports = [
         // Always require blank lines before return statements
         { blankLine: 'always', prev: '*', next: 'return' },
       ],
-      '@stylistic/js/quote-props': ['error', 'as-needed'],
+      '@stylistic/js/quote-props': ['error', 'consistent-as-needed'],
       '@stylistic/js/quotes': ['error', 'single', { avoidEscape: true, allowTemplateLiterals: true }],
       '@stylistic/js/semi': ['error', 'always', { omitLastInOneLineClassBody: true }],
       '@stylistic/js/semi-spacing': ['error', { before: false, after: true }],
@@ -125,7 +125,7 @@ module.exports = [
   {
     languageOptions: {
       ecmaVersion: 'latest',
-      sourceType: 'script',
+      sourceType: 'module',
       globals: {
         ...globals.browser,
         ...globals.node,
