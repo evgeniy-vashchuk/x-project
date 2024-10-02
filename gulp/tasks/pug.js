@@ -5,7 +5,7 @@ import { plugins } from '../config.js';
 
 const emittyPug = emittySetup(config.src.pug, 'pug', { makeVinylFile: true });
 
-global.watch = false;
+global.isPugWatch = false;
 global.emittyChangedFile = {
   path: '',
   stats: null,
@@ -15,7 +15,7 @@ const pug = done => {
   gulp.src(`${config.src.pug}/pages/*.pug`)
     .pipe(plugins.plumber())
     .pipe(plugins.if(
-      global.watch,
+      global.isPugWatch,
       emittyPug.stream(
         global.emittyChangedFile.path,
         global.emittyChangedFile.stats
@@ -23,16 +23,13 @@ const pug = done => {
     ))
     .pipe(plugins.pug({
       basedir: `${config.src.pug}/pages/`,
-      pretty: true
+      pretty: true,
+      plugins: [plugins.pugIncludeGlob()],
     }).on('error', plugins.notify.onError({
       title: 'Error compiling PUG',
       message: '<%= error.message %>',
     })))
     .pipe(plugins.formatHtml())
-    .pipe(plugins.pugBeautify({
-      fill_tab: true,
-      tab_size: 2
-    }))
     .pipe(plugins.if(config.isProd, plugins.htmlmin({ collapseWhitespace: true, removeComments: true })))
     .pipe(plugins.if(config.isProd, plugins.replace('css/main.css', 'css/main.min.css')))
     .pipe(plugins.if(config.isProd, plugins.replace('js/libs.js', 'js/libs.min.js')))

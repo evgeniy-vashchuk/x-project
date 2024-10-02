@@ -17,11 +17,7 @@
 @import "base/keyframes";
 
 // 4. Layout-related sections
-@import "layout/header";
-@import "layout/footer";
+@import "layout/**/*";
 
 // 5. Components
-@import "components/buttons";
-@import "components/forms";
-@import "components/sections";
-@import "components/cards";
+@import "components/**/*";

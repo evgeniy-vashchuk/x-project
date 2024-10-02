@@ -190,7 +190,8 @@
 
 // Responsive ratio block through bottom padding ------------------------------------
 @mixin responsive-ratio($x, $y, $pseudo: true) {
-  $padding: (calc($y / $x)) * 100 + "%";
+  $padding-calc: (calc($y / $x)) * 100 + "%";
+  $padding: unquote($padding-calc);
 
   @if $pseudo {
     &:before {
@@ -566,11 +567,11 @@
 
 // @include truncate-text-to-specific-line(2);
 
-// RESET BUTTON ------------------------------------
-@mixin reset-btn() {
+// BUTTON RESET ------------------------------------
+@mixin btn-reset() {
   padding: 0;
   background-color: transparent;
   border: none;
 }
 
-// @include reset-btn;
+// @include btn-reset;

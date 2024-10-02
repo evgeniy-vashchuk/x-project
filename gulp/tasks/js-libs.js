@@ -8,7 +8,7 @@ const jsLibs = done => {
     .pipe(plugins.if(config.isProd, plugins.stripComments())) // remove comments
     .pipe(plugins.if(config.isProd, plugins.terser())) // minify
     .pipe(plugins.if(config.isProd, plugins.rename({ suffix: '.min' })))
-    .pipe(gulp.dest(config.dist.js, { sourcemaps: '.' }))
+    .pipe(gulp.dest(config.dist.js, { sourcemaps: config.isProd ? false : '.' }))
     .pipe(plugins.if(copyToWordPress, gulp.dest(config.dist.wordpress + 'js/')))
     .pipe(plugins.browserSync.stream());
 

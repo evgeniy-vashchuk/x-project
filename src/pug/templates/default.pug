@@ -1,16 +1,18 @@
-include ../mixins/_mixins
+include ../data/_config.pug
+include ../mixins/**/*.pug
 
 block vars
 
 doctype html
-html(lang=pageLang || "en")
+html(lang=siteLang)
   head
     include ../layout/_head.pug
   |
   |
   body(class=bodyClass)
     // HEADER
-    include ../layout/_header.pug
+    block header
+      include ../layout/_header.pug
     // HEADER END
     |
     |
@@ -21,9 +23,11 @@ html(lang=pageLang || "en")
     |
     |
     // FOOTER
-    include ../layout/_footer.pug
+    block footer
+      include ../layout/_footer.pug
     // FOOTER END
     |
     |
     // connection JAVASCRIPT
-    include ../layout/_scripts.pug
+    block scripts
+      include ../layout/_scripts.pug

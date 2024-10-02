@@ -5,8 +5,8 @@ import { plugins, copyToWordPress } from '../config.js';
 const sass = done => {
   const sass = plugins.gulpSass(plugins.dartSass);
 
-  gulp.src(config.src.css)
-    .pipe(plugins.if(!config.isProd, plugins.sourcemaps.init()))
+  gulp.src(config.src.css, { sourcemaps: config.isProd ? false : true })
+    .pipe(plugins.sassGlob())
     .pipe(sass({
       outputStyle: config.isProd ? 'compressed' : 'expanded',
       indentType: 'space',
@@ -19,8 +19,7 @@ const sass = done => {
       plugins.cssMqpacker({ sort: plugins.sortCssMediaQueries })
     ])))
     .pipe(plugins.if(config.isProd, plugins.rename({ suffix: '.min' })))
-    .pipe(plugins.if(!config.isProd, plugins.sourcemaps.write('.')))
-    .pipe(gulp.dest(config.dist.css))
+    .pipe(gulp.dest(config.dist.css, { sourcemaps: config.isProd ? false : '.' }))
     .pipe(plugins.browserSync.stream())
     .pipe(plugins.if(copyToWordPress, plugins.replace('../', '')))
     .pipe(plugins.if(copyToWordPress, plugins.rename('style.css')))

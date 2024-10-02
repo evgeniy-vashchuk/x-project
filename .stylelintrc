@@ -3,7 +3,12 @@
   "plugins": ["stylelint-scss"],
   "ignoreFiles": ["src/scss/abstracts/_variables.scss", "src/libs/**/*.{css,scss}"],
   "rules": {
-    "selector-class-pattern": "^[a-z0-9\\-]+(--[a-z0-9]+)?$",
+    "selector-class-pattern": [
+      "^[a-z]([-]?[a-z0-9]+)*(__[a-z0-9]([-]?[a-z0-9]+)*)?(--[a-z0-9]([-]?[a-z0-9]+)*)?$",
+      {
+        "resolveNestedSelectors": true
+      }
+    ],
     "declaration-block-no-duplicate-properties": [true, { "ignore": ["consecutive-duplicates"] }],
     "font-family-no-duplicate-names": true,
     "keyframe-block-no-duplicate-selectors": true,
@@ -35,13 +40,13 @@
     "length-zero-no-unit": true,
     "function-name-case": "lower",
     "selector-type-case": "lower",
-    "value-keyword-case": ["lower", { "ignoreProperties": ["text-rendering"] }],
+    "value-keyword-case": ["lower", { "ignoreProperties": ["text-rendering"], "camelCaseSvgKeywords": true }],
     "at-rule-empty-line-before": [
       "always",
       {
         "except": ["after-same-name", "first-nested"],
         "ignore": ["after-comment"],
-        "ignoreAtRules": ["if", "else", "function", "include"]
+        "ignoreAtRules": ["if", "else", "function", "include", "keyframes"]
       }
     ],
     "comment-empty-line-before": ["always", { "except": ["first-nested"] }],
@@ -52,7 +57,7 @@
     "font-weight-notation": "numeric",
     "keyframe-selector-notation": "percentage-unless-within-keyword-only-block",
     "selector-pseudo-element-colon-notation": "single",
-    "font-family-name-quotes": "always-where-required",
+    "font-family-name-quotes": "always-unless-keyword",
     "function-url-quotes": "always",
     "selector-attribute-quotes": "always",
     "declaration-block-no-redundant-longhand-properties": true,
@@ -60,6 +65,8 @@
     "comment-whitespace-inside": "always",
     "selector-no-vendor-prefix": null,
     "no-descending-specificity": null,
+    "font-family-no-missing-generic-family-keyword": [true, { "ignoreFontFamilies": ["icomoon"] }],
+    "number-max-precision": 8,
     "scss/at-else-closing-brace-newline-after": "always-last-in-chain",
     "scss/at-else-closing-brace-space-after": "always-intermediate",
     "scss/at-else-empty-line-before": "never",

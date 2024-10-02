@@ -13,7 +13,7 @@ import additionalFiles from './additional-files.js';
 const watch = done => {
   if (config.isPug) {
     // PUG
-    global.watch = true;
+    global.isPugWatch = true;
 
     gulp.watch(config.watch.pug, pug).on('all', (event, filepath, stats) => {
       global.emittyChangedFile = {

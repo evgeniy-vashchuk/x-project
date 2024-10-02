@@ -7,7 +7,7 @@ const imgCommon = done => {
     .pipe(plugins.destClean(config.dist.img, 'favicon/**'))
     .pipe(plugins.newer(config.dist.img))
     .pipe(plugins.imagemin([
-      plugins.imagemin.mozjpeg({ quality: 90, progressive: true }),
+      plugins.imagemin.mozjpeg({ quality: 80, progressive: true }),
     ], { verbose: true }))
     .pipe(gulp.dest(config.dist.img))
     .pipe(plugins.if(copyToWordPress, gulp.dest(config.dist.wordpress + 'img/')))
