@@ -1,7 +1,7 @@
 {
   "extends": ["stylelint-config-standard-scss", "stylelint-config-rational-order", "stylelint-prettier/recommended"],
   "plugins": ["stylelint-scss"],
-  "ignoreFiles": ["src/scss/abstracts/_variables.scss", "src/libs/**/*.{css,scss}"],
+  "ignoreFiles": ["src/scss/abstracts/_variables.scss", "src/libs/**/*.{css,scss}, dist/css/"],
   "rules": {
     "selector-class-pattern": [
       "^[a-z]([-]?[a-z0-9]+)*(__[a-z0-9]([-]?[a-z0-9]+)*)?(--[a-z0-9]([-]?[a-z0-9]+)*)?$",

@@ -10,22 +10,23 @@ html(lang=siteLang)
   |
   |
   body(class=bodyClass)
-    // HEADER
-    block header
-      include ../layout/_header.pug
-    // HEADER END
-    |
-    |
-    // CONTENT
-    main.main
-      block content
-    // CONTENT END
-    |
-    |
-    // FOOTER
-    block footer
-      include ../layout/_footer.pug
-    // FOOTER END
+    .page-wrapper
+      // HEADER
+      block header
+        include ../layout/_header.pug
+      // HEADER END
+      |
+      |
+      // CONTENT
+      main.main
+        block content
+      // CONTENT END
+      |
+      |
+      // FOOTER
+      block footer
+        include ../layout/_footer.pug
+      // FOOTER END
     |
     |
     // connection JAVASCRIPT

@@ -43,6 +43,12 @@
         "printWidth": 1000,
         "singleQuote": true
       }
+    },
+    {
+      "files": "src/pug/**/*.pug",
+      "options": {
+        "bracketSameLine": true
+      }
     }
   ]
 }

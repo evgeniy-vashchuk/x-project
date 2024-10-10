@@ -207,7 +207,7 @@
 
 // EXAMPLE: @include responsive-ratio(16, 9);
 
-// Preventing Overflow with Ellipsis ------------------------------------
+// Preventing overflow with ellipsis ------------------------------------
 @mixin ellipsis() {
   overflow: hidden;
   white-space: nowrap;

@@ -21,7 +21,7 @@ textarea {
 }
 
 .position-relative {
-  .invalid-feedback {
+  > .invalid-feedback {
     position: absolute;
     top: calc(100% + 5px);
     left: 0;

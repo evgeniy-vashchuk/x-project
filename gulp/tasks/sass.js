@@ -14,16 +14,21 @@ const sass = done => {
       includePaths: ['./node_modules']
     }).on('error', plugins.notify.onError({ title: 'Error compiling SASS' })))
     .pipe(plugins.if(config.isProd, plugins.postcss([
-      plugins.postcssDiscardComments({ removeAll: true }),
+      plugins.postcssDiscardComments({ removeAllButFirst: true }),
       plugins.autoprefixer(['last 10 versions']),
       plugins.cssMqpacker({ sort: plugins.sortCssMediaQueries })
     ])))
     .pipe(plugins.if(config.isProd, plugins.rename({ suffix: '.min' })))
     .pipe(gulp.dest(config.dist.css, { sourcemaps: config.isProd ? false : '.' }))
-    .pipe(plugins.browserSync.stream())
-    .pipe(plugins.if(copyToWordPress, plugins.replace('../', '')))
-    .pipe(plugins.if(copyToWordPress, plugins.rename('style.css')))
-    .pipe(plugins.if(copyToWordPress, gulp.dest(config.dist.wordpress)));
+    .on('end', () => {
+      if (copyToWordPress) {
+        gulp.src(`${config.dist.css}/*.css`)
+          .pipe(plugins.replace('../', ''))
+          .pipe(plugins.rename('style.css'))
+          .pipe(gulp.dest(config.dist.wordpress));
+      }
+    })
+    .pipe(plugins.browserSync.stream());
 
   done();
 };
