@@ -9,7 +9,7 @@ charset = utf-8
 trim_trailing_whitespace = true
 insert_final_newline = true
 
-[{favicon-data.json, selection.json, src/libs/**.*, src/scss/abstracts/_variables.scss}]
+[{favicon-data.json,selection.json,src/libs/**.*,src/scss/abstracts/_variables.scss}]
 indent_style = unset
 indent_size = unset
 tab_width = unset
