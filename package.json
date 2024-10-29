@@ -35,7 +35,7 @@
     "htmllint": "npx eslint 'src/*.html' --no-error-on-unmatched-pattern",
     "htmllint:fix": "npx eslint 'src/*.html' --no-error-on-unmatched-pattern --fix",
     "editorlint": "npx editorconfig-checker",
-    "lint": "npm run puglint && npm run stylelint && npm run jslint && npm run htmllint && npm run editorlint",
+    "lint": "npm run puglint && npm run stylelint && npm run jslint && npm run htmllint && npm run editorlint && echo \"\\x1b[32m\\x1b[1mAll linting tasks completed successfully!\\x1b[0m\"",
     "prepare": "git config core.hooksPath .git-hooks || echo 'Not in a git repo'"
   },
   "devDependencies": {

@@ -1,4 +1,15 @@
 .wpcf7-form {
+  .wpcf7-form-control-wrap {
+    display: block;
+
+    &.recaptcha {
+      @include media-breakpoint-down(sm) {
+        transform: scale(0.9);
+        transform-origin: left center;
+      }
+    }
+  }
+
   .wpcf7-not-valid-tip {
     margin-top: $form-feedback-margin-top;
     color: $form-feedback-invalid-color;

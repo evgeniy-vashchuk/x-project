@@ -3,6 +3,35 @@
     display: block;
     width: 100% !important;
 
+    &.select2-container--open {
+      &.select2-container--above {
+        .select2-selection {
+          border-top-left-radius: 0 !important;
+          border-top-right-radius: 0 !important;
+        }
+      }
+
+      &.select2-container--below {
+        .select2-selection {
+          border-bottom-right-radius: 0 !important;
+          border-bottom-left-radius: 0 !important;
+        }
+      }
+
+      .select2-selection {
+        &__arrow {
+          transform: translate(0, -50%) rotate(180deg);
+        }
+      }
+    }
+
+    &.select2-container--focus {
+      .select2-selection {
+        border-color: $form-select-focus-border-color;
+        box-shadow: $form-select-focus-box-shadow;
+      }
+    }
+
     .select2-selection {
       height: auto;
       padding: $form-select-padding-y $form-select-indicator-padding $form-select-padding-y $form-select-padding-x;
@@ -44,35 +73,6 @@
         background-size: contain;
         transform: translate(0, -50%);
         transition: transform 0.3s;
-      }
-    }
-
-    &.select2-container--focus {
-      .select2-selection {
-        border-color: $form-select-focus-border-color;
-        box-shadow: $form-select-focus-box-shadow;
-      }
-    }
-
-    &.select2-container--open {
-      &.select2-container--above {
-        .select2-selection {
-          border-top-left-radius: 0 !important;
-          border-top-right-radius: 0 !important;
-        }
-      }
-
-      &.select2-container--below {
-        .select2-selection {
-          border-bottom-right-radius: 0 !important;
-          border-bottom-left-radius: 0 !important;
-        }
-      }
-
-      .select2-selection {
-        &__arrow {
-          transform: translate(0, -50%) rotate(180deg);
-        }
       }
     }
 
