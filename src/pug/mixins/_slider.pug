@@ -1,0 +1,19 @@
+//- +slider({ navigation: true, pagination: true })(class="js-swiper")
+//-   .swiper-slide
+//-     h2.mb-0.p-40 Slide 1
+//-   .swiper-slide
+//-     h2.mb-0.p-40 Slide 2
+//-   .swiper-slide
+//-     h2.mb-0.p-40 Slide 3
+//-   .swiper-slide
+//-     h2.mb-0.p-40 Slide 4
+
+mixin slider(obj)
+  .swiper&attributes(attributes)
+    .swiper-wrapper
+      block
+    if (obj && obj.pagination)
+      .swiper-pagination
+    if (obj && obj.navigation)
+      button.swiper-button-prev(type="button")
+      button.swiper-button-next(type="button")

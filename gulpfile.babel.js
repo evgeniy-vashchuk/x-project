@@ -27,6 +27,9 @@ import watch from './gulp/tasks/watch.js';
 
 config.setEnv();
 
+export const removeDist = clean;
+export const img = imgCommon;
+export const favicon = imgFavicon;
 export const zip = zipTask;
 
 export const build = gulp.series(

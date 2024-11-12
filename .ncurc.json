@@ -1,3 +1,0 @@
-{
-  "reject": ["gulp", "gulp-imagemin", "del", "sass", "gulp-format-html"]
-}

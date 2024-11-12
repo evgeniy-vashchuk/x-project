@@ -11,9 +11,14 @@
 }
 
 %custom-scrollbar {
-  @include custom-scrollbar(8px, #ff0000, #008000, 5px);
+  @include custom-scrollbar(8px, $secondary, $primary, 5px);
 }
 
 .custom-scrollbar {
   @extend %custom-scrollbar;
+}
+
+.resize-animation-stopper * {
+  transition: none !important;
+  animation: none !important;
 }

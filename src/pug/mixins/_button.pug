@@ -1,0 +1,15 @@
+//- +button({type: "submit", color: "primary"})
+
+mixin button(obj)
+  - const buttonClass = "btn" + (obj.color ? " btn-" + obj.color : "") + (obj.size ? " btn-" + obj.size : "");
+
+  if (obj.type === "submit" || obj.type === "button")
+    button(class=buttonClass type=obj.type disabled=obj.disabled ? obj.disabled : false)&attributes(attributes)
+      block
+  else
+    a(
+      aria-disabled=obj.disabled ? true : false
+      class=buttonClass + (obj.disabled ? " disabled" : "")
+      href=obj.href ? obj.href : "#"
+      tabindex=obj.disabled ? -1 : false)&attributes(attributes)
+      block

@@ -56,14 +56,11 @@
 
 // scss-docs-end import-stack
 
-// Font Awesome 6 ====================================
-@import "@fortawesome/fontawesome-free/scss/fontawesome";
-@import "@fortawesome/fontawesome-free/scss/solid";
-@import "@fortawesome/fontawesome-free/scss/regular";
-@import "@fortawesome/fontawesome-free/scss/brands";
-
 // Icomoon ====================================
 @import "../../libs/icomoon/style";
 
-// Tiny Slider 2 ====================================
-@import "tiny-slider/dist/tiny-slider";
+// Swiper ====================================
+@import "swiper/swiper-bundle";
+
+// Select2 ====================================
+@import "../../../node_modules/select2/dist/css/select2.min";

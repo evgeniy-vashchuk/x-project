@@ -1,0 +1,16 @@
+//- +textarea({label: "Message", placeholder: "Message"})
+
+mixin textarea(obj)
+  - const textareaId = obj.label ? obj.label.replace(/ \*/g, "").replace(/\s+/g, "-").toLowerCase() : false;
+  - const textareaClass = "form-control" + (obj.invalidFeedback ? " is-invalid" : "");
+
+  if (obj.label)
+    label.form-label(for=textareaId)= obj.label
+  textarea(
+    id=textareaId
+    class=textareaClass
+    placeholder=obj.placeholder ? obj.placeholder : false
+    disabled=obj.disabled ? obj.disabled : false)&attributes(attributes)
+    | #{ obj.value }
+  if (obj.invalidFeedback)
+    .invalid-feedback= obj.invalidFeedback

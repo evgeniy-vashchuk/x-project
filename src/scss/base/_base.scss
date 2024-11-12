@@ -1,3 +1,11 @@
+:root {
+  --grid-gutter-width: #{strip-unit($grid-gutter-width) * 16};
+}
+
+html {
+  @extend %custom-scrollbar;
+}
+
 body {
   min-width: 320px;
 }
@@ -11,4 +19,16 @@ body {
 .main {
   flex-grow: 1;
   overflow: hidden;
+}
+
+::selection {
+  color: $white;
+  background-color: $primary;
+}
+
+.bg-primary {
+  ::selection {
+    color: $white;
+    background-color: $secondary;
+  }
 }

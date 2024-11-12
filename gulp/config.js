@@ -27,7 +27,7 @@ const config = {
     css: `${srcPath}/scss/**/*.{scss,sass,css}`,
     js: [`${srcPath}/js/**/*.js`, `!${srcPath}/js/**/_*.js`, `!${srcPath}/js/libs.js`],
     jsLibs: `${srcPath}/js/libs.js`,
-    img: `${srcPath}/img/**/*.{gif,png,jpg,jpeg,svg}`,
+    img: `${srcPath}/img/`,
     favicon: `${srcPath}/img/favicon/icon.svg`,
     fonts: `${srcPath}/fonts/**/*.*`,
     additionalFiles: `${srcPath}/files/`,

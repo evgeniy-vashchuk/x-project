@@ -1,0 +1,12 @@
+//- +breadcrumb(["Home", "About us"])
+
+mixin breadcrumb(obj)
+  if (obj.length)
+    nav(aria-label="Breadcrumb")&attributes(attributes)
+      ol.breadcrumb
+        - for (let i = 0; i < obj.length; i++)
+          if (i === obj.length - 1)
+            li.breadcrumb-item.active(aria-current="page")= obj[i]
+          else
+            li.breadcrumb-item
+              a(href="#")= obj[i]

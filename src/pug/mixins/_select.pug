@@ -1,0 +1,27 @@
+//- +select({ label: "Country", placeholder: "Select country", options: ["Option 1", "Option 2", "Option 3"] })
+
+mixin renderSelect(obj, isNativeSelect, selectClass)
+  select(
+    class=selectClass
+    data-minimum-results-for-search=obj.withSearch && !isNativeSelect ? "" : isNativeSelect ? false : "-1"
+    data-placeholder=obj.placeholder && !isNativeSelect ? obj.placeholder : false
+    disabled=obj.disabled ? obj.disabled : false)&attributes(attributes)
+    if (obj.placeholder)
+      option(label=obj.placeholder)
+    - for (let i = 0; i < obj.options.length; i++)
+      option(selected=obj.selectedOption - 1 === i ? true : false)= obj.options[i]
+
+mixin select(obj)
+  - const isNativeSelect = obj.native === true;
+  - const selectClass = "form-select" + (isNativeSelect ? "" : " js-select") + (obj.invalidFeedback ? " is-invalid" : "");
+
+  if (obj.options)
+    if (obj.label)
+      label.form-label= obj.label
+    if obj.withContainer
+      .js-select-container
+        +renderSelect(obj, isNativeSelect, selectClass)
+    else
+      +renderSelect(obj, isNativeSelect, selectClass)
+    if (obj.invalidFeedback)
+      .invalid-feedback= obj.invalidFeedback

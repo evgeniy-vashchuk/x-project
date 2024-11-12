@@ -410,11 +410,31 @@ $gradient: linear-gradient(180deg, rgba($white, .15), rgba($white, 0)) !default;
 $spacer: 1rem !default;
 $spacers: (
   0: 0,
-  1: $spacer * .25,
-  2: $spacer * .5,
-  3: $spacer,
-  4: $spacer * 1.5,
-  5: $spacer * 3,
+  4: 4px,
+  8: 8px,
+  12: 12px,
+  16: 16px,
+  20: 20px,
+  24: 24px,
+  28: 28px,
+  32: 32px,
+  36: 36px,
+  40: 40px,
+  44: 44px,
+  48: 48px,
+  52: 52px,
+  56: 56px,
+  60: 60px,
+  64: 64px,
+  68: 68px,
+  72: 72px,
+  76: 76px,
+  80: 80px,
+  84: 84px,
+  88: 88px,
+  92: 92px,
+  96: 96px,
+  100: 100px,
 ) !default;
 // scss-docs-end spacer-variables-maps
 
@@ -1746,9 +1766,6 @@ $nested-kbd-font-weight:            null !default; // Deprecated in v5.2.0, remo
 
 $pre-color:                         null !default;
 
-// FONT AWESOME FONT PATH =================================
-$fa-font-path: "../fonts/font-awesome";
-
 // ICOMOON FONT PATH =================================
 $icomoon-font-path: "../fonts/icomoon";
 
@@ -1794,5 +1811,44 @@ $title-palette: (
     'h4': 20,
     'h5': 18,
     'h6': 16
+  ),
+  xxl: (
+    'h1': 43,
+    'h2': 30,
+    'h3': 26,
+    'h4': 20,
+    'h5': 18,
+    'h6': 16
   )
 );
+
+// SWIPER =================================
+
+// navigation
+$swiper-navigation-size: 40px !default;
+$swiper-navigation-icon-prev: "<" !default;
+$swiper-navigation-icon-next: ">" !default;
+$swiper-navigation-icon-font-family: inherit !default;
+$swiper-navigation-icon-font-size: 20px !default;
+$swiper-navigation-border-width: 0 !default;
+// default
+$swiper-navigation-color: $primary !default;
+$swiper-navigation-background-color: transparent !default;
+$swiper-navigation-border-color: transparent !default;
+// hover
+$swiper-navigation-hover-color: lighten($swiper-navigation-color, 10%) !default;
+$swiper-navigation-hover-background-color: transparent !default;
+$swiper-navigation-hover-border-color: transparent !default;
+// disabled
+$swiper-navigation-disabled-color: $swiper-navigation-color !default;
+$swiper-navigation-disabled-background-color: $swiper-navigation-background-color !default;
+$swiper-navigation-disabled-border-color: $swiper-navigation-border-color !default;
+$swiper-navigation-disabled-opacity: 0.5 !default;
+
+// pagination
+$swiper-pagination-size: 12px !default;
+$swiper-pagination-gap: 8px !default;
+$swiper-pagination-background-color: $secondary !default;
+$swiper-pagination-opacity: 1 !default;
+$swiper-pagination-hover-background-color: lighten($swiper-pagination-background-color, 10%) !default;
+$swiper-pagination-active-background-color: $primary !default;

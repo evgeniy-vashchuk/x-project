@@ -19,8 +19,8 @@
   "pugSortAttributesEnd": [
     "^rel$",
     "^sizes$",
-    "^id$",
     "^class$",
+    "^id$",
     "^name$",
     "^type$",
     "^href$",

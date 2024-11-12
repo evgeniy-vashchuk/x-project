@@ -55,9 +55,11 @@ export default [
       '@stylistic/js/max-len': [
         'error',
         {
-          code: 120,
+          code: 150,
           tabWidth: 2,
-          comments: 120,
+          comments: 150,
+          ignorePattern: 'stylers:',
+          ignoreComments: true,
           ignoreTrailingComments: true,
           ignoreUrls: true
         }
@@ -166,7 +168,17 @@ export default [
       '@html-eslint/quotes': ['error', 'double'],
       '@html-eslint/sort-attrs': ['error', {
         priority: [
-          'rel', 'sizes', 'id', 'class', 'name', 'type', 'href', 'src', 'alt', 'title', 'style'
+          'rel',
+          'sizes',
+          'class',
+          'id',
+          'name',
+          'type',
+          'href',
+          'src',
+          'alt',
+          'title',
+          'style'
         ]
       }],
     },

@@ -1,0 +1,17 @@
+//- +input({label: "Name", placeholder: "Name"})
+
+mixin input(obj)
+  - const inputId = obj.label ? obj.label.replace(/ \*/g, "").replace(/\s+/g, "-").toLowerCase() : false;
+  - const inputClass = "form-control" + (obj.invalidFeedback ? " is-invalid" : "");
+
+  if (obj.label)
+    label(class="form-label" for=inputId)= obj.label
+  input(
+    id=inputId
+    class=inputClass
+    type=obj.type ? obj.type : "text"
+    placeholder=obj.placeholder ? obj.placeholder : false
+    value=obj.value ? obj.value : false
+    disabled=obj.disabled ? obj.disabled : false)&attributes(attributes)
+  if (obj.invalidFeedback)
+    .invalid-feedback= obj.invalidFeedback

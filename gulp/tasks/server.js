@@ -20,9 +20,6 @@ const server = done => {
         backgroundColor: '#26263F'
       }
     },
-
-    // online: false, // Work offline without internet connection
-    // tunnel: 'yousutename', // Attempt to use the URL https://yousutename.loca.lt
   });
 
   done();

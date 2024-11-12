@@ -2,6 +2,7 @@ import gulp from 'gulp';
 import { setup as emittySetup } from 'emitty';
 import config from '../config.js';
 import { plugins } from '../config.js';
+import formatHtml from 'gulp-format-html';
 
 const emittyPug = emittySetup(config.src.pug, 'pug', { makeVinylFile: true });
 
@@ -29,11 +30,12 @@ const pug = done => {
       title: 'Error compiling PUG',
       message: '<%= error.message %>',
     })))
-    .pipe(plugins.formatHtml())
+    .pipe(formatHtml())
     .pipe(plugins.if(config.isProd, plugins.htmlmin({ collapseWhitespace: true, removeComments: true })))
     .pipe(plugins.if(config.isProd, plugins.replace('css/main.css', 'css/main.min.css')))
     .pipe(plugins.if(config.isProd, plugins.replace('js/libs.js', 'js/libs.min.js')))
     .pipe(plugins.if(config.isProd, plugins.replace('js/main.js', 'js/main.min.js')))
+    .pipe(plugins.replace(/(<(?:img|input)[^>]*?)\s*\/>/g, '$1>'))
     .pipe(plugins.replace('-->', ' -->'))
     .pipe(gulp.dest(config.dist.html))
     .on('end', plugins.browserSync.reload);

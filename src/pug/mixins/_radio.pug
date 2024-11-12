@@ -1,0 +1,11 @@
+mixin radio(obj)
+  if (obj.id)
+    .form-check&attributes(attributes)
+      input.form-check-input(
+        id=obj.id
+        name=obj.name
+        type="radio"
+        checked=obj.checked ? true : false
+        disabled=obj.disabled ? true : false)
+      label.form-check-label(for=obj.id)
+        block

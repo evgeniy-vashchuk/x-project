@@ -1,8 +1,8 @@
-import del from 'del';
+import { deleteSync } from 'del';
 import config from '../config.js';
 
 const clean = done => {
-  del.sync(config.dist.root, { force: true });
+  deleteSync(config.dist.root, { force: true });
 
   done();
 };

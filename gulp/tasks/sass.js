@@ -8,6 +8,7 @@ const sass = done => {
   gulp.src(config.src.css, { sourcemaps: config.isProd ? false : true })
     .pipe(plugins.sassGlob())
     .pipe(sass({
+      silenceDeprecations: ['legacy-js-api', 'mixed-decls', 'color-functions', 'global-builtin', 'import'],
       outputStyle: config.isProd ? 'compressed' : 'expanded',
       indentType: 'space',
       indentWidth: 2,
