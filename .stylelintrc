@@ -5,7 +5,7 @@
     "src/scss/abstracts/_variables.scss",
     "src/libs/**/*.{css,scss}",
     "node_modules/**/*.{css,scss}",
-    "dist/css/"
+    "dist/css/**/*.{css,scss}"
   ],
   "rules": {
     "selector-class-pattern": [
