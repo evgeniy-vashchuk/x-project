@@ -18,6 +18,10 @@
   @extend %custom-scrollbar;
 }
 
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
 .resize-animation-stopper * {
   transition: none !important;
   animation: none !important;

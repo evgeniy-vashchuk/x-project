@@ -1,19 +1,19 @@
+.lazy {
+  opacity: 0;
+
+  &:not(.initial) {
+    transition: opacity 1s;
+  }
+
+  &.initial,
+  &.loaded,
+  &.error {
+    opacity: 1;
+  }
+}
+
 img {
-  &.lazy {
-    opacity: 0;
-
-    &:not(.initial) {
-      transition: opacity 1s;
-    }
-
-    &.initial,
-    &.loaded,
-    &.error {
-      opacity: 1;
-    }
-
-    &:not([src], [srcset]) {
-      visibility: hidden;
-    }
+  &:not([src], [srcset]) {
+    visibility: hidden;
   }
 }

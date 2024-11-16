@@ -1,6 +1,6 @@
-//- +image({img: "img/image.jpg"})
+//- +img({img: "img/image.jpg"})
 
-mixin image(obj)
+mixin img(obj)
   if (obj.img)
     if (obj.lazy !== false)
       img(class="lazy js-lazy" src="img/lazy-placeholder.png" alt=obj.alt ? obj.alt : "Image" data-src=obj.img)&attributes(attributes)
