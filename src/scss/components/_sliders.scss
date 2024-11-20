@@ -1,11 +1,28 @@
 .swiper {
   // helpers
-  &.equal-height-slides {
+  &.equal-height-slider {
     .swiper-wrapper {
       .swiper-slide {
         display: flex;
         height: auto;
       }
+    }
+  }
+
+  &.cover-slider {
+    @include absolute-cover;
+
+    z-index: 2;
+    pointer-events: none;
+
+    * {
+      pointer-events: inherit !important;
+    }
+
+    img {
+      @include absolute-cover;
+
+      object-fit: cover;
     }
   }
 

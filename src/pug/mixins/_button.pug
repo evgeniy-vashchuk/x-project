@@ -11,5 +11,6 @@ mixin button(obj)
       aria-disabled=obj.disabled ? true : false
       class=buttonClass + (obj.disabled ? " disabled" : "")
       href=obj.href ? obj.href : "#"
+      target=obj.openInNewTab ? "_blank" : false
       tabindex=obj.disabled ? -1 : false)&attributes(attributes)
       block
