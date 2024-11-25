@@ -48,7 +48,7 @@ const config = {
   watch: {
     html: [`${srcPath}/*.html`, `${srcPath}/html/**/*.html`],
     pug: `${srcPath}/pug/**/*.pug`,
-    css: `${srcPath}/scss/**/*.{scss,sass,css}`,
+    css: [`${srcPath}/scss/**/*.{scss,sass,css}`, `${srcPath}/libs/**/*.{scss,sass,css}`],
     js: [`${srcPath}/js/**/*.js`, `!${srcPath}/js/libs.js`],
     jsLibs: `${srcPath}/js/libs.js`,
     img: `${srcPath}/img/**/*.{gif,png,jpg,jpeg,svg}`,

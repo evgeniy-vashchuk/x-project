@@ -10,7 +10,7 @@ import through from 'through2';
 
 const imgCommon = done => {
   gulp.src([`${config.src.img}**/*.{png,jpg,jpeg,svg}`, `!${config.src.favicon}`, `!${config.src.img}icomoon-icons/**`], { encoding: false })
-    .pipe(plugins.destClean(config.dist.img, ['favicon/**', '*.webp', 'icomoon-icons/**']))
+    .pipe(plugins.destClean(config.dist.img, ['favicon/**', 'icomoon-icons/**', 'webp/**']))
     .pipe(plugins.newer(config.dist.img))
     .pipe(imagemin([
       imageminPngquant({ quality: [0.8, 0.9] }),
@@ -28,7 +28,7 @@ const imgCommon = done => {
           },
         ],
       })
-    ], { verbose: true }))
+    ], { verbose: false }))
     .pipe(gulp.dest(config.dist.img))
     .pipe(plugins.if(copyToWordPress, gulp.dest(config.dist.wordpress + 'img/')))
     .on('end', plugins.browserSync.reload);
@@ -38,13 +38,13 @@ const imgCommon = done => {
 
 const imgWebp = done => {
   gulp.src([`${config.src.img}**/*.{png,jpg,jpeg}`, `!${config.src.favicon}`], { encoding: false })
-    .pipe(plugins.destClean(config.dist.img, ['favicon/**', '*.{png,jpg,jpeg,svg}', 'icomoon-icons/**'], { ext: '.webp' }))
-    .pipe(plugins.newer({ dest: config.dist.img, ext: '.webp' }))
+    .pipe(plugins.destClean(config.dist.img + '/webp/', ['favicon/**', 'icomoon-icons/**'], { ext: '.webp' }))
+    .pipe(plugins.newer({ dest: config.dist.img + '/webp/', ext: '.webp' }))
     .pipe(imagemin([
       imageminWebp({ quality: 80 }),
     ], { verbose: true }))
     .pipe(plugins.rename({ extname: '.webp' }))
-    .pipe(gulp.dest(config.dist.img))
+    .pipe(gulp.dest(config.dist.img + '/webp/'))
     .pipe(plugins.if(copyToWordPress, gulp.dest(config.dist.wordpress + 'img/')))
     .on('end', plugins.browserSync.reload);
 
@@ -56,7 +56,7 @@ const icomoonIconsFix = () => {
         pathDist = `${config.dist.img}icomoon-icons/`,
         needFix = fs.existsSync(pathSrc),
         options = {
-          showProgressBar: true,
+          showProgressBar: false,
           throwIfDestinationDoesNotExist: false,
         };
 
@@ -93,4 +93,4 @@ const imgForIcomoon = done => {
     });
 };
 
-export default gulp.series(imgCommon, imgWebp, imgForIcomoon);
+export default gulp.parallel(imgCommon, imgWebp, imgForIcomoon);
