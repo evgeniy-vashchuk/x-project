@@ -45,7 +45,7 @@ const imgWebp = done => {
     ], { verbose: true }))
     .pipe(plugins.rename({ extname: '.webp' }))
     .pipe(gulp.dest(config.dist.img + '/webp/'))
-    .pipe(plugins.if(copyToWordPress, gulp.dest(config.dist.wordpress + 'img/')))
+    .pipe(plugins.if(copyToWordPress, gulp.dest(config.dist.wordpress + 'img/webp/')))
     .on('end', plugins.browserSync.reload);
 
   done();
