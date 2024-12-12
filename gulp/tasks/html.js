@@ -2,8 +2,10 @@ import gulp from 'gulp';
 import config from '../config.js';
 import { plugins } from '../config.js';
 
+const htmlPath = [`src/*.html`];
+
 const html = done => {
-  gulp.src(config.src.html)
+  gulp.src(htmlPath)
     .pipe(plugins.include({ separateInputs: true })) // EXAMPLE OF CONNECTION: <!--=include _footer.html -->
     .pipe(plugins.if(config.isProd, plugins.htmlmin({ collapseWhitespace: true, removeComments: true })))
     .pipe(plugins.if(config.isProd, plugins.replace('css/main.css', 'css/main.min.css')))

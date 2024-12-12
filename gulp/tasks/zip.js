@@ -1,9 +1,17 @@
 import gulp from 'gulp';
 import { plugins } from '../config.js';
-import gulpZip from 'gulp-zip';
+import { deleteSync } from 'del';
+import zip from 'gulp-zip';
+import { fileURLToPath } from 'url';
+import path from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const projectRoot = path.resolve(__dirname, '../../');
+const projectName = path.basename(projectRoot);
 
 const zipTask = done => {
-  plugins.del.sync('./*.zip');
+  deleteSync('./*.zip', { force: true });
 
   const now = new Date(),
         year = now.getFullYear().toString().padStart(2, '0'),
@@ -14,7 +22,7 @@ const zipTask = done => {
 
   gulp.src('**/*', { base: '.' })
     .pipe(plugins.gitignore())
-    .pipe(gulpZip(`project_${year}-${month}-${day}_${hours}-${minutes}.zip`))
+    .pipe(zip(`${projectName}_${year}-${month}-${day}_${hours}-${minutes}.zip`))
     .pipe(gulp.dest('.'));
 
   done();

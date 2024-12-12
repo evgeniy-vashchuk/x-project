@@ -1,5 +1,5 @@
 // Connecting all CSS/SASS plugins and libraries
-// (skip path to node_modules folder, it will be added from gulp-sass includePaths)
+// (skip path to node_modules folder, it will be added from gulp-sass "loadPaths" option)
 
 // Bootstrap 5 ====================================
 
@@ -63,4 +63,4 @@
 @import "swiper/swiper-bundle";
 
 // Select2 ====================================
-@import "../../../node_modules/select2/dist/css/select2.min";
+@import "select2/dist/css/select2.min";

@@ -9,10 +9,10 @@ const sass = done => {
     .pipe(plugins.sassGlob())
     .pipe(sass({
       silenceDeprecations: ['legacy-js-api', 'mixed-decls', 'color-functions', 'global-builtin', 'import'],
-      outputStyle: config.isProd ? 'compressed' : 'expanded',
+      style: config.isProd ? 'compressed' : 'expanded',
       indentType: 'space',
       indentWidth: 2,
-      includePaths: ['./node_modules']
+      loadPaths: ['./node_modules'],
     }).on('error', plugins.notify.onError({ title: 'Error compiling SASS' })))
     .pipe(plugins.if(config.isProd, plugins.postcss([
       plugins.postcssDiscardComments({ removeAllButFirst: true }),
