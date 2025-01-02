@@ -5,8 +5,9 @@ mixin renderSelect(obj, isNativeSelect, selectClass)
     class=selectClass
     data-minimum-results-for-search=obj.withSearch && !isNativeSelect ? "" : isNativeSelect ? false : "-1"
     data-placeholder=obj.placeholder && !isNativeSelect ? obj.placeholder : false
-    disabled=obj.disabled ? obj.disabled : false)&attributes(attributes)
-    if (obj.placeholder)
+    disabled=obj.disabled ? obj.disabled : false
+    multiple=obj.multiple ? obj.multiple : false)&attributes(attributes)
+    if (obj.placeholder && !obj.multiple)
       option(label=obj.placeholder)
     - for (let i = 0; i < obj.options.length; i++)
       option(selected=obj.selectedOption - 1 === i ? true : false)= obj.options[i]
@@ -20,8 +21,8 @@ mixin select(obj)
       label.form-label= obj.label
     if obj.withContainer
       .js-select-container
-        +renderSelect(obj, isNativeSelect, selectClass)
+        +renderSelect(obj, isNativeSelect, selectClass)&attributes(attributes)
     else
-      +renderSelect(obj, isNativeSelect, selectClass)
+      +renderSelect(obj, isNativeSelect, selectClass)&attributes(attributes)
     if (obj.invalidFeedback)
       .invalid-feedback= obj.invalidFeedback

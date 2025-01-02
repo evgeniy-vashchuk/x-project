@@ -1,6 +1,7 @@
 .select2-container {
   &--bootstrap {
     display: block;
+    width: auto !important;
 
     &.select2-container--open {
       &.select2-container--above {
@@ -284,4 +285,10 @@
       }
     }
   }
+}
+
+.select2-hidden-accessible {
+  @include visually-hidden;
+
+  top: 0;
 }

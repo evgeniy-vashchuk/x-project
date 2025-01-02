@@ -19,6 +19,7 @@ function initForms() {
 
     $(this).select2({
       dropdownParent: selectContainer.length ? selectContainer : false,
+      width: '100%',
       theme: 'bootstrap',
     });
   });
