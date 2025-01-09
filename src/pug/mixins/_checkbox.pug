@@ -1,12 +1,7 @@
-//- +checkbox({id: "subscribe"}) Subscribe
+//- +checkbox({checked: true}) Subscribe
 
 mixin checkbox(obj)
-  if (obj.id)
-    .form-check&attributes(attributes)
-      input.form-check-input(
-        id=obj.id
-        type="checkbox"
-        checked=obj.checked ? true : false
-        disabled=obj.disabled ? true : false)
-      label.form-check-label(for=obj.id)
-        block
+  .form-check&attributes(attributes)
+    input.form-check-input(type="checkbox" checked=obj.checked ? true : false disabled=obj.disabled ? true : false)
+    span.form-check-label
+      block

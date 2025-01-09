@@ -1,5 +1,7 @@
-.form-label {
-  cursor: pointer;
+label {
+  &.form-label {
+    cursor: pointer;
+  }
 }
 
 .form-control {
