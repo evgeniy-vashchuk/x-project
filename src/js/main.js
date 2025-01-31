@@ -15,17 +15,24 @@ function initForms() {
   const select = $('.js-select');
 
   select.each(function() {
-    const selectContainer = $(this).closest('.js-select-container');
+    const selectItem = $(this),
+          selectLabel = selectItem.siblings('.form-label'),
+          selectContainer = selectItem.closest('.js-select-container');
 
-    $(this).select2({
+    selectItem.select2({
       dropdownParent: selectContainer.length ? selectContainer : false,
       width: '100%',
       theme: 'bootstrap',
+      minimumResultsForSearch: 10,
+    });
+
+    selectLabel.on('click', function() {
+      selectItem.select2('open');
     });
   });
 }
 
-// LAZY LOAD IMAGES
+// LAZY LOAD
 function initLazyLoad() {
   const lazyLoadInstance = new LazyLoad({
     elements_selector: '.js-lazy',
