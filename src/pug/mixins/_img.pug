@@ -3,6 +3,18 @@
 mixin img(obj)
   if (obj.img)
     if (obj.lazy !== false)
-      img(class="lazy js-lazy" src="img/lazy-placeholder.png" alt=obj.alt ? obj.alt : "Image" data-src=obj.img)&attributes(attributes)
+      img(
+        class="lazy js-lazy"
+        src="img/lazy-placeholder.png"
+        alt=obj.alt ? obj.alt : "Image"
+        data-src=obj.img
+        width=obj.width ? obj.width : false
+        height=obj.height ? obj.height : false
+        style=obj.width && obj.height ? "aspect-ratio: " + obj.width + "/" + obj.height : false)&attributes(attributes)
     else
-      img(src=obj.img alt=obj.alt ? obj.alt : "Image")&attributes(attributes)
+      img(
+        src=obj.img
+        alt=obj.alt ? obj.alt : "Image"
+        width=obj.width ? obj.width : false
+        height=obj.height ? obj.height : false
+        style=obj.width && obj.height ? "aspect-ratio: " + obj.width + "/" + obj.height : false)&attributes(attributes)
