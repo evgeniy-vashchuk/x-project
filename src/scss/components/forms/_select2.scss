@@ -54,6 +54,7 @@
       background-color: $form-select-bg;
       border: $form-select-border-width solid $form-select-border-color;
       border-radius: $form-select-border-radius;
+      box-shadow: $form-select-box-shadow;
       transition: $form-select-transition;
 
       &--multiple {
@@ -93,8 +94,8 @@
             font-family: inherit;
             line-height: $input-line-height;
             background-image: none;
-            caret-color: $input-color;
             cursor: pointer;
+            caret-color: $input-color;
           }
         }
 
