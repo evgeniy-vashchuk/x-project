@@ -21,7 +21,7 @@ const zipTask = done => {
         minutes = now.getMinutes().toString().padStart(2, '0');
 
   gulp.src('**/*', { base: '.' })
-    .pipe(plugins.gitignore())
+    .pipe(plugins.gitignore('.gitignore', [], { dot: true }))
     .pipe(zip(`${projectName}_${year}-${month}-${day}_${hours}-${minutes}.zip`))
     .pipe(gulp.dest('.'));
 

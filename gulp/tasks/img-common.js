@@ -29,8 +29,8 @@ const imgCommon = done => {
         ],
       })
     ], { verbose: false }))
-    .pipe(gulp.dest(config.dist.img))
     .pipe(plugins.if(copyToWordPress, gulp.dest(config.dist.wordpress + 'img/')))
+    .pipe(gulp.dest(config.dist.img))
     .on('end', plugins.browserSync.reload);
 
   done();
