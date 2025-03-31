@@ -1,6 +1,7 @@
 import gulp from 'gulp';
 import config from '../config.js';
 import { plugins, copyToWordPress } from '../config.js';
+import sortCSSmq from 'sort-css-media-queries';
 
 const sass = done => {
   const sass = plugins.gulpSass(plugins.dartSass);
@@ -17,7 +18,7 @@ const sass = done => {
     .pipe(plugins.if(config.isProd, plugins.postcss([
       plugins.postcssDiscardComments({ removeAllButFirst: true }),
       plugins.autoprefixer(['last 10 versions']),
-      plugins.cssMqpacker({ sort: plugins.sortCssMediaQueries })
+      plugins.cssMqpacker({ sort: sortCSSmq })
     ])))
     .pipe(plugins.if(config.isProd, plugins.rename({ suffix: '.min' })))
     .pipe(gulp.dest(config.dist.css, { sourcemaps: config.isProd ? false : '.' }))
