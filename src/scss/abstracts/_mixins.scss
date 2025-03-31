@@ -451,6 +451,10 @@
     height: $scrollbar-size;
   }
 
+  &::-webkit-scrollbar-corner {
+    background-color: $scrollbar-track-bg;
+  }
+
   // FOR INTERNET EXPLORER
   @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
     scrollbar-face-color: $scrollbar-thumb-bg;

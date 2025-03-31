@@ -33,7 +33,7 @@ textarea {
 .position-relative {
   > .invalid-feedback {
     position: absolute;
-    top: calc(100% + $form-label-margin-bottom);
+    top: calc(100% + $form-feedback-margin-top);
     left: 0;
     z-index: 5;
     margin-top: 0;

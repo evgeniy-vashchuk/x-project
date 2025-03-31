@@ -5,6 +5,7 @@
     transition: opacity 1s;
   }
 
+  &.applied,
   &.initial,
   &.loaded,
   &.error {
