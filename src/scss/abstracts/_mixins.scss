@@ -403,7 +403,7 @@
 // @include title-sizes;
 
 // CUSTOM SCROLLBAR ------------------------------------
-@mixin custom-scrollbar($scrollbar-size, $scrollbar-track-bg, $scrollbar-thumb-bg, $scrollbar-thumb-border-radius: 0) {
+@mixin custom-scrollbar($scrollbar-size, $scrollbar-track-bg, $scrollbar-thumb-bg, $scrollbar-thumb-border-radius: 0, $scrollbar-padding: 0) {
   &::-webkit-scrollbar-button {
     width: 100%;
     height: 0;
@@ -423,6 +423,7 @@
     background-color: $scrollbar-thumb-bg;
     background-repeat: no-repeat;
     background-position: center;
+    border: $scrollbar-padding solid $scrollbar-track-bg;
     border-radius: $scrollbar-thumb-border-radius;
 
     &:hover {

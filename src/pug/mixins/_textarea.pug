@@ -5,10 +5,13 @@ mixin textarea(obj)
   - const textareaClass = "form-control" + (obj.invalidFeedback ? " is-invalid" : "");
 
   if (obj.label)
-    label.form-label(for=textareaId)= obj.label
+    label(class="form-label" + (obj.labelColor ? " text-" + obj.labelColor : "") for=textareaId)= obj.label
   textarea(
-    id=textareaId
     class=textareaClass
+    id=textareaId
+    name=obj.name
+    required=obj.required ? obj.required : false
+    minlength=obj.minLength ? obj.minLength : false
     placeholder=obj.placeholder ? obj.placeholder : false
     disabled=obj.disabled ? obj.disabled : false)&attributes(attributes)
     | #{ obj.value }

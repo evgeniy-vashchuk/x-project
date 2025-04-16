@@ -3,8 +3,10 @@
 mixin renderSelect(obj, isNativeSelect, selectClass)
   select(
     class=selectClass
+    name=obj.name
     data-minimum-results-for-search=obj.withSearch && !isNativeSelect ? "" : isNativeSelect ? false : "-1"
     data-placeholder=obj.placeholder && !isNativeSelect ? obj.placeholder : false
+    required=obj.required ? obj.required : false
     disabled=obj.disabled ? obj.disabled : false
     multiple=obj.multiple ? obj.multiple : false)&attributes(attributes)
     if (obj.placeholder && !obj.multiple)

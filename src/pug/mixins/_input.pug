@@ -5,11 +5,14 @@ mixin input(obj)
   - const inputClass = "form-control" + (obj.invalidFeedback ? " is-invalid" : "");
 
   if (obj.label)
-    label(class="form-label" for=inputId)= obj.label
+    label(class="form-label" + (obj.labelColor ? " text-" + obj.labelColor : "") for=inputId)= obj.label
   input(
-    id=inputId
     class=inputClass
+    id=inputId
+    name=obj.name ? obj.name : false
     type=obj.type ? obj.type : "text"
+    required=obj.required ? obj.required : false
+    minlength=obj.minLength ? obj.minLength : false
     placeholder=obj.placeholder ? obj.placeholder : false
     value=obj.value ? obj.value : false
     disabled=obj.disabled ? obj.disabled : false)&attributes(attributes)

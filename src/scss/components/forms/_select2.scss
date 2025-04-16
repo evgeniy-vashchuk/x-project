@@ -34,12 +34,13 @@
           }
         }
       }
-    }
 
-    &.select2-container--focus {
-      .select2-selection {
-        border-color: $form-select-focus-border-color;
-        box-shadow: $form-select-focus-box-shadow;
+      &.select2-container--focus {
+        .select2-selection {
+          background-color: $input-focus-bg;
+          border-color: $form-select-focus-border-color;
+          box-shadow: $form-select-focus-box-shadow;
+        }
       }
     }
 

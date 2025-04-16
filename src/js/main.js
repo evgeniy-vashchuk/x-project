@@ -2,11 +2,13 @@
 
 /* global LazyLoad, Swiper */
 
-const breakpointSm = getComputedStyle(document.documentElement).getPropertyValue('--bs-breakpoint-sm').replace(/px/g, '') - 1,
-      breakpointMd = getComputedStyle(document.documentElement).getPropertyValue('--bs-breakpoint-md').replace(/px/g, '') - 1,
-      breakpointLg = getComputedStyle(document.documentElement).getPropertyValue('--bs-breakpoint-lg').replace(/px/g, '') - 1,
-      breakpointXl = getComputedStyle(document.documentElement).getPropertyValue('--bs-breakpoint-xl').replace(/px/g, '') - 1,
-      breakpointXxl = getComputedStyle(document.documentElement).getPropertyValue('--bs-breakpoint-xxl').replace(/px/g, '') - 1;
+const breakpoints = {
+  sm: parseInt(getComputedStyle(document.documentElement).getPropertyValue('--breakpoint-sm'), 10),
+  md: parseInt(getComputedStyle(document.documentElement).getPropertyValue('--breakpoint-md'), 10),
+  lg: parseInt(getComputedStyle(document.documentElement).getPropertyValue('--breakpoint-lg'), 10),
+  xl: parseInt(getComputedStyle(document.documentElement).getPropertyValue('--breakpoint-xl'), 10),
+  xxl: parseInt(getComputedStyle(document.documentElement).getPropertyValue('--breakpoint-xxl'), 10)
+};
 
 const gridGutterWidth = getComputedStyle(document.documentElement).getPropertyValue('--grid-gutter-width');
 
