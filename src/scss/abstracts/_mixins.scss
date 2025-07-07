@@ -486,7 +486,6 @@
 @mixin word-wrap() {
   word-wrap: break-word;
   word-break: break-all;
-  word-break: break-word;
   overflow-wrap: break-word;
   hyphens: auto;
 }
@@ -497,7 +496,6 @@
 @mixin vertical-text-top-bottom() {
   word-wrap: break-word;
   word-break: break-all;
-  word-break: break-word;
   overflow-wrap: break-word;
   hyphens: auto;
 }

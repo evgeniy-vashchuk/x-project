@@ -181,6 +181,7 @@ export default [
           'style'
         ]
       }],
+      '@html-eslint/use-baseline': 'off',
     },
     plugins: { '@html-eslint': html },
     languageOptions: { parser: htmlParser },
