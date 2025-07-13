@@ -6,7 +6,7 @@ import htmlParser from '@html-eslint/parser';
 
 export default [
   pluginJs.configs.recommended,
-  { ignores: ['dist', 'node_modules', '**/*.min.js', 'libs.js', 'src/libs/**.js'] },
+  { ignores: ['dist', 'node_modules', '**/*.min.js', 'libs.js', 'src/libs/**/*.js'] },
   {
     plugins: { '@stylistic/js': stylisticJs },
     files: ['**/*.js'],
