@@ -513,7 +513,7 @@
 // @include vertical-text-bottom-top;
 
 // VISUALLY HIDDEN ------------------------------------
-@mixin visually-hidden() {
+@mixin hidden() {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -526,7 +526,7 @@
   clip-path: inset(100%);
 }
 
-// @include visually-hidden;
+// @include hidden;
 
 // DESCENDING Z-INDEX ------------------------------------
 @mixin descending-z-index($count: 30) {

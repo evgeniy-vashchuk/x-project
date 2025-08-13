@@ -152,7 +152,7 @@
       z-index: $zindex-dropdown;
       overflow: hidden;
       background-color: $form-select-bg;
-      border: $form-select-border-width solid $form-select-focus-border-color;
+      border: $form-select-border-width solid $form-select-border-color;
       border-radius: $form-select-border-radius;
 
       &--above {
@@ -289,10 +289,4 @@
       }
     }
   }
-}
-
-.select2-hidden-accessible {
-  @include visually-hidden;
-
-  top: 0;
 }

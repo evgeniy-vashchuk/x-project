@@ -1041,7 +1041,7 @@ $form-select-feedback-icon-size:        $input-height-inner-half $input-height-i
 $form-select-border-width:        $input-border-width !default;
 $form-select-border-color:        $input-border-color !default;
 $form-select-border-radius:       $input-border-radius !default;
-$form-select-box-shadow:          var(--#{$prefix}box-shadow-inset) !default;
+$form-select-box-shadow:          none !default;
 
 $form-select-focus-border-color:  $input-focus-border-color !default;
 $form-select-focus-width:         $input-focus-width !default;
@@ -1831,6 +1831,7 @@ $swiper-navigation-icon-next: ">" !default;
 $swiper-navigation-icon-font-family: inherit !default;
 $swiper-navigation-icon-font-size: 20px !default;
 $swiper-navigation-border-width: 0 !default;
+$swiper-navigation-border-radius: 0 !default;
 // default
 $swiper-navigation-color: $primary !default;
 $swiper-navigation-background-color: transparent !default;
@@ -1852,3 +1853,7 @@ $swiper-pagination-background-color: $secondary !default;
 $swiper-pagination-opacity: 1 !default;
 $swiper-pagination-hover-background-color: lighten($swiper-pagination-background-color, 10%) !default;
 $swiper-pagination-active-background-color: $primary !default;
+
+// RFS =================================
+$rfs-unit: "rem";
+$rfs-breakpoint: map-get($grid-breakpoints, "xl");

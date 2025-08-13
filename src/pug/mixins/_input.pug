@@ -1,20 +1,26 @@
 //- +input({label: "Name", placeholder: "Name"})
 
-mixin input(obj)
-  - const inputId = obj.label ? obj.label.replace(/ \*/g, "").replace(/\s+/g, "-").toLowerCase() : false;
-  - const inputClass = "form-control" + (obj.invalidFeedback ? " is-invalid" : "");
+mixin inputItem(obj)
+  - const { name, type, required, minlength, placeholder, value, disabled, invalidFeedback } = obj;
 
-  if (obj.label)
-    label(class="form-label" + (obj.labelColor ? " text-" + obj.labelColor : "") for=inputId)= obj.label
   input(
-    class=inputClass
-    id=inputId
-    name=obj.name ? obj.name : false
-    type=obj.type ? obj.type : "text"
-    required=obj.required ? obj.required : false
-    minlength=obj.minLength ? obj.minLength : false
-    placeholder=obj.placeholder ? obj.placeholder : false
-    value=obj.value ? obj.value : false
-    disabled=obj.disabled ? obj.disabled : false)&attributes(attributes)
-  if (obj.invalidFeedback)
-    .invalid-feedback= obj.invalidFeedback
+    class="form-control" + (invalidFeedback ? " is-invalid" : "")
+    name=name ? name : "input"
+    type=type ? type : "text"
+    required=required ? "true" : false
+    minlength=minlength ? minlength : false
+    placeholder=placeholder ? placeholder : false
+    value=value ? value : false
+    disabled=disabled ? "true" : false)&attributes(attributes)
+  if invalidFeedback
+    .invalid-feedback= invalidFeedback
+
+mixin input(obj)
+  - const { label, labelColor } = obj;
+
+  if label
+    label.d-inline.w-100
+      span(class="form-label" + (labelColor ? " text-" + labelColor : ""))= label
+      +inputItem(obj)&attributes(attributes)
+  else
+    +inputItem(obj)&attributes(attributes)

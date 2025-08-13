@@ -1,16 +1,14 @@
-//- +modal({
-//- 	id: "modal-contacts",
-//- 	size: "lg",
-//- 	title: "Contacts",
-//- })
+//- +modal({ id: "modal-contacts", size: "lg", title: "Contacts" })
 
 mixin modal(obj)
-  .modal.fade(aria-labelledby=obj.title ? obj.id + "-label" : false aria-hidden="true" id=obj.id tabindex="-1")&attributes(attributes)
-    div(class="modal-dialog modal-dialog-centered" + (obj.size ? " modal-" + obj.size : ""))
+  - const { id, size, title } = obj;
+
+  .modal.fade(aria-labelledby=title ? id + "-label" : false aria-hidden="true" id=id tabindex="-1")&attributes(attributes)
+    div(class="modal-dialog modal-dialog-centered" + (size ? " modal-" + size : ""))
       .modal-content
         .modal-header
-          if (obj.title)
-            h2.modal-title(id=obj.id + "-label")= obj.title
+          if title
+            h2.modal-title(id=id + "-label")= title
           button.btn-close(aria-label="Close" type="button" data-bs-dismiss="modal")
         .modal-body
           block

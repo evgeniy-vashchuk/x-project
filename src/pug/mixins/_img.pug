@@ -1,20 +1,16 @@
 //- +img({img: "img/image.jpg"})
 
 mixin img(obj)
-  if (obj.img)
-    if (obj.lazy !== false)
-      img(
-        class="lazy js-lazy"
-        src="img/lazy-placeholder.png"
-        alt=obj.alt ? obj.alt : "Image"
-        data-src=obj.img
-        width=obj.width ? obj.width : false
-        height=obj.height ? obj.height : false
-        style=obj.width && obj.height ? "aspect-ratio: " + obj.width + "/" + obj.height : false)&attributes(attributes)
-    else
-      img(
-        src=obj.img
-        alt=obj.alt ? obj.alt : "Image"
-        width=obj.width ? obj.width : false
-        height=obj.height ? obj.height : false
-        style=obj.width && obj.height ? "aspect-ratio: " + obj.width + "/" + obj.height : false)&attributes(attributes)
+  - const { img, alt, width, height, lazy } = obj;
+  - const placeholderImg = "img/lazy-placeholder.png";
+  - const withLazyLoad = lazy !== false;
+
+  if img
+    img(
+      class=withLazyLoad ? "lazy js-lazy" : false
+      src=withLazyLoad ? placeholderImg : img
+      alt=alt ? alt : "Image"
+      data-src=withLazyLoad ? img : false
+      width=width ? width : false
+      height=height ? height : false
+      style=width && height ? "aspect-ratio: " + width + "/" + height : false)&attributes(attributes)

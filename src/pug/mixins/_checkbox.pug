@@ -1,7 +1,13 @@
 //- +checkbox({checked: true}) Subscribe
 
 mixin checkbox(obj)
-  .form-check&attributes(attributes)
-    input.form-check-input(type="checkbox" checked=obj.checked ? true : false disabled=obj.disabled ? true : false)
+  - const { name, checked, disabled } = obj;
+
+  label.form-check&attributes(attributes)
+    input.form-check-input(
+      name=name ? name : "checkbox"
+      type="checkbox"
+      checked=checked ? "true" : false
+      disabled=disabled ? "true" : false)
     span.form-check-label
       block

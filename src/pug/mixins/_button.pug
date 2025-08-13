@@ -1,16 +1,17 @@
-//- +button({href: "#", color: "primary"})
+//- +button({color: "primary"})
 
 mixin button(obj)
-  - const buttonClass = "btn" + (obj.color ? " btn-" + obj.color : "") + (obj.size ? " btn-" + obj.size : "");
+  - const { type, color, size, disabled, href, openInNewTab } = obj;
+  - const buttonClass = "btn" + (color ? " btn-" + color : "") + (size ? " btn-" + size : "");
 
-  if (obj.type === "submit" || obj.type === "button")
-    button(class=buttonClass type=obj.type disabled=obj.disabled ? obj.disabled : false)&attributes(attributes)
+  if type === "submit" || type === "button"
+    button(class=buttonClass type=`${type}` disabled=disabled ? "true" : false)&attributes(attributes)
       block
   else
     a(
-      aria-disabled=obj.disabled ? true : false
-      class=buttonClass + (obj.disabled ? " disabled" : "")
-      href=obj.href ? obj.href : "#"
-      target=obj.openInNewTab ? "_blank" : false
-      tabindex=obj.disabled ? -1 : false)&attributes(attributes)
+      aria-disabled=disabled ? "true" : false
+      class=buttonClass + (disabled ? " disabled" : "")
+      href=href ? href : "#"
+      target=openInNewTab ? "_blank" : false
+      tabindex=disabled ? -1 : false)&attributes(attributes)
       block

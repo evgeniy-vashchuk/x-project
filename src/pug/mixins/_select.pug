@@ -1,30 +1,36 @@
 //- +select({ label: "Country", placeholder: "Select country", options: ["Option 1", "Option 2", "Option 3"] })
 
-mixin renderSelect(obj, isNativeSelect, selectClass)
+mixin selectItem(obj)
+  - const { name, placeholder, required, disabled, multiple, options, selectedOption, withSearch, invalidFeedback, native } = obj;
+  - const isNativeSelect = native === true;
+  - const selectClass = "form-select" + (isNativeSelect ? "" : " js-select") + (invalidFeedback ? " is-invalid" : "");
+
   select(
     class=selectClass
-    name=obj.name
-    data-minimum-results-for-search=obj.withSearch && !isNativeSelect ? "" : isNativeSelect ? false : "-1"
-    data-placeholder=obj.placeholder && !isNativeSelect ? obj.placeholder : false
-    required=obj.required ? obj.required : false
-    disabled=obj.disabled ? obj.disabled : false
-    multiple=obj.multiple ? obj.multiple : false)&attributes(attributes)
-    if (obj.placeholder && !obj.multiple)
-      option(label=obj.placeholder)
-    - for (let i = 0; i < obj.options.length; i++)
-      option(selected=obj.selectedOption - 1 === i ? true : false)= obj.options[i]
+    name=name ? name : "select"
+    data-minimum-results-for-search=withSearch && !isNativeSelect ? "" : isNativeSelect ? false : "-1"
+    data-placeholder=placeholder && !isNativeSelect ? placeholder : false
+    required=required ? "true" : false
+    disabled=disabled ? "true" : false
+    multiple=multiple ? "true" : false)&attributes(attributes)
+    if placeholder && !multiple
+      option(label=placeholder)
+    each option, i in options
+      option(selected=selectedOption - 1 === i ? true : false)= option
+  if invalidFeedback
+    .invalid-feedback= invalidFeedback
 
 mixin select(obj)
-  - const isNativeSelect = obj.native === true;
-  - const selectClass = "form-select" + (isNativeSelect ? "" : " js-select") + (obj.invalidFeedback ? " is-invalid" : "");
+  - const { options, label, labelColor, withContainer } = obj;
 
-  if (obj.options)
-    if (obj.label)
-      label.form-label= obj.label
-    if obj.withContainer
-      .js-select-container
-        +renderSelect(obj, isNativeSelect, selectClass)&attributes(attributes)
+  if options
+    if label
+      label.d-inline.w-100
+        span(class="form-label" + (labelColor ? " text-" + labelColor : ""))= label
+        if withContainer
+          .js-select-container
+            +selectItem(obj)&attributes(attributes)
+        else
+          +selectItem(obj)&attributes(attributes)
     else
-      +renderSelect(obj, isNativeSelect, selectClass)&attributes(attributes)
-    if (obj.invalidFeedback)
-      .invalid-feedback= obj.invalidFeedback
+      +selectItem(obj)&attributes(attributes)

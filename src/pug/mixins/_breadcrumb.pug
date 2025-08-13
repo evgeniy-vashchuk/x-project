@@ -1,12 +1,22 @@
 //- +breadcrumb(["Home", "About us"])
 
 mixin breadcrumb(obj)
-  if (obj.length)
+  - const breadcrumbItems = obj;
+
+  if breadcrumbItems.length
     nav(aria-label="Breadcrumb")&attributes(attributes)
       ol.breadcrumb
-        - for (let i = 0; i < obj.length; i++)
-          if (i === obj.length - 1)
-            li.breadcrumb-item.active(aria-current="page")= obj[i]
+        each item, i in breadcrumbItems
+          - const isObject = typeof item === "object" && item !== null;
+
+          if i === breadcrumbItems.length - 1
+            if isObject
+              li.breadcrumb-item.active(aria-current="page")= item.text
+            else
+              li.breadcrumb-item.active(aria-current="page")= item
           else
             li.breadcrumb-item
-              a(href="#")= obj[i]
+              if isObject
+                a(href=item.href)= item.text
+              else
+                a(href="#")= item

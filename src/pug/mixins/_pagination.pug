@@ -1,19 +1,21 @@
 //- +pagination({ pages: ["1", "2", "dots", "9", "10"], active: "1" })
 
 mixin pagination(obj)
-  if (obj.pages.length)
+  - const { pages, active } = obj;
+
+  if pages.length
     nav(aria-label="Pagination")&attributes(attributes)
       ul.pagination
         li.page-item.disabled
           a.page-link(aria-label="Previous" href="#")
             span(aria-hidden="true") «
-        - for (let i = 0; i < obj.pages.length; i++)
-          if (obj.pages[i] === "dots")
+        each page in pages
+          if page === "dots"
             li.page-item.disabled
               a.page-link(href="#") ...
           else
-            li(class="page-item" + (obj.pages[i] === obj.active ? " active" : ""))
-              a.page-link(href="#")= obj.pages[i]
+            li(class="page-item" + (page === active ? " active" : ""))
+              a.page-link(href="#")= page
         li.page-item
           a.page-link(aria-label="Next" href="#")
             span(aria-hidden="true") »

@@ -1,5 +1,5 @@
 :root {
-  --grid-gutter-width: #{strip-unit($grid-gutter-width) * 16};
+  --bs-grid-gutter-width: #{strip-unit($grid-gutter-width) * 16};
 }
 
 html {

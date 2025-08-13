@@ -11,11 +11,19 @@
 }
 
 %custom-scrollbar {
-  @include custom-scrollbar(8px, $secondary, $primary, 5px);
+  @include custom-scrollbar(8px, $secondary, $primary, $border-radius-pill);
 }
 
 .custom-scrollbar {
   @extend %custom-scrollbar;
+}
+
+%custom-scrollbar-sm {
+  @include custom-scrollbar(4px, $secondary, $primary, $border-radius-pill);
+}
+
+.custom-scrollbar-sm {
+  @extend %custom-scrollbar-sm;
 }
 
 .tabular-nums {

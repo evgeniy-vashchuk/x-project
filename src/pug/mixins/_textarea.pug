@@ -1,19 +1,25 @@
 //- +textarea({label: "Message", placeholder: "Message"})
 
-mixin textarea(obj)
-  - const textareaId = obj.label ? obj.label.replace(/ \*/g, "").replace(/\s+/g, "-").toLowerCase() : false;
-  - const textareaClass = "form-control" + (obj.invalidFeedback ? " is-invalid" : "");
+mixin textareaItem(obj)
+  - const { name, required, minlength, placeholder, value, disabled, invalidFeedback } = obj;
 
-  if (obj.label)
-    label(class="form-label" + (obj.labelColor ? " text-" + obj.labelColor : "") for=textareaId)= obj.label
   textarea(
-    class=textareaClass
-    id=textareaId
-    name=obj.name
-    required=obj.required ? obj.required : false
-    minlength=obj.minLength ? obj.minLength : false
-    placeholder=obj.placeholder ? obj.placeholder : false
-    disabled=obj.disabled ? obj.disabled : false)&attributes(attributes)
-    | #{ obj.value }
-  if (obj.invalidFeedback)
-    .invalid-feedback= obj.invalidFeedback
+    class="form-control" + (invalidFeedback ? " is-invalid" : "")
+    name=name
+    required=required ? "true" : false
+    minlength=minlength ? minlength : false
+    placeholder=placeholder ? placeholder : false
+    disabled=disabled ? "true" : false)&attributes(attributes)
+    | #{ value }
+  if invalidFeedback
+    .invalid-feedback= invalidFeedback
+
+mixin textarea(obj)
+  - const { label, labelColor } = obj;
+
+  if label
+    label.d-inline.w-100
+      span(class="form-label" + (labelColor ? " text-" + labelColor : ""))= label
+      +textareaItem(obj)&attributes(attributes)
+  else
+    +textareaItem(obj)&attributes(attributes)

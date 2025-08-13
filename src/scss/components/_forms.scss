@@ -1,7 +1,6 @@
-label {
-  &.form-label {
-    cursor: pointer;
-  }
+.form-label {
+  display: inline-block;
+  cursor: pointer;
 }
 
 .form-control {

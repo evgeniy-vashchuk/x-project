@@ -1,11 +1,13 @@
-//- +radio({id: "subscribe", name: "Subscribe"}) Subscribe
+//- +radio({ name: "Subscribe" }) Subscribe
 
 mixin radio(obj)
-  .form-check&attributes(attributes)
+  - const { name, checked, disabled } = obj;
+
+  label.form-check&attributes(attributes)
     input.form-check-input(
-      name=obj.name
+      name=name ? name : "radio"
       type="radio"
-      checked=obj.checked ? true : false
-      disabled=obj.disabled ? true : false)
+      checked=checked ? "true" : false
+      disabled=disabled ? "true" : false)
     span.form-check-label
       block
