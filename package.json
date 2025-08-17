@@ -100,8 +100,7 @@
   },
   "dependencies": {
     "bootstrap": "^5.3.7",
-    "jquery": "^3.7.1",
-    "select2": "^4.1.0-rc.0",
+    "choices.js": "^11.1.0",
     "swiper": "^11.2.10",
     "vanilla-lazyload": "^19.1.3"
   }

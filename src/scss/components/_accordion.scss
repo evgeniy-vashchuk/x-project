@@ -1,0 +1,39 @@
+.accordion {
+  &-button {
+    position: relative;
+    padding-right: calc(($accordion-padding-x * 2) + $accordion-icon-width);
+    font-weight: inherit;
+    font-size: inherit;
+
+    &:after {
+      content: none;
+    }
+
+    &:not(.collapsed) {
+      .accordion-button-icon {
+        transform: $accordion-icon-transform;
+      }
+    }
+  }
+
+  &-button-icon {
+    position: absolute;
+    top: $accordion-padding-y;
+    right: $accordion-padding-x;
+    z-index: 5;
+    width: $accordion-icon-width;
+    height: 1lh;
+    transition: $accordion-icon-transition;
+
+    &:before {
+      @include size($accordion-icon-width);
+      @include absolute-center;
+
+      background-image: escape-svg($accordion-button-icon);
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+      content: "";
+    }
+  }
+}

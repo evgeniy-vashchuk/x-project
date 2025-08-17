@@ -35,9 +35,15 @@ export default [
       '@stylistic/js/function-call-spacing': ['error', 'never'],
       '@stylistic/js/function-paren-newline': ['error', 'multiline'],
       '@stylistic/js/implicit-arrow-linebreak': ['error', 'beside'],
-      '@stylistic/js/indent': ['error', 2, { VariableDeclarator: { var: 2, let: 2, const: 3 } }],
+      '@stylistic/js/indent': ['error', 2, {
+        VariableDeclarator: {
+          var: 2, let: 2, const: 3
+        }
+      }],
       '@stylistic/js/jsx-quotes': ['error', 'prefer-double'],
-      '@stylistic/js/key-spacing': ['error', { beforeColon: false, afterColon: true, mode: 'strict' }],
+      '@stylistic/js/key-spacing': ['error', {
+        beforeColon: false, afterColon: true, mode: 'strict'
+      }],
       '@stylistic/js/keyword-spacing': ['error', { before: true, after: true }],
       '@stylistic/js/linebreak-style': ['error', 'unix'],
       '@stylistic/js/lines-around-comment': [
@@ -74,11 +80,29 @@ export default [
       '@stylistic/js/no-floating-decimal': 'error',
       '@stylistic/js/no-mixed-operators': 'error',
       '@stylistic/js/no-multi-spaces': ['error', { exceptions: { VariableDeclarator: true } }],
-      '@stylistic/js/no-multiple-empty-lines': ['error', { max: 1, maxEOF: 1, maxBOF: 0 }],
+      '@stylistic/js/no-multiple-empty-lines': ['error', {
+        max: 1, maxEOF: 1, maxBOF: 0
+      }],
       '@stylistic/js/no-trailing-spaces': ['error', { skipBlankLines: false, ignoreComments: false }],
       '@stylistic/js/no-whitespace-before-property': 'error',
       '@stylistic/js/nonblock-statement-body-position': ['error', 'beside'],
-      '@stylistic/js/object-curly-newline': ['error', { multiline: true }],
+      'object-curly-newline': [
+        'error',
+        {
+          ObjectExpression: {
+            multiline: true, minProperties: 3, consistent: true
+          },
+          ObjectPattern: {
+            multiline: true, minProperties: 3, consistent: true
+          },
+          ImportDeclaration: {
+            multiline: true, minProperties: 3, consistent: true
+          },
+          ExportDeclaration: {
+            multiline: true, minProperties: 3, consistent: true
+          }
+        }
+      ],
       '@stylistic/js/object-curly-spacing': ['error', 'always'],
       '@stylistic/js/object-property-newline': ['error', { allowAllPropertiesOnSameLine: true }],
       '@stylistic/js/one-var-declaration-per-line': ['error', 'initializations'],
@@ -88,24 +112,44 @@ export default [
         'error',
 
         // Always require blank lines after directive (like 'use-strict'), except between directives
-        { blankLine: 'always', prev: 'directive', next: '*' },
-        { blankLine: 'any', prev: 'directive', next: 'directive' },
+        {
+          blankLine: 'always', prev: 'directive', next: '*'
+        },
+        {
+          blankLine: 'any', prev: 'directive', next: 'directive'
+        },
 
         // Always require blank lines after import, except between imports
-        { blankLine: 'always', prev: 'import', next: '*' },
-        { blankLine: 'any', prev: 'import', next: 'import' },
+        {
+          blankLine: 'always', prev: 'import', next: '*'
+        },
+        {
+          blankLine: 'any', prev: 'import', next: 'import'
+        },
 
         // Always require blank lines before and after every sequence of variable declarations and export
-        { blankLine: 'always', prev: '*', next: ['const', 'let', 'var', 'export'] },
-        { blankLine: 'always', prev: ['const', 'let', 'var', 'export'], next: '*' },
-        { blankLine: 'any', prev: ['const', 'let', 'var', 'export'], next: ['const', 'let', 'var', 'export'] },
+        {
+          blankLine: 'always', prev: '*', next: ['const', 'let', 'var', 'export']
+        },
+        {
+          blankLine: 'always', prev: ['const', 'let', 'var', 'export'], next: '*'
+        },
+        {
+          blankLine: 'any', prev: ['const', 'let', 'var', 'export'], next: ['const', 'let', 'var', 'export']
+        },
 
         // Always require blank lines before and after class declaration, if, do/while, switch, try
-        { blankLine: 'always', prev: '*', next: ['if', 'class', 'for', 'do', 'while', 'switch', 'try'] },
-        { blankLine: 'always', prev: ['if', 'class', 'for', 'do', 'while', 'switch', 'try'], next: '*' },
+        {
+          blankLine: 'always', prev: '*', next: ['if', 'class', 'for', 'do', 'while', 'switch', 'try']
+        },
+        {
+          blankLine: 'always', prev: ['if', 'class', 'for', 'do', 'while', 'switch', 'try'], next: '*'
+        },
 
         // Always require blank lines before return statements
-        { blankLine: 'always', prev: '*', next: 'return' },
+        {
+          blankLine: 'always', prev: '*', next: 'return'
+        },
       ],
       '@stylistic/js/quote-props': ['error', 'consistent-as-needed'],
       '@stylistic/js/quotes': ['error', 'single', { avoidEscape: true, allowTemplateLiterals: true }],

@@ -20,12 +20,40 @@ textarea {
 }
 
 .form-select {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+
   &:not([disabled]) {
     cursor: pointer;
   }
 
   &[disabled] {
     cursor: not-allowed;
+  }
+
+  &[multiple] {
+    option {
+      display: flex;
+      align-items: center;
+      height: calc($form-select-font-size * $form-select-line-height);
+      padding: 0;
+    }
+
+    &.form-select-sm {
+      option {
+        height: calc($form-select-font-size-sm * $form-select-line-height);
+      }
+    }
+
+    &.form-select-lg {
+      option {
+        height: calc($form-select-font-size-lg * $form-select-line-height);
+      }
+    }
+  }
+
+  &:not([data-choice="active"]) {
+    color: $input-placeholder-color;
   }
 }
 

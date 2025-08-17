@@ -1,10 +1,10 @@
 //- +textarea({label: "Message", placeholder: "Message"})
 
 mixin textareaItem(obj)
-  - const { name, required, minlength, placeholder, value, disabled, invalidFeedback } = obj;
+  - const { name, required, minlength, placeholder, value, disabled, size, invalidFeedback } = obj;
 
   textarea(
-    class="form-control" + (invalidFeedback ? " is-invalid" : "")
+    class="form-control" + (invalidFeedback ? " is-invalid" : "") + (size ? " form-control-" + size : "")
     name=name
     required=required ? "true" : false
     minlength=minlength ? minlength : false

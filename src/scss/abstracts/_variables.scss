@@ -379,7 +379,7 @@ $enable-container-classes:    true !default;
 $enable-cssgrid:              false !default;
 $enable-button-pointers:      true !default;
 $enable-rfs:                  true !default;
-$enable-validation-icons:     true !default;
+$enable-validation-icons:     false !default;
 $enable-negative-margins:     false !default;
 $enable-deprecation-messages: true !default;
 $enable-important-utilities:  true !default;
@@ -648,7 +648,7 @@ $font-weight-base:            $font-weight-normal !default;
 
 $line-height-base:            1.5 !default;
 $line-height-sm:              1.25 !default;
-$line-height-lg:              2 !default;
+$line-height-lg:              1.5 !default;
 
 $h1-font-size:                $font-size-base * 2.5 !default;
 $h2-font-size:                $font-size-base * 2 !default;
@@ -923,7 +923,7 @@ $input-disabled-bg:                     var(--#{$prefix}secondary-bg) !default;
 $input-disabled-border-color:           null !default;
 
 $input-color:                           var(--#{$prefix}body-color) !default;
-$input-border-color:                    var(--#{$prefix}border-color) !default;
+$input-border-color:                    $border-color !default;
 $input-border-width:                    $input-btn-border-width !default;
 $input-box-shadow:                      var(--#{$prefix}box-shadow-inset) !default;
 
@@ -1021,7 +1021,7 @@ $form-select-padding-y:             $input-padding-y !default;
 $form-select-padding-x:             $input-padding-x !default;
 $form-select-font-family:           $input-font-family !default;
 $form-select-font-size:             $input-font-size !default;
-$form-select-indicator-padding:     $form-select-padding-x * 3 !default; // Extra padding for background-image
+$form-select-indicator-padding:     calc(1rem + ($form-select-padding-x * 2)) !default; // Extra padding for background-image
 $form-select-font-weight:           $input-font-weight !default;
 $form-select-line-height:           $input-line-height !default;
 $form-select-color:                 $input-color !default;
@@ -1853,6 +1853,32 @@ $swiper-pagination-background-color: $secondary !default;
 $swiper-pagination-opacity: 1 !default;
 $swiper-pagination-hover-background-color: lighten($swiper-pagination-background-color, 10%) !default;
 $swiper-pagination-active-background-color: $primary !default;
+
+// CHOICES =================================
+
+$choices-selector: "choices";
+$choices-font-size-lg: $form-select-font-size;
+$choices-font-size-md: $form-select-font-size;
+$choices-font-size-sm: $font-size-sm;
+$choices-guttering: 0;
+$choices-border-radius: $form-select-border-radius;
+$choices-border-radius-item: 20px;
+$choices-bg-color: $form-select-bg;
+$choices-bg-color-disabled: $form-select-disabled-bg;
+$choices-bg-color-dropdown: $choices-bg-color;
+$choices-text-color: $form-select-indicator-color;
+$choices-keyline-color: $form-select-border-color;
+$choices-primary-color: $primary;
+$choices-disabled-color: #eaeaea;
+$choices-highlight-color: $choices-primary-color;
+$choices-button-dimension: 8px;
+$choices-button-offset: 8px;
+$choices-icon-cross: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjEiIGhlaWdodD0iMjEiIHZpZXdCb3g9IjAgMCAyMSAyMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSIjRkZGIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0yLjU5Mi4wNDRsMTguMzY0IDE4LjM2NC0yLjU0OCAyLjU0OEwuMDQ0IDIuNTkyeiIvPjxwYXRoIGQ9Ik0wIDE4LjM2NEwxOC4zNjQgMGwyLjU0OCAyLjU0OEwyLjU0OCAyMC45MTJ6Ii8+PC9nPjwvc3ZnPg==") !default;
+$choices-icon-cross-inverse: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='#{$danger}'><path d='M.293.293a1 1 0 0 1 1.414 0L8 6.586 14.293.293a1 1 0 1 1 1.414 1.414L9.414 8l6.293 6.293a1 1 0 0 1-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 0 1-1.414-1.414L6.586 8 .293 1.707a1 1 0 0 1 0-1.414z'/></svg>");
+$choices-z-index: $zindex-dropdown;
+
+// custom
+$choices-multiple-badge-indent: 4px;
 
 // RFS =================================
 $rfs-unit: "rem";

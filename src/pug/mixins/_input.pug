@@ -1,10 +1,10 @@
 //- +input({label: "Name", placeholder: "Name"})
 
 mixin inputItem(obj)
-  - const { name, type, required, minlength, placeholder, value, disabled, invalidFeedback } = obj;
+  - const { name, type, required, minlength, placeholder, value, disabled, size, invalidFeedback } = obj;
 
   input(
-    class="form-control" + (invalidFeedback ? " is-invalid" : "")
+    class="form-control" + (invalidFeedback ? " is-invalid" : "") + (size ? " form-control-" + size : "")
     name=name ? name : "input"
     type=type ? type : "text"
     required=required ? "true" : false

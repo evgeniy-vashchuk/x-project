@@ -1,0 +1,38 @@
+//- -
+//-   const accordionItems = [
+//-     {
+//-       title: "Accordion Item #1",
+//-       text: ["This is the third item’s accordion body. It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It’s also worth noting that just about any HTML can go within the .accordion-body, though the transition does limit overflow."],
+//-     },
+//-     {
+//-       title: "Accordion Item #2",
+//-       text: ["This is the third item’s accordion body. It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It’s also worth noting that just about any HTML can go within the .accordion-body, though the transition does limit overflow."],
+//-     },
+//-     {
+//-       title: "Accordion Item #3",
+//-       text: ["This is the third item’s accordion body. It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It’s also worth noting that just about any HTML can go within the .accordion-body, though the transition does limit overflow."],
+//-     },
+//-   ]
+//- +accordion({ id: "faq", items: accordionItems })
+
+mixin accordion(obj)
+  - const { id, items } = obj;
+
+  if id && items
+    .accordion(id=`accordion-${id}`)&attributes(attributes)
+      - for (let i = 1; i <= items.length; i++)
+        .accordion-item
+          h5.accordion-header
+            button.accordion-button.collapsed(
+              aria-expanded="false"
+              aria-controls="accordion-" + obj.id + "-collapse-" + i
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#accordion-" + obj.id + "-collapse-" + i)
+              span.position-relative.z-1= obj.items[i - 1].title
+              span.accordion-button-icon
+          .accordion-collapse.collapse(id="accordion-" + obj.id + "-collapse-" + i data-bs-parent="#accordion-" + obj.id)
+            .accordion-body
+              .text-block
+                each item in obj.items[i - 1].text
+                  p!= item

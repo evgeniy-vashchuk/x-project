@@ -10,10 +10,9 @@
 
 X-Project - is starter template with basic tasks for development, which uses [Gulp](https://gulpjs.com) to compile SASS to CSS (with **SCSS** syntax), add vendor prefixes, group media queries, remove comments and minimise CSS, convert ES6 into ES5 using Babel, optimising images (with creating of webp versions and lazyloading), [Browsersync](https://browsersync.io/) for live-reload while development, favicon generator and project archiving. It includes the following libraries and frameworks (as a starting base):
 
-- jQuery
 - Bootstrap 5
-- Swiper
-- Select2
+- Swiper.js
+- Choices.js
 - Vanilla Lazyload
 - Icomoon
 

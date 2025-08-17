@@ -1,6 +1,6 @@
 'use strict';
 
-/* global LazyLoad, Swiper */
+/* global LazyLoad, Swiper, Choices */
 
 const breakpoints = {
   sm: parseInt(getComputedStyle(document.documentElement).getPropertyValue('--bs-breakpoint-sm'), 10),
@@ -13,53 +13,92 @@ const breakpoints = {
 const gridGutterWidth = getComputedStyle(document.documentElement).getPropertyValue('--bs-grid-gutter-width');
 
 // FORMS
-function initForms() {
-  const select = $('.js-select');
+const initForms = () => {
+  const selects = document.querySelectorAll('.js-choice');
 
-  select.each(function() {
-    const selectItem = $(this),
-          selectLabel = selectItem.siblings('.form-label'),
-          selectContainer = selectItem.closest('.js-select-container');
+  if (selects.length) {
+    selects.forEach(element => {
+      const optionsCount = element.options.length;
+      const classList = [...element.classList]
+        .filter(className => !['js-choice', 'form-select'].includes(className))
+        .map(className => ({
+          'form-select-sm': 'sm',
+          'form-select-lg': 'lg',
+        }[className] || className));
 
-    selectItem.select2({
-      dropdownParent: selectContainer.length ? selectContainer : false,
-      width: '100%',
-      theme: 'bootstrap',
-      minimumResultsForSearch: 10,
+      const getBool = (attr, def) => {
+        return element.dataset[attr] !== undefined ? element.dataset[attr] === 'true' : def;
+      };
+
+      const searchEnabled = getBool('searchEnabled', true);
+      const removeItemButton = getBool('removeItemButton', false);
+
+      const choices = new Choices(element, {
+        itemSelectText: false,
+        searchEnabled: searchEnabled && optionsCount > 10,
+        searchPlaceholderValue: 'Search',
+        removeItemButton,
+        classNames: {
+          containerOuter: [
+            'choices',
+            ...classList,
+            ...(removeItemButton ? ['with-remove-items-button'] : []),
+          ],
+        },
+      });
+
+      if (classList.some(className => ['with-dropdown-animation-fade', 'with-dropdown-animation-transform'].includes(className))) {
+        let isDropdownFlipped = false;
+
+        choices.passedElement.element.addEventListener('showDropdown', function(e) {
+          isDropdownFlipped = e.srcElement.closest('.choices').classList.value.includes('is-flipped');
+        });
+
+        choices.passedElement.element.addEventListener('hideDropdown', function(e) {
+          const mainElement = e.srcElement.closest('.choices');
+
+          if (isDropdownFlipped) {
+            mainElement.classList.add('is-flipped');
+          }
+
+          const transitionDuration = parseFloat(getComputedStyle(mainElement.querySelector('.choices__list--dropdown')).transitionDuration) * 1000;
+
+          setTimeout(() => {
+            isDropdownFlipped = false;
+            mainElement.classList.remove('is-flipped');
+          }, transitionDuration);
+        });
+      }
     });
-
-    selectLabel.on('click', function() {
-      selectItem.select2('open');
-    });
-  });
-}
+  }
+};
 
 // LAZY LOAD
-function initLazyLoad() {
+const initLazyLoad = () => {
   const lazyLoadInstance = new LazyLoad({
     elements_selector: '.js-lazy',
     threshold: 0
   });
-}
+};
 
 // STOP ANIMATIONS DURING WINDOW RESIZING
-function initStopAnimationsDuringWindowResizing() {
+const initStopAnimationsDuringWindowResizing = () => {
   let resizeTimer;
 
-  $(window).on('resize', function() {
-    $('body').addClass('resize-animation-stopper');
+  window.addEventListener('resize', () => {
+    document.body.classList.add('resize-animation-stopper');
 
     clearTimeout(resizeTimer);
 
-    resizeTimer = setTimeout(function() {
-      $('body').removeClass('resize-animation-stopper');
+    resizeTimer = setTimeout(() => {
+      document.body.classList.remove('resize-animation-stopper');
     }, 400);
   });
-}
+};
 
 // SLIDERS
-function initSliders() {
-  const slider = new Swiper('.js-swiper', {
+const initSliders = () => {
+  const slider = new Swiper('.js-slider', {
     slidesPerView: 1,
     spaceBetween: gridGutterWidth,
     speed: 500,
@@ -77,12 +116,18 @@ function initSliders() {
       dynamicMainBullets: 4,
       enabled: true,
     },
-  });
-}
 
-(function($) {
+    breakpoints: {
+      [breakpoints.sm]: {
+        pagination: { enabled: false },
+      },
+    },
+  });
+};
+
+document.addEventListener('DOMContentLoaded', function() {
   initForms();
   initLazyLoad();
   initStopAnimationsDuringWindowResizing();
   initSliders();
-}(jQuery));
+});
