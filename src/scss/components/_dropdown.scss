@@ -1,0 +1,22 @@
+.dropdown {
+  &-menu {
+    opacity: 0;
+
+    &[data-popper-placement] {
+      animation-duration: 0.4s;
+      animation-fill-mode: both;
+    }
+
+    &[data-popper-placement="top-start"],
+    &[data-popper-placement="top-end"],
+    &[data-popper-placement="top"] {
+      animation-name: slide-down;
+    }
+
+    &[data-popper-placement="bottom-start"],
+    &[data-popper-placement="bottom-end"],
+    &[data-popper-placement="bottom"] {
+      animation-name: slide-up;
+    }
+  }
+}

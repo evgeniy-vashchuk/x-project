@@ -1,4 +1,5 @@
 import path from 'path';
+
 import gulpLoadPlugins from 'gulp-load-plugins';
 
 // plugins
@@ -16,8 +17,8 @@ export const plugins = gulpLoadPlugins({
 export const copyToWordPress = false;
 
 // config
-const srcPath = 'src';
-const distPath = 'dist';
+export const srcPath = 'src';
+export const distPath = 'dist';
 
 const config = {
   src: {
@@ -25,8 +26,7 @@ const config = {
     html: [`${srcPath}/*.html`, `${srcPath}/html/**/*.html`, `!${srcPath}/**/_*.html`],
     pug: `${srcPath}/pug/`,
     css: `${srcPath}/scss/**/*.{scss,sass,css}`,
-    js: [`${srcPath}/js/**/*.js`, `!${srcPath}/js/**/_*.js`, `!${srcPath}/js/libs.js`],
-    jsLibs: `${srcPath}/js/libs.js`,
+    js: [`${srcPath}/js/**/*.js`, `!${srcPath}/js/**/_*.js`],
     img: `${srcPath}/img/`,
     favicon: `${srcPath}/img/favicon/icon.svg`,
     fonts: `${srcPath}/fonts/**/*.*`,
@@ -49,8 +49,7 @@ const config = {
     html: [`${srcPath}/*.html`, `${srcPath}/html/**/*.html`],
     pug: `${srcPath}/pug/**/*.pug`,
     css: [`${srcPath}/scss/**/*.{scss,sass,css}`, `${srcPath}/libs/**/*.{scss,sass,css}`],
-    js: [`${srcPath}/js/**/*.js`, `!${srcPath}/js/libs.js`],
-    jsLibs: `${srcPath}/js/libs.js`,
+    js: [`${srcPath}/js/**/*.js`],
     img: `${srcPath}/img/**/*.{gif,png,jpg,jpeg,svg}`,
     favicon: `${srcPath}/img/favicon/icon.svg`,
     fonts: `${srcPath}/fonts/**/*.*`,

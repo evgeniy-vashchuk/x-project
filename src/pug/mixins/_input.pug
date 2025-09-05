@@ -7,11 +7,11 @@ mixin inputItem(obj)
     class="form-control" + (invalidFeedback ? " is-invalid" : "") + (size ? " form-control-" + size : "")
     name=name ? name : "input"
     type=type ? type : "text"
-    required=required ? "true" : false
+    required=required ? true : false
     minlength=minlength ? minlength : false
     placeholder=placeholder ? placeholder : false
     value=value ? value : false
-    disabled=disabled ? "true" : false)&attributes(attributes)
+    disabled=disabled ? true : false)&attributes(attributes)
   if invalidFeedback
     .invalid-feedback= invalidFeedback
 

@@ -1,5 +1,4 @@
-import config from '../config.js';
-import { plugins } from '../config.js';
+import config, { plugins } from '../config.js';
 
 const server = done => {
   plugins.browserSync({

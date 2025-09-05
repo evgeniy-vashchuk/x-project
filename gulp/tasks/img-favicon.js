@@ -1,5 +1,4 @@
-import config from '../config.js';
-import { plugins } from '../config.js';
+import config, { plugins } from '../config.js';
 
 const FAVICON_DATA_FILE = 'favicon-data.json';
 

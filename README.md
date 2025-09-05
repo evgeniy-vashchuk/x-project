@@ -8,7 +8,7 @@
 
 # About
 
-X-Project - is starter template with basic tasks for development, which uses [Gulp](https://gulpjs.com) to compile SASS to CSS (with **SCSS** syntax), add vendor prefixes, group media queries, remove comments and minimise CSS, convert ES6 into ES5 using Babel, optimising images (with creating of webp versions and lazyloading), [Browsersync](https://browsersync.io/) for live-reload while development, favicon generator and project archiving. It includes the following libraries and frameworks (as a starting base):
+X-Project - is starter template with basic tasks for development, which uses [Gulp](https://gulpjs.com) to compile SASS to CSS (with **SCSS** syntax), add vendor prefixes, group media queries, remove comments and minimise CSS, bundle JavaScript modules using Webpack with ES6+ import/export syntax and Babel transpilation, optimising images (with creating of .WEBP versions and lazyloading), [Browsersync](https://browsersync.io/) for live-reload while development, favicon generator and project archiving. It includes the following libraries and frameworks (as a starting base):
 
 - Bootstrap 5
 - Swiper.js
@@ -22,6 +22,8 @@ X-Project - is starter template with basic tasks for development, which uses [Gu
 **dist/** - the compiled code ("distribution").
 
 Our project follow [SASS guidelines](https://sass-guidelin.es/#architecture).
+
+JavaScript code is organized using ES6+ modules with import/export syntax, bundled with Webpack for optimal performance and tree-shaking. The build process includes Babel transpilation for browser compatibility and Terser minification for production builds.
 
 Also all HTML/PUG & CSS/SCSS & JS code is linted and formated by [Prettier](https://prettier.io/), [Stylelint](https://stylelint.io/), [ESLint](https://eslint.org/), [EditorConfig](https://editorconfig.org/). And by Git pre-commit hooks you cannot commit the changes if the code doesn't pass linting-review.
 

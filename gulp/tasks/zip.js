@@ -1,9 +1,11 @@
-import gulp from 'gulp';
-import { plugins } from '../config.js';
-import { deleteSync } from 'del';
-import zip from 'gulp-zip';
-import { fileURLToPath } from 'url';
 import path from 'path';
+import { fileURLToPath } from 'url';
+
+import { deleteSync } from 'del';
+import gulp from 'gulp';
+import zip from 'gulp-zip';
+
+import { plugins } from '../config.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);

@@ -1,7 +1,8 @@
 import fs from 'fs';
+
 import gulp from 'gulp';
-import config from '../config.js';
-import { plugins } from '../config.js';
+
+import config, { plugins } from '../config.js';
 
 const additionalFiles = done => {
   if (fs.existsSync(config.src.additionalFiles)) {

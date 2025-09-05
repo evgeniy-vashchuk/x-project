@@ -1,8 +1,8 @@
-import gulp from 'gulp';
 import { setup as emittySetup } from 'emitty';
-import config from '../config.js';
-import { plugins } from '../config.js';
+import gulp from 'gulp';
 import formatHtml from 'gulp-format-html';
+
+import config, { plugins } from '../config.js';
 
 const emittyPug = emittySetup(config.src.pug, 'pug', { makeVinylFile: true });
 

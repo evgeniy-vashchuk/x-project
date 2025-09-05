@@ -7,7 +7,7 @@ mixin checkbox(obj)
     input.form-check-input(
       name=name ? name : "checkbox"
       type="checkbox"
-      checked=checked ? "true" : false
-      disabled=disabled ? "true" : false)
+      checked=checked ? true : false
+      disabled=disabled ? true : false)
     span.form-check-label
       block

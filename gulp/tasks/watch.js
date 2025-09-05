@@ -1,14 +1,15 @@
 import gulp from 'gulp';
+
 import config from '../config.js';
+
+import additionalFiles from './additional-files.js';
+import fonts from './fonts.js';
 import html from './html.js';
-import pug from './pug.js';
-import sass from './sass.js';
-import jsCommon from './js-common.js';
-import jsLibs from './js-libs.js';
 import imgCommon from './img-common.js';
 import imgFavicon from './img-favicon.js';
-import fonts from './fonts.js';
-import additionalFiles from './additional-files.js';
+import js from './js.js';
+import pug from './pug.js';
+import sass from './sass.js';
 
 const watch = done => {
   if (config.isPug) {
@@ -30,8 +31,7 @@ const watch = done => {
   gulp.watch(config.watch.css, sass);
 
   // JS
-  gulp.watch(config.watch.js, jsCommon);
-  gulp.watch(config.watch.jsLibs, jsLibs);
+  gulp.watch(config.watch.js, js);
 
   // IMG
   gulp.watch(config.watch.img, imgCommon);

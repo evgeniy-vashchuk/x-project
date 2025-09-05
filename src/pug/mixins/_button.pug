@@ -5,7 +5,7 @@ mixin button(obj)
   - const buttonClass = "btn" + (color ? " btn-" + color : "") + (size ? " btn-" + size : "");
 
   if type === "submit" || type === "button"
-    button(class=buttonClass type=`${type}` disabled=disabled ? "true" : false)&attributes(attributes)
+    button(class=buttonClass type=`${type}` disabled=disabled ? true : false)&attributes(attributes)
       block
   else
     a(

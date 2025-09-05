@@ -1,4 +1,5 @@
 import { deleteSync } from 'del';
+
 import config from '../config.js';
 
 const clean = done => {

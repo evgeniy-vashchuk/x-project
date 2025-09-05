@@ -6,10 +6,10 @@ mixin textareaItem(obj)
   textarea(
     class="form-control" + (invalidFeedback ? " is-invalid" : "") + (size ? " form-control-" + size : "")
     name=name
-    required=required ? "true" : false
+    required=required ? true : false
     minlength=minlength ? minlength : false
     placeholder=placeholder ? placeholder : false
-    disabled=disabled ? "true" : false)&attributes(attributes)
+    disabled=disabled ? true : false)&attributes(attributes)
     | #{ value }
   if invalidFeedback
     .invalid-feedback= invalidFeedback

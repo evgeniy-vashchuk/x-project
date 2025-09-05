@@ -10,13 +10,14 @@ mixin selectItem(obj)
   select(
     class=selectClass
     name=name ? name : "select"
-    data-placeholder=placeholder && !isNativeSelect ? placeholder : false
     data-search-enabled=isNativeSelect ? false : searchEnabled
     data-remove-item-button=isNativeSelect ? false : removeItemButton
-    required=required ? "true" : false
-    disabled=disabled ? "true" : false
-    multiple=isMultiple ? "true" : false
+    required=required ? true : false
+    disabled=disabled ? true : false
+    multiple=isMultiple ? true : false
     size=isMultiple ? "1" : false)&attributes(attributes)
+    if placeholder && !isMultiple
+      option(label=placeholder)
     each option, i in options
       option(selected=selectedOption - 1 === i ? true : false)= option
   if invalidFeedback

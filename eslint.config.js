@@ -1,15 +1,29 @@
 import pluginJs from '@eslint/js';
-import globals from 'globals';
-import stylisticJs from '@stylistic/eslint-plugin-js';
 import html from '@html-eslint/eslint-plugin';
 import htmlParser from '@html-eslint/parser';
+import stylisticJs from '@stylistic/eslint-plugin-js';
+import importPlugin from 'eslint-plugin-import';
+import globals from 'globals';
+
+import { srcPath, distPath } from './gulp/config.js';
 
 export default [
   pluginJs.configs.recommended,
-  { ignores: ['dist', 'node_modules', '**/*.min.js', 'libs.js', 'src/libs/**/*.js'] },
+  { ignores: [distPath, 'node_modules', '**/*.min.js', 'libs.js', `${srcPath}/libs/**/*.js`] },
   {
-    plugins: { '@stylistic/js': stylisticJs },
+    plugins: {
+      '@stylistic/js': stylisticJs,
+      'import': importPlugin
+    },
     files: ['**/*.js'],
+    settings: {
+      'import/resolver': {
+        node: {
+          paths: [srcPath],
+          extensions: ['.js']
+        }
+      }
+    },
     rules: {
       'no-unused-vars': [
         'warn',
@@ -166,6 +180,46 @@ export default [
       '@stylistic/js/template-curly-spacing': ['error', 'never'],
       '@stylistic/js/template-tag-spacing': ['error', 'never'],
       '@stylistic/js/wrap-regex': 'error',
+
+      // Import sorting rules
+      'import/order': [
+        'error',
+        {
+          'groups': [
+            'builtin', // Node.js built-in modules
+            'external', // npm packages
+            'internal', // internal modules (starting with @)
+            'parent', // parent directory imports
+            'sibling', // same directory imports
+            'index' // index file imports
+          ],
+          'pathGroups': [
+            {
+              pattern: '@constants/**',
+              group: 'internal',
+              position: 'before'
+            },
+            {
+              pattern: '@utils/**',
+              group: 'internal',
+              position: 'before'
+            },
+            {
+              pattern: '@components/**',
+              group: 'internal',
+              position: 'after'
+            }
+          ],
+          'pathGroupsExcludedImportTypes': ['builtin'],
+          'newlines-between': 'always',
+          'alphabetize': {
+            order: 'asc',
+            caseInsensitive: true
+          }
+        }
+      ],
+      'import/newline-after-import': 'error',
+      'import/no-duplicates': 'error'
     },
   },
   {

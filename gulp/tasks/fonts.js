@@ -1,6 +1,6 @@
 import gulp from 'gulp';
-import config from '../config.js';
-import { plugins, copyToWordPress } from '../config.js';
+
+import config, { plugins, copyToWordPress } from '../config.js';
 
 const fonts = done => {
   gulp.src(config.src.fonts, { encoding: false })

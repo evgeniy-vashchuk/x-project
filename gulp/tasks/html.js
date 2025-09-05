@@ -1,6 +1,6 @@
 import gulp from 'gulp';
-import config from '../config.js';
-import { plugins } from '../config.js';
+
+import config, { plugins } from '../config.js';
 
 const htmlPath = [`src/*.html`];
 

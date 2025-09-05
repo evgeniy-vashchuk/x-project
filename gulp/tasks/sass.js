@@ -1,7 +1,7 @@
 import gulp from 'gulp';
-import config from '../config.js';
-import { plugins, copyToWordPress } from '../config.js';
 import sortCSSmq from 'sort-css-media-queries';
+
+import config, { plugins, copyToWordPress } from '../config.js';
 
 const sass = done => {
   const sass = plugins.gulpSass(plugins.dartSass);
@@ -9,7 +9,7 @@ const sass = done => {
   gulp.src(config.src.css, { sourcemaps: config.isProd ? false : true })
     .pipe(plugins.sassGlob())
     .pipe(sass({
-      silenceDeprecations: ['legacy-js-api', 'mixed-decls', 'color-functions', 'global-builtin', 'import'],
+      silenceDeprecations: ['legacy-js-api', 'color-functions', 'global-builtin', 'import'],
       style: config.isProd ? 'compressed' : 'expanded',
       indentType: 'space',
       indentWidth: 2,

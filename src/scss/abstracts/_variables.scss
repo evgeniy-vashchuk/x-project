@@ -1855,7 +1855,6 @@ $swiper-pagination-hover-background-color: lighten($swiper-pagination-background
 $swiper-pagination-active-background-color: $primary !default;
 
 // CHOICES =================================
-
 $choices-selector: "choices";
 $choices-font-size-lg: $form-select-font-size;
 $choices-font-size-md: $form-select-font-size;
@@ -1880,6 +1879,24 @@ $choices-z-index: $zindex-dropdown;
 // custom
 $choices-multiple-badge-indent: 4px;
 
+$utilities: (
+  "min-width": (
+    property: min-width,
+    responsive: true,
+    class: min-w,
+    values: (0: 0)
+  ),
+);
+
 // RFS =================================
 $rfs-unit: "rem";
 $rfs-breakpoint: map-get($grid-breakpoints, "xl");
+
+// HEADER =================================
+:root {
+  --header-height: 60px;
+
+  @include min-w(lg) {
+    --header-height: 80px;
+  }
+}

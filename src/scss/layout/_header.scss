@@ -1,3 +1,5 @@
 .header {
-  // header styles
+  display: flex;
+  align-items: center;
+  min-height: var(--header-height);
 }

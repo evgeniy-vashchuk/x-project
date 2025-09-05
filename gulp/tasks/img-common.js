@@ -1,12 +1,13 @@
+import fs from 'fs';
+
 import gulp from 'gulp';
-import config from '../config.js';
 import imagemin, { mozjpeg, svgo } from 'gulp-imagemin';
 import imageminPngquant from 'imagemin-pngquant';
 import imageminWebp from 'imagemin-webp';
-import { plugins, copyToWordPress } from '../config.js';
 import SVGFixer from 'oslllo-svg-fixer';
-import fs from 'fs';
 import through from 'through2';
+
+import config, { plugins, copyToWordPress } from '../config.js';
 
 const imgCommon = done => {
   gulp.src([`${config.src.img}**/*.{png,jpg,jpeg,svg}`, `!${config.src.favicon}`, `!${config.src.img}icomoon-icons/**`], { encoding: false })

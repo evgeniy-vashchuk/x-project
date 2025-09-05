@@ -10,20 +10,20 @@
 // --prod             - minification js, minification css, add vendor prefixes, group media queries, remove comments
 
 import gulp from 'gulp';
+
 import config from './gulp/config.js';
+import additionalFiles from './gulp/tasks/additional-files.js';
 import clean from './gulp/tasks/clean.js';
+import fonts from './gulp/tasks/fonts.js';
 import html from './gulp/tasks/html.js';
-import pug from './gulp/tasks/pug.js';
-import sass from './gulp/tasks/sass.js';
-import jsCommon from './gulp/tasks/js-common.js';
-import jsLibs from './gulp/tasks/js-libs.js';
 import imgCommon from './gulp/tasks/img-common.js';
 import imgFavicon from './gulp/tasks/img-favicon.js';
-import fonts from './gulp/tasks/fonts.js';
-import additionalFiles from './gulp/tasks/additional-files.js';
-import zipTask from './gulp/tasks/zip.js';
+import js from './gulp/tasks/js.js';
+import pug from './gulp/tasks/pug.js';
+import sass from './gulp/tasks/sass.js';
 import server from './gulp/tasks/server.js';
 import watch from './gulp/tasks/watch.js';
+import zipTask from './gulp/tasks/zip.js';
 
 config.setEnv();
 
@@ -37,8 +37,7 @@ export const build = gulp.series(
   gulp.parallel(
     config.isPug ? pug : html,
     sass,
-    jsCommon,
-    jsLibs,
+    js,
     imgCommon,
     imgFavicon,
     fonts,

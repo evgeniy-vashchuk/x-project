@@ -15,7 +15,9 @@
 
 textarea {
   &.form-control {
-    height: 200px;
+    &:not([rows]) {
+      height: 200px;
+    }
   }
 }
 
