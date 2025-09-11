@@ -131,3 +131,23 @@ $rem-px-only: false !default;
 
 // width: nth(split-string('15px 30px', ' '), 2);
 // will return 30px;
+
+// EM CONVERTING ------------------------------------
+@function em($pixels, $context: 18px) {
+  @if unitless($pixels) {
+    $pixels: $pixels * 1px;
+  }
+
+  @if unit($context) == "rem" {
+    $context: $context * 16px;
+  } @else if unitless($context) {
+    $context: $context * 1px;
+  }
+
+  $pixels-value: strip-unit($pixels);
+  $context-value: strip-unit($context);
+
+  @return calc($pixels-value / $context-value) * 1em;
+}
+
+// EXAMPLE: font-size: em(32px);

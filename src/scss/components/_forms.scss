@@ -59,6 +59,11 @@ textarea {
   }
 }
 
+.form-check {
+  display: inline-block;
+  cursor: $form-check-label-cursor;
+}
+
 .position-relative {
   > .invalid-feedback {
     position: absolute;
