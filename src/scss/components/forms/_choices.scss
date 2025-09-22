@@ -231,6 +231,7 @@
           opacity 0.3s,
           visibility 0.3s,
           transform 0.3s;
+        pointer-events: none;
       }
     }
 
@@ -248,6 +249,7 @@
           transform: translateY(0);
           visibility: visible;
           opacity: 1;
+          pointer-events: auto;
         }
       }
     }
@@ -366,12 +368,22 @@
 
       .#{$choices-selector}__item {
         padding: $form-select-padding-y $form-select-padding-x;
+        word-break: initial;
         transition:
           background-color 0.3s,
           color 0.3s;
 
         &.#{$choices-selector}__item--selectable {
           &.is-highlighted {
+            background-color: transparent;
+          }
+
+          &:hover {
+            color: $white;
+            background-color: $secondary;
+          }
+
+          &.is-selected {
             color: $white;
             background-color: $choices-primary-color;
           }

@@ -19,7 +19,12 @@ mixin selectItem(obj)
     if placeholder && !isMultiple
       option(label=placeholder)
     each option, i in options
-      option(selected=selectedOption - 1 === i ? true : false)= option
+      if typeof selectedOption === "number"
+        option(selected=selectedOption - 1 === i ? true : false)= option
+      else if typeof selectedOption === "string"
+        option(selected=selectedOption === option ? true : false)= option
+      else
+        option= option
   if invalidFeedback
     .invalid-feedback= invalidFeedback
 

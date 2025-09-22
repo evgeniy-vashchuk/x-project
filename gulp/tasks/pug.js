@@ -33,7 +33,6 @@ const pug = done => {
     .pipe(formatHtml())
     .pipe(plugins.if(config.isProd, plugins.htmlmin({ collapseWhitespace: true, removeComments: true })))
     .pipe(plugins.if(config.isProd, plugins.replace('css/main.css', 'css/main.min.css')))
-    .pipe(plugins.if(config.isProd, plugins.replace('js/libs.js', 'js/libs.min.js')))
     .pipe(plugins.if(config.isProd, plugins.replace('js/main.js', 'js/main.min.js')))
     .pipe(plugins.replace(/(<(?:img|input)[^>]*?)\s*\/>/g, '$1>'))
     .pipe(plugins.replace('-->', ' -->'))

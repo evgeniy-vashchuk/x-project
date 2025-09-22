@@ -1,5 +1,9 @@
 //- +breadcrumb(["Home", "About us"])
 
+//- or
+
+//- +breadcrumb([{ text: "Home", href: "index.html" }, "About us"}])
+
 mixin breadcrumb(obj)
   - const breadcrumbItems = obj;
 

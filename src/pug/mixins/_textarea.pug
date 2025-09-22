@@ -5,7 +5,7 @@ mixin textareaItem(obj)
 
   textarea(
     class="form-control" + (invalidFeedback ? " is-invalid" : "") + (size ? " form-control-" + size : "")
-    name=name
+    name=name ? name : "textarea"
     required=required ? true : false
     minlength=minlength ? minlength : false
     placeholder=placeholder ? placeholder : false

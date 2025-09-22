@@ -1,0 +1,27 @@
+//- - var tabId = "tabs-example";
+//- +tabs({ items: ["Home", "Profile", "Contact"], id: tabId, type: "pills" })
+//- |
+//- |
+//- .tab-content
+//-   .tab-pane.fade.show.active(aria-labelledby=tabId + "-1" id=tabId + "-1-pane" role="tabpanel" tabindex="0")
+//-     p Home
+//-   .tab-pane.fade(aria-labelledby=tabId + "-2" id=tabId + "-2-pane" role="tabpanel" tabindex="0")
+//-     p Profile
+//-   .tab-pane.fade(aria-labelledby=tabId + "-3" id=tabId + "-3-pane" role="tabpanel" tabindex="0")
+//-     p Contact
+
+mixin tabs(obj)
+  - const { id, items, type } = obj;
+
+  ul(class="nav nav-" + (type === "pills" ? "pills" : "tabs") role="tablist")&attributes(attributes)
+    each item, index in items
+      li.nav-item(role="presentation")
+        button(
+          aria-controls=id + "-" + (index + 1) + "-pane"
+          aria-selected=index === 0 ? "true" : "false"
+          class="nav-link" + (index === 0 ? " active" : "")
+          id=id + "-" + (index + 1)
+          type="button"
+          data-bs-toggle="tab"
+          data-bs-target="#" + id + "-" + (index + 1) + "-pane"
+          role="tab")= items[index]

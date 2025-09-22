@@ -1,11 +1,11 @@
 //- +pagination({ pages: ["1", "2", "dots", "9", "10"], active: "1" })
 
 mixin pagination(obj)
-  - const { pages, active } = obj;
+  - const { pages, active, align } = obj;
 
   if pages.length
     nav(aria-label="Pagination")&attributes(attributes)
-      ul.pagination
+      ul.pagination(class=align ? "justify-content-" + align : false)
         li.page-item.disabled
           a.page-link(aria-label="Previous" href="#")
             span(aria-hidden="true") «

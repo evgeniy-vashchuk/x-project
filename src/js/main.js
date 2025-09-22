@@ -2,6 +2,12 @@ import Collapse from 'bootstrap/js/dist/collapse.js';
 import Dropdown from 'bootstrap/js/dist/dropdown.js';
 import Modal from 'bootstrap/js/dist/modal.js';
 
+export const Bootstrap = {
+  Collapse,
+  Dropdown,
+  Modal,
+};
+
 import initSelect from '@components/forms/select';
 import initLazyLoad from '@components/lazyload';
 import initResizeAnimationStopper from '@components/resize-animation-stopper';

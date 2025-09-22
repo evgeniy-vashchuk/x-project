@@ -4,6 +4,14 @@ const initSelect = () => {
   const selects = document.querySelectorAll('.js-choice');
 
   if (selects.length) {
+    const currentLocale = document.documentElement.lang;
+    const locales = {
+      en: {
+        search: 'Search',
+        noResults: 'No results found',
+      },
+    };
+
     selects.forEach(element => {
       const optionsCount = element.querySelectorAll('option').length;
       const classList = [...element.classList]
@@ -25,10 +33,9 @@ const initSelect = () => {
       const choices = new Choices(element, {
         itemSelectText: '',
         searchEnabled: searchEnabled && optionsCount > 10,
-        searchPlaceholderValue: 'Search',
+        searchPlaceholderValue: locales[currentLocale].search,
+        noResultsText: locales[currentLocale].noResults,
         removeItemButton,
-
-        // @ts-ignore
         classNames: {
           containerOuter: [
             'choices',
@@ -38,20 +45,17 @@ const initSelect = () => {
         },
       });
 
+      element.choices = choices;
+
       if (classList.some(className => ['with-dropdown-animation-fade', 'with-dropdown-animation-transform'].includes(className))) {
         let isDropdownFlipped = false;
 
         choices.passedElement.element.addEventListener('showDropdown', function(e) {
-          const { currentTarget } = e;
-
-          if (currentTarget instanceof HTMLElement) {
-            isDropdownFlipped = currentTarget.closest('.choices').classList.contains('is-flipped');
-          }
+          isDropdownFlipped = e.target.closest('.choices').classList.value.includes('is-flipped');
         });
 
         choices.passedElement.element.addEventListener('hideDropdown', function(e) {
-          const { currentTarget } = e;
-          const mainElement = currentTarget instanceof HTMLElement ? currentTarget.closest('.choices') : null;
+          const mainElement = e.target.closest('.choices');
 
           if (isDropdownFlipped) {
             mainElement.classList.add('is-flipped');
