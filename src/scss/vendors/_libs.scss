@@ -60,7 +60,9 @@
 @import "../../libs/icomoon/style";
 
 // Swiper ====================================
-@import "swiper/swiper-bundle";
+@import "swiper/swiper";
+@import "swiper/modules/pagination";
+@import "swiper/modules/navigation";
 
 // Choices ====================================
 @import "choices.js/src/styles/choices";
