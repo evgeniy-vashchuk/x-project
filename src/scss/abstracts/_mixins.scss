@@ -456,19 +456,10 @@
     background-color: $scrollbar-track-bg;
   }
 
-  // FOR INTERNET EXPLORER
-  @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
-    scrollbar-face-color: $scrollbar-thumb-bg;
-    scrollbar-track-color: $scrollbar-track-bg;
-    scrollbar-shadow-color: $scrollbar-thumb-bg;
-    scrollbar-arrow-color: $scrollbar-thumb-bg;
-  }
-
   // FOR FIREFOX
-  @supports (-moz-appearance: none) {
-    scrollbar-width: auto;
-    scrollbar-color: $scrollbar-thumb-bg $scrollbar-track-bg;
-  }
+
+  scrollbar-width: auto;
+  scrollbar-color: $scrollbar-thumb-bg $scrollbar-track-bg;
 }
 
 // EXAMPLE: @include custom-scrollbar(8px, #FF0000, #008000, 5px);
@@ -484,8 +475,8 @@
 
 // WORD WRAP ------------------------------------
 @mixin word-wrap() {
-  word-wrap: break-word;
   word-break: break-all;
+  overflow-wrap: break-word;
   overflow-wrap: break-word;
   hyphens: auto;
 }
@@ -494,8 +485,8 @@
 
 // VERTICAL TEXT TOP BOTTOM ------------------------------------
 @mixin vertical-text-top-bottom() {
-  word-wrap: break-word;
   word-break: break-all;
+  overflow-wrap: break-word;
   overflow-wrap: break-word;
   hyphens: auto;
 }
@@ -521,9 +512,9 @@
   padding: 0;
   overflow: hidden;
   white-space: nowrap;
+  overflow-wrap: normal;
   border: 0;
-  clip: rect(0 0 0 0);
-  clip-path: inset(100%);
+  clip-path: inset(50%);
 }
 
 // @include hidden;
