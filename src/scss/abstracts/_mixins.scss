@@ -458,8 +458,13 @@
 
   // FOR FIREFOX
 
-  scrollbar-width: auto;
-  scrollbar-color: $scrollbar-thumb-bg $scrollbar-track-bg;
+  /* stylelint-disable no-invalid-position-declaration */
+  @supports (-moz-appearance: none) {
+    scrollbar-width: auto;
+    scrollbar-color: $scrollbar-thumb-bg $scrollbar-track-bg;
+  }
+
+  /* stylelint-enable no-invalid-position-declaration */
 }
 
 // EXAMPLE: @include custom-scrollbar(8px, #FF0000, #008000, 5px);
