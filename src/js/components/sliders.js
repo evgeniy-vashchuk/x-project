@@ -9,16 +9,14 @@ const initSliders = () => {
     slidesPerView: 1,
     spaceBetween: gridGutterWidth,
     speed: 500,
+    createElements: true,
 
     navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
       addIcons: false,
       enabled: true,
     },
 
     pagination: {
-      el: '.swiper-pagination',
       clickable: true,
       dynamicBullets: true,
       dynamicMainBullets: 4,
@@ -26,8 +24,11 @@ const initSliders = () => {
     },
 
     breakpoints: {
-      [breakpoints.sm]: {
-        pagination: { enabled: false },
+      0: {
+        navigation: { enabled: false },
+      },
+      [breakpoints.md]: {
+        navigation: { enabled: true },
       },
     },
   });

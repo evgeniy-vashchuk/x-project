@@ -14,8 +14,4 @@ mixin slider(obj)
   if classForInit
     .swiper-holder&attributes(attributes)
       .swiper(class=classForInit)
-        .swiper-wrapper
-          block
-        .swiper-pagination
-        button.swiper-button-prev(type="button")
-        button.swiper-button-next(type="button")
+        block
