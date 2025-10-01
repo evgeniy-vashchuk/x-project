@@ -1,3 +1,39 @@
 .modal {
   @extend %custom-scrollbar;
+
+  &-dialog {
+    max-width: 100%;
+    margin-right: 0;
+    margin-left: 0;
+    padding-right: $container-padding;
+    padding-left: $container-padding;
+
+    &:not(.modal-sm, .modal-lg, .modal-xl) {
+      .modal-content {
+        max-width: $modal-md;
+      }
+    }
+
+    &.modal-sm {
+      .modal-content {
+        max-width: $modal-sm;
+      }
+    }
+
+    &.modal-lg {
+      .modal-content {
+        max-width: $modal-lg;
+      }
+    }
+
+    &.modal-xl {
+      .modal-content {
+        max-width: $modal-xl;
+      }
+    }
+  }
+
+  &-content {
+    margin: 0 auto;
+  }
 }

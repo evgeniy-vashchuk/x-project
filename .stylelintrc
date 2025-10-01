@@ -76,6 +76,7 @@
     "scss/at-else-closing-brace-space-after": "always-intermediate",
     "scss/at-else-empty-line-before": "never",
     "scss/at-else-if-parentheses-space-before": "never",
+    "scss/at-extend-no-missing-placeholder": null,
     "scss/at-if-closing-brace-newline-after": "always-last-in-chain",
     "scss/at-if-closing-brace-space-after": "always-intermediate",
     "scss/at-if-no-null": true,
