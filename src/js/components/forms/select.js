@@ -35,6 +35,7 @@ const initSelect = () => {
         searchEnabled: searchEnabled && optionsCount > 10,
         searchPlaceholderValue: locales[currentLocale].search,
         noResultsText: locales[currentLocale].noResults,
+        shouldSort: false,
         removeItemButton,
         classNames: {
           containerOuter: [
