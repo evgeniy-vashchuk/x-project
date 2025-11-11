@@ -10,7 +10,7 @@
 
 @keyframes slide-up {
   0% {
-    top: 16px;
+    top: $dropdown-animation-offset;
     opacity: 0;
   }
 
@@ -22,7 +22,7 @@
 
 @keyframes slide-down {
   0% {
-    bottom: 16px;
+    bottom: $dropdown-animation-offset;
     opacity: 0;
   }
 

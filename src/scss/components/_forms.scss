@@ -34,28 +34,45 @@ textarea {
   }
 
   &[multiple] {
-    option {
-      display: flex;
-      align-items: center;
-      height: calc($form-select-font-size * $form-select-line-height);
-      padding: 0;
-    }
+    &[size="1"] {
+      padding-right: $form-select-indicator-padding;
+      overflow: hidden;
+      background-image: escape-svg($form-select-indicator);
+      background-repeat: no-repeat;
+      background-position: $form-select-bg-position;
+      background-size: $form-select-bg-size;
 
-    &.form-select-sm {
       option {
-        height: calc($form-select-font-size-sm * $form-select-line-height);
+        display: flex;
+        align-items: center;
+        height: calc($form-select-font-size * $form-select-line-height);
+        padding: 0;
       }
-    }
 
-    &.form-select-lg {
-      option {
-        height: calc($form-select-font-size-lg * $form-select-line-height);
+      &.form-select-sm {
+        option {
+          height: calc($form-select-font-size-sm * $form-select-line-height);
+        }
+      }
+
+      &.form-select-lg {
+        option {
+          height: calc($form-select-font-size-lg * $form-select-line-height);
+        }
       }
     }
   }
 
-  &:not([data-choice="active"]) {
-    color: $input-placeholder-color;
+  &[class*="choice"] {
+    &:not([data-choice="active"]) {
+      color: $input-placeholder-color;
+
+      &[multiple] {
+        &[size="1"] {
+          color: transparent;
+        }
+      }
+    }
   }
 }
 

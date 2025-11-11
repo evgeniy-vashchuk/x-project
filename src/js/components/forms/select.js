@@ -9,11 +9,14 @@ const initSelect = () => {
       en: {
         search: 'Search',
         noResults: 'No results found',
+        noChoices: 'No choices to choose from',
+        loading: 'Loading...',
       },
     };
 
     selects.forEach(element => {
       const optionsCount = element.querySelectorAll('option').length;
+      const placeholder = element.getAttribute('data-placeholder');
       const classList = [...element.classList]
         .filter(className => !['js-choice', 'form-select'].includes(className))
         .map(className => ({
@@ -30,11 +33,18 @@ const initSelect = () => {
       const searchEnabled = getBool('search-enabled', true);
       const removeItemButton = getBool('remove-item-button', false);
 
+      if (placeholder) {
+        element.removeAttribute('data-placeholder');
+        element.insertAdjacentHTML('afterbegin', `<option value selected>${placeholder}</option>`);
+      }
+
       const choices = new Choices(element, {
         itemSelectText: '',
         searchEnabled: searchEnabled && optionsCount > 10,
         searchPlaceholderValue: locales[currentLocale].search,
         noResultsText: locales[currentLocale].noResults,
+        noChoicesText: locales[currentLocale].noChoices,
+        loadingText: locales[currentLocale].loading,
         shouldSort: false,
         removeItemButton,
         classNames: {

@@ -1,9 +1,9 @@
 //- +select({ label: "Country", placeholder: "Select country", options: ["Option 1", "Option 2", "Option 3", "Option 4", "Option 5", "Option 6", "Option 7", "Option 8", "Option 9", "Option 10", "Option 11"] })
 
 mixin selectItem(obj)
-  - const { name, placeholder, required, disabled, size, options, selectedOption, withSearch, invalidFeedback, isMultiple, isNative, withRemoveItemButton } = obj;
+  - const { name, placeholder, required, disabled, size, options, selectedOption, withSearch, invalidFeedback, multiple, isNative, withRemoveItemButton } = obj;
   - const isNativeSelect = isNative === true;
-  - const selectClass = "form-select with-dropdown-offset with-dropdown-animation-transform" + (isNativeSelect ? "" : " js-choice") + (invalidFeedback ? " is-invalid" : "") + (size ? " form-select-" + size : "");
+  - const selectClass = "form-select" + (isNativeSelect ? "" : " js-choice with-dropdown-offset with-dropdown-animation-transform") + (invalidFeedback ? " is-invalid" : "") + (size ? " form-select-" + size : "");
   - const searchEnabled = withSearch === undefined ? false : withSearch === true ? "true" : "false";
   - const removeItemButton = withRemoveItemButton === undefined ? false : withRemoveItemButton === true ? "true" : "false";
 
@@ -12,11 +12,13 @@ mixin selectItem(obj)
     name=name ? name : "select"
     data-search-enabled=isNativeSelect ? false : searchEnabled
     data-remove-item-button=isNativeSelect ? false : removeItemButton
-    data-placeholder=placeholder && !isNativeSelect ? placeholder : false
     required=required ? true : false
     disabled=disabled ? true : false
-    multiple=isMultiple ? true : false
-    size=isMultiple ? "1" : false)&attributes(attributes)
+    multiple=multiple ? true : false
+    size=multiple && !isNativeSelect ? "1" : false)&attributes(attributes)
+    if placeholder && !(isNativeSelect && multiple)
+      - const emptyValue = "";
+      option(placeholder=emptyValue disabled=isNativeSelect ? true : false selected=isNativeSelect ? true : false)= placeholder
     each option, i in options
       if typeof selectedOption === "number"
         option(selected=selectedOption - 1 === i ? true : false)= option
@@ -28,12 +30,12 @@ mixin selectItem(obj)
     .invalid-feedback= invalidFeedback
 
 mixin select(obj)
-  - const { options, label, labelColor } = obj;
+  - const { options, label, labelColor, required } = obj;
 
   if options
     if label
       label.d-inline.w-100
-        span(class="form-label" + (labelColor ? " text-" + labelColor : ""))= label
+        span(class="form-label" + (labelColor ? " text-" + labelColor : ""))!= label + (required ? "&nbsp;<span class='text-danger'>*</span>" : "")
         +selectItem(obj)&attributes(attributes)
     else
       +selectItem(obj)&attributes(attributes)

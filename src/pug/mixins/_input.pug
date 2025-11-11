@@ -16,11 +16,11 @@ mixin inputItem(obj)
     .invalid-feedback= invalidFeedback
 
 mixin input(obj)
-  - const { label, labelColor } = obj;
+  - const { label, labelColor, required } = obj;
 
   if label
     label.d-inline.w-100
-      span(class="form-label" + (labelColor ? " text-" + labelColor : ""))= label
+      span(class="form-label" + (labelColor ? " text-" + labelColor : ""))!= label + (required ? "&nbsp;<span class='text-danger'>*</span>" : "")
       +inputItem(obj)&attributes(attributes)
   else
     +inputItem(obj)&attributes(attributes)

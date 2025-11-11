@@ -8,6 +8,7 @@ export const Bootstrap = {
   Modal,
 };
 
+import { initDropdownDefaults } from '@components/dropdown';
 import initSelect from '@components/forms/select';
 import initLazyLoad from '@components/lazyload';
 import initResizeAnimationStopper from '@components/resize-animation-stopper';
@@ -18,4 +19,5 @@ document.addEventListener('DOMContentLoaded', () => {
   initLazyLoad();
   initResizeAnimationStopper();
   initSliders();
+  initDropdownDefaults();
 });

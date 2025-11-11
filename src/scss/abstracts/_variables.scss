@@ -1894,6 +1894,15 @@ $utilities: (
 $rfs-unit: "rem";
 $rfs-breakpoint: map-get($grid-breakpoints, "xl");
 
+// DROPDOWN =================================
+$dropdown-offset: 8px !default;
+$dropdown-animation-offset: 20px !default;
+
+:root {
+  --dropdown-offset: #{$dropdown-offset};
+  --dropdown-animation-offset: #{$dropdown-animation-offset};
+}
+
 // HEADER =================================
 :root {
   --header-height: 60px;
