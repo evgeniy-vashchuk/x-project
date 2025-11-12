@@ -17,6 +17,7 @@ const initSelect = () => {
     selects.forEach(element => {
       const optionsCount = element.querySelectorAll('option').length;
       const placeholder = element.getAttribute('data-placeholder');
+      const multiple = element.hasAttribute('multiple');
       const classList = [...element.classList]
         .filter(className => !['js-choice', 'form-select'].includes(className))
         .map(className => ({
@@ -35,7 +36,7 @@ const initSelect = () => {
 
       if (placeholder) {
         element.removeAttribute('data-placeholder');
-        element.insertAdjacentHTML('afterbegin', `<option value selected>${placeholder}</option>`);
+        element.insertAdjacentHTML('afterbegin', `<option placeholder ${!multiple ? ' selected disabled' : ''}>${placeholder}</option>`);
       }
 
       const choices = new Choices(element, {
