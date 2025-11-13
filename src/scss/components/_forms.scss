@@ -65,13 +65,7 @@ textarea {
 
   &[class*="choice"] {
     &:not([data-choice="active"]) {
-      color: $input-placeholder-color;
-
-      &[multiple] {
-        &[size="1"] {
-          color: transparent;
-        }
-      }
+      color: transparent;
     }
   }
 }
