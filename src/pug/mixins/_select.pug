@@ -12,13 +12,11 @@ mixin selectItem(obj)
     name=name ? name : "select"
     data-search-enabled=isNativeSelect ? false : searchEnabled
     data-remove-item-button=isNativeSelect ? false : removeItemButton
+    data-placeholder=placeholder ? placeholder : false
     required=required ? true : false
     disabled=disabled ? true : false
     multiple=multiple ? true : false
     size=multiple && !isNativeSelect ? "1" : false)&attributes(attributes)
-    if placeholder && !(isNativeSelect && multiple)
-      - const emptyValue = "";
-      option(placeholder=emptyValue disabled=isNativeSelect ? true : false selected=isNativeSelect ? true : false)= placeholder
     each option, i in options
       if typeof selectedOption === "number"
         option(selected=selectedOption - 1 === i ? true : false)= option
