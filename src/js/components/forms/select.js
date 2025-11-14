@@ -17,7 +17,7 @@ const initSelect = () => {
     selects.forEach(element => {
       const optionsCount = element.querySelectorAll('option').length;
       const classList = [...element.classList]
-        .filter(className => !['js-choice', 'form-select'].includes(className))
+        .filter(className => !className.startsWith('js-') && !['form-select'].includes(className))
         .map(className => ({
           'form-select-sm': 'sm',
           'form-select-lg': 'lg',
