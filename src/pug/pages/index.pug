@@ -5,13 +5,15 @@ block vars
 
 block content
   // delete during development
-  section(class="py-32 text-light" style="background-color: #4a4d6e")
+  section(
+    class="pt-32 pb-48 text-light"
+    style="background: linear-gradient(154deg, #3b37ff 0, rgba(0, 0, 0, 0) 20%), linear-gradient(154deg, #0f0f10 80%, #3b37ff 100%)")
     .container
-      .ratio.ratio-16x9.mx-auto.mb-8(style="max-width: 280px")
+      .ratio.ratio-21x9.mx-auto.mb-8(style="max-width: 320px")
         +img({ img: "img/x-project-logo.svg" })(class="of-contain")
       h4.mb-8.text-center Starter kit for fast HTML / CSS / JS pages layout based on Gulp
       .row.justify-content-center
-        .col-8
+        .col-sm-8
           p.text-center.text-sm.mb-0 X-Project - is starter template with basic tasks for development, which uses Gulp to compile SASS to CSS (with SCSS syntax), add vendor prefixes, group media queries, remove comments and minify CSS, convert ES6 into ES5 using Babel, optimising images (with creating of webp versions and lazyloading), Browsersync for live-reload while development, favicon generator and project archiving.
   section.section
     .container

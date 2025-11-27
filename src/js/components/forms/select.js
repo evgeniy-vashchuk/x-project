@@ -1,3 +1,4 @@
+import { createPopper } from '@popperjs/core';
 import Choices from 'choices.js';
 
 const initSelect = () => {
@@ -14,9 +15,9 @@ const initSelect = () => {
       },
     };
 
-    selects.forEach(element => {
-      const optionsCount = element.querySelectorAll('option').length;
-      const classList = [...element.classList]
+    selects.forEach(select => {
+      const optionsCount = select.querySelectorAll('option').length;
+      const classList = [...select.classList]
         .filter(className => !className.startsWith('js-') && !['form-select'].includes(className))
         .map(className => ({
           'form-select-sm': 'sm',
@@ -24,15 +25,16 @@ const initSelect = () => {
         }[className] || className));
 
       const getBool = (attr, def) => {
-        const attrValue = element.getAttribute(attr);
+        const attrValue = select.getAttribute(attr);
 
         return attrValue !== null ? attrValue === 'true' : def;
       };
 
       const searchEnabled = getBool('search-enabled', true);
       const removeItemButton = getBool('remove-item-button', false);
+      const fixedPosition = select.classList.contains('js-fixed-position');
 
-      const choices = new Choices(element, {
+      const choices = new Choices(select, {
         itemSelectText: '',
         searchEnabled: searchEnabled && optionsCount > 10,
         searchPlaceholderValue: locales[currentLocale].search,
@@ -50,30 +52,67 @@ const initSelect = () => {
         },
       });
 
-      element.choices = choices;
+      select.choices = choices;
 
-      if (classList.some(className => ['with-dropdown-animation-fade', 'with-dropdown-animation-transform'].includes(className))) {
-        let isDropdownFlipped = false;
+      if (fixedPosition) {
+        let popperInstance = null;
 
-        choices.passedElement.element.addEventListener('showDropdown', function(e) {
-          isDropdownFlipped = e.target.closest('.choices').classList.value.includes('is-flipped');
+        function openHandler(choices) {
+          const dropdown = choices.dropdown.element;
+          const reference = choices.containerInner.element;
+          const isDropdownFlipped = choices.containerOuter.element.classList.value.includes('is-flipped');
+          const offsetProp = isDropdownFlipped ? 'marginBottom' : 'marginTop';
+          const offset = parseFloat(getComputedStyle(dropdown)[offsetProp] || 0);
+
+          popperInstance = createPopper(reference, dropdown, {
+            placement: isDropdownFlipped ? 'top-start' : 'bottom-start',
+            strategy: 'fixed',
+            modifiers: [
+              { name: 'computeStyles', options: { gpuAcceleration: false } },
+              { name: 'offset', options: { offset: [0, offset] } },
+            ],
+          });
+
+          dropdown.style.width = `${reference.offsetWidth}px`;
+        }
+
+        function closeHandler(choices) {
+          if (popperInstance) {
+            popperInstance.destroy();
+            popperInstance = null;
+          }
+        }
+
+        let isOpen = false;
+
+        select.addEventListener('showDropdown', function(event) {
+          if (isOpen) return;
+
+          isOpen = true;
+
+          openHandler(choices);
         });
 
-        choices.passedElement.element.addEventListener('hideDropdown', function(e) {
-          const mainElement = e.target.closest('.choices');
+        select.addEventListener('hideDropdown', function(event) {
+          isOpen = false;
 
-          if (isDropdownFlipped) {
-            mainElement.classList.add('is-flipped');
-          }
-
-          const transitionDuration = parseFloat(getComputedStyle(mainElement.querySelector('.choices__list--dropdown')).transitionDuration) * 1000;
-
-          setTimeout(() => {
-            isDropdownFlipped = false;
-            mainElement.classList.remove('is-flipped');
-          }, transitionDuration);
+          closeHandler(choices);
         });
       }
+
+      let isDropdownFlipped = false;
+
+      select.addEventListener('showDropdown', function(event) {
+        isDropdownFlipped = event.target.closest('.choices').classList.value.includes('is-flipped');
+
+        if (isDropdownFlipped) {
+          event.target.closest('.choices').classList.remove('is-open');
+
+          setTimeout(() => {
+            event.target.closest('.choices').classList.add('is-open');
+          }, 0);
+        }
+      });
     });
   }
 };

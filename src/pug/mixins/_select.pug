@@ -3,7 +3,7 @@
 mixin selectItem(obj)
   - const { name, placeholder, required, disabled, size, options, selectedOption, withSearch, invalidFeedback, multiple, isNative, withRemoveItemButton } = obj;
   - const isNativeSelect = isNative === true;
-  - const selectClass = "form-select" + (isNativeSelect ? "" : " js-choice with-dropdown-offset with-dropdown-animation-transform") + (invalidFeedback ? " is-invalid" : "") + (size ? " form-select-" + size : "");
+  - const selectClass = "form-select" + (isNativeSelect ? "" : " js-choice") + (invalidFeedback ? " is-invalid" : "") + (size ? " form-select-" + size : "");
   - const searchEnabled = withSearch === undefined ? false : withSearch === true ? "true" : "false";
   - const removeItemButton = withRemoveItemButton === undefined ? false : withRemoveItemButton === true ? "true" : "false";
 

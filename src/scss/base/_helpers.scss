@@ -11,7 +11,7 @@
 }
 
 %custom-scrollbar {
-  @include custom-scrollbar(8px, $secondary, $primary, $border-radius-pill);
+  @include custom-scrollbar(8px, $dark, $primary, $border-radius-pill);
 }
 
 .custom-scrollbar {
@@ -19,7 +19,7 @@
 }
 
 %custom-scrollbar-sm {
-  @include custom-scrollbar(4px, $secondary, $primary, $border-radius-pill);
+  @include custom-scrollbar(4px, $dark, $primary, $border-radius-pill);
 }
 
 .custom-scrollbar-sm {

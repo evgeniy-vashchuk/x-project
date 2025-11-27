@@ -3,7 +3,7 @@
     opacity: 0;
 
     &[data-popper-placement] {
-      animation-duration: 0.3s;
+      animation-duration: $dropdown-animation-transition;
       animation-fill-mode: both;
     }
 

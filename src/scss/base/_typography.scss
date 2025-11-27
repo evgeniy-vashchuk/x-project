@@ -24,14 +24,22 @@
   }
 }
 
-.text-sm {
+%text-sm {
   font-size: $font-size-sm !important;
   line-height: $line-height-sm !important;
 }
 
-.text-lg {
+.text-sm {
+  @extend %text-sm;
+}
+
+%text-lg {
   font-size: $font-size-lg !important;
   line-height: $line-height-lg !important;
+}
+
+.text-lg {
+  @extend %text-lg;
 }
 
 h1,

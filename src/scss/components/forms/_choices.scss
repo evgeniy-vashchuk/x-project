@@ -1,6 +1,89 @@
 @use "sass:color";
 
+%with-dropdown-offset {
+  &.sm {
+    .#{$choices-selector}__inner {
+      border-radius: $form-select-border-radius-sm !important;
+    }
+  }
+
+  &.lg {
+    .#{$choices-selector}__inner {
+      border-radius: $form-select-border-radius-lg !important;
+    }
+  }
+
+  .#{$choices-selector}__inner {
+    border-radius: $form-select-border-radius !important;
+  }
+
+  .#{$choices-selector}__list {
+    &.#{$choices-selector}__list--dropdown {
+      margin-top: $dropdown-offset;
+      border-radius: $form-select-border-radius;
+    }
+  }
+
+  &.is-flipped {
+    .#{$choices-selector}__list {
+      &.#{$choices-selector}__list--dropdown {
+        margin-top: 0;
+        margin-bottom: $dropdown-offset;
+      }
+    }
+  }
+}
+
+%with-dropdown-animation-fade {
+  .#{$choices-selector}__list {
+    &.#{$choices-selector}__list--dropdown {
+      opacity: 0;
+    }
+  }
+
+  &.is-open {
+    .#{$choices-selector}__list {
+      &.#{$choices-selector}__list--dropdown {
+        opacity: 1;
+        transition: opacity $dropdown-animation-transition;
+      }
+    }
+  }
+}
+
+%with-dropdown-animation-transform {
+  .#{$choices-selector}__list {
+    &.#{$choices-selector}__list--dropdown {
+      transform: translateY($dropdown-animation-offset);
+      opacity: 0;
+    }
+  }
+
+  &.is-flipped {
+    .#{$choices-selector}__list {
+      &.#{$choices-selector}__list--dropdown {
+        transform: translateY(-$dropdown-animation-offset);
+      }
+    }
+  }
+
+  &.is-open {
+    .#{$choices-selector}__list {
+      &.#{$choices-selector}__list--dropdown {
+        transform: translateY(0);
+        opacity: 1;
+        transition:
+          opacity $dropdown-animation-transition,
+          transform $dropdown-animation-transition;
+      }
+    }
+  }
+}
+
 .#{$choices-selector} {
+  @extend %with-dropdown-offset;
+  @extend %with-dropdown-animation-transform;
+
   overflow: visible;
   font-weight: $form-select-font-weight;
   font-family: $form-select-font-family;
@@ -178,97 +261,6 @@
       background-color: $input-disabled-bg;
       border-color: $input-disabled-border-color;
       cursor: not-allowed;
-    }
-  }
-
-  &.with-dropdown-offset {
-    &.sm {
-      .#{$choices-selector}__inner {
-        border-radius: $form-select-border-radius-sm;
-      }
-    }
-
-    &.lg {
-      .#{$choices-selector}__inner {
-        border-radius: $form-select-border-radius-lg;
-      }
-    }
-
-    .#{$choices-selector}__inner {
-      border-radius: $form-select-border-radius;
-    }
-
-    .#{$choices-selector}__list {
-      &.#{$choices-selector}__list--dropdown {
-        margin-top: $dropdown-offset;
-        border-radius: $form-select-border-radius;
-      }
-    }
-
-    &.is-flipped {
-      .#{$choices-selector}__list {
-        &.#{$choices-selector}__list--dropdown {
-          margin-top: 0;
-          margin-bottom: $dropdown-offset;
-        }
-      }
-    }
-  }
-
-  &.with-dropdown-animation-fade {
-    .#{$choices-selector}__list {
-      &.#{$choices-selector}__list--dropdown {
-        display: block;
-        visibility: hidden;
-        opacity: 0;
-      }
-    }
-
-    &.is-open {
-      .#{$choices-selector}__list {
-        &.#{$choices-selector}__list--dropdown {
-          visibility: visible;
-          opacity: 1;
-          transition:
-            opacity 0.3s,
-            visibility 0.3s;
-        }
-      }
-    }
-  }
-
-  &.with-dropdown-animation-transform {
-    .#{$choices-selector}__list {
-      &.#{$choices-selector}__list--dropdown {
-        display: block;
-        transform: translateY($dropdown-animation-offset);
-        visibility: hidden;
-        opacity: 0;
-        pointer-events: none;
-      }
-    }
-
-    &.is-flipped {
-      .#{$choices-selector}__list {
-        &.#{$choices-selector}__list--dropdown {
-          transform: translateY(-$dropdown-animation-offset);
-        }
-      }
-    }
-
-    &.is-open {
-      .#{$choices-selector}__list {
-        &.#{$choices-selector}__list--dropdown {
-          transform: translateY(0);
-          visibility: visible;
-          opacity: 1;
-          transition:
-            opacity 0.3s,
-            visibility 0.3s,
-            transform 0.3s;
-          pointer-events: auto;
-        }
-      }
     }
   }
 
