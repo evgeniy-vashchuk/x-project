@@ -464,6 +464,7 @@
     }
   }
 
+  &[data-type="text"],
   &[data-type="select-multiple"] {
     &:not(.is-disabled) {
       .#{$choices-selector}__input,

@@ -12,16 +12,19 @@ const initSelect = () => {
         noResults: 'No results found',
         noChoices: 'No choices to choose from',
         loading: 'Loading...',
+        addItemText: 'Press Enter to add <strong>"value"</strong>',
       },
     };
 
     selects.forEach(select => {
-      const optionsCount = select.querySelectorAll('option').length;
+      const optionsCount = select.options ? Array.from(select.options).filter(option => option.value !== '').length : 0;
       const classList = [...select.classList]
-        .filter(className => !className.startsWith('js-') && !['form-select'].includes(className))
+        .filter(className => !className.startsWith('js-') && !['form-select'].includes(className) && !['form-control'].includes(className))
         .map(className => ({
           'form-select-sm': 'sm',
+          'form-control-sm': 'sm',
           'form-select-lg': 'lg',
+          'form-control-lg': 'lg',
         }[className] || className));
 
       const getBool = (attr, def) => {
@@ -37,10 +40,14 @@ const initSelect = () => {
       const choices = new Choices(select, {
         itemSelectText: '',
         searchEnabled: searchEnabled && optionsCount > 10,
+        placeholderValue: select.tagName === 'INPUT' ? select.getAttribute('placeholder') : '',
         searchPlaceholderValue: locales[currentLocale].search,
         noResultsText: locales[currentLocale].noResults,
         noChoicesText: locales[currentLocale].noChoices,
         loadingText: locales[currentLocale].loading,
+        addItemText: (value, rawValue) => {
+          return locales[currentLocale].addItemText.replace('value', value);
+        },
         shouldSort: false,
         removeItemButton,
         classNames: {
