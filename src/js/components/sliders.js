@@ -4,7 +4,12 @@ import { Navigation, Pagination } from 'swiper/modules';
 import { breakpoints, gridGutterWidth } from '@utils/constants';
 
 const initSliders = () => {
-  const slider = new Swiper('.js-slider', {
+  const sliderElement = document.querySelector('.js-slider-feeds');
+  const sliderPrevElement = sliderElement.closest('.swiper-holder').querySelector('.swiper-button-prev');
+  const sliderNextElement = sliderElement.closest('.swiper-holder').querySelector('.swiper-button-next');
+  const sliderPaginationElement = sliderElement.closest('.swiper-holder').querySelector('.swiper-pagination');
+
+  const slider = new Swiper(sliderElement, {
     modules: [Navigation, Pagination],
     slidesPerView: 1,
     spaceBetween: gridGutterWidth,
@@ -14,6 +19,8 @@ const initSliders = () => {
     navigation: {
       addIcons: false,
       enabled: true,
+      nextEl: sliderNextElement || null,
+      prevEl: sliderPrevElement || null,
     },
 
     pagination: {
@@ -21,6 +28,7 @@ const initSliders = () => {
       dynamicBullets: true,
       dynamicMainBullets: 4,
       enabled: true,
+      el: sliderPaginationElement || null,
     },
 
     breakpoints: {

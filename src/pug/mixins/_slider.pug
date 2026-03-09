@@ -9,9 +9,16 @@
 //-     h2.mb-0.p-40 Slide 4
 
 mixin slider(obj)
-  - const { classForInit } = obj;
+  - const { classForInit, navigationOutside, paginationOutside } = obj;
 
   if classForInit
     .swiper-holder&attributes(attributes)
-      .swiper(class=classForInit)
-        block
+      .swiper-holder-inner
+        .swiper(class=classForInit)
+          .swiper-wrapper
+            block
+        if navigationOutside
+          .swiper-button-prev
+          .swiper-button-next
+      if paginationOutside
+        .swiper-pagination
