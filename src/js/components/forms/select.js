@@ -38,6 +38,7 @@ const initSelect = () => {
       const fixedPosition = select.classList.contains('js-fixed-position');
 
       const choices = new Choices(select, {
+        renderSelectedChoices: 'always',
         itemSelectText: '',
         searchEnabled: searchEnabled && optionsCount > 10,
         placeholderValue: select.tagName === 'INPUT' ? select.getAttribute('placeholder') : '',
@@ -49,6 +50,7 @@ const initSelect = () => {
           return locales[currentLocale].addItemText.replace('value', value);
         },
         shouldSort: false,
+        resetScrollPosition: false,
         removeItemButton,
         classNames: {
           containerOuter: [
