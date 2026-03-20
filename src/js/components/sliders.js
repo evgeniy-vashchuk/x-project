@@ -4,10 +4,10 @@ import { Navigation, Pagination } from 'swiper/modules';
 import { breakpoints, gridGutterWidth } from '@utils/constants';
 
 const initSliders = () => {
-  const sliderElement = document.querySelector('.js-slider-feeds');
-  const sliderPrevElement = sliderElement.closest('.swiper-holder').querySelector('.swiper-button-prev');
-  const sliderNextElement = sliderElement.closest('.swiper-holder').querySelector('.swiper-button-next');
-  const sliderPaginationElement = sliderElement.closest('.swiper-holder').querySelector('.swiper-pagination');
+  const sliderElement = document.querySelector('.js-slider');
+  const sliderPrevElement = sliderElement?.closest('.swiper-holder').querySelector('.swiper-button-prev');
+  const sliderNextElement = sliderElement?.closest('.swiper-holder').querySelector('.swiper-button-next');
+  const sliderPaginationElement = sliderElement?.closest('.swiper-holder').querySelector('.swiper-pagination');
 
   const slider = new Swiper(sliderElement, {
     modules: [Navigation, Pagination],
