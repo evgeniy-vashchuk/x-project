@@ -91,6 +91,7 @@
 
   &.sm {
     .#{$choices-selector}__inner {
+      min-height: $input-height-sm;
       padding: $form-select-padding-y-sm calc(($form-select-padding-x-sm * 2) + nth(split-string(#{$form-select-bg-size}, " "), 1)) calc($form-select-padding-y-sm - $choices-multiple-badge-indent) $form-select-padding-x-sm;
       font-size: $form-select-font-size-sm;
       border-radius: $form-select-border-radius-sm;
@@ -151,6 +152,7 @@
 
   &.lg {
     .#{$choices-selector}__inner {
+      min-height: $input-height-lg;
       padding: $form-select-padding-y-lg calc(($form-select-padding-x-lg * 2) + nth(split-string(#{$form-select-bg-size}, " "), 1)) calc($form-select-padding-y-lg - $choices-multiple-badge-indent) $form-select-padding-x-lg;
       font-size: $form-select-font-size-lg;
       border-radius: $form-select-border-radius-lg;
@@ -344,7 +346,7 @@
 
   &__inner {
     display: block;
-    min-height: auto;
+    min-height: $input-height;
     padding: $form-select-padding-y $form-select-indicator-padding calc($form-select-padding-y - $choices-multiple-badge-indent) $form-select-padding-x;
     border-width: $form-select-border-width;
     transition: $form-select-transition;

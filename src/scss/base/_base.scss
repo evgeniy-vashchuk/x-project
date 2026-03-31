@@ -4,6 +4,8 @@
 
 html {
   @extend %custom-scrollbar;
+
+  overscroll-behavior: none;
 }
 
 body {
