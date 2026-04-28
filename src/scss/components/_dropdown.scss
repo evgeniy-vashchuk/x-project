@@ -9,13 +9,17 @@
 
     &[data-popper-placement="top-start"],
     &[data-popper-placement="top-end"],
-    &[data-popper-placement="top"] {
+    &[data-popper-placement="top"],
+    &[data-popper-placement="right-end"],
+    &[data-popper-placement="left-end"] {
       animation-name: slide-down;
     }
 
     &[data-popper-placement="bottom-start"],
     &[data-popper-placement="bottom-end"],
-    &[data-popper-placement="bottom"] {
+    &[data-popper-placement="bottom"],
+    &[data-popper-placement="right-start"],
+    &[data-popper-placement="left-start"] {
       animation-name: slide-up;
     }
   }

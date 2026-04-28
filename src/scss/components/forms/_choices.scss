@@ -270,6 +270,12 @@
     }
   }
 
+  &.rounded-pill {
+    .#{$choices-selector}__inner {
+      border-radius: $border-radius-pill;
+    }
+  }
+
   &.with-remove-item-button-align-left {
     &[data-type*="select-multiple"],
     &[data-type*="text"] {

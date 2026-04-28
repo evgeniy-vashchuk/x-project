@@ -30,6 +30,6 @@
   font-variant-numeric: tabular-nums;
 }
 
-.resize-animation-stopper * {
+.resize-animation-stopper *:not(.swiper-wrapper) {
   transition: none !important;
 }
