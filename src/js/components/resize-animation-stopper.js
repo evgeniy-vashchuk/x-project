@@ -1,7 +1,14 @@
 const initResizeAnimationStopper = () => {
   let resizeTimer;
+  let lastWidth = window.innerWidth;
 
   window.addEventListener('resize', () => {
+    if (window.innerWidth === lastWidth) {
+      return;
+    }
+
+    lastWidth = window.innerWidth;
+
     document.body.classList.add('resize-animation-stopper');
 
     clearTimeout(resizeTimer);
