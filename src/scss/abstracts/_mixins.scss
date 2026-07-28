@@ -574,3 +574,17 @@
 }
 
 // @include btn-reset;
+
+// Dashed border via SVG background-image ------------------------------------
+@mixin dashed-border($color, $width: 1, $dash: 10, $gap: 10, $radius: 50%) {
+  $stroke-color: str-slice(#{$color}, 2);
+  $stroke-width: strip-unit($width);
+  $dash-length: strip-unit($dash);
+  $gap-length: strip-unit($gap);
+  $rx: if(unit($radius) == "%", strip-unit($radius) + "%25", #{strip-unit($radius)});
+
+  background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='#{$rx}' ry='#{$rx}' stroke='%23#{$stroke-color}' stroke-width='#{$stroke-width}' stroke-dasharray='#{$dash-length}%2c #{$gap-length}' stroke-linecap='butt'/%3e%3c/svg%3e");
+}
+
+// EXAMPLE: @include dashed-border($orange, 1, 10, 10);
+// EXAMPLE: @include dashed-border($orange, 2, 8, 12, 16px);

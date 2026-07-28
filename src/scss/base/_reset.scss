@@ -71,7 +71,7 @@ textarea {
 
 a {
   &[href*="mailto:"] {
-    overflow-wrap: break-word;
+    overflow-wrap: anywhere;
   }
 }
 
